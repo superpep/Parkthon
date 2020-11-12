@@ -1,10 +1,9 @@
 from PyQt5 import QtWidgets, uic
-import encrypt
 import sqlite_connector as sqlite
 import sys
 
 
-DB = "DB/parkthon.db"
+DB = "DB/parkthon.db" # RUTA DE LA BASE DE DADES
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -19,7 +18,6 @@ class Ui(QtWidgets.QMainWindow):
             sql_con.login(self.user.text(), )
 
         else:
-            
             sql_con = sqlite.sqlite_connector(DB)
             sql_con.create_initial_table()
             sql_con.create_user(self.user.text(), self.passwd.text())
