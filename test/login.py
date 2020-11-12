@@ -10,9 +10,9 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI/login.ui', self) # Load the .ui file
         self.show() # Show the GUI
-        self.loginButton.clicked.connect(self.algo)
+        self.loginButton.clicked.connect(self.login_button_clicked)
 
-    def algo(self):
+    def login_button_clicked(self):
         if(sqlite.database_exists(DB)):
             sql_con = sqlite.sqlite_connector(DB)
             if(sql_con.login(self.user.text(), self.passwd.text())):
