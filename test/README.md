@@ -3,8 +3,9 @@
 ## Login
 
 Input username: **user** \
-Input password: **noseque** \
+Input password: **passwd** \
 Button: **loginButton** \
+Label: **errorLabel** \
 
 ## TODO USER INTERFACE
 
