@@ -25,6 +25,9 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.widget)
         self.pushButton.setGeometry(QtCore.QRect(140, 160, 113, 32))
         self.pushButton.setObjectName("pushButton")
+
+        self.pushButton.connect(open_sqlite)
+
         self.textEdit = QtWidgets.QTextEdit(self.widget)
         self.textEdit.setGeometry(QtCore.QRect(140, 100, 111, 16))
         self.textEdit.setObjectName("textEdit")
@@ -51,6 +54,9 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Login"))
         self.label_2.setText(_translate("MainWindow", "Contraseña"))
         self.label.setText(_translate("MainWindow", "Usuario"))
+
+    def open_sqlite(self):
+        print(self.textEdit.getText())
 
 
 if __name__ == "__main__":
