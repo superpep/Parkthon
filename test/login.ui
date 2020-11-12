@@ -27,6 +27,9 @@
     </size>
    </property>
    <widget class="QWidget" name="widget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -35,63 +38,123 @@
       <height>281</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#2A5B72; color: white; </string>
+    </property>
+    <widget class="QPushButton" name="loginButton">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>160</y>
+       <y>170</y>
        <width>113</width>
        <height>32</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
      </property>
      <property name="text">
       <string>Login</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>100</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="passwdLabel">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>130</y>
+       <y>140</y>
        <width>91</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
      </property>
      <property name="text">
       <string>Contraseña</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_2">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>130</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="userLabel">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>100</y>
+       <y>110</y>
        <width>60</width>
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold;</string>
+     </property>
      <property name="text">
       <string>Usuario</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="user">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>110</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white;</string>
+     </property>
+     <property name="backgroundVisible">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="passwd">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>140</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: white;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="title">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>28</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>PARKTHON</string>
      </property>
     </widget>
    </widget>
