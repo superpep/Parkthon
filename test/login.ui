@@ -54,7 +54,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font-weight: bold;</string>
+      <string notr="true">font-weight: bold; background-color: #10242D;</string>
      </property>
      <property name="text">
       <string>Login</string>
@@ -120,6 +120,9 @@
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-bottom: 4px solid white;</string>
      </property>
      <property name="text">
       <string>PARKTHON</string>
