@@ -2,6 +2,6 @@
 
 ## Login
 
-Input username: **user**
-Input password: **noseque**
-Button: **loginButton**
+Input username: **user** \
+Input password: **noseque** \
+Button: **loginButton** \
