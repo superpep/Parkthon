@@ -27,7 +27,9 @@ class sqlite_connector:
 
         rows = cursorObj.fetchall()
 
-        return encrypt.check_encrypted_password(raw_passwd, rows[0][1])): # Comparem la contrasenya sense encriptar amb l'encriptada
+        for row in rows: 
+            return encrypt.check_encrypted_password(raw_passwd, row[1])
+        return False # Si ve per aci significa que rows no té ninguna columna per a mostrar, el que significa que el DNI NO és correcte
 
     def create_user(self, dni, raw_passwd):
         """
