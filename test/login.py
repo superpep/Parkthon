@@ -9,7 +9,7 @@ class Ui(QtWidgets.QMainWindow):
         self.loginButton.clicked.connect(self.algo)
 
     def algo(self):
-        pass_enc = encrypt.encrypt_password("abcd")
+        pass_enc = encrypt.encrypt_password(self.passwd.text())
         print(pass_enc)
         print(encrypt.pwd_context.verify("abc", pass_enc))
 
