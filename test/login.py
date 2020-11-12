@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, uic
+import encrypt
 import sys
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -8,8 +9,9 @@ class Ui(QtWidgets.QMainWindow):
         self.loginButton.clicked.connect(self.algo)
 
     def algo(self):
-        print(self.user.toPlainText())
-
+        pass_enc = encrypt.encrypt_password("abcd")
+        print(pass_enc)
+        print(encrypt.pwd_context.verify("abc", pass_enc))
 
 
 app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication

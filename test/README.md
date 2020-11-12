@@ -14,5 +14,4 @@ Button: **loginButton** \
 ## TODO PYTHON
 
 - Arreplegar contrasenya i ID.
-- Encriptar contrasenya quan s'arreplegue.
 - Autenticació d'usuari.
