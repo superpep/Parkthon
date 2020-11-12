@@ -12,18 +12,31 @@ class sqlite_connector:
             print(sqlite3.Error)
 
     def login(self, dni, raw_passwd):
+        """
+        Comprova si el login és correcte o no
 
+        Entrada:
+            dni (string): Dni de l'usuari
+            raw_passwd (string): Contrasenya sense encriptar de l'usuari
+
+        Eixida:
+            (boolean) Si el login és correcte o no
+        """
         cursorObj = self.__con.cursor()
         cursorObj.execute("SELECT * FROM users where DNI = '"+dni+"'")
 
         rows = cursorObj.fetchall()
 
-        if(encrypt.check_encrypted_password(raw_passwd, rows[0][1])): # Comparem la contrasenya sense encriptar amb l'encriptada
-            print("LOGIN CORRECT")
-        else:
-            print("LOGIN INCORRECT")
+        return encrypt.check_encrypted_password(raw_passwd, rows[0][1])): # Comparem la contrasenya sense encriptar amb l'encriptada
 
     def create_user(self, dni, raw_passwd):
+        """
+        Crea l'usuari amb les dades enviades
+
+        Entrada:
+            dni (string): Dni de l'usuari
+            raw_passwd (string): Contrasenya sense encriptar de l'usuari
+        """
         entities = (dni, encrypt.encrypt_password(raw_passwd)) # Encriptem la contrasenya
 
         cursorObj = self.__con.cursor()
@@ -31,6 +44,9 @@ class sqlite_connector:
         self.__con.commit()
 
     def create_initial_table(self):
+        """
+        Crea la primera taula quan es crea la base de dades
+        """
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password)")
         self.__con.commit()  
