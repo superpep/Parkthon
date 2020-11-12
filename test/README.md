@@ -13,6 +13,5 @@ Label: **errorLabel** \
 
 ## TODO PYTHON
 
-- Arreplegar contrasenya i ID.
-- Encriptar contrasenya quan s'arreplegue.
-- Autenticació d'usuari.
+- Arreplegar contrasenya i ID
+- Autenticació d'usuari
