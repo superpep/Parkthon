@@ -12,6 +12,12 @@ Label: **errorLabel**
 user: **prova** \
 password: **prova**
 
+## Cronometro
+
+Label cronometro: **cronNum** \
+QPushButton Start & Stop: **startStop** \ 
+QPushButton Vueltas: **lap** 
+
 ## TODO USER INTERFACE
 
 ## TODO PYTHON
