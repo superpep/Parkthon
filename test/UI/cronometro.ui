@@ -26,33 +26,6 @@
    <property name="styleSheet">
     <string notr="true">background-color: #2A5B72;</string>
    </property>
-   <widget class="QLabel" name="cronNum">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>250</y>
-      <width>181</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>24</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; border-radius: 10px; font-weight: bold; color: black;</string>
-    </property>
-    <property name="text">
-     <string>0,0</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QPushButton" name="startStop">
     <property name="geometry">
      <rect>
@@ -117,6 +90,19 @@
     </property>
     <property name="text">
      <string>PARKTHON</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="cronNum">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>250</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white; border-radius: 10px; font-weight: bold; color: black;</string>
     </property>
    </widget>
   </widget>
