@@ -22,9 +22,6 @@ QPushButton Vueltas: **lap**
 ## TODO USER INTERFACE
 
 - Canviar QLabel per LCD Number Widget
-- Afegir botons:
-    1. Stop (Baix de start)
-    2. Reset (Baix de lap)
 
 ## TODO PYTHON
 
