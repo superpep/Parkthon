@@ -48,42 +48,30 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="startStop">
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>360</y>
-      <width>91</width>
-      <height>31</height>
+      <y>370</y>
+      <width>113</width>
+      <height>32</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; font-weight: bold;</string>
     </property>
     <property name="text">
      <string>START/STOP</string>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QPushButton" name="lap">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>360</y>
-      <width>91</width>
-      <height>31</height>
+      <x>520</x>
+      <y>370</y>
+      <width>113</width>
+      <height>32</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; font-weight: bold;</string>
     </property>
     <property name="text">
      <string>VUELTA</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
