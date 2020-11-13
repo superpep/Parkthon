@@ -5,7 +5,8 @@
 Input username: **user** \
 Input password: **passwd** \
 Button: **loginButton** \
-Label: **errorLabel**
+Label: **errorLabel** \
+Main color: #3564b8
 
 ## Base de dades
 
