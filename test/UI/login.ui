@@ -42,126 +42,70 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:#2A5B72; color: white; </string>
+     <string notr="true">background-color:#f0f0f0; color: black; border-radius: 10px</string>
     </property>
     <widget class="QPushButton" name="loginButton">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>170</y>
-       <width>113</width>
+       <x>50</x>
+       <y>200</y>
+       <width>201</width>
        <height>32</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font-weight: bold; background-color: #10242D;</string>
+      <string notr="true">background-color: #3564b8; color: white;</string>
      </property>
      <property name="text">
       <string>Login</string>
      </property>
     </widget>
-    <widget class="QLabel" name="passwdLabel">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>140</y>
-       <width>91</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font-weight: bold;</string>
-     </property>
-     <property name="text">
-      <string>Contraseña</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="userLabel">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>110</y>
-       <width>60</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font-weight: bold;</string>
-     </property>
-     <property name="text">
-      <string>DNI</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="title">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>281</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>28</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-bottom: 4px solid white;</string>
-     </property>
-     <property name="text">
-      <string>PARKTHON</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="user">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>50</x>
        <y>110</y>
-       <width>113</width>
+       <width>201</width>
        <height>21</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: white; color: black;</string>
+      <string notr="true">background-color: #d6d6d6; color: black; border-radius: 5px;</string>
+     </property>
+     <property name="inputMask">
+      <string/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string notr="true">  DNI</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="passwd">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>50</x>
        <y>140</y>
-       <width>113</width>
+       <width>201</width>
        <height>21</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: white; color: black;</string>
+      <string notr="true">background-color: #d6d6d6; color: black;border-radius: 5px;</string>
      </property>
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string notr="true">  Contraseña</string>
      </property>
     </widget>
     <widget class="QLabel" name="errorLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>240</y>
+       <y>250</y>
        <width>281</width>
        <height>16</height>
       </rect>
@@ -173,10 +117,35 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: red;</string>
+      <string notr="true">color: black;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>20</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::AutoText</enum>
+     </property>
+     <property name="pixmap">
+      <pixmap>../img/icon.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
