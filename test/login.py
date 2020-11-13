@@ -17,7 +17,8 @@ class Ui(QtWidgets.QMainWindow):
             sql_con = sqlite.sqlite_connector(DB)
             if(sql_con.login(self.user.text(), self.passwd.text())):
                 self.errorLabel.hide()
-                pass
+                import chrono
+                self.close()
             else:
                 self.errorLabel.setText("Error. DNI i/o contrasenya incorrecta")
 
