@@ -19,6 +19,7 @@ class Ui(QtWidgets.QMainWindow):
                 self.errorLabel.hide()
                 import chrono
                 self.close()
+                
             else:
                 self.errorLabel.setText("Error. DNI i/o contrasenya incorrecta")
 
