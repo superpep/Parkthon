@@ -23,10 +23,11 @@ class Chrono(QtWidgets.QMainWindow):
 
     def showLCD(self):
         text = str(datetime.timedelta(milliseconds=self.mscounter))[:-3]
+        self.cronNum.setDigitCount(8)
         if not self.isreset:  # if "isreset" is False
-            self.cronNum.setText(text)
+            self.cronNum.display(text)
         else:
-            self.cronNum.setText('0:00:00.000')
+            self.cronNum.display('00:00.000')
 
     def run_watch(self):
         self.mscounter += 1
@@ -40,7 +41,7 @@ class Chrono(QtWidgets.QMainWindow):
     def stop_watch(self):
         self.timer.stop()
         self.mscounter = 0
-        self.cronNum.setText('0:00:00.000')
+        self.cronNum.display('00:00.000')
         self.startStop.clicked.connect(self.start_crono)
 
 if __name__ == "__main__":
