@@ -11,6 +11,8 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('UI/login.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.loginButton.clicked.connect(self.login_button_clicked)
+        self.user.returnPressed.connect(self.login_button_clicked)
+        self.passwd.returnPressed.connect(self.login_button_clicked)
 
     def login_button_clicked(self):
         if(sqlite.database_exists(DB)):
