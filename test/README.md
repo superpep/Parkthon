@@ -10,8 +10,8 @@ Main color: #3564b8
 
 ## Base de dades
 
-user: **prova** \
-password: **prova**
+user: `prova` \
+password: `prova`
 
 ## Cronometro
 
@@ -21,7 +21,7 @@ QPushButton Vueltas: **lap**
 
 ## TODO USER INTERFACE
 
-- Canviar QLabel per LCD Number Widget
+- Afegir labels per al registre de voltes
 
 ## TODO PYTHON
 
