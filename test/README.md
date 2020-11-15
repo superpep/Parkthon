@@ -17,7 +17,10 @@ password: `prova`
 
 Label cronometro: **cronNum** \
 QPushButton Start y Stop: **startStop** \
-QPushButton Vueltas: **lap**
+QPushButton Vueltas: **lap** \
+QLabel LAP1: **lap1** \
+QLabel LAP2: **lap2** \
+QLabel LAP3: **lap3**
 
 ## TODO USER INTERFACE
 
