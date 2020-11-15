@@ -129,6 +129,17 @@
      <number>0</number>
     </property>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>340</y>
+      <width>261</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="lapsLayout"/>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
