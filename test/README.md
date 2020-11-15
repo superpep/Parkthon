@@ -18,11 +18,9 @@ password: `prova`
 Label cronometro: **cronNum** \
 QPushButton Start y Stop: **startStop** \
 QPushButton Vueltas: **lap** \
-Layout laps: **lapsLayout** 
+Layout laps: **lapsLayout**
 
 ## TODO USER INTERFACE
-
-- Afegir labels per al registre de voltes
 
 ## TODO PYTHON
 
