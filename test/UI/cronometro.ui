@@ -30,7 +30,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color:#f0f0f0; color: black;</string>
+    <string notr="true">background-color:#f0f0f0; 
+color: black;
+</string>
    </property>
    <widget class="QPushButton" name="startStop">
     <property name="geometry">
@@ -48,15 +50,27 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 10px; font-weight: bold; background-color: #3564b8; color: white;</string>
+     <string notr="true">border-radius: 10px;
+font-weight: bold;
+color: white;
+background-color: #3564b8;</string>
     </property>
     <property name="text">
      <string>START</string>
     </property>
     <property name="checkable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
@@ -76,10 +90,19 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 10px; font-weight: bold; background-color: #3564b8; color: white;</string>
+     <string notr="true">border-radius: 10px; 
+font-weight: bold; 
+color: white;
+background-color: #3564b8;</string>
     </property>
     <property name="text">
      <string>VUELTA</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="title">
@@ -127,6 +150,9 @@
     </property>
     <property name="smallDecimalPoint">
      <bool>false</bool>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Flat</enum>
     </property>
     <property name="value" stdset="0">
      <double>0.000000000000000</double>
