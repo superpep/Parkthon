@@ -51,7 +51,7 @@
      <string notr="true">border-radius: 10px; font-weight: bold; background-color: #3564b8; color: white;</string>
     </property>
     <property name="text">
-     <string>START/STOP</string>
+     <string>START</string>
     </property>
    </widget>
    <widget class="QPushButton" name="lap">
@@ -109,8 +109,24 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: white; font-weight: bold; color: black;</string>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="intValue" stdset="0">
+     <number>0</number>
     </property>
    </widget>
   </widget>
