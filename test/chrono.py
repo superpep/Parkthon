@@ -10,14 +10,14 @@ class Chrono(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
-
-
+    
         self.paused = False
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.run_watch)
         self.timer.setInterval(1)
         self.mscounter = 0
         self.isreset = True
+        self.showLCD() 
 
     def record_lap(self):
         time = str(datetime.timedelta(milliseconds=self.mscounter))[:-3]
