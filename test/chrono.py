@@ -63,7 +63,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap.setText("Lap")
         self.lap.clicked.connect(self.record_lap)
 
-
+# Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
     window = Chrono() # Create an instance of our class
