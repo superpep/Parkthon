@@ -13,7 +13,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap.clicked.connect(self.record_lap)
     
 
-        self.pauseImage = QtGui.QIcon('img/pause.png')
+        self.restart_image = QtGui.QIcon('img/restart.png')
         self.start_image = QtGui.QIcon('img/white.png')
         self.pause_image = QtGui.QIcon('img/pause.png')
 
@@ -77,7 +77,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.startStop.clicked.disconnect(self.pause_watch)
         self.startStop.clicked.connect(self.start_crono)
 
-        self.lap.setText("Reset")
+        self.lap.setIcon(self.restart_image)
         self.lap.clicked.disconnect(self.record_lap)
         self.lap.clicked.connect(self.reset_watch)
     
