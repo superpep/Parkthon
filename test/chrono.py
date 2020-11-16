@@ -31,9 +31,9 @@ class Chrono(QtWidgets.QMainWindow):
     def record_lap(self):
         
         this_time = datetime.timedelta(milliseconds=self.mscounter)
-        self.lap_num += 1
-        text = "Lap "+str(self.lap_num)+": "
-        if (not this_time == "0:00"):
+        if (self.mscounter != 0):
+            self.lap_num += 1
+            text = "Lap "+str(self.lap_num)+": "
             if(self.lap_num ==  1):
                 text += str(this_time)[2:-3]
             else:
@@ -85,6 +85,7 @@ class Chrono(QtWidgets.QMainWindow):
     def reset_watch(self):
         self.timer.stop()
         self.mscounter = 0
+        self.lap_num = 0
         self.isreset = True
         self.previous_time = 0
         self.showLCD()
@@ -93,9 +94,13 @@ class Chrono(QtWidgets.QMainWindow):
 
 
 
-        self.lap.setText("Lap")
+        self.lap.setIcon(self.laps_image)
         self.lap.clicked.disconnect(self.reset_watch)
         self.lap.clicked.connect(self.record_lap)
+
+
+        for i in reversed(range(self.lapsLayout.count())): 
+            self.lapsLayout.itemAt(i).widget().setParent(None)
         
 
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
