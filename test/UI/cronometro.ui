@@ -30,14 +30,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color:#f0f0f0; 
-color: black;
+    <string notr="true">background-color:#3564b8; 
+color: white;
+font-weight: bold;
+font-family: Arial, Helvetica, sans-serif;
 </string>
    </property>
    <widget class="QPushButton" name="startStop">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>760</x>
       <y>170</y>
       <width>41</width>
       <height>41</height>
@@ -45,7 +47,7 @@ color: black;
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <family>Arial,Helvetica,sans-serif</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -54,7 +56,7 @@ color: black;
      <string notr="true">border-radius: 20px;
 font-weight: bold;
 color: white;
-background-color: #3564b8;</string>
+background-color: #80aeff;</string>
     </property>
     <property name="text">
      <string/>
@@ -88,7 +90,7 @@ background-color: #3564b8;</string>
    <widget class="QPushButton" name="lap">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>640</x>
       <y>170</y>
       <width>41</width>
       <height>41</height>
@@ -96,7 +98,7 @@ background-color: #3564b8;</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <family>Arial,Helvetica,sans-serif</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -105,7 +107,7 @@ background-color: #3564b8;</string>
      <string notr="true">border-radius: 20px; 
 font-weight: bold; 
 color: white;
-background-color: #3564b8;
+background-color: #80aeff;
 padding: 10px;</string>
     </property>
     <property name="text">
@@ -131,7 +133,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>620</x>
       <y>30</y>
       <width>201</width>
       <height>31</height>
@@ -139,14 +141,13 @@ padding: 10px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>28</pointsize>
+      <family>Arial,Helvetica,sans-serif</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom: 4px solid black; color: black;</string>
+     <string notr="true">border-bottom: 4px solid #80aeff; color: white;</string>
     </property>
     <property name="text">
      <string>PARKTHON</string>
@@ -158,7 +159,7 @@ padding: 10px;</string>
    <widget class="QLCDNumber" name="cronNum">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>670</x>
       <y>100</y>
       <width>101</width>
       <height>41</height>
@@ -166,13 +167,25 @@ padding: 10px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>Arial,Helvetica,sans-serif</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: white; font-weight: bold; color: black;</string>
+     <string notr="true">font-weight: bold; color: white;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
     </property>
     <property name="smallDecimalPoint">
      <bool>false</bool>
@@ -190,7 +203,7 @@ padding: 10px;</string>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>590</x>
       <y>230</y>
       <width>261</width>
       <height>501</height>
@@ -201,7 +214,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="vacio">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>610</x>
       <y>50</y>
       <width>60</width>
       <height>16</height>
