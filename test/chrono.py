@@ -39,7 +39,9 @@ class Chrono(QtWidgets.QMainWindow):
                 text += str(this_time - self.previous_time)[2:-3]
             
             self.previous_time = this_time
-            self.lapsLayout.addWidget(QtWidgets.QLabel(text))
+            label = QtWidgets.QLabel(text)
+            label.setAlignment(QtCore.Qt.AlignCenter)
+            self.lapsLayout.addWidget(label)
 
 
     def showLCD(self):
