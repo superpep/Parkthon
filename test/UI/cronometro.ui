@@ -120,9 +120,9 @@ background-color: #3564b8;</string>
    <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>590</x>
       <y>30</y>
-      <width>161</width>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
@@ -139,6 +139,9 @@ background-color: #3564b8;</string>
     </property>
     <property name="text">
      <string>PARKTHON</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLCDNumber" name="cronNum">
@@ -179,10 +182,36 @@ background-color: #3564b8;</string>
       <x>560</x>
       <y>230</y>
       <width>261</width>
-      <height>331</height>
+      <height>501</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="lapsLayout"/>
+   </widget>
+   <widget class="QLabel" name="vacio">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>50</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="vacio_2">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>50</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
