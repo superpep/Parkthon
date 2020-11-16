@@ -38,7 +38,7 @@ color: black;
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>260</y>
+      <y>170</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -88,8 +88,8 @@ background-color: #3564b8;</string>
    <widget class="QPushButton" name="lap">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>260</y>
+      <x>610</x>
+      <y>170</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -120,7 +120,7 @@ background-color: #3564b8;</string>
    <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>610</x>
       <y>30</y>
       <width>161</width>
       <height>31</height>
@@ -144,9 +144,9 @@ background-color: #3564b8;</string>
    <widget class="QLCDNumber" name="cronNum">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>180</y>
-      <width>91</width>
+      <x>640</x>
+      <y>100</y>
+      <width>101</width>
       <height>41</height>
      </rect>
     </property>
@@ -176,8 +176,8 @@ background-color: #3564b8;</string>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>340</y>
+      <x>560</x>
+      <y>230</y>
       <width>261</width>
       <height>331</height>
      </rect>
