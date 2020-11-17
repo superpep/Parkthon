@@ -30,8 +30,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color:#3564b8; 
-color: white;
+    <string notr="true">color: white;
 font-weight: bold;
 font-family: Arial, Helvetica, sans-serif;
 </string>
@@ -148,7 +147,7 @@ padding: 10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom: 4px solid #80aeff; 
+     <string notr="true">border-bottom: 4px solid black; 
 color: white;
 font-size: 20px;</string>
     </property>
@@ -195,7 +194,7 @@ font-size: 20px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 25px;</string>
+     <string notr="true">font-size: 25px; color: #80aeff;</string>
     </property>
     <property name="text">
      <string/>
@@ -240,8 +239,7 @@ font-size: 20px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border: 0;
-background-color: #80aeff;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
