@@ -159,17 +159,6 @@ font-size: 20px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>230</y>
-      <width>261</width>
-      <height>501</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="lapsLayout"/>
-   </widget>
    <widget class="QLabel" name="vacio">
     <property name="geometry">
      <rect>
@@ -213,6 +202,16 @@ font-size: 20px;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QListView" name="lapsList">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>250</y>
+      <width>261</width>
+      <height>471</height>
+     </rect>
     </property>
    </widget>
   </widget>
