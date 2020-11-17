@@ -44,7 +44,7 @@ border-top: 3px groove #1F3C6E;
 font-size: 14px;</string>
     </property>
     <property name="text">
-     <string>AÑADIR USUARIOS</string>
+     <string>AÑADIR USUARIO</string>
     </property>
    </widget>
    <widget class="QPushButton" name="deleteUser">
@@ -66,7 +66,7 @@ border-top: 3px groove #1F3C6E;
 font-size: 14px;</string>
     </property>
     <property name="text">
-     <string>BORRAR USUARIOS</string>
+     <string>BORRAR USUARIO</string>
     </property>
    </widget>
    <widget class="QPushButton" name="changePass">
