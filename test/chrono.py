@@ -2,7 +2,6 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 #from PyQt5.QtWidgets import QLabel
 import sys
 import datetime
-import os
 from login import getOsSeparator
 
 class Chrono(QtWidgets.QMainWindow):
