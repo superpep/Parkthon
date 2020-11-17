@@ -16,11 +16,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.stopwatch.stop()
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #3564b8}")
-        self.changePass.setStyleSheet("QPushButton#changePass::hover{ border: none; background-color: #ccdeff;}")
-
-        
-
-        
+        self.changePass.setStyleSheet("QPushButton#changePass::hover{ border: none; background-color: #ccdeff;} QPushButton#changePass::pressed{background-color: #668BCC;}")
 
 
         self.model = QtGui.QStandardItemModel()
