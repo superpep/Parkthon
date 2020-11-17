@@ -1,14 +1,20 @@
 from PyQt5 import QtWidgets, uic
 import sqlite_connector as sqlite
 import sys
-import chrono
+# Baixar-ho despres de fer proves ja que no es pot executar chrono.py a seques sense aço
+def getOsSeparator():
+    return os.path.sep
 
-DB = "DB/parkthon.db" # RUTA DE LA BASE DE DADES
+import chrono
+import os
+
+
+DB = "DB"+getOsSeparator()+"parkthon.db" # RUTA DE LA BASE DE DADES
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI/login.ui', self) # Load the .ui file
+        uic.loadUi('UI'+getOsSeparator()+'login.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
