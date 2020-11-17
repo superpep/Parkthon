@@ -2,23 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 #from PyQt5.QtWidgets import QLabel
 import sys
 import datetime
-import time
 from stopwatch import Stopwatch
-"""
-from stopwatch import Stopwatch
-
-stopwatch = Stopwatch() # Stopwatch keeps running
-# but really its just math with time.perf_counter() so there isn't really a task
-# running in background
-
-stopwatch.stop() # stop stopwatch, time freezes
-stopwatch.start() # Start it again
-stopwatch.reset() # reset it back to 0
-stopwatch.restart() # reset and start again
-stopwatch.running # wether stopwatch is running
-stopwatch.duration # Get the duration
-str(stopwatch) # Get the friendly duration string
-"""
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
@@ -27,10 +11,13 @@ class Chrono(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
+        
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
         
+        self.model = QtGui.QStandardItemModel()
+        self.lapsList.setModel(self.model)
     
 
         self.laps_image = QtGui.QIcon('img/laps.png')
@@ -62,10 +49,9 @@ class Chrono(QtWidgets.QMainWindow):
             else:
                 text += "{:.2f}".format(this_time - self.previous_time)
             
+            row = item = QtGui.QStandardItem(text)
             self.previous_time = this_time
-            label = QtWidgets.QLabel(text)
-            label.setAlignment(QtCore.Qt.AlignCenter)
-            self.lapsLayout.addWidget(label)
+            self.model.appendRow(row)
 
 
     def showLCD(self):
@@ -73,9 +59,9 @@ class Chrono(QtWidgets.QMainWindow):
         Aquesta funció serveix per a mostrar per pantalla el temps
         """
         if not self.isreset:  # si "isreset" es False
-            self.cronNum.display(str(self.stopwatch))
+            self.cronNum.setText(str(self.stopwatch))
         else:
-            self.cronNum.display('0.00')
+            self.cronNum.setText('0.00')
 
     def run_watch(self):
         """
@@ -143,8 +129,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap.clicked.connect(self.record_lap)
 
 
-        for i in reversed(range(self.lapsLayout.count())): # Esborra totes les laps
-            self.lapsLayout.itemAt(i).widget().setParent(None)
+        self.model.removeRows(0, self.model.rowCount()) # Esborra totes les laps
+            
         
 
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
