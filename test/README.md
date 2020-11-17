@@ -18,7 +18,7 @@ password: `prova`
 Label cronometro: **cronNum** \
 QPushButton Start y Stop: **startStop** \
 QPushButton Vueltas: **lap** \
-Layout laps: **lapsLayout**
+Layout laps: **lapsList**
 
 ## Menu 1
 
