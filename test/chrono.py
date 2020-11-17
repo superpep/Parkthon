@@ -11,11 +11,16 @@ class Chrono(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
-        
+
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
-        
+        self.changePass.setStyleSheet("QPushButton::hover"
+                             "{"
+                             "background-color : white;"
+                             "}")
+
+
         self.model = QtGui.QStandardItemModel()
         self.lapsList.setModel(self.model)
     
