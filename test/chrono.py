@@ -3,6 +3,22 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
 import datetime
 import time
+from stopwatch import Stopwatch
+"""
+from stopwatch import Stopwatch
+
+stopwatch = Stopwatch() # Stopwatch keeps running
+# but really its just math with time.perf_counter() so there isn't really a task
+# running in background
+
+stopwatch.stop() # stop stopwatch, time freezes
+stopwatch.start() # Start it again
+stopwatch.reset() # reset it back to 0
+stopwatch.restart() # reset and start again
+stopwatch.running # wether stopwatch is running
+stopwatch.duration # Get the duration
+str(stopwatch) # Get the friendly duration string
+"""
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
@@ -11,6 +27,10 @@ class Chrono(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
+        self.stopwatch = Stopwatch()
+        self.stopwatch.stop()
+        
+        
     
 
         self.laps_image = QtGui.QIcon('img/laps.png')
@@ -22,6 +42,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.previous_time = 0
         self.paused = False
         self.timer = QtCore.QTimer(self)
+        self.timer.setTimerType(QtCore.Qt.PreciseTimer)
         self.timer.timeout.connect(self.run_watch)
         self.timer.setInterval(1)
         self.mscounter = 0
@@ -32,14 +53,14 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Afegeix una nova lap al cronómetro
         """
-        this_time = datetime.timedelta(milliseconds=self.mscounter)
-        if (self.mscounter != 0):
+        this_time = float(str(self.stopwatch))
+        if (self.mscounter > 1000):
             self.lap_num += 1
             text = "Lap "+str(self.lap_num)+": "
             if(self.lap_num ==  1):
-                text += str(this_time)[2:-3]
+                text += "{:.2f}".format(this_time)
             else:
-                text += str(this_time - self.previous_time)[2:-3]
+                text += "{:.2f}".format(this_time - self.previous_time)
             
             self.previous_time = this_time
             label = QtWidgets.QLabel(text)
@@ -51,12 +72,10 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Aquesta funció serveix per a mostrar per pantalla el temps
         """
-        text = str(datetime.timedelta(milliseconds=self.mscounter))[:-3]
-        self.cronNum.setDigitCount(8)
         if not self.isreset:  # si "isreset" es False
-            self.cronNum.display(text)
+            self.cronNum.display(str(self.stopwatch))
         else:
-            self.cronNum.display('0:00.000')
+            self.cronNum.display('0.00')
 
     def run_watch(self):
         """
@@ -70,7 +89,10 @@ class Chrono(QtWidgets.QMainWindow):
         Comença el cronómetre de forma visible
         """
         self.timer.start()
-        
+        if(self.stopwatch.running):
+            self.stopwatch.restart()
+        else:
+            self.stopwatch.start()
 
         self.lap.setIcon(self.laps_image)
         if(self.isreset == False):
@@ -88,6 +110,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
 
         self.timer.stop()
+        self.stopwatch.stop()
 
         self.startStop.setIcon(self.start_image)
         self.startStop.clicked.disconnect(self.pause_watch)
@@ -102,6 +125,9 @@ class Chrono(QtWidgets.QMainWindow):
         Reinicia el cronómetre
         """
         self.timer.stop()
+        self.stopwatch.restart()
+
+
         self.mscounter = 0
         self.lap_num = 0
         self.isreset = True
