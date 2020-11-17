@@ -142,62 +142,21 @@ padding: 10px;</string>
     <property name="font">
      <font>
       <family>Arial,Helvetica,sans-serif</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom: 4px solid #80aeff; color: white;</string>
+     <string notr="true">border-bottom: 4px solid #80aeff; 
+color: white;
+font-size: 20px;</string>
     </property>
     <property name="text">
      <string>PARKTHON</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="cronNum">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>100</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial,Helvetica,sans-serif</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-weight: bold; color: white;</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <property name="lineWidth">
-     <number>1</number>
-    </property>
-    <property name="midLineWidth">
-     <number>0</number>
-    </property>
-    <property name="smallDecimalPoint">
-     <bool>false</bool>
-    </property>
-    <property name="segmentStyle">
-     <enum>QLCDNumber::Flat</enum>
-    </property>
-    <property name="value" stdset="0">
-     <double>0.000000000000000</double>
-    </property>
-    <property name="intValue" stdset="0">
-     <number>0</number>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -214,7 +173,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="vacio">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>600</x>
       <y>50</y>
       <width>60</width>
       <height>16</height>
@@ -227,7 +186,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="vacio_2">
     <property name="geometry">
      <rect>
-      <x>770</x>
+      <x>780</x>
       <y>50</y>
       <width>60</width>
       <height>16</height>
@@ -235,6 +194,25 @@ padding: 10px;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cronNum">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>100</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 25px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
