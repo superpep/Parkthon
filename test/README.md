@@ -23,13 +23,13 @@ Layout laps: **lapsLayout**
 ## Menu 1
 
 QPushButton Administrador de usuarios: **adminUsers** \
-QPushButton Cronometro: **cron** 
+QPushButton Cronometro: **cron**
 
 ## Menu 2
 
 QPushButton Cambiar contraseña: **changePass** \
 QPushButton Borrar Usuarios: **deleteUser** \
-QPushButton Añadir Usuarios: **addUser** 
+QPushButton Añadir Usuarios: **addUser**
 
 ## TODO USER INTERFACE
 
