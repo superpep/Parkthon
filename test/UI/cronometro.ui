@@ -188,7 +188,7 @@ font-size: 25px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #f0f0f0;</string>
+     <string notr="true">background-color: #f0f0f0; color: black;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
