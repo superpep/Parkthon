@@ -1,15 +1,14 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
-#from PyQt5.QtWidgets import QLabel
 import sys
 import datetime
 import user_management
-from login import getOsSeparator
+from login import pathSeparator
 from stopwatch import Stopwatch
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+getOsSeparator()+'cronometro.ui', self) # Load the .ui file
+        uic.loadUi('UI'+pathSeparator+'cronometro.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)

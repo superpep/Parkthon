@@ -1,9 +1,9 @@
 import sqlite3
 import os.path
 import encrypt
-from login import getOsSeparator
+from login import pathSeparator
 
-DB = "DB"+getOsSeparator()+"parkthon.db"
+DB = "DB"+pathSeparator+"parkthon.db"
 
 class sqlite_connector:
     def __init__(self):

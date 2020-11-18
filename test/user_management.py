@@ -7,17 +7,15 @@ import chrono
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+login.getOsSeparator()+'users.ui', self) # Load the .ui file
+        uic.loadUi('UI'+login.pathSeparator+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
-        self.changePass.hide()
-        self.deleteUser.hide()
         self.deleteUser.clicked.connect(self.delete_user)
 
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
         self.sql_con = sqlite.sqlite_connector()
-        self.show_users()
+        self.reinicia_llista()
         self.dni = ""
 
         self.cronIcon.clicked.connect(self.return_to_chrono)
@@ -36,16 +34,25 @@ class Users_management(QtWidgets.QMainWindow):
         self.deleteUser.show()
 
     def delete_user(self):
-        choice = QtWidgets.QMessageBox.question(self, 'Confirmación',
-                                            "¿Estás seguro de querer eliminar al usuario con DNI "+self.dni+"?",
-                                            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
-        if choice == QtWidgets.QMessageBox.Yes:
-            if(self.sql_con.delete_user(self.dni)):
-                QtWidgets.QMessageBox.information(self, 'Confirmación', "El usuario ha sido eliminado con éxito.")
-            else:
-                QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador")
+        print(login.currentUser)
+        if login.currentUser == self.dni: # Arreglar aço
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario")
         else:
-            pass
+            choice = my_button()
+            if choice:
+                if(self.sql_con.delete_user(self.dni)):
+                    QtWidgets.QMessageBox.information(self, 'Confirmación', "El usuario ha sido eliminado con éxito.")
+                    self.reinicia_llista()
+                else:
+                    QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador")
+            else:
+                pass
+
+    def reinicia_llista(self):
+        self.model.removeRows(0, self.model.rowCount()) # Esborra tot
+        self.changePass.hide()
+        self.deleteUser.hide()
+        self.show_users()
 
     def show_users(self):
         users = self.sql_con.get_users()
@@ -59,6 +66,19 @@ class Users_management(QtWidgets.QMainWindow):
         self.new_window = chrono.Chrono()
         self.new_window.show()
         self.close()
+
+def my_button():
+    box = QtWidgets.QMessageBox()
+    box.setIcon(QtWidgets.QMessageBox.Question)
+    box.setWindowTitle('Comprovació')
+    box.setText('¿Estás seguro de querer eliminar al usuario?')
+    box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
+    buttonY = box.button(QtWidgets.QMessageBox.Yes)
+    buttonY.setText('Sí')
+    buttonN = box.button(QtWidgets.QMessageBox.No)
+    buttonN.setText('No')
+    box.exec_()
+    return box.clickedButton() == buttonY
         
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
