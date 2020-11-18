@@ -28,9 +28,9 @@ class Ui(QtWidgets.QMainWindow):
                 self.errorLabel.setText("Error. DNI i/o contrasenya incorrecta")
 
         else:
-            sql_con = sqlite.sqlite_connector(DB)
+            sql_con = sqlite.sqlite_connector()
             sql_con.create_initial_table()
-            sql_con.create_user(self.user.text(), self.passwd.text())
+            sql_con.create_user(self.user.text(), self.passwd.text(), True)
             # TO-DO: Implementar aço, no sabem si fer una finestra nova on demanar dades.
     
     def open_new_window(self):

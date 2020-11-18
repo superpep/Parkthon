@@ -32,7 +32,7 @@ class sqlite_connector:
             return encrypt.check_encrypted_password(raw_passwd, row[1])
         return False # Si ve per aci significa que rows no té ninguna columna per a mostrar, el que significa que el DNI NO és correcte
 
-    def create_user(self, dni, raw_passwd):
+    def create_user(self, dni, raw_passwd, isAdmin):
         """
         Crea l'usuari amb les dades enviades
 
@@ -40,10 +40,10 @@ class sqlite_connector:
             dni (string): Dni de l'usuari
             raw_passwd (string): Contrasenya sense encriptar de l'usuari
         """
-        entities = (dni, encrypt.encrypt_password(raw_passwd)) # Encriptem la contrasenya
+        entities = (dni, encrypt.encrypt_password(raw_passwd), isAdmin) # Encriptem la contrasenya
 
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO users VALUES(?, ?)", entities)
+        cursorObj.execute("INSERT INTO users VALUES(?, ?, ?)", entities)
         self.__con.commit()
 
     def create_initial_table(self):
@@ -51,7 +51,7 @@ class sqlite_connector:
         Crea la primera taula quan es crea la base de dades
         """
         cursorObj = self.__con.cursor()
-        cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password)")
+        cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
         self.__con.commit()  
 
     def get_users(self):

@@ -12,6 +12,7 @@ class Users_management(QtWidgets.QMainWindow):
         
         self.changePass.hide()
         self.deleteUser.hide()
+        self.deleteUser.clicked.connect(self.delete_user)
 
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
@@ -30,6 +31,9 @@ class Users_management(QtWidgets.QMainWindow):
         dni = self.model.itemFromIndex(index).text()
         self.changePass.show()
         self.deleteUser.show()
+
+    def delete_user(self):
+        pass
 
     def show_users(self):
         
