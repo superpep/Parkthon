@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
 import datetime
 from login import getOsSeparator
+from stopwatch import Stopwatch
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
@@ -12,6 +13,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
 
+        self.stopwatch = Stopwatch()
+        self.stopwatch.stop()
+        
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #3564b8}")
 
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
@@ -39,14 +43,15 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Afegeix una nova lap al cronómetro
         """
-        this_time = datetime.timedelta(milliseconds=self.mscounter)
-        if (self.mscounter != 0):
+        
+        if (self.mscounter > 1000):
+            this_time = float(str(self.stopwatch))[:-1]
             self.lap_num += 1
             text = "Lap "+str(self.lap_num)+": "
             if(self.lap_num ==  1):
-                text += str(this_time)[2:-4]
+                text += "{:.2f}".format(this_time)
             else:
-                text += str(this_time - self.previous_time)[2:-4]
+                text += "{:.2f}".format(this_time - self.previous_time)
             
             row = QtGui.QStandardItem(text)
             self.previous_time = this_time
@@ -59,9 +64,9 @@ class Chrono(QtWidgets.QMainWindow):
         """
         text = str(datetime.timedelta(milliseconds=self.mscounter))[2:-4]
         if not self.isreset:  # si "isreset" es False
-            self.cronNum.setText(text)
+            self.cronNum.setText(str(self.stopwatch))
         else:
-            self.cronNum.setText('00:00.00')
+            self.cronNum.setText('0.00')
 
     def run_watch(self):
         """
@@ -75,7 +80,10 @@ class Chrono(QtWidgets.QMainWindow):
         Comença el cronómetre de forma visible
         """
         self.timer.start()
-        
+        if(self.stopwatch.running):
+            self.stopwatch.restart()
+        else:
+            self.stopwatch.start()
 
         self.lap.setIcon(self.laps_image)
         if(self.isreset == False):
@@ -93,6 +101,8 @@ class Chrono(QtWidgets.QMainWindow):
         """
 
         self.timer.stop()
+        self.stopwatch.stop()
+
 
         self.startStop.setIcon(self.start_image)
         self.startStop.clicked.disconnect(self.pause_watch)
@@ -107,6 +117,7 @@ class Chrono(QtWidgets.QMainWindow):
         Reinicia el cronómetre
         """
         self.timer.stop()
+        self.stopwatch.restart()
         self.mscounter = 0
         self.lap_num = 0
         self.isreset = True
