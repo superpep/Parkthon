@@ -29,7 +29,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap_num = 0
         self.previous_time = 0
         self.timer = QtCore.QTimer(self)
-        self.timer.setTimerType(QtCore.Qt.PreciseTimer)
         self.timer.timeout.connect(self.run_watch)
         self.timer.setInterval(10)
         self.mscounter = 0
