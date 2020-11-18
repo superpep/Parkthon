@@ -61,6 +61,41 @@ class sqlite_connector:
         rows = cursorObj.fetchall()
         return rows
 
+    def delete_user(self, dni):
+        """
+        Elimina l'usuari en cas de que no siga administrador l'unic admin que queda
+
+        Entrada:
+            dni (string): Dni de l'usuari
+        Eixida:
+            (boolean): Si l'usuari s'ha eliminat o no
+        """
+        if(self.check_admins(dni)):
+            return False
+
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("DELETE FROM users WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+        return True
+    
+    def check_admins(self, dni):
+        """
+        Comprova cuants admins hi han i en cas de ser sols 1, comprova que si és o no el que s'ha passat com a parámetre
+
+        Entrada:
+            dni (string): Dni de l'usuari
+        Eixida:
+            (boolean): Si es pot seguir amb el delete (Més d'un admin o l'usuari no és admin) o si no es pot (Sols queda 1 admin i és l'usuari)
+        """
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT count(*) FROM users where isAdmin = 1") # MIRA A VEURE QUANS ADMINS HI HAN
+        rows = cursorObj.fetchall()
+        if(rows[0][0] == 1):
+            cursorObj.execute("SELECT isAdmin FROM users where DNI = '"+dni+"'") # EN CAS DE SOLS UN ADMIN, COMPROVA QUE NO ÉS EL QUE ES VOL ESBORRAR
+            rows = cursorObj.fetchall()
+            return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
+        return False
+
 def database_exists():
     """
     Funció que comprova si la base de dades existeix o no

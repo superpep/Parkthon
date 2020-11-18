@@ -41,6 +41,10 @@ class Chrono(QtWidgets.QMainWindow):
         self.mscounter = 0
         self.isreset = True
         self.showLCD()
+        
+
+
+        
 
     def record_lap(self):
         """
