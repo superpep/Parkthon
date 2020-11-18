@@ -9,6 +9,12 @@ class Users_management(QtWidgets.QMainWindow):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+login.getOsSeparator()+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
+        
+        self.changePass.hide()
+        self.deleteUser.hide()
+
+        self.model = QtGui.QStandardItemModel()
+        self.usersList.setModel(self.model)
 
         self.cronIcon.clicked.connect(self.return_to_chrono)
         self.show_users()
@@ -17,14 +23,21 @@ class Users_management(QtWidgets.QMainWindow):
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #ccdeff;} QPushButton#users::pressed{background-color: #668BCC;}")
 
+        self.usersList.clicked.connect(self.manage_user)
+
+    @QtCore.pyqtSlot(QtCore.QModelIndex)
+    def manage_user(self, index):
+        dni = self.model.itemFromIndex(index).text()
+        self.changePass.show()
+        self.deleteUser.show()
+
     def show_users(self):
-        model = QtGui.QStandardItemModel()
-        self.usersList.setModel(model)
+        
         sql_con = sqlite.sqlite_connector()
         users = sql_con.get_users()
         for user in users:
             row = QtGui.QStandardItem(user[0])
-            model.appendRow(row)
+            self.model.appendRow(row)
 
         
 
