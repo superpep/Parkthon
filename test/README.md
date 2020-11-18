@@ -21,17 +21,6 @@ QPushButton Vueltas: **lap** \
 Lista laps: **lapsList** \
 Lista menu: **listaMenu**
 
-## Menu 1
-
-QPushButton Administrador de usuarios: **adminUsers** \
-QPushButton Cronometro: **cron**
-
-## Menu 2
-
-QPushButton Cambiar contraseña: **changePass** \
-QPushButton Borrar Usuarios: **deleteUser** \
-QPushButton Añadir Usuarios: **addUser**
-
 ## TODO USER INTERFACE
 
 - Afegir menú principal que s'accedirà despres del login amb els següents components:
