@@ -48,7 +48,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
         
         if (self.mscounter > 1000):
-            this_time = float(str(self.stopwatch))[:-1]
+            this_time = float(str(self.stopwatch)[:-1])
             self.lap_num += 1
             text = "Lap "+str(self.lap_num)+": "
             if(self.lap_num ==  1):
