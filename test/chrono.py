@@ -13,8 +13,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap.clicked.connect(self.record_lap)
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #3564b8}")
-        self.changePass.setStyleSheet("QPushButton#changePass::hover{ border: none; background-color: #ccdeff;} QPushButton#changePass::pressed{background-color: #668BCC;}")
 
+        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #ccdeff;} QPushButton#users::pressed{background-color: #668BCC;}")
 
         self.model = QtGui.QStandardItemModel()

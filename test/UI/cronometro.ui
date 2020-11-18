@@ -241,11 +241,11 @@ font-size: 25px;</string>
     <property name="styleSheet">
      <string notr="true">background-color: #80aeff; border-right: 1px solid black;</string>
     </property>
-    <widget class="QPushButton" name="changePass">
+    <widget class="QPushButton" name="users">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>20</y>
+       <y>10</y>
        <width>60</width>
        <height>51</height>
       </rect>
@@ -258,7 +258,7 @@ font-size: 25px;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/password.png</normaloff>../img/password.png</iconset>
+       <normaloff>../img/dni.png</normaloff>../img/dni.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -276,11 +276,11 @@ font-size: 25px;</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="users">
+    <widget class="QPushButton" name="cronIcon">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>80</y>
+       <y>690</y>
        <width>60</width>
        <height>51</height>
       </rect>
@@ -293,7 +293,7 @@ font-size: 25px;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/dni.png</normaloff>../img/dni.png</iconset>
+       <normaloff>../img/lapsBlack.png</normaloff>../img/lapsBlack.png</iconset>
      </property>
      <property name="iconSize">
       <size>
