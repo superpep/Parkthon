@@ -6,7 +6,7 @@ import database_manager as sqlite
 import chrono
 
 
-currentUser = ""
+currentUser = "" # FER AÇO AMB UN ARXIU DE PROPIETATS
 
 
 class Ui(QtWidgets.QMainWindow):
