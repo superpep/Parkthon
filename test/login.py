@@ -8,8 +8,11 @@ def getOsSeparator():
 import chrono
 import os
 
-
 DB = "DB"+getOsSeparator()+"parkthon.db" # RUTA DE LA BASE DE DADES
+
+def getDB():
+    return DB
+
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
