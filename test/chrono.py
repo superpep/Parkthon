@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 #from PyQt5.QtWidgets import QLabel
 import sys
 import datetime
+import user_management
 from login import getOsSeparator
 from stopwatch import Stopwatch
 
@@ -12,12 +13,12 @@ class Chrono(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
+        self.users.clicked.connect(self.open_users_menu)
 
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #3564b8}")
-
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #ccdeff;} QPushButton#users::pressed{background-color: #668BCC;}")
 
@@ -134,6 +135,11 @@ class Chrono(QtWidgets.QMainWindow):
 
 
         self.model.removeRows(0, self.model.rowCount()) # Esborra totes les laps
+
+    def open_users_menu(self):
+        self.new_window = user_management.Users_management()
+        self.new_window.show()
+        self.close()
         
 
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
