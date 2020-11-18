@@ -133,9 +133,9 @@ padding: 10px;</string>
     <property name="geometry">
      <rect>
       <x>620</x>
-      <y>30</y>
+      <y>20</y>
       <width>201</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -147,9 +147,10 @@ padding: 10px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-bottom: 4px solid black; 
+     <string notr="true">border: 4px solid #80aeff; 
+border-radius: 20px;
 color: white;
-font-size: 20px;</string>
+font-size: 25px;</string>
     </property>
     <property name="text">
      <string>PARKTHON</string>
@@ -266,7 +267,42 @@ font-size: 20px;</string>
       </size>
      </property>
      <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="users">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>60</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../img/dni.png</normaloff>../img/dni.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
      </property>
      <property name="checked">
       <bool>false</bool>
