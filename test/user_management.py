@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
 import login
-import sqlite_connector as sqlite
+import database_manager as sqlite
 import chrono
 
 class Users_management(QtWidgets.QMainWindow):
@@ -20,7 +20,7 @@ class Users_management(QtWidgets.QMainWindow):
     def show_users(self):
         model = QtGui.QStandardItemModel()
         self.usersList.setModel(model)
-        sql_con = sqlite.sqlite_connector(login.getDB())
+        sql_con = sqlite.sqlite_connector()
         users = sql_con.get_users()
         for user in users:
             row = QtGui.QStandardItem(user[0])

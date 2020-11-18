@@ -1,6 +1,7 @@
 import sqlite3
 import os.path
 import encrypt
+from login import getOsSeparator
 
 DB = "DB"+getOsSeparator()+"parkthon.db"
 

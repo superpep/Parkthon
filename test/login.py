@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets, uic
-import database_manager as sqlite
+import os
 import sys
 # Baixar-ho despres de fer proves ja que no es pot executar chrono.py a seques sense aço
 def getOsSeparator():
     return os.path.sep
-
+import database_manager as sqlite
 import chrono
-import os
+
 
 
 class Ui(QtWidgets.QMainWindow):
