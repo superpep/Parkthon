@@ -53,6 +53,13 @@ class sqlite_connector:
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password)")
         self.__con.commit()  
 
+    def get_users(self):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT DNI FROM users")
+
+        rows = cursorObj.fetchall()
+        return rows
+
 def database_exists(db_name):
     """
     Funció que comprova si la base de dades existeix o no
