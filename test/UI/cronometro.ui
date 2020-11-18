@@ -181,7 +181,7 @@ font-size: 25px;</string>
    <widget class="QListView" name="lapsList">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>680</x>
       <y>460</y>
       <width>261</width>
       <height>261</height>
@@ -196,8 +196,14 @@ font-size: 25px;</string>
     <property name="frameShadow">
      <enum>QFrame::Sunken</enum>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
     <property name="layoutMode">
      <enum>QListView::SinglePass</enum>
+    </property>
+    <property name="spacing">
+     <number>1</number>
     </property>
     <property name="batchSize">
      <number>100</number>
@@ -285,6 +291,33 @@ font-size: 25px;</string>
       <bool>true</bool>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="bienvenida">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>100</y>
+      <width>271</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial,Helvetica,sans-serif</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black; font-size: 30px;</string>
+    </property>
+    <property name="text">
+     <string>Bienvenido, Luis.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
