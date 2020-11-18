@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #80aeff; border-right: 1px solid black;</string>
+     <string notr="true">border-right: 1px solid black;</string>
     </property>
     <widget class="QPushButton" name="users">
      <property name="geometry">
@@ -118,6 +118,12 @@
       <height>601</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 20px;</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="newUser">
     <property name="geometry">
@@ -127,6 +133,9 @@
       <width>121</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #59677F; color: white; font-weight:bold;</string>
     </property>
     <property name="text">
      <string>Crear usuario</string>
@@ -141,6 +150,9 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #59677F; color: white; font-weight:bold;</string>
+    </property>
     <property name="text">
      <string>Eliminar usuario</string>
     </property>
@@ -153,6 +165,9 @@
       <width>151</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #59677F; color: white; font-weight:bold;</string>
     </property>
     <property name="text">
      <string>Cambiar contraseña</string>

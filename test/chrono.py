@@ -18,9 +18,11 @@ class Chrono(QtWidgets.QMainWindow):
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
-        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #3564b8}")
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #373A3D}")
+        self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #A1A3A5; }")
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #ccdeff;} QPushButton#users::pressed{background-color: #668BCC;}")
+
 
         self.model = QtGui.QStandardItemModel()
         self.lapsList.setModel(self.model)
