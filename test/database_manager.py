@@ -2,12 +2,12 @@ import sqlite3
 import os.path
 import encrypt
 
-
+DB = "DB"+getOsSeparator()+"parkthon.db"
 
 class sqlite_connector:
-    def __init__(self, db_name):
+    def __init__(self):
         try:
-            self.__con = sqlite3.connect(db_name)
+            self.__con = sqlite3.connect(DB)
         except Error:
             print(sqlite3.Error)
 
@@ -60,18 +60,12 @@ class sqlite_connector:
         rows = cursorObj.fetchall()
         return rows
 
-def database_exists(db_name):
+def database_exists():
     """
     Funció que comprova si la base de dades existeix o no
-
-    Entrada:
-        db_name (string): Nom de la base de dades
 
     Eixida:
         (boolean) Si existeix o no
     """
-    if os.path.isfile(db_name):
-        return True
-    else:
-        return False
+    return os.path.isfile(DB)
 
