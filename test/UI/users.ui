@@ -109,7 +109,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QListView" name="listView">
+   <widget class="QListView" name="usersList">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -119,43 +119,43 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="newUser">
     <property name="geometry">
      <rect>
-      <x>1070</x>
-      <y>700</y>
-      <width>113</width>
+      <x>1062</x>
+      <y>680</y>
+      <width>121</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Crear usuario</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="deleteUser">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>670</y>
-      <width>113</width>
+      <x>662</x>
+      <y>680</y>
+      <width>131</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Eliminar usuario</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="changePass">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>670</y>
-      <width>113</width>
+      <x>242</x>
+      <y>680</y>
+      <width>151</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Cambiar contraseña</string>
     </property>
    </widget>
   </widget>
