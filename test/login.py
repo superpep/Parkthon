@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic
-import sqlite_connector as sqlite
+import database_manager as sqlite
 import sys
 # Baixar-ho despres de fer proves ja que no es pot executar chrono.py a seques sense aço
 def getOsSeparator():
@@ -7,11 +7,6 @@ def getOsSeparator():
 
 import chrono
 import os
-
-DB = "DB"+getOsSeparator()+"parkthon.db" # RUTA DE LA BASE DE DADES
-
-def getDB():
-    return DB
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -24,8 +19,8 @@ class Ui(QtWidgets.QMainWindow):
         self.passwd.returnPressed.connect(self.login_button_clicked)
 
     def login_button_clicked(self):
-        if(sqlite.database_exists(DB)):
-            sql_con = sqlite.sqlite_connector(DB)
+        if(sqlite.database_exists()):
+            sql_con = sqlite.sqlite_connector()
             if(sql_con.login(self.user.text(), self.passwd.text())):
                 self.open_new_window()
                 
