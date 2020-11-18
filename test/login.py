@@ -1,18 +1,18 @@
 from PyQt5 import QtWidgets, uic
 import os
+pathSeparator = os.path.sep
 import sys
-# Baixar-ho despres de fer proves ja que no es pot executar chrono.py a seques sense aço
-def getOsSeparator():
-    return os.path.sep
 import database_manager as sqlite
 import chrono
 
+
+currentUser = ""
 
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+getOsSeparator()+'login.ui', self) # Load the .ui file
+        uic.loadUi('UI'+pathSeparator+'login.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
@@ -22,6 +22,7 @@ class Ui(QtWidgets.QMainWindow):
         if(sqlite.database_exists()):
             sql_con = sqlite.sqlite_connector()
             if(sql_con.login(self.user.text(), self.passwd.text())):
+                currentUser = self.user.text()
                 self.open_new_window()
                 
             else:
