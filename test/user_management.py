@@ -22,8 +22,8 @@ class Users_management(QtWidgets.QMainWindow):
         
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
-        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #ccdeff;} QPushButton#cronIcon::pressed{background-color: #668BCC;}")
-        self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #ccdeff;} QPushButton#users::pressed{background-color: #668BCC;}")
+        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
+        self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
 
         self.usersList.clicked.connect(self.manage_user)
 
