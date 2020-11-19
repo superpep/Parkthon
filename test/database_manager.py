@@ -13,7 +13,7 @@ if(not file_exists(configFileName)):
     config.add_section('DatabaseSection')
     config.set('DatabaseSection', 'dbname', 'parkthon.db')
     config.add_section("UsersSection")
-    config.set('UsersSection', 'currentUser', '')     
+    config.set('UsersSection', 'currentUser', '')
     with open(configFileName, 'w') as configfile:
         config.write(configfile)
 

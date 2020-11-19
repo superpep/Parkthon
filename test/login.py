@@ -22,7 +22,7 @@ class Ui(QtWidgets.QMainWindow):
                 config = configparser.RawConfigParser()
                 config.read(sqlite.configFileName)
                 config.set('UsersSection', 'currentUser', self.user.text())     
-                with open(configFileName, 'w') as configfile:
+                with open(sqlite.configFileName, 'w') as configfile:
                     config.write(configfile)
                 self.open_new_window()
                 
