@@ -4,6 +4,8 @@ import datetime
 import user_management
 from login import pathSeparator
 from stopwatch import Stopwatch
+from PyQt5.QtCore import QPropertyAnimation
+
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
@@ -142,9 +144,19 @@ class Chrono(QtWidgets.QMainWindow):
         self.model.removeRows(0, self.model.rowCount()) # Esborra totes les laps
 
     def open_users_menu(self):
-        self.new_window = user_management.Users_management()
-        self.new_window.show()
-        self.close()
+        effect = QtWidgets.QGraphicsOpacityEffect(self.centralWidget, opacity=1.0)
+        self.setGraphicsEffect(effect)
+        
+
+        self.anim = QPropertyAnimation(self.centralWidget, b"opacity")
+        self.anim.setDuration(5000)
+        self.anim.setStartValue(1.0)
+        self.anim.setEndValue(0.1)
+        self.anim.start()
+
+        #self.new_window = user_management.Users_management()
+        #self.new_window.show()
+        #self.close()
         
 
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
