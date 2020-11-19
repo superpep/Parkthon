@@ -1,16 +1,36 @@
 import sqlite3
 import os.path
 import encrypt
+import configparser
 from login import pathSeparator
 
-DB = "DB"+pathSeparator+"parkthon.db"
+def file_exists(file):
+    return os.path.isfile(file)
+
+config = configparser.RawConfigParser()
+configFileName = "ConfigFile.properties"
+if(not file_exists(configFileName)):
+    config.add_section('DatabaseSection')
+    config.set('DatabaseSection', 'dbname', 'parkthon.db')
+    config.add_section("UsersSection")
+    config.set('UsersSection', 'currentUser', '')     
+    with open(configFileName, 'w') as configfile:
+        config.write(configfile)
+
+config.read(configFileName)
+DB = "DB"+pathSeparator+config.get('DatabaseSection', 'dbname')
+    
+
+
 
 class sqlite_connector:
     def __init__(self):
         try:
             self.__con = sqlite3.connect(DB)
-        except Error:
+        except sqlite3.Error:
             print(sqlite3.Error)
+        except configparser.Error:
+            print(configparser.Error)
 
     def login(self, dni, raw_passwd):
         """
@@ -98,7 +118,7 @@ class sqlite_connector:
 
 def database_exists():
     """
-    Funció que comprova si la base de dades existeix o no
+    Funció que comprova si el fitxer existeix o no
 
     Eixida:
         (boolean) Si existeix o no
