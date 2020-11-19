@@ -138,9 +138,9 @@ padding: 10px;</string>
    <widget class="QLabel" name="cronNum">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>650</x>
       <y>280</y>
-      <width>121</width>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
@@ -271,9 +271,9 @@ padding: 10px;</string>
    <widget class="QLabel" name="bienvenida">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>530</x>
       <y>10</y>
-      <width>351</width>
+      <width>391</width>
       <height>81</height>
      </rect>
     </property>
@@ -289,7 +289,7 @@ padding: 10px;</string>
      <string notr="true">color: black; font-size: 40px;</string>
     </property>
     <property name="text">
-     <string>Bienvenido, Luis.</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
