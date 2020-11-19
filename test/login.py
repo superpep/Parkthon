@@ -5,6 +5,7 @@ import sys
 import database_manager as sqlite
 import chrono
 import configparser
+from PyQt5.QtCore import QPropertyAnimation, QSize, QAbstractAnimation
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -36,6 +37,15 @@ class Ui(QtWidgets.QMainWindow):
             # TO-DO: Implementar aço, no sabem si fer una finestra nova on demanar dades.
     
     def open_new_window(self):
+
+        self.anim = QPropertyAnimation(self, b"size")
+        self.anim.setDuration(200)
+        self.anim.setStartValue(QSize(301,281))
+        self.anim.setEndValue(QSize(1366,768))
+        self.anim.start()
+        self.anim.finished.connect(self.start_login)
+
+    def start_login(self):
         self.new_window = chrono.Chrono()
         self.new_window.show()
         self.close()

@@ -6,8 +6,6 @@ import user_management
 import configparser
 from login import pathSeparator
 from stopwatch import Stopwatch
-from PyQt5.QtCore import QPropertyAnimation
-from PyQt5.QtWidgets import QGraphicsOpacityEffect
 
 
 class Chrono(QtWidgets.QMainWindow):
@@ -153,19 +151,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.model.removeRows(0, self.model.rowCount()) # Esborra totes les laps
 
     def open_users_menu(self):
-        effect = QGraphicsOpacityEffect(self)
-        effect.setOpacity(1)
-        self.setAutoFillBackground(True)
-        self.setGraphicsEffect(effect)
-
-        self.anim = QPropertyAnimation(effect, b"opacity")
-        self.anim.setDuration(200)
-        self.anim.setStartValue(1)
-        self.anim.setEndValue(0.2)
-        self.anim.start()
-        self.anim.finished.connect(self.start_users)
-
-    def start_users(self):
         self.new_window = user_management.Users_management()
         self.close()
         

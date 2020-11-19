@@ -4,12 +4,16 @@ import login
 import database_manager as sqlite
 import chrono
 import configparser
+from PyQt5.QtCore import QPropertyAnimation
+from PyQt5.QtWidgets import QGraphicsOpacityEffect
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+login.pathSeparator+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
+
+        
 
         self.deleteUser.clicked.connect(self.delete_user)
 
@@ -39,7 +43,7 @@ class Users_management(QtWidgets.QMainWindow):
         config.read(sqlite.configFileName)
         currentUser = config.get('UsersSection', 'currentUser')
         if currentUser == self.dni: # Arreglar aço
-            QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario".)
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario.")
         else:
             choice = my_button()
             if choice:
