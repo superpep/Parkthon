@@ -3,6 +3,7 @@ import sys
 import login
 import database_manager as sqlite
 import chrono
+import configparser
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
@@ -34,9 +35,11 @@ class Users_management(QtWidgets.QMainWindow):
         self.deleteUser.show()
 
     def delete_user(self):
-        print(login.currentUser)
-        if login.currentUser == self.dni: # Arreglar aço
-            QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario")
+        config = configparser.RawConfigParser()
+        config.read(sqlite.configFileName)
+        currentUser = config.get('UsersSection', 'currentUser')
+        if currentUser == self.dni: # Arreglar aço
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario".)
         else:
             choice = my_button()
             if choice:
@@ -44,7 +47,7 @@ class Users_management(QtWidgets.QMainWindow):
                     QtWidgets.QMessageBox.information(self, 'Confirmación', "El usuario ha sido eliminado con éxito.")
                     self.reinicia_llista()
                 else:
-                    QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador")
+                    QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador.")
             else:
                 pass
 
