@@ -1,7 +1,9 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
 import datetime
+import database_manager as sqlite
 import user_management
+import configparser
 from login import pathSeparator
 from stopwatch import Stopwatch
 from PyQt5.QtCore import QPropertyAnimation
@@ -15,6 +17,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
+
+        self.edita_benvolguda()
 
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
@@ -45,7 +49,11 @@ class Chrono(QtWidgets.QMainWindow):
         
 
 
-        
+    def edita_benvolguda(self):
+        config = configparser.RawConfigParser()
+        config.read(sqlite.configFileName)
+         
+        self.bienvenida.setText("Bienvenido/a, "+config.get('UsersSection', 'currentUser')+"." )
 
     def record_lap(self):
         """
@@ -153,7 +161,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.anim.setStartValue(1.0)
         self.anim.setEndValue(0.1)
         self.anim.start()
-
+        
         #self.new_window = user_management.Users_management()
         #self.new_window.show()
         #self.close()
