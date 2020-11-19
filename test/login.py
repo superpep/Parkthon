@@ -4,10 +4,7 @@ pathSeparator = os.path.sep
 import sys
 import database_manager as sqlite
 import chrono
-
-
-currentUser = "" # FER AÇO AMB UN ARXIU DE PROPIETATS
-
+import configparser
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -22,7 +19,11 @@ class Ui(QtWidgets.QMainWindow):
         if(sqlite.database_exists()):
             sql_con = sqlite.sqlite_connector()
             if(sql_con.login(self.user.text(), self.passwd.text())):
-                currentUser = self.user.text()
+                config = configparser.RawConfigParser()
+                config.read(sqlite.configFileName)
+                config.set('UsersSection', 'currentUser', self.user.text())     
+                with open(configFileName, 'w') as configfile:
+                    config.write(configfile)
                 self.open_new_window()
                 
             else:
