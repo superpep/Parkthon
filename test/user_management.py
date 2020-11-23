@@ -13,9 +13,8 @@ class Users_management(QtWidgets.QMainWindow):
         uic.loadUi('UI'+login.pathSeparator+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
-        
-
         self.deleteUser.clicked.connect(self.delete_user)
+        self.changePass.clicked.connect(self.change_pass)
 
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
@@ -38,6 +37,19 @@ class Users_management(QtWidgets.QMainWindow):
         self.changePass.show()
         self.deleteUser.show()
 
+    def change_pass(self):
+        #TODO:
+
+        #Canviar diàleg i intentar canviar text dels botons
+        text, ok = QtWidgets.QInputDialog.getText(self, 'input dialog', 'Is this ok?')
+        if ok:
+            # Comprovar que la contrasenya té més de 8 carácters
+            # Encriptar contrasenya
+            # Guardar-la a la base de dades actualitzant el registre del usuari actual
+            print(str(text))
+
+        # OPCIONAL:
+        # Si es cancela, mostrar una finestra diguent que s'ha cancel.lat igual que una de que s'ha actualitzat correctament
     def delete_user(self):
         config = configparser.RawConfigParser()
         config.read(sqlite.configFileName)
