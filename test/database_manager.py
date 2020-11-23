@@ -111,11 +111,35 @@ class sqlite_connector:
         cursorObj.execute("SELECT count(*) FROM users where isAdmin = 1") # MIRA A VEURE QUANS ADMINS HI HAN
         rows = cursorObj.fetchall()
         if(rows[0][0] == 1):
-            cursorObj.execute("SELECT isAdmin FROM users where DNI = '"+dni+"'") # EN CAS DE SOLS UN ADMIN, COMPROVA QUE NO ÉS EL QUE ES VOL ESBORRAR
-            rows = cursorObj.fetchall()
-            return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
+            return self.is_admin(dni) # EN CAS DE SOLS UN ADMIN, COMPROVA QUE NO ÉS EL QUE ES VOL ESBORRAR
         return False
 
+    def change_password(self, dni, raw_passwd):
+        """
+        Canvia la contrasenya de l'usuari amb dni passat com a paràmetre
+
+        Entrada:
+            dni (string): Dni de l'usuari al que es canvia la contrasenya
+            raw_passwd (string): Contrasenya sense encriptar per la que es canviarà
+        """
+        enc_pass = encrypt.encrypt_password(raw_passwd)
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("UPDATE users SET passwd = '"+enc_pass+"' WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+
+    def is_admin(self, dni):
+        """
+        Comprova si el DNI passat és o no administrador
+
+        Entrada:
+            dni (string): Dni de l'usuari
+        Eixida:
+            (boolean): Si és o no
+        """
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT isAdmin FROM users where DNI = '"+dni+"'")
+        rows = cursorObj.fetchall()
+        return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
 def database_exists():
     """
     Funció que comprova si el fitxer existeix o no
