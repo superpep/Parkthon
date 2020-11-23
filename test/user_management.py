@@ -16,6 +16,10 @@ class Users_management(QtWidgets.QMainWindow):
         self.deleteUser.clicked.connect(self.delete_user)
         self.changePass.clicked.connect(self.change_pass)
 
+        config = configparser.RawConfigParser()
+        config.read(sqlite.configFileName)
+        self.currentUser = config.get('UsersSection', 'currentUser')
+
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
         self.sql_con = sqlite.sqlite_connector()
@@ -39,21 +43,31 @@ class Users_management(QtWidgets.QMainWindow):
 
     def change_pass(self):
         #TODO:
+            #2. Si l'usuari en el que s'està loguejat NO és administrador, DOS OPCIONS:
+                #2.1 Ha d'introduïr la contrasenya antiga d'eixe usuari i despres canviar-la (Per ara és esta)
+                #2.2 No pot canviar-la
+        if(not self.currentUser == self.dni and not self.sql_con.is_admin(self.dni)):
+            last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca la antigua contraseña del usuario '+self.dni)
+            if ok:
+                if(not self.sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
+                    QtWidgets.QMessageBox.critical(self, 'ERROR', "Contraseña incorrecta.")
+                    return
+        valid_password = False
+        while(not valid_password):
+            passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)')
+            if ok:
+                if(len(passwd) < 8):
+                    QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
+                else:
+                    valid_password = True
+            else:
+                return
+        self.sql_con.change_password(self.dni, passwd)
+        QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
 
-        #Canviar diàleg i intentar canviar text dels botons
-        text, ok = QtWidgets.QInputDialog.getText(self, 'input dialog', 'Is this ok?')
-        if ok:
-            # Comprovar que la contrasenya té més de 8 carácters
-            # Encriptar contrasenya
-            # Guardar-la a la base de dades actualitzant el registre del usuari actual
-            print(str(text))
 
-        # OPCIONAL:
-        # Si es cancela, mostrar una finestra diguent que s'ha cancel.lat igual que una de que s'ha actualitzat correctament
     def delete_user(self):
-        config = configparser.RawConfigParser()
-        config.read(sqlite.configFileName)
-        currentUser = config.get('UsersSection', 'currentUser')
+        
         if currentUser == self.dni: # Arreglar aço
             QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario.")
         else:
