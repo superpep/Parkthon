@@ -37,12 +37,8 @@ Lista menu: **listaMenu**
 
 ## TODO USER INTERFACE
 
-- Afegir menú principal que s'accedirà despres del login amb els següents components:
-    1. Administrar pacients (copia pega de usuaris)
-    2. Usuaris
-        - Submenú:
-            1. Afegir usuari
+- Canviar color o estil de pacientes.ui
+- Fer una nova finestra per a crear pacients que siga igual que la de crear usuaris però en els camps del pacient (DNI, nom, cognom)
+- Ficar un botó per a actualitzar la llista en users.ui
 
 ## TODO PYTHON
-
-- Saber si fer una nova finestra per crear un nou compte o qué. (El que he fet és que si la BD NO està creada, agafa el valor per defecte del PRIMER login que fem)
