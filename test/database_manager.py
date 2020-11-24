@@ -48,7 +48,7 @@ class sqlite_connector:
 
         rows = cursorObj.fetchall()
 
-        for row in rows: 
+        for row in rows:
             return encrypt.check_encrypted_password(raw_passwd, row[1])
         return False # Si ve per aci significa que rows no té ninguna columna per a mostrar, el que significa que el DNI NO és correcte
 
