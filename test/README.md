@@ -24,12 +24,10 @@ Lista menu: **listaMenu**
 ## TODO USER INTERFACE
 
 - Afegir menú principal que s'accedirà despres del login amb els següents components:
-    1. Administrar usuaris
-    2. Cronómetre
+    1. Administrar pacients (copia pega de usuaris)
+    2. Usuaris
         - Submenú:
-            1. Canviar contrasenya
-            2. Esborrar usuari
-            3. Afegir usuari
+            1. Afegir usuari
 
 ## TODO PYTHON
 
