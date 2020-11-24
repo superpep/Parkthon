@@ -46,7 +46,7 @@ class Users_management(QtWidgets.QMainWindow):
             #2. Si l'usuari en el que s'està loguejat NO és administrador, DOS OPCIONS:
                 #2.1 Ha d'introduïr la contrasenya antiga d'eixe usuari i despres canviar-la (Per ara és esta)
                 #2.2 No pot canviar-la
-        if(not self.currentUser == self.dni and not self.sql_con.is_admin(self.dni)):
+        if(not self.sql_con.is_admin(self.dni)):
             last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca la antigua contraseña del usuario '+self.dni)
             if ok:
                 if(not self.sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
