@@ -59,6 +59,7 @@ class sqlite_connector:
         Entrada:
             dni (string): Dni de l'usuari
             raw_passwd (string): Contrasenya sense encriptar de l'usuari
+            isAdmin (boolean): Si és admin o no
         """
         entities = (dni, encrypt.encrypt_password(raw_passwd), isAdmin) # Encriptem la contrasenya
 
