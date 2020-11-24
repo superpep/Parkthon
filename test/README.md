@@ -16,6 +16,12 @@ Button: **newUserButton** \
 Label: **errorLabel** \
 Is admin?: **adminCheck**
 
+## Pacientes
+
+QPushButton añadir nuevo paciente: **nuevoPaciente** \
+QPushButton eliminar paciente: **borrarPaciente** \
+ListView Lista de los pacientes: **listaPacientes**
+
 ## Base de dades
 
 user: `prova` \
