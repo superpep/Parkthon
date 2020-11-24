@@ -1,3 +1,4 @@
+import create_user
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
 import login
@@ -15,6 +16,8 @@ class Users_management(QtWidgets.QMainWindow):
 
         self.deleteUser.clicked.connect(self.delete_user)
         self.changePass.clicked.connect(self.change_pass)
+        self.newUser.clicked.connect(self.create_user)
+        self.refreshList.clicked.connect(self.reinicia_llista)
 
         config = configparser.RawConfigParser()
         config.read(sqlite.configFileName)
@@ -22,9 +25,16 @@ class Users_management(QtWidgets.QMainWindow):
 
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
+        self.usersList.clicked.connect(self.manage_user)
+
         self.sql_con = sqlite.sqlite_connector()
         self.reinicia_llista()
         self.dni = ""
+
+        if(self.sql_con.is_admin(self.currentUser)):
+            self.newUser.show()
+        else:
+            self.newUser.hide()
 
         self.cronIcon.clicked.connect(self.return_to_chrono)
         
@@ -33,42 +43,53 @@ class Users_management(QtWidgets.QMainWindow):
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
 
-        self.usersList.clicked.connect(self.manage_user)
+        
 
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_user(self, index):
         self.dni = self.model.itemFromIndex(index).text()
-        self.changePass.show()
-        self.deleteUser.show()
+        if(self.sql_con.is_admin(self.currentUser) or self.dni == self.currentUser):
+            self.changePass.show()
+        else:
+            self.changePass.hide()    
+
+        if(self.sql_con.is_admin(self.currentUser)):
+            self.deleteUser.show()
+        else:
+            self.deleteUser.hide()
+
+    def create_user(self):
+        self.new_window = create_user.Create_user()
 
     def change_pass(self):
-        #TODO:
-            #2. Si l'usuari en el que s'està loguejat NO és administrador, DOS OPCIONS:
-                #2.1 Ha d'introduïr la contrasenya antiga d'eixe usuari i despres canviar-la (Per ara és esta)
-                #2.2 No pot canviar-la
-        if(not self.sql_con.is_admin(self.dni)):
-            last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca la antigua contraseña del usuario '+self.dni)
+        accesGranted = self.sql_con.is_admin(self.dni)
+        if(not accesGranted): # Si no és admin
+            last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca su contraseña actual, '+self.dni)
             if ok:
                 if(not self.sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
                     QtWidgets.QMessageBox.critical(self, 'ERROR', "Contraseña incorrecta.")
                     return
-        valid_password = False
-        while(not valid_password):
-            passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)')
-            if ok:
-                if(len(passwd) < 8):
-                    QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
                 else:
-                    valid_password = True
+                    accesGranted = True
             else:
                 return
-        self.sql_con.change_password(self.dni, passwd)
-        QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
+        if(accesGranted):
+            valid_password = False
+            while(not valid_password):
+                passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)')
+                if ok:
+                    if(len(passwd) < 8):
+                        QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
+                    else:
+                        valid_password = True
+                else:
+                    return
+            self.sql_con.change_password(self.dni, passwd)
+            QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
 
 
     def delete_user(self):
-        
-        if currentUser == self.dni: # Arreglar aço
+        if self.currentUser == self.dni: # Arreglar aço
             QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario.")
         else:
             choice = my_button()
@@ -78,8 +99,6 @@ class Users_management(QtWidgets.QMainWindow):
                     self.reinicia_llista()
                 else:
                     QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador.")
-            else:
-                pass
 
     def reinicia_llista(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
@@ -92,8 +111,6 @@ class Users_management(QtWidgets.QMainWindow):
         for user in users:
             row = QtGui.QStandardItem(user[0])
             self.model.appendRow(row)
-
-        
 
     def return_to_chrono(self):
         self.new_window = chrono.Chrono()
@@ -113,6 +130,8 @@ def my_button():
     box.exec_()
     return box.clickedButton() == buttonY
         
+    def lastWindowClosed(self):
+        print("Xd")
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
