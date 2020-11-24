@@ -8,6 +8,14 @@ Button: **loginButton** \
 Label: **errorLabel** \
 Main color: #3564b8
 
+## New User
+
+Input username: **user** \
+Input password: **passwd** \
+Button: **newUserButton** \
+Label: **errorLabel** \
+Is admin?: **adminCheck**
+
 ## Base de dades
 
 user: `prova` \
