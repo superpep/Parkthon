@@ -73,6 +73,7 @@ class sqlite_connector:
         """
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
+        cursorObj.execute("CREATE TABLE pacients(DNI varchar(9) primary key, nom varchar(20), cognom varchar(20), metge varchar(9), CONSTRAINT fk_metge FOREIGN KEY(metge) REFERENCES users(dni))")
         self.__con.commit()  
 
     def get_users(self):
@@ -94,11 +95,17 @@ class sqlite_connector:
         if(self.check_admins(dni)):
             return False
 
-        cursorObj = self.__con.cursor()
-        cursorObj.execute("DELETE FROM users WHERE DNI = '"+dni+"'")
-        self.__con.commit()
+        self.delete_dni_from_table(dni, "users")
         return True
     
+    def delete_patient(self, dni):
+        self.delete_dni_from_table(dni, "pacients")
+
+    def delete_dni_from_table(self, dni, table):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("DELETE FROM "+table+" WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+
     def check_admins(self, dni):
         """
         Comprova cuants admins hi han i en cas de ser sols 1, comprova que si és o no el que s'ha passat com a parámetre
@@ -141,6 +148,12 @@ class sqlite_connector:
         cursorObj.execute("SELECT isAdmin FROM users where DNI = '"+dni+"'")
         rows = cursorObj.fetchall()
         return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
+
+    def get_patient_names(self, dni_metge):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT nom, cognom, dni FROM pacients where metge = '"+dni_metge+"'")
+        return cursorObj.fetchall()
+
 def database_exists():
     """
     Funció que comprova si el fitxer existeix o no

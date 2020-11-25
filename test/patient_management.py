@@ -3,6 +3,8 @@ import sys
 import login
 import configparser
 import database_manager as sqlite
+from user_management import Users_management
+from chrono import Chrono
 class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
@@ -30,6 +32,8 @@ class Patient_management(QtWidgets.QMainWindow):
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
         
+        self.cronIcon.clicked.connect(self.return_to_chrono)
+        self.users.clicked.connect(self.open_users_menu)
     
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_patient(self, index):
@@ -56,8 +60,11 @@ class Patient_management(QtWidgets.QMainWindow):
             self.reinicia_llista()
 
     def return_to_chrono(self):
-        self.new_window = chrono.Chrono()
-        self.new_window.show()
+        self.new_window = Chrono()
+        self.close()
+    
+    def open_users_menu(self):
+        self.new_window = Users_management()
         self.close()
 
 def comprovacio(patient_name):
