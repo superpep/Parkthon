@@ -24,6 +24,11 @@ class Patient_management(QtWidgets.QMainWindow):
         self.sql_con = sqlite.sqlite_connector()
         self.reinicia_llista()
         self.patient_item = ""
+
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
+        self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
+        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
+        self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
         
     
     @QtCore.pyqtSlot(QtCore.QModelIndex)
