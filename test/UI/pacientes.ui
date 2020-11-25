@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Administrador de usuarios</string>
+   <string>Administrador de pacientes</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="barraLateral" native="true">
