@@ -40,5 +40,6 @@ Lista menu: **listaMenu**
 - Canviar color o estil de pacientes.ui
 - Fer una nova finestra per a crear pacients que siga igual que la de crear usuaris però en els camps del pacient (DNI, nom, cognom)
 - Ficar un botó per a actualitzar la llista en users.ui
+- Ficar un icono per a accedir a administració de pacients
 
 ## TODO PYTHON
