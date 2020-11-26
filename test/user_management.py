@@ -43,7 +43,7 @@ class Users_management(QtWidgets.QMainWindow):
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
-
+        self.pacientesIcon.setStyleSheet("QPushButton#pacientesIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#pacientesIcon::pressed{background-color: #555555;}")
         
 
     @QtCore.pyqtSlot(QtCore.QModelIndex)
