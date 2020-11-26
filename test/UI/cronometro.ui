@@ -300,7 +300,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="bienvenida">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>130</x>
       <y>10</y>
       <width>1181</width>
       <height>81</height>
