@@ -53,6 +53,9 @@
        <height>51</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Administrar usuarios</string>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -88,6 +91,9 @@
        <height>51</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Cronómetro</string>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -122,6 +128,9 @@
        <width>61</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Pacientes</string>
      </property>
      <property name="styleSheet">
       <string notr="true"/>

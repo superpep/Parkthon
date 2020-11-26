@@ -206,6 +206,9 @@ padding: 10px;</string>
        <height>51</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Administrar usuarios</string>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -241,6 +244,9 @@ padding: 10px;</string>
        <height>51</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Cronómetro</string>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -275,6 +281,9 @@ padding: 10px;</string>
        <width>61</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Pacientes</string>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
