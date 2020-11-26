@@ -20,7 +20,8 @@ Is admin?: **adminCheck**
 
 QPushButton añadir nuevo paciente: **nuevoPaciente** \
 QPushButton eliminar paciente: **borrarPaciente** \
-ListView Lista de los pacientes: **listaPacientes**
+ListView Lista de los pacientes: **listaPacientes** \
+QPushButton para acceder a pacientes desde la barra de la izquierda: **pacientesIcon**
 
 ## Base de dades
 
