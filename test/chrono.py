@@ -3,6 +3,7 @@ import sys
 import datetime
 import database_manager as sqlite
 import user_management
+import patient_management
 import configparser
 from login import pathSeparator
 from stopwatch import Stopwatch
@@ -16,6 +17,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
+        self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
         self.edita_benvolguda()
 
@@ -152,6 +154,10 @@ class Chrono(QtWidgets.QMainWindow):
 
     def open_users_menu(self):
         self.new_window = user_management.Users_management()
+        self.close()
+
+    def open_patients_menu(self):
+        self.new_window = patient_management.Patient_management()
         self.close()
         
 

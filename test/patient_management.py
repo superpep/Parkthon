@@ -3,8 +3,8 @@ import sys
 import login
 import configparser
 import database_manager as sqlite
-from user_management import Users_management
-from chrono import Chrono
+import user_management
+import chrono
 class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
@@ -13,6 +13,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
         self.borrarPaciente.clicked.connect(self.delete_patient)
+        self.borrarPaciente.hide()
 
         self.model = QtGui.QStandardItemModel()
         self.listaPacientes.setModel(self.model)
@@ -39,6 +40,7 @@ class Patient_management(QtWidgets.QMainWindow):
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_patient(self, index):
         self.patient_item = self.model.itemFromIndex(index)
+        self.borrarPaciente.show()
         
     def reinicia_llista(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
@@ -50,6 +52,7 @@ class Patient_management(QtWidgets.QMainWindow):
             self.patients_dni.append(patient[2]) # Guardem el DNI de l'usuari
             self.model.appendRow(QtGui.QStandardItem(patient[0]+" "+patient[1]))
 
+
     def new_patient(self):
         pass
     
@@ -59,19 +62,20 @@ class Patient_management(QtWidgets.QMainWindow):
             self.sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
             QtWidgets.QMessageBox.information(self, 'Confirmación', "El paciente ha sido eliminado con éxito.")
             self.reinicia_llista()
+            self.borrarPaciente.hide()
 
     def return_to_chrono(self):
-        self.new_window = Chrono()
+        self.new_window = chrono.Chrono()
         self.close()
     
     def open_users_menu(self):
-        self.new_window = Users_management()
+        self.new_window = user_management.Users_management()
         self.close()
 
 def comprovacio(patient_name):
     box = QtWidgets.QMessageBox()
     box.setIcon(QtWidgets.QMessageBox.Question)
-    box.setWindowTitle('Comprovació')
+    box.setWindowTitle('Comprovación')
     box.setText('¿Estás seguro de querer eliminar al paciente '+patient_name+'?')
     box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
     buttonY = box.button(QtWidgets.QMessageBox.Yes)
