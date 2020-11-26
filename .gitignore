@@ -4,3 +4,10 @@ __pycache__
 .DS_Store
 */ConfigFile.properties
 ConfigFile.properties
+/venv/
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/Parkthon.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
