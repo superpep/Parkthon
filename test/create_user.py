@@ -25,13 +25,14 @@ class Create_user(QtWidgets.QMainWindow):
             try:
                 self.sql_con.create_user(dni, passwd, self.adminCheck.isChecked())
                 QtWidgets.QMessageBox.information(self, 'Usuario añadido', "¡El usuario ha sido añadido con éxito!")
+                self.close()
 
             except sqlite.sqlite3.IntegrityError:
                 QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un usuario con este DNI")
             finally:
                 self.user.setText("")
                 self.passwd.setText("")
-                self.close()
+                
 
     def closeEvent(self, event):
         event.accept()
