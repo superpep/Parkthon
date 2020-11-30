@@ -136,9 +136,6 @@ def my_button():
     buttonN.setText('No')
     box.exec_()
     return box.clickedButton() == buttonY
-        
-    def lastWindowClosed(self):
-        print("Xd")
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
