@@ -41,7 +41,8 @@ Label cronometro: **cronNum** \
 QPushButton Start y Stop: **startStop** \
 QPushButton Vueltas: **lap** \
 Lista laps: **lapsList** \
-Lista menu: **listaMenu**
+Lista menu: **listaMenu** \
+ComboBox pacientes: **comboPatients**
 
 ## TODO USER INTERFACE
 
