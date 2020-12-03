@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Crear Usuario</string>
+   <string>Crear usuario</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f0f0f0; color: black; border-radius: 10px</string>
