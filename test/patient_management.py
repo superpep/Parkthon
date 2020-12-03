@@ -5,6 +5,8 @@ import configparser
 import database_manager as sqlite
 import user_management
 import chrono
+import create_patient
+
 class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
@@ -54,7 +56,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
 
     def new_patient(self):
-        pass
+        self.new_window = create_patient.Create_patient()
     
     def delete_patient(self):
         choice = comprovacio(self.patient_item.text())
