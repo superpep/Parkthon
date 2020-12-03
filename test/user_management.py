@@ -2,17 +2,16 @@ import create_user
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import patient_management
 import sys
-import login
 import database_manager as sqlite
 import chrono
-import configparser
+from __manifest__ import path_separator, load_properties
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtWidgets import QGraphicsOpacityEffect
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+login.pathSeparator+'users.ui', self) # Load the .ui file
+        uic.loadUi('UI'+path_separator+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.deleteUser.clicked.connect(self.delete_user)
@@ -21,8 +20,7 @@ class Users_management(QtWidgets.QMainWindow):
         self.refreshList.clicked.connect(self.reinicia_llista)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
-        config = configparser.RawConfigParser()
-        config.read(sqlite.configFileName)
+        config = load_properties()
         self.currentUser = config.get('UsersSection', 'currentUser')
 
         self.model = QtGui.QStandardItemModel()

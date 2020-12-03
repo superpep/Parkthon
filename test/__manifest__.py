@@ -1,0 +1,26 @@
+import os
+import configparser
+
+path_separator = os.path.sep
+CONFIG_FILE_NAME = "ConfigFile.properties"
+
+def create_properties():
+    config = configparser.RawConfigParser()
+    if(not file_exists(".gitignore") and not file_exists(CONFIG_FILE_NAME)):
+        config.add_section('DatabaseSection')
+        config.set('DatabaseSection', 'dbname', 'parkthon.db')
+        config.add_section("UsersSection")
+        config.set('UsersSection', 'currentUser', '')
+        with open(CONFIG_FILE_NAME, 'w') as configfile:
+            config.write(configfile)
+
+    config.read(CONFIG_FILE_NAME)
+    
+
+def load_properties():
+    config = configparser.RawConfigParser()
+    config.read(CONFIG_FILE_NAME)
+    return config
+
+def file_exists(file):
+    return os.path.isfile(file)

@@ -1,21 +1,19 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
-import login
 import database_manager as sqlite
-import configparser
+from __manifest__ import path_separator, load_properties
 
 class Create_patient(QtWidgets.QMainWindow):
     def __init__(self):
         super(Create_patient, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+login.pathSeparator+'newPatient.ui', self) # Load the .ui file
+        uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.newPatientButton.clicked.connect(self.addPatient)
         
 
     def addPatient(self):
-        config = configparser.RawConfigParser()
-        config.read(sqlite.configFileName)
+        config = load_properties()
         currentUser = config.get('UsersSection', 'currentUser')
         sql_con = sqlite.sqlite_connector()
         try:

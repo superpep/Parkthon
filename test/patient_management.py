@@ -1,7 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
-import login
-import configparser
+from __manifest__ import path_separator, load_properties
 import database_manager as sqlite
 import user_management
 import chrono
@@ -10,7 +9,7 @@ import create_patient
 class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+login.pathSeparator+'pacientes.ui', self) # Load the .ui file
+        uic.loadUi('UI'+path_separator+'pacientes.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
@@ -21,8 +20,7 @@ class Patient_management(QtWidgets.QMainWindow):
         self.listaPacientes.setModel(self.model)
         self.listaPacientes.clicked.connect(self.manage_patient)
 
-        config = configparser.RawConfigParser()
-        config.read(sqlite.configFileName)
+        config = load_properties()
         self.currentUser = config.get('UsersSection', 'currentUser')
 
         self.patients_dni = []

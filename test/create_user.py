@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
-import login
+from __manifest__ import path_separator
 import database_manager as sqlite
 import user_management
 
@@ -8,7 +8,7 @@ import user_management
 class Create_user(QtWidgets.QMainWindow):
     def __init__(self):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi('UI' + login.pathSeparator + 'newUser.ui', self)  # Load the .ui file
+        uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
         self.show()  # Show the GUI
 
         self.newUserButton.clicked.connect(self.create_user)

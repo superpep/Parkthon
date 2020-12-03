@@ -48,4 +48,18 @@ ComboBox pacientes: **comboPatients**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
+- En el cronómetro, que aparezca un botón debajo del combobox que diga "Seleccionar"
+
 ## TODO PYTHON
+
+- No dejar utilizar el cronómetro hasta que no se seleccione un paciente
+
+- Cambiar idioma variables, funciones, etc. de todos los .py:
+  - database_manager **DONE**
+  - login **DONE**
+  - chrono
+  - user_management
+  - patient_management
+  - create_user
+  - encrypt
+  

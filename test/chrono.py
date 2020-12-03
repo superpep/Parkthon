@@ -4,20 +4,30 @@ import datetime
 import database_manager as sqlite
 import user_management
 import patient_management
-import configparser
-from login import pathSeparator
+from __manifest__ import path_separator, load_properties
+import login
 from stopwatch import Stopwatch
 
 
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+pathSeparator+'cronometro.ui', self) # Load the .ui file
+        uic.loadUi('UI'+path_separator+'cronometro.ui', self) # Load the .ui file
         self.show() # Show the GUI
+        
+        config = load_properties()
+        self.current_user = config.get('UsersSection', 'currentUser')
+        
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
+
+        self.comboPatients.addItem("Selecciona un paciente")
+        self.patients_dni = []
+        self.current_patient = -1
+        self.fill_combo()
+        self.comboPatients.currentIndexChanged.connect(self.select_new_patient)
 
         self.edita_benvolguda()
 
@@ -48,13 +58,19 @@ class Chrono(QtWidgets.QMainWindow):
         self.isreset = True
         self.showLCD()
         
+    def fill_combo(self):
+        sql_con = sqlite.sqlite_connector()
+        patients = sql_con.get_patient_names(self.current_user)
+        for user in patients:
+            self.patients_dni.append(user[2])
+            self.comboPatients.addItem(user[0]+" "+user[1])
 
+    def select_new_patient(self):
+        self.current_patient = self.patients_dni[self.comboPatients.currentIndex()-1]
+        
 
     def edita_benvolguda(self):
-        config = configparser.RawConfigParser()
-        config.read(sqlite.configFileName)
-         
-        self.bienvenida.setText("Bienvenido/a, "+config.get('UsersSection', 'currentUser')+"." )
+        self.bienvenida.setText("Bienvenido/a, "+self.current_user+"." )
 
     def record_lap(self):
         """
@@ -164,5 +180,5 @@ class Chrono(QtWidgets.QMainWindow):
 # Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Chrono() # Create an instance of our class
+    window = login.Ui() # Create an instance of our class
     app.exec_() # Start the application

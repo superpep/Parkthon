@@ -1,34 +1,32 @@
 from PyQt5 import QtWidgets, uic
-import os
-pathSeparator = os.path.sep
-import sys
 import database_manager as sqlite
 import chrono
-import configparser
+from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME
 from PyQt5.QtCore import QPropertyAnimation, QSize, QAbstractAnimation, QRect
+
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+pathSeparator+'login.ui', self) # Load the .ui file
+        uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
         self.passwd.returnPressed.connect(self.login_button_clicked)
 
     def login_button_clicked(self):
-        if(sqlite.database_exists()):
-            sql_con = sqlite.sqlite_connector()
+        sql_con = sqlite.sqlite_connector()
+        if(sql_con.database_exists()):
             if(sql_con.login(self.user.text(), self.passwd.text())):
-                config = configparser.RawConfigParser()
-                config.read(sqlite.configFileName)
+                create_properties()
+                config = load_properties()
                 config.set('UsersSection', 'currentUser', self.user.text())     
-                with open(sqlite.configFileName, 'w') as configfile:
+                with open(CONFIG_FILE_NAME, 'w') as configfile:
                     config.write(configfile)
                 self.open_new_window()
                 
             else:
-                self.errorLabel.setText("Error. DNI i/o contrasenya incorrecta")
+                self.errorLabel.setText("Error. DNI i/o contraseña incorrecta.")
 
         else:
             sql_con = sqlite.sqlite_connector()
@@ -56,9 +54,3 @@ class Ui(QtWidgets.QMainWindow):
     def start_login(self):
         self.new_window = chrono.Chrono()
         self.close()
-        
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Ui() # Create an instance of our class
-    app.exec_() # Start the application

@@ -1,36 +1,15 @@
 import sqlite3
-import os.path
 import encrypt
-import configparser
-from login import pathSeparator
-
-def file_exists(file):
-    return os.path.isfile(file)
-
-config = configparser.RawConfigParser()
-configFileName = "ConfigFile.properties"
-if(not file_exists(configFileName)):
-    config.add_section('DatabaseSection')
-    config.set('DatabaseSection', 'dbname', 'parkthon.db')
-    config.add_section("UsersSection")
-    config.set('UsersSection', 'currentUser', '')
-    with open(configFileName, 'w') as configfile:
-        config.write(configfile)
-
-config.read(configFileName)
-DB = "DB"+pathSeparator+config.get('DatabaseSection', 'dbname')
-    
-
-
+from __manifest__ import path_separator, file_exists, load_properties
 
 class sqlite_connector:
     def __init__(self):
+        config = load_properties()
+        self.DB = "DB"+path_separator+config.get('DatabaseSection', 'dbname')
         try:
-            self.__con = sqlite3.connect(DB)
+            self.__con = sqlite3.connect(self.DB)
         except sqlite3.Error:
             print(sqlite3.Error)
-        except configparser.Error:
-            print(configparser.Error)
 
     def login(self, dni, raw_passwd):
         """
@@ -61,10 +40,9 @@ class sqlite_connector:
             raw_passwd (string): Contrasenya sense encriptar de l'usuari
             isAdmin (boolean): Si és admin o no
         """
-        entities = (dni, encrypt.encrypt_password(raw_passwd), isAdmin) # Encriptem la contrasenya
 
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO users VALUES(?, ?, ?)", entities)
+        cursorObj.execute("INSERT INTO users VALUES(?, ?, ?)", (dni, encrypt.encrypt_password(raw_passwd), isAdmin))
         self.__con.commit()
 
     def create_initial_table(self):
@@ -73,7 +51,7 @@ class sqlite_connector:
         """
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
-        cursorObj.execute("CREATE TABLE pacients(DNI varchar(9) primary key, nom varchar(20), cognom varchar(20), metge varchar(9), CONSTRAINT fk_metge FOREIGN KEY(metge) REFERENCES users(dni))")
+        cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
         self.__con.commit()  
 
     def get_users(self):
@@ -99,7 +77,7 @@ class sqlite_connector:
         return True
     
     def delete_patient(self, dni):
-        self.delete_dni_from_table(dni, "pacients")
+        self.delete_dni_from_table(dni, "patients")
 
     def delete_dni_from_table(self, dni, table):
         cursorObj = self.__con.cursor()
@@ -149,22 +127,22 @@ class sqlite_connector:
         rows = cursorObj.fetchall()
         return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
 
-    def get_patient_names(self, dni_metge):
+    def get_patient_names(self, doctor_dni):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT nom, cognom, dni FROM pacients where metge = '"+dni_metge+"'")
+        cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
 
     def addPatient(self, dni, name, surname, doctor):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO pacients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
+        cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
         self.__con.commit()
 
-def database_exists():
-    """
-    Funció que comprova si el fitxer existeix o no
+    def database_exists(self):
+        """
+        Funció que comprova si el fitxer existeix o no
 
-    Eixida:
-        (boolean) Si existeix o no
-    """
-    return os.path.isfile(DB)
+        Eixida:
+            (boolean) Si existeix o no
+        """
+        return file_exists(self.DB)
 
