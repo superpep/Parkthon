@@ -73,7 +73,7 @@
      <string notr="true">Nom</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="newUserButton">
+   <widget class="QPushButton" name="newPatientButton">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -115,7 +115,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="nom_2">
+   <widget class="QLineEdit" name="cognom">
     <property name="geometry">
      <rect>
       <x>50</x>
