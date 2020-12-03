@@ -38,6 +38,6 @@ Lista menu: **listaMenu**
 
 ## TODO USER INTERFACE
 
-- Fer una nova finestra per a crear pacients que siga igual que la de crear usuaris però en els camps del pacient (DNI, nom, cognom)
+
 
 ## TODO PYTHON
