@@ -154,6 +154,11 @@ class sqlite_connector:
         cursorObj.execute("SELECT nom, cognom, dni FROM pacients where metge = '"+dni_metge+"'")
         return cursorObj.fetchall()
 
+    def addPatient(self, dni, name, surname, doctor):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("INSERT INTO pacients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
+        self.__con.commit()
+
 def database_exists():
     """
     Funció que comprova si el fitxer existeix o no
