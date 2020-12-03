@@ -40,14 +40,14 @@ class Ui(QtWidgets.QMainWindow):
         startX = self.x()
         startY = self.y()
         self.anim = QPropertyAnimation(self, b"geometry")
-        self.anim.setDuration(500)
+        self.anim.setDuration(300)
         self.anim.setStartValue(QRect(startX, startY, 301, 281))
         self.anim.setEndValue(QRect(0, 0, 1366, 768))
 
         self.fade = QPropertyAnimation(self, b"windowOpacity")
-        self.fade.setDuration(500)
+        self.fade.setDuration(300)
         self.fade.setStartValue(1)
-        self.fade.setEndValue(0)
+        self.fade.setEndValue(0.2)
 
         self.fade.start()
         self.anim.start()
