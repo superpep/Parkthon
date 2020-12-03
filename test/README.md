@@ -16,6 +16,13 @@ Button: **newUserButton** \
 Label: **errorLabel** \
 Is admin?: **adminCheck**
 
+## New Patient
+
+Input DNI: **dni** \
+Input Nom: **nom** \
+Input Cognom: **cognom** \
+Button: **newPatientButton**
+
 ## Pacientes
 
 QPushButton añadir nuevo paciente: **nuevoPaciente** \
@@ -38,6 +45,6 @@ Lista menu: **listaMenu**
 
 ## TODO USER INTERFACE
 
-- Fer una nova finestra per a crear pacients que siga igual que la de crear usuaris però en els camps del pacient (DNI, nom, cognom)
+
 
 ## TODO PYTHON
