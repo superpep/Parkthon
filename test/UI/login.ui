@@ -38,6 +38,9 @@
      <height>2000</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#f0f0f0;</string>
+   </property>
    <widget class="QWidget" name="widget" native="true">
     <property name="enabled">
      <bool>true</bool>
