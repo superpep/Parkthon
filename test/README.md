@@ -46,6 +46,6 @@ ComboBox pacientes: **comboPatients**
 
 ## TODO USER INTERFACE
 
-
+- Hacer que al entrar a chron también haga una animacion con el mismo efecto de opacity.
 
 ## TODO PYTHON
