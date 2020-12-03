@@ -333,6 +333,22 @@ padding: 10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboPatients">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>40</y>
+      <width>221</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="maxVisibleItems">
+     <number>50</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
