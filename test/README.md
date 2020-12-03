@@ -16,6 +16,13 @@ Button: **newUserButton** \
 Label: **errorLabel** \
 Is admin?: **adminCheck**
 
+## New Patient
+
+Input DNI: **dni** \
+Input Nom: **nom** \
+Input Cognom: **cognom** \
+Button: **newPatientButton**
+
 ## Pacientes
 
 QPushButton añadir nuevo paciente: **nuevoPaciente** \
