@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 import database_manager as sqlite
 import chrono
-from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME
+from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists
 from PyQt5.QtCore import QPropertyAnimation, QSize, QAbstractAnimation, QRect
 
 
@@ -13,12 +13,14 @@ class Ui(QtWidgets.QMainWindow):
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
         self.passwd.returnPressed.connect(self.login_button_clicked)
+        if(not file_exists(CONFIG_FILE_NAME)):
+        	create_properties()
 
     def login_button_clicked(self):
         sql_con = sqlite.sqlite_connector()
         if(sql_con.database_exists()):
             if(sql_con.login(self.user.text(), self.passwd.text())):
-                create_properties()
+                
                 config = load_properties()
                 config.set('UsersSection', 'currentUser', self.user.text())     
                 with open(CONFIG_FILE_NAME, 'w') as configfile:
