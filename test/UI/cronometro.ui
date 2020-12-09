@@ -347,6 +347,16 @@ padding: 10px;</string>
      <number>50</number>
     </property>
    </widget>
+   <widget class="QWidget" name="graph" native="true">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>10</y>
+      <width>481</width>
+      <height>721</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
