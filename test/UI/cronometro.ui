@@ -340,6 +340,9 @@ padding: 10px;</string>
       <height>26</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;</string>
+    </property>
     <property name="currentText">
      <string/>
     </property>
