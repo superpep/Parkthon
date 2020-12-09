@@ -28,7 +28,8 @@ Button: **newPatientButton**
 QPushButton añadir nuevo paciente: **nuevoPaciente** \
 QPushButton eliminar paciente: **borrarPaciente** \
 ListView Lista de los pacientes: **listaPacientes** \
-QPushButton para acceder a pacientes desde la barra de la izquierda: **pacientesIcon**
+QPushButton para acceder a pacientes desde la barra de la izquierda: **pacientesIcon** \
+Qpuhsbutton para refrescar la lista de pacientes: **refreshList**
 
 ## Base de dades
 
@@ -49,7 +50,7 @@ Widget graficas: **graph**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
-- En el cronómetro, que aparezca un botón debajo del combobox que diga "Seleccionar"
+
 
 ## TODO PYTHON
 
