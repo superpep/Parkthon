@@ -42,7 +42,8 @@ QPushButton Start y Stop: **startStop** \
 QPushButton Vueltas: **lap** \
 Lista laps: **lapsList** \
 Lista menu: **listaMenu** \
-ComboBox pacientes: **comboPatients**
+ComboBox pacientes: **comboPatients** \
+Widget graficas: **graph**
 
 ## TODO USER INTERFACE
 
