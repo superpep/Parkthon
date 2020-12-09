@@ -50,7 +50,7 @@ Widget graficas: **graph**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
-- Hacer botón de refrescar en pacientes
+
 
 ## TODO PYTHON
 
