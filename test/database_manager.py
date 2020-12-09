@@ -136,6 +136,9 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
         self.__con.commit()
+    
+    def close(self):
+        self.__con.close
 
     def database_exists(self):
         """
