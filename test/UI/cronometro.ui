@@ -347,19 +347,27 @@ padding: 10px;</string>
      <number>50</number>
     </property>
    </widget>
-   <widget class="QWidget" name="graph" native="true">
+   <widget class="PlotWidget" name="graph" native="true">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>10</y>
-      <width>481</width>
-      <height>721</height>
+      <x>100</x>
+      <y>30</y>
+      <width>421</width>
+      <height>691</height>
      </rect>
     </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
