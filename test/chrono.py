@@ -6,6 +6,7 @@ import user_management
 import patient_management
 from __manifest__ import path_separator, load_properties
 import login
+import pyqtgraph as pg
 from stopwatch import Stopwatch
 
 
@@ -17,7 +18,14 @@ class Chrono(QtWidgets.QMainWindow):
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
-        
+
+        self.graph = pg.PlotWidget()
+        hour = [1,2,3,4,5,6,7,8,9,10]
+        temperature = [30,32,34,32,33,31,29,32,35,45]
+        self.graph.plot(hour, temperature)
+
+
+
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
