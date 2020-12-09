@@ -49,7 +49,7 @@ Widget graficas: **graph**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
-- En el cronómetro, que aparezca un botón debajo del combobox que diga "Seleccionar"
+- Hacer botón de refrescar en pacientes
 
 ## TODO PYTHON
 
