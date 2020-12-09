@@ -19,7 +19,7 @@ class Chrono(QtWidgets.QMainWindow):
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
 
-        self.graph = pg.PlotWidget()
+        
         hour = [1,2,3,4,5,6,7,8,9,10]
         temperature = [30,32,34,32,33,31,29,32,35,45]
         self.graph.plot(hour, temperature)
@@ -85,19 +85,27 @@ class Chrono(QtWidgets.QMainWindow):
         Afegeix una nova lap al cronómetro
         """
         
-        if (self.mscounter > 1000):
+        if (self.mscounter > 1000 and self.lap_num < 3):
             this_time = float(str(self.stopwatch)[:-1])
-            self.lap_num += 1
-            text = "Lap "+str(self.lap_num)+": "
-            if(self.lap_num ==  1):
+            text = "Lap "+str(self.lap_num+1)+": "
+            if(self.lap_num ==  0):
                 text += "{:.2f}".format(this_time)
             else:
                 text += "{:.2f}".format(this_time - self.previous_time)
             
+            self.lap_num += 1
             row = QtGui.QStandardItem(text)
             self.previous_time = this_time
             self.model.appendRow(row)
+        else:
+            # parar tot i guardar dades
+            #sql_con = sqlite.sqlite_connector()
 
+            #sql_con.saveTime()
+
+            #sql_con.close()
+
+            self.model.appendRow(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
 
     def showLCD(self):
         """
