@@ -52,7 +52,9 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
+        cursroObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
         self.__con.commit()  
+
 
     def get_users(self):
         cursorObj = self.__con.cursor()
@@ -137,6 +139,29 @@ class sqlite_connector:
         cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
         self.__con.commit()
     
+    def save_lap_times(self, lap_times, patient):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?)", (patient, lap_times[0], lap_times[1], lap_times[2]))
+        self.__con.commit()
+
+    def get_patient_total_times(self, patient):
+        cursorObj = self.__con.cursor()
+        rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"'")
+        total_lap_times = []
+        for row in rows:
+            total_lap_times.append(round(row[0]+row[1]+row[2], 2))
+        return total_lap_times
+
+    def get_patient_dates(self, patient):
+        cursorObj = self.__con.cursor()
+        rows = cursorObj.execute("SELECT day from times where patient = '"+patient+"'")
+        days = []
+        count = 0
+        for row in rows:
+            days.append(count)
+            count += 1
+        return days
+
     def close(self):
         self.__con.close
 
