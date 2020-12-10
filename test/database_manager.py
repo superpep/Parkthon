@@ -6,6 +6,7 @@ class sqlite_connector:
     def __init__(self):
         config = load_properties()
         self.DB = "DB"+path_separator+config.get('DatabaseSection', 'dbname')
+        self.__con = None
         if(self.database_exists()):
             try:
                 self.__con = sqlite3.connect(self.DB)
