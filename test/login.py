@@ -18,7 +18,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def login_button_clicked(self):
         sql_con = sqlite.sqlite_connector()
-        if(sql_con.database_exists()):
+        if(sql_con != None):
             if(sql_con.login(self.user.text(), self.passwd.text())):
                 
                 config = load_properties()

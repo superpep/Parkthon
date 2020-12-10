@@ -6,10 +6,11 @@ class sqlite_connector:
     def __init__(self):
         config = load_properties()
         self.DB = "DB"+path_separator+config.get('DatabaseSection', 'dbname')
-        try:
-            self.__con = sqlite3.connect(self.DB)
-        except sqlite3.Error:
-            print(sqlite3.Error)
+        if(self.database_exists()):
+            try:
+                self.__con = sqlite3.connect(self.DB)
+            except sqlite3.Error:
+                print(sqlite3.Error)
 
     def login(self, dni, raw_passwd):
         """
