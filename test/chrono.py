@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import sys
-import datetime
 import database_manager as sqlite
 import user_management
 import patient_management
@@ -18,15 +17,14 @@ class Chrono(QtWidgets.QMainWindow):
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
-
-        
-        
         
         styles = {'color':'(53,100,184)', 'font-size':'15px'}
         self.graph.showGrid(x=True, y=True)
         self.graph.setLabel('left', 'Tiempo por vuelta', **styles)
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#f0f0f0')
+
+
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
@@ -37,7 +35,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.fill_combo()
         self.comboPatients.currentIndexChanged.connect(self.select_new_patient)
 
-        self.edita_benvolguda()
+        self.edit_welcome()
 
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
@@ -55,7 +53,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.laps_image = QtGui.QIcon('img/laps.png')
         self.restart_image = QtGui.QIcon('img/restart.png')
         self.start_image = QtGui.QIcon('img/white.png')
-        self.pause_image = QtGui.QIcon('img/pause.png')
 
         self.lap_num = 0
         self.previous_time = 0
@@ -73,6 +70,7 @@ class Chrono(QtWidgets.QMainWindow):
         for user in patients:
             self.patients_dni.append(user[2])
             self.comboPatients.addItem(user[0]+" "+user[1])
+        sql_con.close()
 
     def select_new_patient(self):
         self.current_patient = self.patients_dni[self.comboPatients.currentIndex()-1]
@@ -88,17 +86,16 @@ class Chrono(QtWidgets.QMainWindow):
         pen = pg.mkPen(color=(53,100,184), width=4)
         self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
 
-    def edita_benvolguda(self):
+    def edit_welcome(self):
         self.bienvenida.setText("Bienvenido/a, "+self.current_user+"." )
 
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro
         """
-        
         if (self.mscounter > 1000):
             this_time = float(str(self.stopwatch)[:-1])
-            text = "Lap "+str(self.lap_num+1)+": "
+            text = "Vuelta "+str(self.lap_num+1)+": "
             if(self.lap_num ==  0):
                 text += "{:.2f}".format(this_time)
             else:
@@ -123,7 +120,6 @@ class Chrono(QtWidgets.QMainWindow):
         item.setTextAlignment(QtCore.Qt.AlignHCenter)
         self.model.appendRow(item)
             
-
     def showLCD(self):
         """
         Aquesta funció serveix per a mostrar per pantalla el temps
@@ -148,13 +144,13 @@ class Chrono(QtWidgets.QMainWindow):
         if(self.current_patient == -1):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Primero tienes que seleccionar un paciente.")
         else:
-            
-            if(not self.isreset):
-                self.stopwatch.restart()
-                self.timer.restart()
-            else:
+            if(self.isreset):
                 self.stopwatch.start()
                 self.timer.start()
+                
+            else:
+                self.stopwatch.restart()
+                self.timer.restart()
 
             self.startStop.setIcon(self.laps_image) # Passa a ser el botó de laps
             self.startStop.clicked.disconnect(self.start_crono) # Desconectem l'antic slot
@@ -163,12 +159,11 @@ class Chrono(QtWidgets.QMainWindow):
         
     def pause_watch(self):
         """
-        Pausa el cronómetre
+        Pausa el cronómetre quan s'aplega a 3 voltes
         """
 
         self.stopwatch.stop()
-
-
+        self.timer.stop()
         self.startStop.setIcon(self.restart_image)
         self.startStop.clicked.disconnect(self.record_lap)
         self.startStop.clicked.connect(self.reset_watch)
@@ -177,7 +172,6 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Reinicia el cronómetre
         """
-        self.timer.stop()
         self.stopwatch.restart()
         self.mscounter = 0
         self.lap_num = 0
@@ -199,8 +193,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.close()
         
 
-# Eliminar aço despres de acabar les proves ja que no volem que es puga executar
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = login.Ui() # Create an instance of our class
+    window = login.Ui() # Llancem el login
     app.exec_() # Start the application
