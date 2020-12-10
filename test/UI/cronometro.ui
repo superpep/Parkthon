@@ -308,8 +308,8 @@ padding: 10px;</string>
    <widget class="QLabel" name="bienvenida">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>10</y>
+      <x>170</x>
+      <y>-10</y>
       <width>1181</width>
       <height>81</height>
      </rect>
@@ -334,8 +334,8 @@ padding: 10px;</string>
    <widget class="QComboBox" name="comboPatients">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>10</y>
+      <x>320</x>
+      <y>90</y>
       <width>221</width>
       <height>26</height>
      </rect>
@@ -354,9 +354,9 @@ padding: 10px;</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>50</y>
-      <width>581</width>
-      <height>671</height>
+      <y>130</y>
+      <width>611</width>
+      <height>591</height>
      </rect>
     </property>
    </widget>
@@ -364,9 +364,9 @@ padding: 10px;</string>
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>20</y>
+      <y>80</y>
       <width>41</width>
-      <height>701</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="styleSheet">
