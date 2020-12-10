@@ -130,6 +130,15 @@ class sqlite_connector:
         return (rows[0][0] == 1) # RETORNA SI L'USUARI ÉS ADMIN O NO
 
     def get_patient_names(self, doctor_dni):
+        """
+        Retorna els pacients asociats al metge passat com a paràmetre
+
+        Entrada:
+            doctor_dni (string): Dni del metge
+        
+        Eixida:
+            (patients): Matriu de pacients
+        """
         cursorObj = self.__con.cursor()
         cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
