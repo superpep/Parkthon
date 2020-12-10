@@ -147,7 +147,7 @@ class sqlite_connector:
         cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
 
-    def addPatient(self, dni, name, surname, doctor):
+    def add_patient(self, dni, name, surname, doctor):
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
         self.__con.commit()

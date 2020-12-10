@@ -14,6 +14,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
         self.borrarPaciente.clicked.connect(self.delete_patient)
+        self.refreshList.clicked.connect(self.reinicia_llista)
         self.borrarPaciente.hide()
 
         self.model = QtGui.QStandardItemModel()

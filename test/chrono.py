@@ -117,7 +117,6 @@ class Chrono(QtWidgets.QMainWindow):
 
                 sql_con.close()
                 self.pause_watch()
-                self.reset_watch()
                 self.previous_time = 0
                 self.model.appendRow(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
                 self.show_patient_graph()
@@ -148,20 +147,17 @@ class Chrono(QtWidgets.QMainWindow):
         if(self.current_patient == -1):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Primero tienes que seleccionar un paciente.")
         else:
-            self.timer.start()
-            if(self.stopwatch.running):
+            
+            if(not self.isreset):
                 self.stopwatch.restart()
+                self.timer.restart()
             else:
                 self.stopwatch.start()
+                self.timer.start()
 
-            self.lap.setIcon(self.laps_image)
-            if(self.isreset == False):
-                self.lap.clicked.disconnect(self.reset_watch)
-                self.lap.clicked.connect(self.record_lap)
-
-            self.startStop.setIcon(self.pause_image)
-            self.startStop.clicked.disconnect(self.start_crono)
-            self.startStop.clicked.connect(self.pause_watch)
+            self.startStop.setIcon(self.laps_image) # Passa a ser el botó de laps
+            self.startStop.clicked.disconnect(self.start_crono) # Desconectem l'antic slot
+            self.startStop.clicked.connect(self.record_lap) # Conectem el nou
             self.isreset = False
         
     def pause_watch(self):
@@ -169,17 +165,12 @@ class Chrono(QtWidgets.QMainWindow):
         Pausa el cronómetre
         """
 
-        self.timer.stop()
         self.stopwatch.stop()
 
 
-        self.startStop.setIcon(self.start_image)
-        self.startStop.clicked.disconnect(self.pause_watch)
-        self.startStop.clicked.connect(self.start_crono)
-
-        self.lap.setIcon(self.restart_image)
-        self.lap.clicked.disconnect(self.record_lap)
-        self.lap.clicked.connect(self.reset_watch)
+        self.startStop.setIcon(self.restart_image)
+        self.startStop.clicked.disconnect(self.record_lap)
+        self.startStop.clicked.connect(self.reset_watch)
     
     def reset_watch(self):
         """
@@ -193,13 +184,10 @@ class Chrono(QtWidgets.QMainWindow):
         self.showLCD()
         self.lap_times = []
 
-        self.startStop.setIcon(self.start_image)
-
-
-
-        self.lap.setIcon(self.laps_image)
-        self.lap.clicked.disconnect(self.reset_watch)
-        self.lap.clicked.connect(self.record_lap)
+        self.startStop.clicked.disconnect(self.reset_watch)
+        self.startStop.clicked.connect(self.start_crono)
+        self.start_crono()
+        
 
     def open_users_menu(self):
         self.new_window = user_management.Users_management()

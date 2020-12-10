@@ -12,6 +12,7 @@ class Create_user(QtWidgets.QMainWindow):
         self.show()  # Show the GUI
 
         self.newUserButton.clicked.connect(self.create_user)
+        self.newUserButton.returnPressed.connect(self.create_user)
         self.sql_con = sqlite.sqlite_connector()
 
     def create_user(self):

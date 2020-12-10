@@ -9,15 +9,16 @@ class Create_patient(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
-        self.newPatientButton.clicked.connect(self.addPatient)
+        self.newPatientButton.clicked.connect(self.add_patient)
+        self.newPatientButton.returnPressed.connect(self.create_user)
         
 
-    def addPatient(self):
+    def add_patient(self):
         config = load_properties()
         currentUser = config.get('UsersSection', 'currentUser')
         sql_con = sqlite.sqlite_connector()
         try:
-            sql_con.addPatient(self.dni.text(), self.nom.text(), self.cognom.text(), currentUser)
+            sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), currentUser)
             QtWidgets.QMessageBox.information(self, 'Paciente añadido', "¡El paciente ha sido añadido con éxito!")
             choice = my_button()
             if choice:
