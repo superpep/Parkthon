@@ -12,7 +12,8 @@ class sqlite_connector:
                 self.__con = sqlite3.connect(self.DB)
             except sqlite3.Error:
                 print(sqlite3.Error)
-
+    def get_con(self):
+        return self.__con
     def login(self, dni, raw_passwd):
         """
         Comprova si el login és correcte o no

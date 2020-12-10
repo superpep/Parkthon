@@ -18,7 +18,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def login_button_clicked(self):
         sql_con = sqlite.sqlite_connector()
-        if(sql_con == None):
+        if(sql_con.get_con() == None):
             sql_con.create_initial_table()
             sql_con.create_user(self.user.text(), self.passwd.text(), True)
             sql_con.close()
