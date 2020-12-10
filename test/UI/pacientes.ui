@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Administrador de pacientes</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../img/icon.png</normaloff>../img/icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="barraLateral" native="true">
     <property name="geometry">
