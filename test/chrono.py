@@ -107,7 +107,7 @@ class Chrono(QtWidgets.QMainWindow):
             self.lap_num += 1
             self.lap_times.append(float("{:.2f}".format(this_time - self.previous_time)))
             self.previous_time = this_time
-            self.model.appendRow(QtGui.QStandardItem(text))
+            self.append_item_list_view(QtGui.QStandardItem(text))
             if (self.lap_num == 3):
                 sql_con = sqlite.sqlite_connector()
 
@@ -116,9 +116,12 @@ class Chrono(QtWidgets.QMainWindow):
                 sql_con.close()
                 self.pause_watch()
                 self.previous_time = 0
-                self.model.appendRow(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
+                self.append_item_list_view(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
                 self.show_patient_graph()
                 
+    def append_item_list_view(self, item):
+        item.setTextAlignment(QtCore.Qt.AlignHCenter)
+        self.model.appendRow(item)
             
 
     def showLCD(self):
