@@ -52,6 +52,7 @@ class sqlite_connector:
         """
         Crea la primera taula quan es crea la base de dades
         """
+        self.__con = sqlite3.connect(self.DB) # Aço crea la BD
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
