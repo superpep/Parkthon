@@ -56,7 +56,7 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursroObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
+        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
         self.__con.commit()  
 
 
