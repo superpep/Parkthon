@@ -51,15 +51,4 @@ Widget graficas: **graph**
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
 ## TODO PYTHON
-
-- No dejar utilizar el cronómetro hasta que no se seleccione un paciente
-
-- Cambiar idioma variables, funciones, etc. de todos los .py:
-  - database_manager **DONE**
-  - login **DONE**
-  - chrono
-  - user_management
-  - patient_management
-  - create_user
-  - encrypt
   
