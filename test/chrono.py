@@ -28,7 +28,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#f0f0f0')
         self.startStop.clicked.connect(self.start_crono)
-        self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
