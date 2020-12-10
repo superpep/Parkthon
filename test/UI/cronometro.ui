@@ -43,7 +43,7 @@ font-weight: bold;
    <widget class="QPushButton" name="startStop">
     <property name="geometry">
      <rect>
-      <x>1110</x>
+      <x>1050</x>
       <y>380</y>
       <width>41</width>
       <height>41</height>
@@ -71,8 +71,8 @@ background-color: #3564b8;</string>
     </property>
     <property name="iconSize">
      <size>
-      <width>45</width>
-      <height>45</height>
+      <width>28</width>
+      <height>28</height>
      </size>
     </property>
     <property name="checkable">
@@ -88,50 +88,7 @@ background-color: #3564b8;</string>
      <bool>false</bool>
     </property>
     <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="lap">
-    <property name="geometry">
-     <rect>
-      <x>990</x>
-      <y>380</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial,Helvetica,sans-serif</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 20px; 
-font-weight: bold; 
-color: white;
-background-color: #3564b8;
-padding: 10px;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../img/laps.png</normaloff>../img/laps.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>30</height>
-     </size>
-    </property>
-    <property name="default">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="cronNum">
