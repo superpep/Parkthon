@@ -18,22 +18,26 @@ class Ui(QtWidgets.QMainWindow):
 
     def login_button_clicked(self):
         sql_con = sqlite.sqlite_connector()
-        if(sql_con.database_exists()):
-            if(sql_con.login(self.user.text(), self.passwd.text())):
-                
-                config = load_properties()
-                config.set('UsersSection', 'currentUser', self.user.text())     
-                with open(CONFIG_FILE_NAME, 'w') as configfile:
-                    config.write(configfile)
-                self.open_new_window()
-                
-            else:
-                self.errorLabel.setText("Error. DNI i/o contraseña incorrecta.")
-
-        else:
+        if(sql_con.get_con() == None):
             sql_con.create_initial_table()
             sql_con.create_user(self.user.text(), self.passwd.text(), True)
-        sql_con.close()
+            sql_con.close()
+            self.load_new_window()
+
+        if(sql_con.login(self.user.text(), self.passwd.text())):
+            sql_con.close()
+            self.load_new_window()        
+        else:
+            self.errorLabel.setText("Error. DNI i/o contraseña incorrecta.")
+        
+        
+    def load_new_window(self):
+        config = load_properties()
+        config.set('UsersSection', 'currentUser', self.user.text())     
+        with open(CONFIG_FILE_NAME, 'w') as configfile:
+            config.write(configfile)
+        self.open_new_window()
+
     def open_new_window(self):
         startX = self.x()
         startY = self.y()

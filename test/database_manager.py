@@ -6,11 +6,14 @@ class sqlite_connector:
     def __init__(self):
         config = load_properties()
         self.DB = "DB"+path_separator+config.get('DatabaseSection', 'dbname')
-        try:
-            self.__con = sqlite3.connect(self.DB)
-        except sqlite3.Error:
-            print(sqlite3.Error)
-
+        self.__con = None
+        if(self.database_exists()):
+            try:
+                self.__con = sqlite3.connect(self.DB)
+            except sqlite3.Error:
+                print(sqlite3.Error)
+    def get_con(self):
+        return self.__con
     def login(self, dni, raw_passwd):
         """
         Comprova si el login és correcte o no
@@ -49,10 +52,11 @@ class sqlite_connector:
         """
         Crea la primera taula quan es crea la base de dades
         """
+        self.__con = sqlite3.connect(self.DB) # Aço crea la BD
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursroObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
+        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
         self.__con.commit()  
 
 
