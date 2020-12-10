@@ -43,7 +43,7 @@ font-weight: bold;
    <widget class="QPushButton" name="startStop">
     <property name="geometry">
      <rect>
-      <x>760</x>
+      <x>1110</x>
       <y>380</y>
       <width>41</width>
       <height>41</height>
@@ -94,7 +94,7 @@ background-color: #3564b8;</string>
    <widget class="QPushButton" name="lap">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>990</x>
       <y>380</y>
       <width>41</width>
       <height>41</height>
@@ -137,7 +137,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="cronNum">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>1000</x>
       <y>280</y>
       <width>141</width>
       <height>41</height>
@@ -156,7 +156,7 @@ padding: 10px;</string>
    <widget class="QListView" name="lapsList">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>1030</x>
       <y>460</y>
       <width>261</width>
       <height>261</height>
@@ -308,7 +308,7 @@ padding: 10px;</string>
    <widget class="QLabel" name="bienvenida">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>480</x>
       <y>10</y>
       <width>1181</width>
       <height>81</height>
@@ -334,8 +334,8 @@ padding: 10px;</string>
    <widget class="QComboBox" name="comboPatients">
     <property name="geometry">
      <rect>
-      <x>1100</x>
-      <y>40</y>
+      <x>260</x>
+      <y>10</y>
       <width>221</width>
       <height>26</height>
      </rect>
@@ -354,10 +354,29 @@ padding: 10px;</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>30</y>
-      <width>421</width>
-      <height>691</height>
+      <y>50</y>
+      <width>581</width>
+      <height>671</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>20</y>
+      <width>41</width>
+      <height>701</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
     </property>
    </widget>
   </widget>

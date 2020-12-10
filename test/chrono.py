@@ -22,9 +22,12 @@ class Chrono(QtWidgets.QMainWindow):
         
         
         
-
-
-
+        styles = {'color':'(53,100,184)', 'font-size':'15px'}
+        self.graph.showGrid(x=True, y=True)
+        self.graph.setLabel('left', 'Tiempo por vuelta', **styles)
+        self.graph.setLabel('bottom', 'Días', **styles)
+        self.graph.setTitle("Gráfica",size="20pt", color=(53,100,184))
+        self.graph.setBackground('#f0f0f0')
         self.startStop.clicked.connect(self.start_crono)
         self.lap.clicked.connect(self.record_lap)
         self.users.clicked.connect(self.open_users_menu)
@@ -82,10 +85,10 @@ class Chrono(QtWidgets.QMainWindow):
 
         times = sql_con.get_patient_total_times(self.current_patient)
         dates = sql_con.get_patient_dates(self.current_patient)
-        print(times)
 
         sql_con.close()
-        self.graph.plot(dates, times)
+        pen = pg.mkPen(color=(53,100,184), width=4)
+        self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
 
     def edita_benvolguda(self):
         self.bienvenida.setText("Bienvenido/a, "+self.current_user+"." )
