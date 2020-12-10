@@ -5,8 +5,6 @@ import sys
 import database_manager as sqlite
 import chrono
 from __manifest__ import path_separator, load_properties
-from PyQt5.QtCore import QPropertyAnimation
-from PyQt5.QtWidgets import QGraphicsOpacityEffect
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
@@ -17,24 +15,27 @@ class Users_management(QtWidgets.QMainWindow):
         self.deleteUser.clicked.connect(self.delete_user)
         self.changePass.clicked.connect(self.change_pass)
         self.newUser.clicked.connect(self.create_user)
-        self.refreshList.clicked.connect(self.reinicia_llista)
+        self.refreshList.clicked.connect(self.refresh_list)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
         config = load_properties()
-        self.currentUser = config.get('UsersSection', 'currentUser')
+        self.current_user = config.get('UsersSection', 'currentUser')
 
         self.model = QtGui.QStandardItemModel()
         self.usersList.setModel(self.model)
         self.usersList.clicked.connect(self.manage_user)
 
-        self.sql_con = sqlite.sqlite_connector()
-        self.reinicia_llista()
+        
+
+        self.refresh_list()
         self.dni = ""
 
-        if(self.sql_con.is_admin(self.currentUser)):
+        sql_con = sqlite.sqlite_connector()
+        if(sql_con.is_admin(self.current_user)):
             self.newUser.show()
         else:
             self.newUser.hide()
+        sql_con.close()
 
         self.cronIcon.clicked.connect(self.return_to_chrono)
         
@@ -49,32 +50,36 @@ class Users_management(QtWidgets.QMainWindow):
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_user(self, index):
         self.dni = self.model.itemFromIndex(index).text()
-        if(self.sql_con.is_admin(self.currentUser) or self.dni == self.currentUser):
+        sql_con = sqlite.sqlite_connector()
+        if(sql_con.is_admin(self.current_user) or self.dni == self.current_user):
             self.changePass.show()
         else:
             self.changePass.hide()    
 
-        if(self.sql_con.is_admin(self.currentUser)):
+        if(sql_con.is_admin(self.current_user)):
             self.deleteUser.show()
         else:
             self.deleteUser.hide()
+        
+        sql_con.close()
 
     def create_user(self):
         self.new_window = create_user.Create_user()
 
     def change_pass(self):
-        accesGranted = self.sql_con.is_admin(self.dni)
-        if(not accesGranted): # Si no és admin
+        acces_granted = sql_con.is_admin(self.dni)
+        sql_con = sqlite.sqlite_connector()
+        if(not acces_granted): # Si no és admin
             last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca su contraseña actual, '+self.dni)
             if ok:
-                if(not self.sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
+                if(not sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
                     QtWidgets.QMessageBox.critical(self, 'ERROR', "Contraseña incorrecta.")
                     return
                 else:
-                    accesGranted = True
+                    acces_granted = True
             else:
                 return
-        if(accesGranted):
+        if(acces_granted):
             valid_password = False
             while(not valid_password):
                 passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)')
@@ -85,30 +90,32 @@ class Users_management(QtWidgets.QMainWindow):
                         valid_password = True
                 else:
                     return
-            self.sql_con.change_password(self.dni, passwd)
+            sql_con.change_password(self.dni, passwd)
             QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
+        sql_con.close()
 
 
     def delete_user(self):
-        if self.currentUser == self.dni: # Arreglar aço
+        if self.current_user == self.dni: # Arreglar aço
             QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario.")
         else:
-            choice = my_button()
-            if choice:
-                if(self.sql_con.delete_user(self.dni)):
+            if my_button():
+                sql_con = sqlite.sqlite_connector()
+                if(sql_con.delete_user(self.dni)):
                     QtWidgets.QMessageBox.information(self, 'Confirmación', "El usuario ha sido eliminado con éxito.")
-                    self.reinicia_llista()
+                    self.refresh_list()
                 else:
                     QtWidgets.QMessageBox.critical(self, 'ERROR', "El usuario no puede eliminarse porque es el único administrador.")
+                sql_con.close()
 
-    def reinicia_llista(self):
+    def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
         self.changePass.hide()
         self.deleteUser.hide()
         self.show_users()
 
     def show_users(self):
-        users = self.sql_con.get_users()
+        users = sqlite.sqlite_connector().get_users()
         for user in users:
             row = QtGui.QStandardItem(user[0])
             self.model.appendRow(row)
@@ -125,8 +132,8 @@ class Users_management(QtWidgets.QMainWindow):
 def my_button():
     box = QtWidgets.QMessageBox()
     box.setIcon(QtWidgets.QMessageBox.Question)
-    box.setWindowTitle('Comprovació')
-    box.setText('¿Estás seguro de querer eliminar al usuario?')
+    box.setWindowTitle('Comprobación')
+    box.setText('¿Estás seguro de querer eliminar al usuario '+self.dni+'?')
     box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
     buttonY = box.button(QtWidgets.QMessageBox.Yes)
     buttonY.setText('Sí')
@@ -134,8 +141,3 @@ def my_button():
     buttonN.setText('No')
     box.exec_()
     return box.clickedButton() == buttonY
-# Eliminar aço despres de acabar les proves ja que no volem que es puga executar
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Users_management() # Create an instance of our class
-    app.exec_() # Start the application
