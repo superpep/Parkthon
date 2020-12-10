@@ -148,16 +148,40 @@ class sqlite_connector:
         return cursorObj.fetchall()
 
     def add_patient(self, dni, name, surname, doctor):
+        """
+        Afegeix un pacient
+
+        Entrada:
+            dni (string): DNI del pacient
+            name (string): nom del pacient
+            surname (string): cognom del pacient
+            doctor (string): dni del doctor al que s'asociarà eixe pacient
+        """
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
         self.__con.commit()
     
     def save_lap_times(self, lap_times, patient):
+        """
+        Guarda els temps asociat al pacient
+
+        Entrada:
+            lap_times (float list) Llista de longitud 3 en la que estàn guardades les 3 laps
+            patient (string) DNI del pacient al que se li guarda el temps de volta
+        """
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?)", (patient, lap_times[0], lap_times[1], lap_times[2]))
         self.__con.commit()
 
     def get_patient_total_times(self, patient):
+        """
+        Retorna una llista amb el temps total de cada prova cronometrada que se li ha fet
+
+        Entrada:
+            patient (string): DNI del pacient del que es vol saber el temps
+        Eixida:
+            (float list): Llista en la que estàn tots els temps
+        """
         cursorObj = self.__con.cursor()
         rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"'")
         total_lap_times = []
@@ -166,6 +190,15 @@ class sqlite_connector:
         return total_lap_times
 
     def get_patient_dates(self, patient):
+        """
+        Retorna les dates dels pacients 
+
+        Entrada: 
+            patient (string): DNI del pacient del que es vol saber les dades
+
+        Eixida:
+            (integer list): Llista de vegades que el pacient ha sigut cronometrat
+        """
         cursorObj = self.__con.cursor()
         rows = cursorObj.execute("SELECT day from times where patient = '"+patient+"'")
         days = []
@@ -176,6 +209,9 @@ class sqlite_connector:
         return days
 
     def close(self):
+        """
+        Tanca la connexió
+        """
         self.__con.close
 
     def database_exists(self):
