@@ -1,5 +1,4 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
-import sys
 from __manifest__ import path_separator, load_properties
 import database_manager as sqlite
 import user_management
@@ -14,7 +13,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
         self.borrarPaciente.clicked.connect(self.delete_patient)
-        self.refreshList.clicked.connect(self.reinicia_llista)
+        self.refreshList.clicked.connect(self.refresh_list)
         self.borrarPaciente.hide()
 
         self.model = QtGui.QStandardItemModel()
@@ -22,11 +21,11 @@ class Patient_management(QtWidgets.QMainWindow):
         self.listaPacientes.clicked.connect(self.manage_patient)
 
         config = load_properties()
-        self.currentUser = config.get('UsersSection', 'currentUser')
+        self.current_user = config.get('UsersSection', 'currentUser')
 
         self.patients_dni = []
-        self.sql_con = sqlite.sqlite_connector()
-        self.reinicia_llista()
+        
+        self.refresh_list()
         self.patient_item = ""
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
@@ -43,26 +42,28 @@ class Patient_management(QtWidgets.QMainWindow):
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
         
-    def reinicia_llista(self):
+    def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
         self.show_patients()
 
     def show_patients(self):
-        patients = self.sql_con.get_patient_names(self.currentUser)
+        sql_con = sqlite.sqlite_connector()
+        patients = sql_con.get_patient_names(self.current_user)
         for patient in patients:
             self.patients_dni.append(patient[2]) # Guardem el DNI de l'usuari
             self.model.appendRow(QtGui.QStandardItem(patient[0]+" "+patient[1]))
+        sql_con.close()
 
 
     def new_patient(self):
         self.new_window = create_patient.Create_patient()
     
     def delete_patient(self):
-        choice = comprovacio(self.patient_item.text())
-        if choice:
-            self.sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
+        if comprovacio(self.patient_item.text()):
+            sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
+            sql_con.close()
             QtWidgets.QMessageBox.information(self, 'Confirmación', "El paciente ha sido eliminado con éxito.")
-            self.reinicia_llista()
+            self.refresh_list()
             self.borrarPaciente.hide()
 
     def return_to_chrono(self):
@@ -85,8 +86,3 @@ def comprovacio(patient_name):
     buttonN.setText('No')
     box.exec_()
     return box.clickedButton() == buttonY
-# Eliminar aço despres de acabar les proves ja que no volem que es puga executar
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Patient_management() # Create an instance of our class
-    app.exec_() # Start the application
