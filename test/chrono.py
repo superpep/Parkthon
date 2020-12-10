@@ -84,6 +84,7 @@ class Chrono(QtWidgets.QMainWindow):
 
         sql_con.close()
         pen = pg.mkPen(color=(53,100,184), width=4)
+        self.graph.clear()
         self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
 
     def edit_welcome(self):
