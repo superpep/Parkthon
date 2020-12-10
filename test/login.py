@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic
 import database_manager as sqlite
 import chrono
 from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists
-from PyQt5.QtCore import QPropertyAnimation, QSize, QAbstractAnimation, QRect
+from PyQt5.QtCore import QPropertyAnimation, QRect
 
 
 class Ui(QtWidgets.QMainWindow):
