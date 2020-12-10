@@ -1,5 +1,4 @@
-from PyQt5 import QtWidgets, uic, QtCore, QtGui
-import sys
+from PyQt5 import QtWidgets, uic
 import database_manager as sqlite
 from __manifest__ import path_separator, load_properties
 
@@ -15,13 +14,12 @@ class Create_patient(QtWidgets.QMainWindow):
 
     def add_patient(self):
         config = load_properties()
-        currentUser = config.get('UsersSection', 'currentUser')
+        current_user = config.get('UsersSection', 'current_user')
         sql_con = sqlite.sqlite_connector()
         try:
-            sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), currentUser)
+            sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), current_user)
             QtWidgets.QMessageBox.information(self, 'Paciente añadido', "¡El paciente ha sido añadido con éxito!")
-            choice = my_button()
-            if choice:
+            if my_button(): # If OK is clicked in the button
                 self.dni.setText("")
                 self.nom.setText("")
                 self.cognom.setText("")
@@ -29,7 +27,8 @@ class Create_patient(QtWidgets.QMainWindow):
                 self.close()
         except sqlite.sqlite3.IntegrityError:
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un usuario con este DNI")
-
+        finally:
+            sql_con.close()
 
 def my_button():
     box = QtWidgets.QMessageBox()
@@ -43,8 +42,3 @@ def my_button():
     buttonN.setText('No')
     box.exec_()
     return box.clickedButton() == buttonY
-# Esborrar aço al acabar proves
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Create_patient() # Create an instance of our class
-    app.exec_() # Start the application

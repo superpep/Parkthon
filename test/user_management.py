@@ -1,7 +1,6 @@
 import create_user
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import patient_management
-import sys
 import database_manager as sqlite
 import chrono
 from __manifest__ import path_separator, load_properties
