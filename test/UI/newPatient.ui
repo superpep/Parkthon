@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Crear paciente</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../img/icon.png</normaloff>../img/icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color:#f0f0f0; color: black; border-radius: 10px</string>
   </property>
