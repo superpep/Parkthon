@@ -117,7 +117,7 @@ background-color: #3564b8;</string>
    <widget class="QListView" name="lapsList">
     <property name="geometry">
      <rect>
-      <x>1030</x>
+      <x>950</x>
       <y>460</y>
       <width>261</width>
       <height>261</height>
