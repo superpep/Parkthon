@@ -14,7 +14,7 @@ class Create_patient(QtWidgets.QMainWindow):
 
     def add_patient(self):
         config = load_properties()
-        current_user = config.get('UsersSection', 'current_user')
+        current_user = config.get('UsersSection', 'currentUser')
         sql_con = sqlite.sqlite_connector()
         try:
             sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), current_user)
