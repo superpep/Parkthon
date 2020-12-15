@@ -120,7 +120,7 @@ background-color: #3564b8;</string>
       <x>940</x>
       <y>460</y>
       <width>261</width>
-      <height>261</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -354,6 +354,60 @@ background-color: #3564b8;</string>
     </property>
     <property name="text">
      <string>Mas información acerca del paciente</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="saveIcon">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>560</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial,Helvetica,sans-serif</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Guardar información</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+font-weight: bold;
+color: white;
+background-color: #B8C8E6;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../img/saveicon.png</normaloff>../img/saveicon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>28</width>
+      <height>28</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
