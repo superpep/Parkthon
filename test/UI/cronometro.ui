@@ -426,6 +426,19 @@ background-color: #B8C8E6;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="quali_label">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>630</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>startStop</zorder>
    <zorder>cronNum</zorder>
    <zorder>lapsList</zorder>
@@ -437,6 +450,7 @@ background-color: #B8C8E6;</string>
    <zorder>moreInfo</zorder>
    <zorder>saved_msg</zorder>
    <zorder>saveIcon</zorder>
+   <zorder>quali_label</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

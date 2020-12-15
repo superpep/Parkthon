@@ -3,10 +3,11 @@ import sys
 import database_manager as sqlite
 import user_management
 import patient_management
-from __manifest__ import path_separator, load_properties
+from __manifest__ import path_separator, load_properties, save_property
 import login
 import pyqtgraph as pg
 from time import sleep
+import patient_info
 from stopwatch import Stopwatch
 
 
@@ -18,6 +19,8 @@ class Chrono(QtWidgets.QMainWindow):
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
+        
+        self.saved_message_thread = message_thread(self.saved_msg)
         
         styles = {'color':'(53,100,184)', 'font-size':'15px'}
         self.graph.showGrid(x=True, y=True)
@@ -31,7 +34,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.saveIcon.clicked.connect(self.save_times)
         self.saveIcon.hide()
 
-        self.saved_message_thread = message_thread(self.saved_msg)
+        
 
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
@@ -48,6 +51,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
+        self.quali_label.setStyleSheet("QWidget#quali_label{ color: black }")
         self.saved_msg.setStyleSheet("QWidget#saved_msg{ color: black }")
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
@@ -75,7 +79,8 @@ class Chrono(QtWidgets.QMainWindow):
         
         
     def show_more_info(self):
-        pass
+        save_property('PatientsSection', 'selectedPatient', self.current_patient)
+        self.window = patient_info.Patient_info()
 
     def save_times(self):
         sql_con = sqlite.sqlite_connector()
@@ -85,8 +90,6 @@ class Chrono(QtWidgets.QMainWindow):
         sql_con.close()
         self.saveIcon.hide()
         self.show_patient_graph()
-        
-        
         self.saved_message_thread.start()
     
    
@@ -120,6 +123,36 @@ class Chrono(QtWidgets.QMainWindow):
     def edit_welcome(self):
         self.bienvenida.setText("Bienvenido/a, "+self.current_user+"." )
 
+    def get_lap_type(self, lap, time):
+        if(lap == -1): # -1 és temps total
+            if(time < 41.91):
+                return "Leve"
+            elif(time > 60.32):
+                return "Greu"
+            else:
+                return "Moderat"
+        elif(lap == 0):
+            if(time < 17.16):
+                return "Leve"
+            elif(time > 23.56):
+                return "Greu"
+            else:
+                return "Moderat"
+        elif(lap == 1):
+            if(time < 15.14):
+                return "Leve"
+            elif(time > 25.90):
+                return "Greu"
+            else:
+                return "Moderado"
+        else:
+            if(time < 10.43):
+                return "Leve"
+            elif(time > 13.34):
+                return "Greu"
+            else:
+                return "Moderado"
+
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro
@@ -129,8 +162,11 @@ class Chrono(QtWidgets.QMainWindow):
             text = "Vuelta "+str(self.lap_num+1)+": "
             if(self.lap_num ==  0):
                 text += "{:.2f}".format(this_time)
+                text += " - "+self.get_lap_type(self.lap_num, this_time)
             else:
                 text += "{:.2f}".format(this_time - self.previous_time)
+                text += " - "+self.get_lap_type(self.lap_num, this_time - self.previous_time)
+            
             
             self.lap_num += 1
             self.lap_times.append(float("{:.2f}".format(this_time - self.previous_time)))
@@ -138,11 +174,17 @@ class Chrono(QtWidgets.QMainWindow):
             self.append_item_list_view(QtGui.QStandardItem(text))
             if (self.lap_num == 3):
                 
+                self.show_total_qualification()
                 self.saveIcon.show()
                 self.pause_watch()
                 self.previous_time = 0
                 self.append_item_list_view(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
                 
+    def show_total_qualification(self):
+        total_time = 0
+        for time in self.lap_times:
+            total_time += time
+        self.quali_label.setText("Clasificación: "+self.get_lap_type(-1, total_time))
                 
     def append_item_list_view(self, item):
         item.setTextAlignment(QtCore.Qt.AlignHCenter)
@@ -220,8 +262,10 @@ class Chrono(QtWidgets.QMainWindow):
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
         self.close()
-        
-        
+
+    def closeEvent(self, event):
+        self.saved_message_thread = None
+
 class message_thread(QtCore.QThread):
     def __init__(self, qlabel):
         QtCore.QThread.__init__(self)

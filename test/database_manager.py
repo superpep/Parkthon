@@ -211,6 +211,12 @@ class sqlite_connector:
             count += 1
         return days
 
+    def get_patient_times(self, patient):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT * from times where patient = '"+patient+"'")
+        return cursorObj.fetchall()
+        
+
     def close(self):
         """
         Tanca la connexió
