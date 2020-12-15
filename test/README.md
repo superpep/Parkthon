@@ -53,8 +53,6 @@ QPushButton info paciente: **moreInfo**
 
 - Poner 2 widget en cada parte del crono, y que al hacer hover se ponga mas oscura.
 
-- Botón de guardar.
-
 - Cambiar color de letra de dias y cronómetro de la gráfica.
 
 ## TODO PYTHON

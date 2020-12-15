@@ -10,14 +10,7 @@ from PyQt5.QtCore import QPropertyAnimation, QRect
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        try:
-            uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
-        except FileNotFoundError:
-            try:
-                chdir("test")
-                uic.loadUi('UI'+path_separator+'login.ui', self)
-            except FileNotFoundError:
-                exit(0)
+        uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
             
         self.show() # Show the GUI
         self.loginButton.clicked.connect(self.login_button_clicked)
