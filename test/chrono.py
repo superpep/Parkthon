@@ -27,6 +27,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
 
+        self.saveIcon.clicked.connect(self.save_times)
+        self.saveIcon.hide()
+
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
@@ -67,6 +70,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.showLCD()
         
     def show_more_info(self):
+        pass
+
+    def save_times(self):
         pass
 
     def fill_combo(self):
@@ -120,6 +126,7 @@ class Chrono(QtWidgets.QMainWindow):
                 sql_con.save_lap_times(self.lap_times, self.current_patient)
 
                 sql_con.close()
+                self.saveIcon.show()
                 self.pause_watch()
                 self.previous_time = 0
                 self.append_item_list_view(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
@@ -149,6 +156,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Comença el cronómetre de forma visible
         """
+        self.saveIcon.hide()
         self.model.removeRows(0, self.model.rowCount())
         if(self.current_patient == -1):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Primero tienes que seleccionar un paciente.")

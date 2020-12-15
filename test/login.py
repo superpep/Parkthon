@@ -1,8 +1,6 @@
 from PyQt5 import QtWidgets, uic
 import database_manager as sqlite
 import chrono
-from sys import exit
-from os import chdir
 from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists
 from PyQt5.QtCore import QPropertyAnimation, QRect
 
