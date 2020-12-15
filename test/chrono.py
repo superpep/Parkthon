@@ -3,7 +3,7 @@ import sys
 import database_manager as sqlite
 import user_management
 import patient_management
-from __manifest__ import CONFIG_FILE_PATH, load_properties
+from __manifest__ import path_separator, load_properties
 import login
 import pyqtgraph as pg
 from stopwatch import Stopwatch

@@ -1,10 +1,13 @@
 import sqlite3
 import encrypt
+from os import mkdir, path
 from __manifest__ import path_separator, file_exists, load_properties
 
 class sqlite_connector:
     def __init__(self):
         config = load_properties()
+        if(not path.isdir("DB")):
+            mkdir("DB")
         self.DB = "DB"+path_separator+config.get('DatabaseSection', 'dbname')
         self.__con = None
         if(self.database_exists()):
