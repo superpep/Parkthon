@@ -413,6 +413,30 @@ background-color: #B8C8E6;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="saved_msg">
+    <property name="geometry">
+     <rect>
+      <x>1040</x>
+      <y>560</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>startStop</zorder>
+   <zorder>cronNum</zorder>
+   <zorder>lapsList</zorder>
+   <zorder>barraLateral</zorder>
+   <zorder>bienvenida</zorder>
+   <zorder>comboPatients</zorder>
+   <zorder>graph</zorder>
+   <zorder>line</zorder>
+   <zorder>moreInfo</zorder>
+   <zorder>saved_msg</zorder>
+   <zorder>saveIcon</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

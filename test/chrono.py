@@ -6,6 +6,7 @@ import patient_management
 from __manifest__ import path_separator, load_properties
 import login
 import pyqtgraph as pg
+from time import sleep
 from stopwatch import Stopwatch
 
 
@@ -30,6 +31,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.saveIcon.clicked.connect(self.save_times)
         self.saveIcon.hide()
 
+        self.saved_message_thread = message_thread(self.saved_msg)
+
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
@@ -45,6 +48,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
+        self.saved_msg.setStyleSheet("QWidget#saved_msg{ color: black }")
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
@@ -53,7 +57,7 @@ class Chrono(QtWidgets.QMainWindow):
 
         self.model = QtGui.QStandardItemModel()
         self.lapsList.setModel(self.model)
-    
+        
 
         self.laps_image = QtGui.QIcon('img/laps.png')
         self.restart_image = QtGui.QIcon('img/restart.png')
@@ -69,11 +73,23 @@ class Chrono(QtWidgets.QMainWindow):
         self.isreset = True
         self.showLCD()
         
+        
     def show_more_info(self):
         pass
 
     def save_times(self):
-        pass
+        sql_con = sqlite.sqlite_connector()
+
+        sql_con.save_lap_times(self.lap_times, self.current_patient)
+
+        sql_con.close()
+        self.saveIcon.hide()
+        self.show_patient_graph()
+        
+        
+        self.saved_message_thread.start()
+    
+   
 
     def fill_combo(self):
         sql_con = sqlite.sqlite_connector()
@@ -121,16 +137,12 @@ class Chrono(QtWidgets.QMainWindow):
             self.previous_time = this_time
             self.append_item_list_view(QtGui.QStandardItem(text))
             if (self.lap_num == 3):
-                sql_con = sqlite.sqlite_connector()
-
-                sql_con.save_lap_times(self.lap_times, self.current_patient)
-
-                sql_con.close()
+                
                 self.saveIcon.show()
                 self.pause_watch()
                 self.previous_time = 0
                 self.append_item_list_view(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
-                self.show_patient_graph()
+                
                 
     def append_item_list_view(self, item):
         item.setTextAlignment(QtCore.Qt.AlignHCenter)
@@ -209,6 +221,20 @@ class Chrono(QtWidgets.QMainWindow):
         self.new_window = patient_management.Patient_management()
         self.close()
         
+        
+class message_thread(QtCore.QThread):
+    def __init__(self, qlabel):
+        QtCore.QThread.__init__(self)
+        self.saved_msg = qlabel
+
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+        sleep(0.3)
+        self.saved_msg.setText("¡Guardado!")
+        sleep(2)
+        self.saved_msg.setText("")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
