@@ -55,5 +55,7 @@ QPushButton info paciente: **moreInfo**
 
 - Botón de guardar.
 
+- Cambiar color de letra de dias y cronómetro de la gráfica.
+
 ## TODO PYTHON
   
