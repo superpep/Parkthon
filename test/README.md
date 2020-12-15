@@ -51,6 +51,15 @@ QPushButton info paciente: **moreInfo**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
+- Poner 2 widget en cada parte del crono, y que al hacer hover se ponga mas oscura.
+
+- Botón de guardar.
+
+- Cambiar color de letra de dias y cronómetro de la gráfica.
+
 ## TODO PYTHON
   
+<<<<<<< HEAD
 - Tenim q afegir un guardar dades xd
+=======
+>>>>>>> a54c8039fdc09f823a99ab935b475010923d5163
