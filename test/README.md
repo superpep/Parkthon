@@ -53,3 +53,4 @@ QPushButton info paciente: **moreInfo**
 
 ## TODO PYTHON
   
+- Tenim q afegir un guardar dades xd

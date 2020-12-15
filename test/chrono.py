@@ -24,12 +24,14 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#f0f0f0')
 
+        self.moreInfo.clicked.connect(self.show_more_info)
+        self.moreInfo.hide()
 
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
-        self.comboPatients.addItem("Selecciona un paciente")
+        self.comboPatients.setPlaceholderText("Selecciona un paciente")
         self.patients_dni = []
         self.current_patient = -1
         self.fill_combo()
@@ -64,6 +66,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.isreset = True
         self.showLCD()
         
+    def show_more_info(self):
+        pass
+
     def fill_combo(self):
         sql_con = sqlite.sqlite_connector()
         patients = sql_con.get_patient_names(self.current_user)
@@ -73,8 +78,11 @@ class Chrono(QtWidgets.QMainWindow):
         sql_con.close()
 
     def select_new_patient(self):
+
+
         self.current_patient = self.patients_dni[self.comboPatients.currentIndex()-1]
         self.show_patient_graph()
+        self.moreInfo.show()
         
     def show_patient_graph(self):
         sql_con = sqlite.sqlite_connector()
