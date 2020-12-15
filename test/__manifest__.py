@@ -5,7 +5,7 @@ path_separator = os.path.sep
 CONFIG_FILE_NAME = "ConfigFile.properties"
 
 def create_properties():
-    if(not file_exists(".gitignore")):
+    if(file_exists("chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
         config.set('DatabaseSection', 'dbname', 'parkthon.db')
