@@ -317,7 +317,7 @@ background-color: #3564b8;</string>
       <x>100</x>
       <y>130</y>
       <width>611</width>
-      <height>591</height>
+      <height>541</height>
      </rect>
     </property>
    </widget>
@@ -338,6 +338,22 @@ background-color: #3564b8;</string>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="moreInfo">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>690</y>
+      <width>381</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; background-color: #3564b8;</string>
+    </property>
+    <property name="text">
+     <string>Mas información acerca del paciente</string>
     </property>
    </widget>
   </widget>
