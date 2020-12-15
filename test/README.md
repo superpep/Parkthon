@@ -59,7 +59,4 @@ QPushButton info paciente: **moreInfo**
 
 ## TODO PYTHON
   
-<<<<<<< HEAD
 - Tenim q afegir un guardar dades xd
-=======
->>>>>>> a54c8039fdc09f823a99ab935b475010923d5163
