@@ -169,7 +169,7 @@ font-weight: bold;
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>-10</y>
+      <y>0</y>
       <width>1181</width>
       <height>81</height>
      </rect>
