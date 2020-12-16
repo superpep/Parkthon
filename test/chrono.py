@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
+from PyQt5.QtGui import QFont
 import sys
 import database_manager as sqlite
 import user_management
@@ -58,6 +59,10 @@ class Chrono(QtWidgets.QMainWindow):
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
         self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
         self.pacientesIcon.setStyleSheet("QPushButton#pacientesIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#pacientesIcon::pressed{background-color: #555555;}")
+
+        self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #f67c7c;} ")
+        self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #f67c7c;} ")
+        self.bienvenida.setFont(QFont('Helvetica', 40)) 
 
         self.model = QtGui.QStandardItemModel()
         self.lapsList.setModel(self.model)
@@ -121,7 +126,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
 
     def edit_welcome(self):
-        self.bienvenida.setText("Bienvenido/a, "+self.current_user+"." )
+        texto = "Bienvenido/a, " + self.current_user + "."
+        self.bienvenida.setText(texto.upper())
 
     def get_lap_type(self, lap, time):
         if(lap == -1): # -1 és temps total
