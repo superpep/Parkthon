@@ -85,7 +85,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #a2adc2; color: white;</string>
+      <string notr="true">background-color: #222628; color: white;</string>
      </property>
      <property name="text">
       <string>Login</string>

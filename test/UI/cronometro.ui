@@ -235,7 +235,8 @@ font-weight: bold;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white; background-color: #a2adc2;</string>
+      <string notr="true">color: #222628; background-color: #a2adc2; 
+font-weight: bold;</string>
      </property>
      <property name="text">
       <string>Mas información acerca del paciente</string>
