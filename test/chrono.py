@@ -126,8 +126,8 @@ class Chrono(QtWidgets.QMainWindow):
 
     def get_lap_type(self, lap, time):
         if(lap == -1): # -1 és temps total
-            minTotalTime = self.config.get('TotalTimeSection', 'minimumTime')
-            maxTotalTime = self.config.get('TotalTimeSection', 'maxiumumTime')
+            minTotalTime = float(self.config.get('TotalTimeSection', 'minimumTime'))
+            maxTotalTime = float(self.config.get('TotalTimeSection', 'maxiumumTime'))
             if(time < minTotalTime):
                 return "Leve"
             elif(time > maxTotalTime):
@@ -135,8 +135,8 @@ class Chrono(QtWidgets.QMainWindow):
             else:
                 return "Moderado"
         elif(lap == 0):
-            minTime = self.config.get('Seg1TimeSection', 'minimumTime')
-            maxTime = self.config.get('Seg1TimeSection', 'maxiumumTime')
+            minTime = float(self.config.get('Seg1TimeSection', 'minimumTime'))
+            maxTime = float(self.config.get('Seg1TimeSection', 'maxiumumTime'))
             if(time < minTime):
                 return "Leve"
             elif(time > maxTime):
@@ -144,8 +144,8 @@ class Chrono(QtWidgets.QMainWindow):
             else:
                 return "Moderado"
         elif(lap == 1):
-            minTime = self.config.get('Seg2TimeSection', 'minimumTime')
-            maxTime = self.config.get('Seg2TimeSection', 'maxiumumTime')
+            minTime = float(self.config.get('Seg2TimeSection', 'minimumTime'))
+            maxTime = float(self.config.get('Seg2TimeSection', 'maxiumumTime'))
             if(time < minTime):
                 return "Leve"
             elif(time > maxTime):
@@ -153,8 +153,8 @@ class Chrono(QtWidgets.QMainWindow):
             else:
                 return "Moderado"
         else:
-            minTime = self.config.get('Seg3TimeSection', 'minimumTime')
-            maxTime = self.config.get('Seg3TimeSection', 'maxiumumTime')
+            minTime = float(self.config.get('Seg3TimeSection', 'minimumTime'))
+            maxTime = float(self.config.get('Seg3TimeSection', 'maxiumumTime'))
             if(time < minTime):
                 return "Leve"
             elif(time > maxTime):
