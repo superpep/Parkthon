@@ -215,7 +215,6 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("SELECT * from times where patient = '"+patient+"'")
         return cursorObj.fetchall()
-        
 
     def close(self):
         """
