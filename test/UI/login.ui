@@ -286,6 +286,11 @@
     <string>Base de datos</string>
    </property>
   </action>
+  <action name="db_export">
+   <property name="text">
+    <string>Base de datos</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

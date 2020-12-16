@@ -57,6 +57,5 @@ QPushButton info paciente: **moreInfo**
 
 ## TODO PYTHON
   
-- Importar i exportar bases de dades
 - Canviar colors a leve, medio i grave (Verd, groc i roig)
 - Fer finestreta per a canviar els temps minims i màxims

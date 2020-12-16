@@ -4,7 +4,7 @@ import sys
 import database_manager as sqlite
 import user_management
 import patient_management
-from __manifest__ import path_separator, load_properties, save_property, import_db
+from __manifest__ import path_separator, load_properties, save_property, import_db, copy_file
 import login
 import pyqtgraph as pg
 from time import sleep
@@ -23,6 +23,9 @@ class Chrono(QtWidgets.QMainWindow):
         
         self.action_import.triggered.connect(self.import_db)
         self.action_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
+
+        self.action_export.triggered.connect(self.export_db)
+        self.action_export.setShortcut(QtGui.QKeySequence("Ctrl+e"))
 
         self.saved_message_thread = message_thread(self.saved_msg)
         
@@ -82,6 +85,12 @@ class Chrono(QtWidgets.QMainWindow):
         self.mscounter = 0
         self.isreset = True
         self.showLCD()
+
+    def export_db(self):
+        export_path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save file', QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
+        
+        copy_file(load_properties().get('DatabaseSection', 'dbname'), export_path[0])
+        QtWidgets.QMessageBox.information(self, 'Parkthon', "La base de datos ha sido exportada con éxito")
 
     def import_db(self):
         import_db(self)

@@ -461,10 +461,22 @@ background-color: #a2adc2;</string>
     </property>
     <addaction name="action_import"/>
    </widget>
+   <widget class="QMenu" name="menuExportar">
+    <property name="title">
+     <string>Exportar</string>
+    </property>
+    <addaction name="action_export"/>
+   </widget>
    <addaction name="menuImportar"/>
+   <addaction name="menuExportar"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_import">
+   <property name="text">
+    <string>Base de datos</string>
+   </property>
+  </action>
+  <action name="action_export">
    <property name="text">
     <string>Base de datos</string>
    </property>

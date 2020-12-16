@@ -1,6 +1,7 @@
 import os
 import configparser
 from PyQt5 import QtWidgets, QtCore
+import shutil
 
 path_separator = os.path.sep
 CONFIG_FILE_NAME = "ConfigFile.properties"
@@ -48,6 +49,9 @@ def save_property(section, key, value):
 
 def file_exists(file):
     return os.path.isfile(file)
+
+def copy_file(file_path, new_path):
+    shutil.copyfile(file_path, new_path)
 
 def import_db(window):
     new_db_path = QtWidgets.QFileDialog.getOpenFileName(window, "Open file", QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
