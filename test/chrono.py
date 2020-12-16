@@ -127,7 +127,7 @@ class Chrono(QtWidgets.QMainWindow):
         if(lap == -1): # -1 és temps total
             minTotalTime = self.config.get('TotalTimeSection', 'minimumTime')
             maxTotalTime = self.config.get('TotalTimeSection', 'maxiumumTime')
-            if(time < minTotalTime:
+            if(time < minTotalTime):
                 return "Leve"
             elif(time > maxTotalTime):
                 return "Grave"
