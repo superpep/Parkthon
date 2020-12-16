@@ -10,23 +10,10 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="Información del paciente">
+  <property name="info" stdset="0">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="info_patient">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>40</y>
-      <width>351</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>pos algo per aci primo q diga info de nosequi sas</string>
-    </property>
-   </widget>
    <widget class="QTableView" name="info_table">
     <property name="geometry">
      <rect>
@@ -35,6 +22,19 @@
       <width>751</width>
       <height>451</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="patient_info">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>30</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

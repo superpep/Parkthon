@@ -168,7 +168,14 @@ class Chrono(QtWidgets.QMainWindow):
         total_time = 0
         for time in self.lap_times:
             total_time += time
-        self.quali_label.setText("Clasificación: "+self.get_lap_type(-1, total_time))
+        lap_type = get_lap_type(-1, total_time)
+        if(lap_type == "Leve"):
+            color = "green"
+        elif(lap_type == "Moderado"):
+            color = "yellow"
+        else:
+            color = "red"
+        self.quali_label.setText("Clasificación: <span style='color:"+color+";'>"+lap_type+"</span>")
                 
     def append_item_list_view(self, item):
         item.setTextAlignment(QtCore.Qt.AlignHCenter)
@@ -277,7 +284,7 @@ def get_lap_type(lap, time):
             return "Moderado"
     elif(lap == 0):
         minTime = float(config.get('Seg1TimeSection', 'minimumTime'))
-        maxTime = float(self.config.get('Seg1TimeSection', 'maxiumumTime'))
+        maxTime = float(config.get('Seg1TimeSection', 'maxiumumTime'))
         if(time < minTime):
             return "Leve"
         elif(time > maxTime):

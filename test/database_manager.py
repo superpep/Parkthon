@@ -151,6 +151,22 @@ class sqlite_connector:
         cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
 
+    def get_patient_name(self, doctor_dni, patient):
+        """
+        Retorna els nom del pacient donat el dni del pacient i el seu metge
+
+        Entrada:
+            doctor_dni (string): Dni del metge
+            patient (string): Dni del pacient
+        
+        Eixida:
+            (patient_full_name): Nom complet del pacient
+        """
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT name, surname FROM patients where doctor = '"+doctor_dni+"' and dni = '"+patient+"'")
+        rows = cursorObj.fetchall()
+        return rows[0][0]+" "+rows[0][1]
+
     def add_patient(self, dni, name, surname, doctor):
         """
         Afegeix un pacient

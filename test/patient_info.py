@@ -9,9 +9,16 @@ class Patient_info(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'patient_info.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
+        self.patient_info.setAlignment(QtCore.Qt.AlignCenter)
+
+
         config = load_properties()
         self.patient_dni = config.get('PatientsSection', 'selectedPatient')
+        doctor = config.get('UsersSection', 'currentuser')
 
+        sql_con = sqlite.sqlite_connector()
+        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
+        sql_con.close()
         sql_con = sqlite.sqlite_connector()
         data = sql_con.get_patient_times(self.patient_dni)
        
