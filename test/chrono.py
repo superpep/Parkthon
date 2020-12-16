@@ -23,11 +23,11 @@ class Chrono(QtWidgets.QMainWindow):
         
         self.saved_message_thread = message_thread(self.saved_msg)
         
-        styles = {'color':'(53,100,184)', 'font-size':'15px'}
+        styles = {'color':'(162,173,194)', 'font-size':'15px'}
         self.graph.showGrid(x=True, y=True)
         self.graph.setLabel('left', 'Tiempo por vuelta', **styles)
         self.graph.setLabel('bottom', 'Días', **styles)
-        self.graph.setBackground('#f0f0f0')
+        self.graph.setBackground('#e9e8eb')
 
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
@@ -47,22 +47,19 @@ class Chrono(QtWidgets.QMainWindow):
         self.fill_combo()
         self.comboPatients.currentIndexChanged.connect(self.select_new_patient)
 
-        self.edit_welcome()
-
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
         self.quali_label.setStyleSheet("QWidget#quali_label{ color: black }")
         self.saved_msg.setStyleSheet("QWidget#saved_msg{ color: black }")
-        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #f0f0f0}")
-        self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #d6d6d6; }")
-        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#cronIcon::pressed{background-color: #555555;}")
-        self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #EEEEEE;} QPushButton#users::pressed{background-color: #555555;}")
-        self.pacientesIcon.setStyleSheet("QPushButton#pacientesIcon::hover{ border: none; background-color: #EEEEEE;} QPushButton#pacientesIcon::pressed{background-color: #555555;}")
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #fdfdff}")
+        self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #555860; }")
+        self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #a2adc2;} QPushButton#cronIcon::pressed{background-color: #222628;}")
+        self.users.setStyleSheet("QPushButton#users::hover{ border: none; background-color: #a2adc2;} QPushButton#users::pressed{background-color: #222628;}")
+        self.pacientesIcon.setStyleSheet("QPushButton#pacientesIcon::hover{ border: none; background-color: #a2adc2;} QPushButton#pacientesIcon::pressed{background-color: #222628;}")
 
-        self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #f67c7c;} ")
-        self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #f67c7c;} ")
-        self.bienvenida.setFont(QFont('Helvetica', 40)) 
+        self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #e9e8eb;} ")
+        self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #e9e8eb;} ")
 
         self.model = QtGui.QStandardItemModel()
         self.lapsList.setModel(self.model)
@@ -121,13 +118,9 @@ class Chrono(QtWidgets.QMainWindow):
         dates = sql_con.get_patient_dates(self.current_patient)
 
         sql_con.close()
-        pen = pg.mkPen(color=(53,100,184), width=4)
+        pen = pg.mkPen(color=(162,173,194), width=4)
         self.graph.clear()
         self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
-
-    def edit_welcome(self):
-        texto = "Bienvenido/a, " + self.current_user + "."
-        self.bienvenida.setText(texto.upper())
 
     def get_lap_type(self, lap, time):
         if(lap == -1): # -1 és temps total

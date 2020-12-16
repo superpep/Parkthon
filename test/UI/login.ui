@@ -73,7 +73,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:#f0f0f0; color: black; border-radius: 10px</string>
+     <string notr="true">background-color:#fdfdff; color: black; border-radius: 10px</string>
     </property>
     <widget class="QPushButton" name="loginButton">
      <property name="geometry">
@@ -85,7 +85,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #3564b8; color: white;</string>
+      <string notr="true">background-color: #a2adc2; color: white;</string>
      </property>
      <property name="text">
       <string>Login</string>
@@ -101,7 +101,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #d6d6d6; color: black; border-radius: 5px;</string>
+      <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
      </property>
      <property name="inputMask">
       <string/>
@@ -129,7 +129,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #d6d6d6; color: black;border-radius: 5px;</string>
+      <string notr="true">background-color: #e9e8eb; color: black;border-radius: 5px;</string>
      </property>
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
@@ -227,7 +227,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #d6d6d6; </string>
+      <string notr="true">background-color: #dde7dc; </string>
      </property>
      <property name="text">
       <string/>
@@ -249,7 +249,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #d6d6d6;</string>
+      <string notr="true">background-color: #dde7dc;</string>
      </property>
      <property name="text">
       <string/>

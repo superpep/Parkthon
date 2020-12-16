@@ -76,7 +76,7 @@ font-weight: bold;
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/dni.png</normaloff>../img/dni.png</iconset>
+       <normaloff>../img/latUser.png</normaloff>../img/latUser.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -114,7 +114,7 @@ font-weight: bold;
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/lapsBlack.png</normaloff>../img/lapsBlack.png</iconset>
+       <normaloff>../img/latCron.png</normaloff>../img/latCron.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -152,7 +152,7 @@ font-weight: bold;
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/pacientes.png</normaloff>../img/pacientes.png</iconset>
+       <normaloff>../img/latPacientes.png</normaloff>../img/latPacientes.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -164,31 +164,6 @@ font-weight: bold;
       <bool>true</bool>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="bienvenida">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>0</y>
-      <width>1181</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: black; </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
    </widget>
    <widget class="Line" name="line">
     <property name="geometry">
@@ -225,10 +200,10 @@ font-weight: bold;
    <widget class="QWidget" name="izquierda" native="true">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>70</y>
+      <x>61</x>
+      <y>0</y>
       <width>701</width>
-      <height>681</height>
+      <height>751</height>
      </rect>
     </property>
     <widget class="QComboBox" name="comboPatients">
@@ -254,13 +229,13 @@ font-weight: bold;
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>620</y>
+       <y>690</y>
        <width>371</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white; background-color: #3564b8;</string>
+      <string notr="true">color: white; background-color: #a2adc2;</string>
      </property>
      <property name="text">
       <string>Mas información acerca del paciente</string>
@@ -270,9 +245,9 @@ font-weight: bold;
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>50</y>
+       <y>60</y>
        <width>611</width>
-       <height>541</height>
+       <height>601</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -284,9 +259,9 @@ font-weight: bold;
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>70</y>
+      <y>0</y>
       <width>611</width>
-      <height>681</height>
+      <height>751</height>
      </rect>
     </property>
     <widget class="QPushButton" name="saveIcon">
@@ -312,7 +287,7 @@ font-weight: bold;
       <string notr="true">border-radius: 20px;
 font-weight: bold;
 color: white;
-background-color: #B8C8E6;</string>
+background-color: #a2adc2;</string>
      </property>
      <property name="text">
       <string/>
@@ -413,7 +388,7 @@ background-color: #B8C8E6;</string>
       <string notr="true">border-radius: 20px;
 font-weight: bold;
 color: white;
-background-color: #3564b8;</string>
+background-color: #a2adc2;</string>
      </property>
      <property name="text">
       <string/>
