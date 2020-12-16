@@ -42,7 +42,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
 
-        self.comboPatients.setStyleSheet("QComboBox#comboPatients { border: 1px solid gray; border-radius: 5px; } QComboBox#comboPatients::down-arrow{ image: ./img/arrow.png } QComboBox#comboPatients QAbstractItemView{ background-color: #fdfdff; color: #222628; selection-background-color: #555860; selection-color: #fdfdff;}")
+        self.comboPatients.setStyleSheet("QComboBox#comboPatients { border: 1px solid gray; border-radius: 5px; } QComboBox#comboPatients::down-arrow{ image: img/latCron.png } QComboBox#comboPatients QAbstractItemView{ background-color: #fdfdff; color: #222628; selection-background-color: #555860; selection-color: #fdfdff;}")
         self.comboPatients.setPlaceholderText("Selecciona un paciente")
         self.patients_dni = []
         self.current_patient = -1

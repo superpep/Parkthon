@@ -184,19 +184,6 @@ font-weight: bold;
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="saved_msg">
-    <property name="geometry">
-     <rect>
-      <x>1040</x>
-      <y>560</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QWidget" name="izquierda" native="true">
     <property name="geometry">
      <rect>
@@ -426,9 +413,28 @@ background-color: #a2adc2;</string>
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>540</y>
+       <y>570</y>
        <width>191</width>
        <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 30px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="saved_msg">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>530</y>
+       <width>161</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
