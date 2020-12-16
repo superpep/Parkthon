@@ -18,8 +18,8 @@ class Chrono(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'cronometro.ui', self) # Load the .ui file
         self.show() # Show the GUI
         
-        self.config = load_properties()
-        self.current_user = self.config.get('UsersSection', 'currentUser')
+        config = load_properties()
+        self.current_user = config.get('UsersSection', 'currentUser')
         
         
         self.saved_message_thread = message_thread(self.saved_msg)
@@ -123,44 +123,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.clear()
         self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
 
-    def get_lap_type(self, lap, time):
-        if(lap == -1): # -1 és temps total
-            minTotalTime = float(self.config.get('TotalTimeSection', 'minimumTime'))
-            maxTotalTime = float(self.config.get('TotalTimeSection', 'maxiumumTime'))
-            if(time < minTotalTime):
-                return "Leve"
-            elif(time > maxTotalTime):
-                return "Grave"
-            else:
-                return "Moderado"
-        elif(lap == 0):
-            minTime = float(self.config.get('Seg1TimeSection', 'minimumTime'))
-            maxTime = float(self.config.get('Seg1TimeSection', 'maxiumumTime'))
-            if(time < minTime):
-                return "Leve"
-            elif(time > maxTime):
-                return "Grave"
-            else:
-                return "Moderado"
-        elif(lap == 1):
-            minTime = float(self.config.get('Seg2TimeSection', 'minimumTime'))
-            maxTime = float(self.config.get('Seg2TimeSection', 'maxiumumTime'))
-            if(time < minTime):
-                return "Leve"
-            elif(time > maxTime):
-                return "Greu"
-            else:
-                return "Moderado"
-        else:
-            minTime = float(self.config.get('Seg3TimeSection', 'minimumTime'))
-            maxTime = float(self.config.get('Seg3TimeSection', 'maxiumumTime'))
-            if(time < minTime):
-                return "Leve"
-            elif(time > maxTime):
-                return "Grave"
-            else:
-                return "Moderado"
-
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro
@@ -170,10 +132,10 @@ class Chrono(QtWidgets.QMainWindow):
             text = "Vuelta "+str(self.lap_num+1)+": "
             if(self.lap_num ==  0):
                 text += "{:.2f}".format(this_time)
-                text += " - "+self.get_lap_type(self.lap_num, this_time)
+                text += " - "+get_lap_type(self.lap_num, this_time)
             else:
                 text += "{:.2f}".format(this_time - self.previous_time)
-                text += " - "+self.get_lap_type(self.lap_num, this_time - self.previous_time)
+                text += " - "+get_lap_type(self.lap_num, this_time - self.previous_time)
             
             
             self.lap_num += 1
@@ -287,6 +249,45 @@ class message_thread(QtCore.QThread):
         self.saved_msg.setText("¡Guardado!")
         sleep(2)
         self.saved_msg.setText("")
+
+def get_lap_type(lap, time):
+    config = load_properties()
+    if(lap == -1): # -1 és temps total
+        minTotalTime = float(config.get('TotalTimeSection', 'minimumTime'))
+        maxTotalTime = float(config.get('TotalTimeSection', 'maxiumumTime'))
+        if(time < minTotalTime):
+            return "Leve"
+        elif(time > maxTotalTime):
+            return "Grave"
+        else:
+            return "Moderado"
+    elif(lap == 0):
+        minTime = float(config.get('Seg1TimeSection', 'minimumTime'))
+        maxTime = float(self.config.get('Seg1TimeSection', 'maxiumumTime'))
+        if(time < minTime):
+            return "Leve"
+        elif(time > maxTime):
+            return "Grave"
+        else:
+            return "Moderado"
+    elif(lap == 1):
+        minTime = float(config.get('Seg2TimeSection', 'minimumTime'))
+        maxTime = float(config.get('Seg2TimeSection', 'maxiumumTime'))
+        if(time < minTime):
+            return "Leve"
+        elif(time > maxTime):
+            return "Greu"
+        else:
+            return "Moderado"
+    else:
+        minTime = float(config.get('Seg3TimeSection', 'minimumTime'))
+        maxTime = float(config.get('Seg3TimeSection', 'maxiumumTime'))
+        if(time < minTime):
+            return "Leve"
+        elif(time > maxTime):
+            return "Grave"
+        else:
+            return "Moderado"
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
