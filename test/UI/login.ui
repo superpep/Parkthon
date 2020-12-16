@@ -52,7 +52,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-10</y>
       <width>301</width>
       <height>281</height>
      </rect>
@@ -263,7 +263,29 @@
     </widget>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>300</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuImportar">
+    <property name="title">
+     <string>Importar</string>
+    </property>
+    <addaction name="db_import"/>
+   </widget>
+   <addaction name="menuImportar"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="db_import">
+   <property name="text">
+    <string>Base de datos</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -4,7 +4,7 @@ import sys
 import database_manager as sqlite
 import user_management
 import patient_management
-from __manifest__ import path_separator, load_properties, save_property
+from __manifest__ import path_separator, load_properties, save_property, import_db
 import login
 import pyqtgraph as pg
 from time import sleep
@@ -21,7 +21,9 @@ class Chrono(QtWidgets.QMainWindow):
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
         
-        
+        self.action_import.triggered.connect(self.import_db)
+        self.action_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
+
         self.saved_message_thread = message_thread(self.saved_msg)
         
         styles = {'color':'(162,173,194)', 'font-size':'15px'}
@@ -80,8 +82,10 @@ class Chrono(QtWidgets.QMainWindow):
         self.mscounter = 0
         self.isreset = True
         self.showLCD()
-        
-        
+
+    def import_db(self):
+        import_db(self)
+
     def show_more_info(self):
         save_property('PatientsSection', 'selectedPatient', self.current_patient)
         self.window = patient_info.Patient_info()

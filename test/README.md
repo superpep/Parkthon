@@ -57,4 +57,6 @@ QPushButton info paciente: **moreInfo**
 
 ## TODO PYTHON
   
-- Tenim q afegir un guardar dades xd
+- Importar i exportar bases de dades
+- Canviar colors a leve, medio i grave (Verd, groc i roig)
+- Fer finestreta per a canviar els temps minims i màxims

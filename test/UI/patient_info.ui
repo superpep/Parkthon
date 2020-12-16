@@ -10,7 +10,7 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="Información del paciente">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">

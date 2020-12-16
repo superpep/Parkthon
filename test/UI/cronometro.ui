@@ -446,7 +446,29 @@ background-color: #a2adc2;</string>
     </widget>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1366</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuImportar">
+    <property name="title">
+     <string>Importar</string>
+    </property>
+    <addaction name="action_import"/>
+   </widget>
+   <addaction name="menuImportar"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_import">
+   <property name="text">
+    <string>Base de datos</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

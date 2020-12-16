@@ -1,5 +1,6 @@
 import os
 import configparser
+from PyQt5 import QtWidgets, QtCore
 
 path_separator = os.path.sep
 CONFIG_FILE_NAME = "ConfigFile.properties"
@@ -8,7 +9,8 @@ def create_properties():
     if(file_exists("chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
-        config.set('DatabaseSection', 'dbname', 'parkthon.db')
+        
+        config.set('DatabaseSection', 'dbname', 'DB'+path_separator+'parkthon.db')
         config.add_section("UsersSection")
         config.set('UsersSection', 'currentUser', '')
         config.add_section("PatientsSection")
@@ -46,3 +48,9 @@ def save_property(section, key, value):
 
 def file_exists(file):
     return os.path.isfile(file)
+
+def import_db(window):
+    new_db_path = QtWidgets.QFileDialog.getOpenFileName(window, "Open file", QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
+    if (new_db_path[0] != ""):
+        config = load_properties()
+        save_property('DatabaseSection', 'dbname', new_db_path[0])

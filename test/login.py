@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtGui
 import database_manager as sqlite
 import chrono
-from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists
+from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists, import_db
 from PyQt5.QtCore import QPropertyAnimation, QRect
 
 
@@ -11,11 +11,17 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
             
         self.show() # Show the GUI
+
+        self.db_import.triggered.connect(self.import_db)
+        self.db_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
         self.passwd.returnPressed.connect(self.login_button_clicked)
         if(not file_exists(CONFIG_FILE_NAME)):
         	create_properties()
+
+    def import_db(self):
+        import_db(self)
 
     def login_button_clicked(self):
         sql_con = sqlite.sqlite_connector()
