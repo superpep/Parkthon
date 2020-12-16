@@ -18,8 +18,9 @@ class Chrono(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'cronometro.ui', self) # Load the .ui file
         self.show() # Show the GUI
         
-        config = load_properties()
-        self.current_user = config.get('UsersSection', 'currentUser')
+        self.config = load_properties()
+        self.current_user = self.config.get('UsersSection', 'currentUser')
+        
         
         self.saved_message_thread = message_thread(self.saved_msg)
         
@@ -124,31 +125,39 @@ class Chrono(QtWidgets.QMainWindow):
 
     def get_lap_type(self, lap, time):
         if(lap == -1): # -1 és temps total
-            if(time < 41.91):
+            minTotalTime = self.config.get('TotalTimeSection', 'minimumTime')
+            maxTotalTime = self.config.get('TotalTimeSection', 'maxiumumTime')
+            if(time < minTotalTime:
                 return "Leve"
-            elif(time > 60.32):
-                return "Greu"
+            elif(time > maxTotalTime):
+                return "Grave"
             else:
-                return "Moderat"
+                return "Moderado"
         elif(lap == 0):
-            if(time < 17.16):
+            minTime = self.config.get('Seg1TimeSection', 'minimumTime')
+            maxTime = self.config.get('Seg1TimeSection', 'maxiumumTime')
+            if(time < minTime):
                 return "Leve"
-            elif(time > 23.56):
-                return "Greu"
+            elif(time > maxTime):
+                return "Grave"
             else:
-                return "Moderat"
+                return "Moderado"
         elif(lap == 1):
-            if(time < 15.14):
+            minTime = self.config.get('Seg2TimeSection', 'minimumTime')
+            maxTime = self.config.get('Seg2TimeSection', 'maxiumumTime')
+            if(time < minTime):
                 return "Leve"
-            elif(time > 25.90):
+            elif(time > maxTime):
                 return "Greu"
             else:
                 return "Moderado"
         else:
-            if(time < 10.43):
+            minTime = self.config.get('Seg3TimeSection', 'minimumTime')
+            maxTime = self.config.get('Seg3TimeSection', 'maxiumumTime')
+            if(time < minTime):
                 return "Leve"
-            elif(time > 13.34):
-                return "Greu"
+            elif(time > maxTime):
+                return "Grave"
             else:
                 return "Moderado"
 
