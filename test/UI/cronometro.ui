@@ -269,7 +269,7 @@ font-weight: bold;</string>
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>470</y>
+       <y>480</y>
        <width>41</width>
        <height>41</height>
       </rect>
@@ -344,11 +344,13 @@ background-color: #a2adc2;</string>
        <x>170</x>
        <y>370</y>
        <width>261</width>
-       <height>81</height>
+       <height>71</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #f0f0f0; color: black;</string>
+      <string notr="true">background-color: #f0f0f0; color: black;
+border: 1px solid #222628;
+border-radius: 8px;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>

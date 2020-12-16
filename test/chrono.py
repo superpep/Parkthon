@@ -28,7 +28,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.showGrid(x=True, y=True)
         self.graph.setLabel('left', 'Tiempo por vuelta', **styles)
         self.graph.setLabel('bottom', 'Días', **styles)
-        self.graph.setBackground('#e9e8eb')
+        self.graph.setBackground('#fdfdff')
 
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
