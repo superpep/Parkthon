@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic
-from __manifest__ import path_separator
+from __manifest__ import path_separator, comprobation_message
 import database_manager as sqlite
 import user_management
 
@@ -11,7 +11,9 @@ class Create_user(QtWidgets.QMainWindow):
         self.show()  # Show the GUI
 
         self.newUserButton.clicked.connect(self.create_user)
-        self.newUserButton.returnPressed.connect(self.create_user)
+        
+        self.user.returnPressed.connect(self.create_user)
+        self.passwd.returnPressed.connect(self.create_user)
         
 
     def create_user(self):
@@ -19,8 +21,8 @@ class Create_user(QtWidgets.QMainWindow):
         passwd = self.passwd.text()
         if (len(dni) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El DNI debe ser de 9 dígitos.")
-        elif (len(passwd) < 1):
-            QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña no puede estar vacía")
+        elif (len(passwd) < 8):
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña no puede ser menor a 8 carácteres.")
         else:
             try:
                 sql_con = sqlite.sqlite_connector()

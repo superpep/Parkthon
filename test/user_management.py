@@ -66,31 +66,34 @@ class Users_management(QtWidgets.QMainWindow):
         self.new_window = create_user.Create_user()
 
     def change_pass(self):
-        acces_granted = sql_con.is_admin(self.dni)
         sql_con = sqlite.sqlite_connector()
-        if(not acces_granted): # Si no és admin
-            last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca su contraseña actual, '+self.dni)
+        acces_granted = sql_con.is_admin(self.current_user)
+        if(not acces_granted): # Si no és admin i no és ell mateix
+            last_passwd, ok = QtWidgets.QInputDialog.getText(self, 'Identifícate', 'Introduzca su contraseña actual, '+self.dni, QtWidgets.QLineEdit.Password)
             if ok:
                 if(not sql_con.login(self.dni, last_passwd)): # SI L'AUTENTICACIÓ NO ÉS CORRECT
                     QtWidgets.QMessageBox.critical(self, 'ERROR', "Contraseña incorrecta.")
+                    sql_con.close()
                     return
                 else:
                     acces_granted = True
             else:
+                sql_con.close()
                 return
-        if(acces_granted):
-            valid_password = False
-            while(not valid_password):
-                passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)')
-                if ok:
-                    if(len(passwd) < 8):
-                        QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
-                    else:
-                        valid_password = True
+       
+        valid_password = False
+        while(not valid_password):
+            passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)', QtWidgets.QLineEdit.Password)
+            if ok:
+                if(len(passwd) < 8):
+                    QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
                 else:
-                    return
-            sql_con.change_password(self.dni, passwd)
-            QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
+                    valid_password = True
+            else:
+                sql_con.close()
+                return
+        sql_con.change_password(self.dni, passwd)
+        QtWidgets.QMessageBox.information(self, 'Contraseña actualizada', "¡La contraseña ha sido actualizada con éxito!")
         sql_con.close()
 
 

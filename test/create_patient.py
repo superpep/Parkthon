@@ -9,17 +9,18 @@ class Create_patient(QtWidgets.QMainWindow):
         self.show() # Show the GUI
 
         self.newPatientButton.clicked.connect(self.add_patient)
-        self.newPatientButton.returnPressed.connect(self.add_patient)
+
+        self.nom.returnPressed.connect(self.add_patient)
+        self.cognom.returnPressed.connect(self.add_patient)
+        self.dni.returnPressed.connect(self.add_patient)
         
 
     def add_patient(self):
         config = load_properties()
         current_user = config.get('UsersSection', 'currentUser')
         sql_con = sqlite.sqlite_connector()
-        if (len(dni) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
+        if (len(self.dni.text()) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El DNI debe ser de 9 dígitos.")
-        elif (len(passwd) < 1):
-            QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña no puede estar vacía")
         else:
             try:
                 sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), current_user)
