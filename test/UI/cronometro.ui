@@ -325,39 +325,6 @@ background-color: #a2adc2;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QListView" name="lapsList">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>370</y>
-       <width>261</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #f0f0f0; color: black;
-border: 1px solid #222628;
-border-radius: 8px;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="layoutMode">
-      <enum>QListView::SinglePass</enum>
-     </property>
-     <property name="spacing">
-      <number>1</number>
-     </property>
-     <property name="batchSize">
-      <number>100</number>
-     </property>
-    </widget>
     <widget class="QPushButton" name="startStop">
      <property name="geometry">
       <rect>
@@ -436,6 +403,27 @@ background-color: #a2adc2;</string>
        <width>161</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lapsList">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>370</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black;
+border: 1px solid #222628;
+border-radius: 8px;</string>
      </property>
      <property name="text">
       <string/>
