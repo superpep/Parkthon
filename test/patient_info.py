@@ -38,6 +38,7 @@ class TableModel(QtCore.QAbstractTableModel):
         self.setHeaderData(3, Qt.Horizontal, "Segmento 3")
         self.setHeaderData(4, Qt.Horizontal, "Tiempo total")
         self.setHeaderData(5, Qt.Horizontal, "Clasificación total")
+        self._data = []
         if(not data):
             self._data[0][0] = "N/A"
         else:
