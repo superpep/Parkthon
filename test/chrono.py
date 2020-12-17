@@ -45,7 +45,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.saveIcon.hide()
 
         
-
+        self.startStop.setStyleSheet("QPushButton#startStop{ border-radius: 20px; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#startStop::hover{ background-color: #BDC5D4;} QPushButton#startStop::pressed{background-color: #717987;}")
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)

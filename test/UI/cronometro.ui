@@ -374,10 +374,7 @@ background-color: #a2adc2;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius: 20px;
-font-weight: bold;
-color: white;
-background-color: #a2adc2;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
