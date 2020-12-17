@@ -185,7 +185,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #3564b8; color: white; font-weight:bold;</string>
+     <string notr="true">background-color: #a2adc2; color: white; font-weight:bold;</string>
     </property>
     <property name="text">
      <string>Crear usuario</string>
@@ -201,7 +201,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #3564b8; color: white; font-weight:bold;</string>
+     <string notr="true">background-color: #a2adc2; color: white; font-weight:bold;</string>
     </property>
     <property name="text">
      <string>Eliminar usuario</string>
@@ -217,7 +217,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #3564b8; color: white; font-weight:bold;</string>
+     <string notr="true">background-color: #a2adc2; color: white; font-weight:bold;</string>
     </property>
     <property name="text">
      <string>Cambiar contraseña</string>
@@ -233,7 +233,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #3564b8;</string>
+     <string notr="true">background-color: #a2adc2;</string>
     </property>
     <property name="text">
      <string/>

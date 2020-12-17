@@ -197,7 +197,7 @@ font-weight: bold;
      <property name="geometry">
       <rect>
        <x>250</x>
-       <y>10</y>
+       <y>17</y>
        <width>231</width>
        <height>26</height>
       </rect>
@@ -222,7 +222,7 @@ font-weight: bold;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #222628; background-color: #a2adc2; 
+      <string notr="true">color: white; background-color: #a2adc2; 
 font-weight: bold;</string>
      </property>
      <property name="text">

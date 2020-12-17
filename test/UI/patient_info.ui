@@ -10,10 +10,16 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #555860;</string>
+  </property>
   <property name="info" stdset="0">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QTableView" name="info_table">
     <property name="geometry">
      <rect>
@@ -23,18 +29,31 @@
       <height>451</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
    </widget>
    <widget class="QLabel" name="patient_info">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>30</y>
-      <width>251</width>
-      <height>16</height>
+      <x>270</x>
+      <y>20</y>
+      <width>271</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; 
+font-size: 25px;
+font-weight: bold;
+text-transform: uppercase;
+</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
