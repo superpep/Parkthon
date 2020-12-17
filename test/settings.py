@@ -7,6 +7,7 @@ class Settings(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'settings.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #555860}")
         self.show_times(load_properties())
         self.edit_button.clicked.connect(self.edit_mode)
 

@@ -6,28 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
-    <height>489</height>
+    <width>490</width>
+    <height>422</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>490</width>
+    <height>422</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>490</width>
+    <height>422</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Ajustes</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:#555860; color: black; border-radius: 10px</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">color: black; border-radius: 10px</string>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>90</y>
-      <width>111</width>
+      <x>30</x>
+      <y>100</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px;</string>
     </property>
     <property name="text">
      <string>SEGMENTO 1:</string>
@@ -39,8 +54,8 @@
    <widget class="QLineEdit" name="seg1_min">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>90</y>
+      <x>190</x>
+      <y>100</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -55,8 +70,8 @@
    <widget class="QLineEdit" name="seg2_min">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>140</y>
+      <x>190</x>
+      <y>150</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -71,14 +86,14 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>140</y>
-      <width>111</width>
+      <x>30</x>
+      <y>150</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px;</string>
     </property>
     <property name="text">
      <string>SEGMENTO 2:</string>
@@ -90,8 +105,8 @@
    <widget class="QLineEdit" name="seg3_min">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>190</y>
+      <x>190</x>
+      <y>200</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -106,14 +121,14 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>190</y>
-      <width>111</width>
+      <x>30</x>
+      <y>200</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px;</string>
     </property>
     <property name="text">
      <string>SEGMENTO 3:</string>
@@ -125,14 +140,14 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>250</y>
-      <width>111</width>
+      <x>35</x>
+      <y>260</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px;</string>
     </property>
     <property name="text">
      <string>TIEMPO TOTAL:</string>
@@ -144,8 +159,8 @@
    <widget class="QLineEdit" name="tiempoTotal_min">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>250</y>
+      <x>190</x>
+      <y>260</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -163,11 +178,14 @@
    <widget class="QPushButton" name="edit_button">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>310</y>
+      <x>320</x>
+      <y>330</y>
       <width>113</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; font-weight: bold; color: #fdfdff; border-radius: 8px;</string>
     </property>
     <property name="text">
      <string>Editar</string>
@@ -176,8 +194,8 @@
    <widget class="QLineEdit" name="seg1_max">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>90</y>
+      <x>320</x>
+      <y>100</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -192,8 +210,8 @@
    <widget class="QLineEdit" name="seg2_max">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>140</y>
+      <x>320</x>
+      <y>150</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -208,8 +226,8 @@
    <widget class="QLineEdit" name="seg3_max">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>190</y>
+      <x>320</x>
+      <y>200</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -224,8 +242,8 @@
    <widget class="QLineEdit" name="tiempoTotal_max">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>250</y>
+      <x>320</x>
+      <y>260</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -243,14 +261,14 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>50</y>
+      <x>190</x>
+      <y>60</y>
       <width>111</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px; </string>
     </property>
     <property name="text">
      <string>MÍNIMO</string>
@@ -262,14 +280,14 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>50</y>
+      <x>320</x>
+      <y>60</y>
       <width>111</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white;</string>
+     <string notr="true">color: white; font-size: 18px; </string>
     </property>
     <property name="text">
      <string>MÁXIMO</string>
@@ -278,13 +296,48 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>305</x>
+      <y>90</y>
+      <width>10</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>43</x>
+      <y>20</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../img/latSettings.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>651</width>
+     <width>490</width>
      <height>22</height>
     </rect>
    </property>
