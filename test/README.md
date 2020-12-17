@@ -48,6 +48,13 @@ Widget graficas: **graph** \
 QPushButton info paciente: **moreInfo** \
 QPushButton settings **settingsIcon**
 
+## Ajustes
+
+QLineEdit segmento1: **seg1** \
+QLineEdit segmento2: **seg2** \
+QLineEdit segmento3: **seg3** \
+QLineEdit tiempo total: **tiempoTotal**
+
 ## TODO USER INTERFACE
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
