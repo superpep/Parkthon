@@ -7,6 +7,9 @@ path_separator = os.path.sep
 CONFIG_FILE_NAME = "ConfigFile.properties"
 
 def create_properties():
+    """
+    Crea l'arxiu de propietats en cas de que no existixca
+    """
     if(file_exists("chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
@@ -37,6 +40,10 @@ def create_properties():
             config.write(configfile)
 
 def load_properties():
+    """
+    Carrega l'arxiu de propietats
+    config (Object) L'apuntador al fitxer de configuraicó
+    """
     config = configparser.RawConfigParser()
     config.read(CONFIG_FILE_NAME)
     return config

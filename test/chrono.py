@@ -4,6 +4,7 @@ import sys
 import database_manager as sqlite
 import user_management
 import patient_management
+from settings import Settings
 from __manifest__ import path_separator, load_properties, save_property, import_db, copy_file
 import login
 import pyqtgraph as pg
@@ -35,6 +36,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#fdfdff')
 
+        
+
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
 
@@ -46,6 +49,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
+        self.settingsIcon.clicked.connect(self.open_settings)
 
         self.comboPatients.setStyleSheet("QComboBox#comboPatients QAbstractItemView{ background-color: #fdfdff; color: #222628; selection-background-color: #555860; selection-color: #fdfdff;}")
         self.comboPatients.setPlaceholderText("Selecciona un paciente")
@@ -84,6 +88,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.isreset = True
         self.showLCD()
 
+    def open_settings(self):
+        self.new_window = Settings()
+
     def export_db(self):
         export_path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save file', QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
         
@@ -119,7 +126,6 @@ class Chrono(QtWidgets.QMainWindow):
 
     def select_new_patient(self):
         self.current_patient = self.patients_dni[self.comboPatients.currentIndex()]
-        print(self.current_patient)
         self.show_patient_graph()
         self.moreInfo.show()
         

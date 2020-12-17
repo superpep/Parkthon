@@ -67,5 +67,3 @@ QLineEdit tiempo total: **tiempoTotal**
 - Hacer hover en todos los botones y pressed tambien.
 
 ## TODO PYTHON
-  
-- Poder canviar els temps
