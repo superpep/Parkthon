@@ -118,7 +118,8 @@ class Chrono(QtWidgets.QMainWindow):
         sql_con.close()
 
     def select_new_patient(self):
-        self.current_patient = self.patients_dni[self.comboPatients.currentIndex()-1]
+        self.current_patient = self.patients_dni[self.comboPatients.currentIndex()]
+        print(self.current_patient)
         self.show_patient_graph()
         self.moreInfo.show()
         
