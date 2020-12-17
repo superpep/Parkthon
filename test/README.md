@@ -6,7 +6,8 @@ Input username: **user** \
 Input password: **passwd** \
 Button: **loginButton** \
 Label: **errorLabel** \
-Main color: #3564b8
+Main color: #3564b8 \
+Settings icon: **settingsIcon**
 
 ## New User
 
