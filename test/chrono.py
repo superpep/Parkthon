@@ -68,14 +68,11 @@ class Chrono(QtWidgets.QMainWindow):
         self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #e9e8eb;} ")
         self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #e9e8eb;} ")
 
-        self.model = QtGui.QStandardItemModel()
-        self.lapsList.setModel(self.model)
-        
-
         self.laps_image = QtGui.QIcon('img/laps.png')
         self.restart_image = QtGui.QIcon('img/restart.png')
         self.start_image = QtGui.QIcon('img/white.png')
 
+        self.text = ""
         self.lap_num = 0
         self.previous_time = 0
         self.lap_times = []
@@ -120,8 +117,6 @@ class Chrono(QtWidgets.QMainWindow):
         sql_con.close()
 
     def select_new_patient(self):
-
-
         self.current_patient = self.patients_dni[self.comboPatients.currentIndex()-1]
         self.show_patient_graph()
         self.moreInfo.show()
@@ -143,43 +138,41 @@ class Chrono(QtWidgets.QMainWindow):
         """
         if (self.mscounter > 1000):
             this_time = float(str(self.stopwatch)[:-1])
-            text = "Vuelta "+str(self.lap_num+1)+": "
+            self.text += "Vuelta "+str(self.lap_num+1)+": "
             if(self.lap_num ==  0):
-                text += "{:.2f}".format(this_time)
-                text += " - "+get_lap_type(self.lap_num, this_time)
+                self.text += "{:.2f}".format(this_time)
+                lap_type = get_lap_type(self.lap_num, this_time)
+                color = get_color_type(lap_type)
             else:
-                text += "{:.2f}".format(this_time - self.previous_time)
-                text += " - "+get_lap_type(self.lap_num, this_time - self.previous_time)
-            
+                lap_type = get_lap_type(self.lap_num, this_time)
+                color = get_color_type(lap_type)
+                self.text += "{:.2f}".format(this_time - self.previous_time)
+
+            self.text += " - <span style='color:"+color+";'>"+lap_type+"</span><br/>"
+            self.lapsList.setText(self.text)
             
             self.lap_num += 1
             self.lap_times.append(float("{:.2f}".format(this_time - self.previous_time)))
             self.previous_time = this_time
-            self.append_item_list_view(QtGui.QStandardItem(text))
             if (self.lap_num == 3):
                 
                 self.show_total_qualification()
                 self.saveIcon.show()
                 self.pause_watch()
                 self.previous_time = 0
-                self.append_item_list_view(QtGui.QStandardItem("VUELTAS COMPLETADAS"))
+                self.text += "VUELTAS COMPLETADAS"
+                self.lapsList.setText(self.text)
+                
+            
                 
     def show_total_qualification(self):
         total_time = 0
         for time in self.lap_times:
             total_time += time
         lap_type = get_lap_type(-1, total_time)
-        if(lap_type == "Leve"):
-            color = "green"
-        elif(lap_type == "Moderado"):
-            color = "yellow"
-        else:
-            color = "red"
+        color = get_color_type(lap_type)
+        
         self.quali_label.setText("Clasificación: <span style='color:"+color+";'>"+lap_type+"</span>")
-                
-    def append_item_list_view(self, item):
-        item.setTextAlignment(QtCore.Qt.AlignHCenter)
-        self.model.appendRow(item)
             
     def showLCD(self):
         """
@@ -202,7 +195,7 @@ class Chrono(QtWidgets.QMainWindow):
         Comença el cronómetre de forma visible
         """
         self.saveIcon.hide()
-        self.model.removeRows(0, self.model.rowCount())
+        self.lapsList.setText("")
         if(self.current_patient == -1):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Primero tienes que seleccionar un paciente.")
         else:
@@ -240,6 +233,8 @@ class Chrono(QtWidgets.QMainWindow):
         self.isreset = True
         self.showLCD()
         self.lap_times = []
+        self.text = ""
+        self.quali_label.setText("")
 
         self.startStop.clicked.disconnect(self.reset_watch)
         self.startStop.clicked.connect(self.start_crono)
@@ -297,7 +292,7 @@ def get_lap_type(lap, time):
         if(time < minTime):
             return "Leve"
         elif(time > maxTime):
-            return "Greu"
+            return "Grave"
         else:
             return "Moderado"
     else:
@@ -309,6 +304,14 @@ def get_lap_type(lap, time):
             return "Grave"
         else:
             return "Moderado"
+
+def get_color_type(lap_type):
+    if(lap_type == "Leve"):
+        return "green"
+    elif(lap_type == "Moderado"):
+        return "#ecca00"
+    else:
+        return "red"
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
