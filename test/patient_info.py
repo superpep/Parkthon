@@ -38,6 +38,7 @@ class TableModel(QtCore.QAbstractTableModel):
         self.setHeaderData(3, Qt.Horizontal, "Segmento 3")
         self.setHeaderData(4, Qt.Horizontal, "Tiempo total")
         self.setHeaderData(5, Qt.Horizontal, "Clasificación total")
+        if(data[0][0] == "") 
         self._data = data
 
     def setHeaderData(self, section, orientation, data, role=Qt.EditRole):
