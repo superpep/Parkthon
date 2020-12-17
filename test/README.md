@@ -55,6 +55,8 @@ QPushButton info paciente: **moreInfo**
 
 - Cambiar color de letra de dias y cronómetro de la gráfica.
 
+- Hacer hover en todos los botones y pressed tambien.
+
 ## TODO PYTHON
   
 - Canviar colors a leve, medio i grave (Verd, groc i roig)
