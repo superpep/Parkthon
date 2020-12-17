@@ -45,7 +45,15 @@ Lista laps: **lapsList** \
 Lista menu: **listaMenu** \
 ComboBox pacientes: **comboPatients** \
 Widget graficas: **graph** \
-QPushButton info paciente: **moreInfo**
+QPushButton info paciente: **moreInfo** \
+QPushButton settings **settingsIcon**
+
+## Ajustes
+
+QLineEdit segmento1: **seg1** \
+QLineEdit segmento2: **seg2** \
+QLineEdit segmento3: **seg3** \
+QLineEdit tiempo total: **tiempoTotal**
 
 ## TODO USER INTERFACE
 
@@ -54,6 +62,8 @@ QPushButton info paciente: **moreInfo**
 - Poner color de la letra del comboBox en negro (modo oscuro).
 
 - Cambiar color de letra de dias y cronómetro de la gráfica.
+
+- Hacer hover en todos los botones y pressed tambien.
 
 ## TODO PYTHON
   
