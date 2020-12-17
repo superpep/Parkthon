@@ -45,7 +45,8 @@ Lista laps: **lapsList** \
 Lista menu: **listaMenu** \
 ComboBox pacientes: **comboPatients** \
 Widget graficas: **graph** \
-QPushButton info paciente: **moreInfo**
+QPushButton info paciente: **moreInfo** \
+QPushButton settings **settingsIcon**
 
 ## TODO USER INTERFACE
 
