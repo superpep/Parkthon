@@ -164,6 +164,38 @@ font-weight: bold;
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="settingsIcon">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Pacientes</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../img/latSettings.png</normaloff>../img/latSettings.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="Line" name="line">
     <property name="geometry">
