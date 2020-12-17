@@ -68,7 +68,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/dni.png</normaloff>../img/dni.png</iconset>
+       <normaloff>../img/latUser.png</normaloff>../img/latUser.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -106,7 +106,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/lapsBlack.png</normaloff>../img/lapsBlack.png</iconset>
+       <normaloff>../img/latCron.png</normaloff>../img/latCron.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -144,7 +144,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../img/pacientes.png</normaloff>../img/pacientes.png</iconset>
+       <normaloff>../img/latPacientes.png</normaloff>../img/latPacientes.png</iconset>
      </property>
      <property name="iconSize">
       <size>
