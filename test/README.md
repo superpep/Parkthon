@@ -68,5 +68,4 @@ QLineEdit tiempo total: **tiempoTotal**
 
 ## TODO PYTHON
   
-- Canviar colors a leve, medio i grave (Verd, groc i roig)
-- Fer finestreta per a canviar els temps minims i màxims
+- Poder canviar els temps
