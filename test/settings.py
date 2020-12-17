@@ -23,7 +23,11 @@ class Settings(QtWidgets.QMainWindow):
 
         self.tiempoTotal_max.setText(config.get("TotalTimeSection", "maxiumumtime"))
         self.tiempoTotal_min.setText(config.get("TotalTimeSection", "minimumtime"))
+
     def edit_mode(self):
+        """
+        Entrem en mode edició
+        """
         self.seg1_max.setReadOnly(False)
         self.seg1_min.setReadOnly(False)
         
@@ -41,6 +45,9 @@ class Settings(QtWidgets.QMainWindow):
         self.edit_button.clicked.connect(self.save_mode)
 
     def save_mode(self):
+        """
+        Tornem al primer mode però guardant els canvis realitzats
+        """
         self.save_data(load_properties())
 
         self.seg1_max.setReadOnly(True)
@@ -60,7 +67,9 @@ class Settings(QtWidgets.QMainWindow):
         self.edit_button.clicked.connect(self.edit_mode)
     
     def save_data(self, config):
-
+        """
+        Desa tots els canvis
+        """
         save_property("Seg1TimeSection", "maxiumumtime", self.seg1_max.text())
         save_property("Seg1TimeSection", "minimumtime", self.seg1_min.text())
 

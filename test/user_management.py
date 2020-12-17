@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import patient_management
 import database_manager as sqlite
 import chrono
-from __manifest__ import path_separator, load_properties
+from __manifest__ import path_separator, load_properties, comprobation_message
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
@@ -98,7 +98,7 @@ class Users_management(QtWidgets.QMainWindow):
         if self.current_user == self.dni: # Arreglar aço
             QtWidgets.QMessageBox.critical(self, 'ERROR', "No puedes eliminar tu propio usuario.")
         else:
-            if my_button():
+            if comprobation_message('Comprobación', '¿Estás seguro de querer eliminar al usuario '+self.dni+'?'):
                 sql_con = sqlite.sqlite_connector()
                 if(sql_con.delete_user(self.dni)):
                     QtWidgets.QMessageBox.information(self, 'Confirmación', "El usuario ha sido eliminado con éxito.")
@@ -127,16 +127,3 @@ class Users_management(QtWidgets.QMainWindow):
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
         self.close()
-
-def my_button():
-    box = QtWidgets.QMessageBox()
-    box.setIcon(QtWidgets.QMessageBox.Question)
-    box.setWindowTitle('Comprobación')
-    box.setText('¿Estás seguro de querer eliminar al usuario '+self.dni+'?')
-    box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
-    buttonY = box.button(QtWidgets.QMessageBox.Yes)
-    buttonY.setText('Sí')
-    buttonN = box.button(QtWidgets.QMessageBox.No)
-    buttonN.setText('No')
-    box.exec_()
-    return box.clickedButton() == buttonY

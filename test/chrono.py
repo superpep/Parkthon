@@ -45,7 +45,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.saveIcon.hide()
 
         
-
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
@@ -89,68 +88,92 @@ class Chrono(QtWidgets.QMainWindow):
         self.showLCD()
 
     def open_settings(self):
+        """ 
+        Obri la finestra dels settings on es canviaràn els temps màxims i mínims del segments i total.
+        """
         self.new_window = Settings()
 
     def export_db(self):
-        export_path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save file', QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
+        """
+        Exportar la BD actual
+        """
+        export_path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save file', QtCore.QDir.homePath(), "Archivo SQLite (*.db)") # Arrepleguem el nou path
         
-        copy_file(load_properties().get('DatabaseSection', 'dbname'), export_path[0])
-        QtWidgets.QMessageBox.information(self, 'Parkthon', "La base de datos ha sido exportada con éxito")
+        copy_file(load_properties().get('DatabaseSection', 'dbname'), export_path[0]) # Copiem la BD de la seva path a la path donada per l'usuari
+        QtWidgets.QMessageBox.information(self, 'Parkthon', "La base de datos ha sido exportada con éxito") # Mostrem un missatge d'éxit
 
     def import_db(self):
+        """
+        Importar una nova BD. Com que aquesta funció també és utilitzada en login.py, s'ha implementat en l'arxiu __manifest__.py
+        """
         import_db(self)
 
     def show_more_info(self):
-        save_property('PatientsSection', 'selectedPatient', self.current_patient)
-        self.window = patient_info.Patient_info()
+        """
+        Mostrem més informació del pacient actual
+        """
+        save_property('PatientsSection', 'selectedPatient', self.current_patient) # Guardem el pacient actual en l'arxiu properties
+        self.window = patient_info.Patient_info() # Llancem la nova finestra
 
     def save_times(self):
-        sql_con = sqlite.sqlite_connector()
+        """
+        Aquesta funció crida al controlador de la DB per guardar una llista de temps al pacient actual
+        """
+        sql_con = sqlite.sqlite_connector() # Creem la connexió
 
-        sql_con.save_lap_times(self.lap_times, self.current_patient)
+        sql_con.save_lap_times(self.lap_times, self.current_patient) # Guardem els temps en l'usuari actual
 
-        sql_con.close()
-        self.saveIcon.hide()
-        self.show_patient_graph()
-        self.saved_message_thread.start()
+        sql_con.close() # Tanquem la connexió
+        self.saveIcon.hide() # Amaguem l'icona de guardar ja que ja s'ha guardat
+        self.show_patient_graph() # Afegim aquest ultim temps a la gràfica
+        self.saved_message_thread.start() # Escomencem el thread que mostrarà que el temps ha sigut guardat
     
    
 
     def fill_combo(self):
-        sql_con = sqlite.sqlite_connector()
-        patients = sql_con.get_patient_names(self.current_user)
-        for user in patients:
-            self.patients_dni.append(user[2])
-            self.comboPatients.addItem(user[0]+" "+user[1])
-        sql_con.close()
-
+        """
+        Funció que plena el QComboBox amb tots els pacients del metge actual
+        """
+        sql_con = sqlite.sqlite_connector() # Arrepleguem la connexió a SQLite
+        patients = sql_con.get_patient_names(self.current_user) # Arrepleguem una matriu amb les dades de tots els pacients del metge actual
+        sql_con.close() # Tanquem la connexió una vegada recuperades les dades
+        for patient in patients:
+            self.patients_dni.append(patient[2]) # Ens guardem els DNI de tots els pacients de forma interna
+            self.comboPatients.addItem(patient[0]+" "+patient[1]) # Afegim el nom i cognom al QComboBox
+        
     def select_new_patient(self):
-        self.current_patient = self.patients_dni[self.comboPatients.currentIndex()]
-        self.show_patient_graph()
-        self.moreInfo.show()
+        """
+        Seleccionem el nou pacient, en el que es realitzarán totes les accions com registrar nous temps, mostrar la gràfica, etc.
+        """
+        self.current_patient = self.patients_dni[self.comboPatients.currentIndex()] # Guardem de forma interna el DNI del pacient depenent del index del QComboBox (Per això guardavem els DNI en una llista, la cual està de forma paral.lela)
+        self.show_patient_graph() # Carreguem la gràfica del pacient
+        self.moreInfo.show() # Mostrem el botó de més informació sobre el pacient
         
     def show_patient_graph(self):
-        sql_con = sqlite.sqlite_connector()
+        """
+        Mostra/Carrega la gràfica del pacient
+        """
+        sql_con = sqlite.sqlite_connector() # Arrepleguem el connector a la BD
 
-        times = sql_con.get_patient_total_times(self.current_patient)
-        dates = sql_con.get_patient_dates(self.current_patient)
+        times = sql_con.get_patient_total_times(self.current_patient) # Arrepleguem en forma de llista tots els temps dels pacients
+        dates = sql_con.get_patient_dates(self.current_patient) # Arrepleguem els díes en els que es van realitzar les proves (Son llistes paral.leles)
 
-        sql_con.close()
+        sql_con.close() # Tanquem la connexió
         pen = pg.mkPen(color=(162,173,194), width=4)
-        self.graph.clear()
-        self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0))
+        self.graph.clear() # Esborrem tot el que hi ha en el gràfic
+        self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0)) # Mostrem les dades
 
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro
         """
-        if (self.mscounter > 1000):
-            this_time = float(str(self.stopwatch)[:-1])
-            self.text += "Vuelta "+str(self.lap_num+1)+": "
-            if(self.lap_num ==  0):
-                self.text += "{:.2f}".format(this_time)
-                lap_type = get_lap_type(self.lap_num, this_time)
-                color = get_color_type(lap_type)
+        if (self.mscounter > 1000): # El contador ha de ser major a un segon per evitar problemes de compilació
+            this_time = float(str(self.stopwatch)[:-1]) # Arrepleguem com a float el temps de la lap actual
+            self.text += "Vuelta "+str(self.lap_num+1)+": " # Comencem a crear el text que es mostrarà en el número de volta
+            if(self.lap_num ==  0): # Si és la primera volta
+                self.text += "{:.2f}".format(this_time) # Al text li afegim el temps formatejat amb sols 2 decimals
+                lap_type = get_lap_type(self.lap_num, this_time) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
+                color = get_color_type(lap_type) # Arrepleguem el color (Depenent de la lap)
             else:
                 lap_type = get_lap_type(self.lap_num, this_time)
                 color = get_color_type(lap_type)
@@ -259,6 +282,9 @@ class Chrono(QtWidgets.QMainWindow):
 
     def closeEvent(self, event):
         self.saved_message_thread = None
+
+
+
 
 class message_thread(QtCore.QThread):
     def __init__(self, qlabel):

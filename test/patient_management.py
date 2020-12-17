@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
-from __manifest__ import path_separator, load_properties
+from __manifest__ import path_separator, load_properties, comprobation_message
 import database_manager as sqlite
 import user_management
 import chrono
@@ -60,7 +60,7 @@ class Patient_management(QtWidgets.QMainWindow):
         self.new_window = create_patient.Create_patient()
     
     def delete_patient(self):
-        if comprovacio(self.patient_item.text()):
+        if comprobation_message('Comprovación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+'?'):
             sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
             sql_con.close()
             QtWidgets.QMessageBox.information(self, 'Confirmación', "El paciente ha sido eliminado con éxito.")
@@ -74,16 +74,3 @@ class Patient_management(QtWidgets.QMainWindow):
     def open_users_menu(self):
         self.new_window = user_management.Users_management()
         self.close()
-
-def comprovacio(patient_name):
-    box = QtWidgets.QMessageBox()
-    box.setIcon(QtWidgets.QMessageBox.Question)
-    box.setWindowTitle('Comprovación')
-    box.setText('¿Estás seguro de querer eliminar al paciente '+patient_name+'?')
-    box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
-    buttonY = box.button(QtWidgets.QMessageBox.Yes)
-    buttonY.setText('Sí')
-    buttonN = box.button(QtWidgets.QMessageBox.No)
-    buttonN.setText('No')
-    box.exec_()
-    return box.clickedButton() == buttonY

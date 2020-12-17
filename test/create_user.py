@@ -25,9 +25,12 @@ class Create_user(QtWidgets.QMainWindow):
             try:
                 sql_con = sqlite.sqlite_connector()
                 sql_con.create_user(dni, passwd, self.adminCheck.isChecked())
-                QtWidgets.QMessageBox.information(self, 'Paciente añadido', "¡El paciente ha sido añadido con éxito!")
-                QtWidgets.QInputDialog.getText(self, '¿Introducir nuevo paciente?', '¿Quieres añadir un otro paciente?')
-
+                QtWidgets.QMessageBox.information(self, 'Usuario añadido', "¡El usuario ha sido añadido con éxito!")
+                if comprobation_message('Añadir otro usuario', '¿Quieres añadir otro usuario?'): # If OK is clicked in the button
+                    self.dni.setText("")
+                    self.passwd.setText("")
+                else:
+                    self.close()
             except sqlite.sqlite3.IntegrityError:
                 QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un usuario con este DNI")
             finally:

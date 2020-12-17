@@ -8,7 +8,7 @@ CONFIG_FILE_NAME = "ConfigFile.properties"
 
 def create_properties():
     """
-    Crea l'arxiu de propietats en cas de que no existixca
+    Crea l'arxiu de propietats en cas de que no existisca
     """
     if(file_exists("chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
@@ -42,26 +42,80 @@ def create_properties():
 def load_properties():
     """
     Carrega l'arxiu de propietats
-    config (Object) L'apuntador al fitxer de configuraicó
+
+    Eixida:
+
+        (Object) L'apuntador al fitxer de configuraicó
     """
     config = configparser.RawConfigParser()
     config.read(CONFIG_FILE_NAME)
     return config
 
 def save_property(section, key, value):
+    """
+    Guarda una propietat donada la clau i la secció en el fitxer de configuració.
+
+    Entrada:
+
+        section (String) La secció
+
+        key (String) La clau
+
+        value (String) El valor\
+    """
     config = load_properties()
     config.set(section, key, value)     
     with open(CONFIG_FILE_NAME, 'w') as configfile:
         config.write(configfile)
 
 def file_exists(file):
+    """ 
+    Comprova si el fitxer enviat com a paràmetre existeix o no
+
+    Entrada:
+
+        file (String) La ruta del fitxer
+
+    Eixida:
+
+        (Boolean) Si existeix o no
+    """
     return os.path.isfile(file)
 
 def copy_file(file_path, new_path):
+    """
+    Copia el fitxer enviat com a paràmetre a la ruta enviada com a segón parámetre
+
+    Entrada:
+
+        1. (String) Ruta del fitxer
+
+        2. (String) La nova path del fitxer
+    """
     shutil.copyfile(file_path, new_path)
 
 def import_db(window):
+    """
+    Obri un QFileDialog per a importar una nova *.db
+
+    Entrada:
+        
+        (QMainWindow) La finestra on s'executarà el QFileDialog
+    """
     new_db_path = QtWidgets.QFileDialog.getOpenFileName(window, "Open file", QtCore.QDir.homePath(), "Archivo SQLite (*.db)")
     if (new_db_path[0] != ""):
         config = load_properties()
         save_property('DatabaseSection', 'dbname', new_db_path[0])
+    
+def comprobation_message(title, msg, by="Sí", bn="No"):
+    box = QtWidgets.QMessageBox()
+    box.setIcon(QtWidgets.QMessageBox.Question)
+    box.setWindowTitle(title)
+    box.setText(msg)
+    box.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
+    buttonY = box.button(QtWidgets.QMessageBox.Yes)
+    buttonY.setText(by)
+    buttonN = box.button(QtWidgets.QMessageBox.No)
+    buttonN.setText(bn)
+    box.exec_()
+    return box.clickedButton() == buttonY
