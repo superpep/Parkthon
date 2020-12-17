@@ -10,6 +10,9 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Información de pacientes</string>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: #555860;</string>
   </property>
@@ -30,15 +33,15 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: white;</string>
+     <string notr="true">background-color: white; color: black;</string>
     </property>
    </widget>
    <widget class="QLabel" name="patient_info">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>30</x>
       <y>20</y>
-      <width>271</width>
+      <width>751</width>
       <height>51</height>
      </rect>
     </property>
