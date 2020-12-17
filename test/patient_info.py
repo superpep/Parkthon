@@ -44,7 +44,7 @@ class TableModel(QtCore.QAbstractTableModel):
             self._data = data
         else:
             default_data = [["N/A"]]
-            for i in range(0, 6):
+            for i in range(0, 5):
                 default_data[0].append("N/A")
             self._data = default_data
 
