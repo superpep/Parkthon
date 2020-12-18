@@ -66,4 +66,6 @@ QLineEdit tiempo total: **tiempoTotal**
 
 - Hacer hover en todos los botones y pressed tambien.
 
+- Quitar el borde donde se ponen las laps, y poner un estilo de letra en negrita y con un color diferente mas azul, excepto cuando esta en verde etc.
+
 ## TODO PYTHON
