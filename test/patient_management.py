@@ -60,7 +60,7 @@ class Patient_management(QtWidgets.QMainWindow):
         self.new_window = create_patient.Create_patient()
     
     def delete_patient(self):
-        if comprobation_message('Comprovación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+'?'):
+        if comprobation_message('Comprovación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
             sql_con = sqlite.sqlite_connector()
             sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
             sql_con.close()

@@ -25,6 +25,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.action_import.triggered.connect(self.import_db)
         self.action_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
 
+
+        
+
         self.action_export.triggered.connect(self.export_db)
         self.action_export.setShortcut(QtGui.QKeySequence("Ctrl+e"))
 
@@ -280,11 +283,6 @@ class Chrono(QtWidgets.QMainWindow):
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
         self.close()
-
-    def closeEvent(self, event):
-        self.saved_message_thread = None
-
-
 
 
 class message_thread(QtCore.QThread):

@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from __manifest__ import path_separator, load_properties, save_property
 
 class Settings(QtWidgets.QMainWindow):
@@ -10,6 +10,9 @@ class Settings(QtWidgets.QMainWindow):
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #555860}")
         self.show_times(load_properties())
         self.edit_button.clicked.connect(self.edit_mode)
+
+        self._close_window = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Escape), self)
+        self._close_window.activated.connect(self.close_window)
 
 
     def show_times(self, config):
@@ -82,3 +85,6 @@ class Settings(QtWidgets.QMainWindow):
 
         save_property("TotalTimeSection", "maxiumumtime", self.tiempoTotal_max.text())
         save_property("TotalTimeSection", "minimumtime", self.tiempoTotal_min.text())
+    
+    def close_window(self):
+        self.close()
