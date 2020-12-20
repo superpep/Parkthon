@@ -58,14 +58,18 @@ QLineEdit tiempo total: **tiempoTotal**
 
 ## TODO USER INTERFACE
 
-- Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
+1. Modo oscuro:
 
-- Poner color de la letra del comboBox en negro (modo oscuro).
+- Poner color de la letra del comboBox en negro.
 
 - Cambiar color de letra de dias y cronómetro de la gráfica.
 
-- Hacer hover en todos los botones y pressed tambien.
+2. Normal:
+
+- Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
 - Quitar el borde donde se ponen las laps, y poner un estilo de letra en negrita y con un color diferente mas azul, excepto cuando esta en verde etc.
+
+- Poner el icono de settings en todos los menus laterales.
 
 ## TODO PYTHON
