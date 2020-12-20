@@ -68,8 +68,6 @@ QLineEdit tiempo total: **tiempoTotal**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
-- Hacer hover en todos los botones y pressed tambien.
-
 - Quitar el borde donde se ponen las laps, y poner un estilo de letra en negrita y con un color diferente mas azul, excepto cuando esta en verde etc.
 
 - Poner el icono de settings en todos los menus laterales.
