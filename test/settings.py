@@ -8,6 +8,7 @@ class Settings(QtWidgets.QMainWindow):
         self.show() # Show the GUI
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #555860}")
+        self.edit_button.setStyleSheet("QPushButton#edit_button{ border-radius: 8px; font-weight: bold; color: #fdfdff; background-color: #222628; } QPushButton#edit_button::hover{ background-color: #383b3d;} QPushButton#edit_button::pressed{background-color: black;}")
         self.show_times(load_properties())
         self.edit_button.clicked.connect(self.edit_mode)
 

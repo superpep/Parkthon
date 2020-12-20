@@ -254,8 +254,7 @@ font-weight: bold;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white; background-color: #a2adc2; 
-font-weight: bold;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Mas información acerca del paciente</string>
@@ -304,10 +303,7 @@ font-weight: bold;</string>
       <string>Guardar información</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius: 20px;
-font-weight: bold;
-color: white;
-background-color: #a2adc2;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>

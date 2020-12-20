@@ -40,14 +40,14 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setBackground('#fdfdff')
 
         
-
+        self.moreInfo.setStyleSheet("QPushButton#moreInfo{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#moreInfo::hover{ background-color: #BDC5D4;} QPushButton#moreInfo::pressed{background-color: #717987;}")
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
 
         self.saveIcon.clicked.connect(self.save_times)
         self.saveIcon.hide()
 
-        
+        self.saveIcon.setStyleSheet("QPushButton#saveIcon{ border-radius: 20px; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#saveIcon::hover{ background-color: #BDC5D4;} QPushButton#saveIcon::pressed{background-color: #717987;}")
         self.startStop.setStyleSheet("QPushButton#startStop{ border-radius: 20px; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#startStop::hover{ background-color: #BDC5D4;} QPushButton#startStop::pressed{background-color: #717987;}")
         self.startStop.clicked.connect(self.start_crono)
         self.users.clicked.connect(self.open_users_menu)

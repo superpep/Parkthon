@@ -185,7 +185,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #222628; font-weight: bold; color: #fdfdff; border-radius: 8px;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Editar</string>

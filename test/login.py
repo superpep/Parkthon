@@ -11,7 +11,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
             
         self.show() # Show the GUI
-
+        self.loginButton.setStyleSheet("QPushButton#loginButton{ color: white; background-color: #222628; } QPushButton#loginButton::hover{ background-color: #4e5152;} QPushButton#loginButton::pressed{background-color: black;}")
         self.db_import.triggered.connect(self.import_db)
         self.db_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
         self.loginButton.clicked.connect(self.login_button_clicked)

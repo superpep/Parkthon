@@ -38,7 +38,11 @@ class Users_management(QtWidgets.QMainWindow):
 
         self.cronIcon.clicked.connect(self.return_to_chrono)
         
-        
+        self.changePass.setStyleSheet("QPushButton#changePass{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#changePass::hover{ background-color: #BDC5D4;} QPushButton#changePass::pressed{background-color: #717987;}")
+        self.deleteUser.setStyleSheet("QPushButton#deleteUser{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#deleteUser::hover{ background-color: #BDC5D4;} QPushButton#deleteUser::pressed{background-color: #717987;}")
+        self.newUser.setStyleSheet("QPushButton#newUser{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#newUser::hover{ background-color: #BDC5D4;} QPushButton#newUser::pressed{background-color: #717987;}")
+        self.refreshList.setStyleSheet("QPushButton#refreshList{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#refreshList::hover{ background-color: #BDC5D4;} QPushButton#refreshList::pressed{background-color: #717987;}")
+
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #fdfdff}")
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #555860; }")
         self.cronIcon.setStyleSheet("QPushButton#cronIcon::hover{ border: none; background-color: #a2adc2;} QPushButton#cronIcon::pressed{background-color: #222628;}")

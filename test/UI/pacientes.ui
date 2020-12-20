@@ -169,7 +169,8 @@
     <property name="styleSheet">
      <string notr="true">font-size: 20px; 
 background-color: white;
-color: black;</string>
+color: black;
+selection-background-color: #222628;</string>
     </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
@@ -185,7 +186,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #a2adc2; color: white; font-weight:bold;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Nuevo paciente</string>
@@ -201,7 +202,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #a2adc2; color: white; font-weight:bold;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Eliminar paciente</string>
@@ -217,7 +218,7 @@ color: black;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #a2adc2;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
