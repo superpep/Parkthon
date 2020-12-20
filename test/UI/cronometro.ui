@@ -411,7 +411,7 @@ font-weight: bold;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font-size: 30px;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
@@ -440,15 +440,13 @@ font-weight: bold;
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>370</y>
+       <y>350</y>
        <width>261</width>
-       <height>71</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: black;
-border: 1px solid #222628;
-border-radius: 8px;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>

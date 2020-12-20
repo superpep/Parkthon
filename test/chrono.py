@@ -26,7 +26,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.action_import.setShortcut(QtGui.QKeySequence("Ctrl+i"))
 
 
-        
+        self.quali_label.setVisible(False)
 
         self.action_export.triggered.connect(self.export_db)
         self.action_export.setShortcut(QtGui.QKeySequence("Ctrl+e"))
@@ -39,7 +39,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#fdfdff')
 
-        
+        self.lapsList.setStyleSheet("QLabel#lapsList{ font-weight: bold; color: #555860; font-size: 17px; }")
+        self.quali_label.setStyleSheet("QLabel#quali_label{ font-weight: bold; color: #fdfdff; font-size: 15px; background-color: #222628; border: 2px solid #909293; }")
+
         self.moreInfo.setStyleSheet("QPushButton#moreInfo{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#moreInfo::hover{ background-color: #BDC5D4;} QPushButton#moreInfo::pressed{background-color: #717987;}")
         self.moreInfo.clicked.connect(self.show_more_info)
         self.moreInfo.hide()
@@ -64,7 +66,6 @@ class Chrono(QtWidgets.QMainWindow):
         self.stopwatch = Stopwatch()
         self.stopwatch.stop()
         
-        self.quali_label.setStyleSheet("QWidget#quali_label{ color: black }")
         self.saved_msg.setStyleSheet("QWidget#saved_msg{ color: black }")
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #fdfdff}")
         self.barraLateral.setStyleSheet("QWidget#barraLateral{ background-color: #555860; }")
@@ -195,12 +196,13 @@ class Chrono(QtWidgets.QMainWindow):
                 self.saveIcon.show()
                 self.pause_watch()
                 self.previous_time = 0
-                self.text += "VUELTAS COMPLETADAS"
+                self.text += "<span style='color: #222628;'>¡VUELTAS COMPLETADAS!</span>"
                 self.lapsList.setText(self.text)
                 
             
                 
     def show_total_qualification(self):
+        self.quali_label.setVisible(True)
         total_time = 0
         for time in self.lap_times:
             total_time += time
