@@ -68,6 +68,4 @@ QLineEdit tiempo total: **tiempoTotal**
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
-- Poner el icono de settings en todos los menus laterales.
-
 ## TODO PYTHON
