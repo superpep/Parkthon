@@ -58,13 +58,13 @@ QLineEdit tiempo total: **tiempoTotal**
 
 ## TODO USER INTERFACE
 
-1. Modo oscuro:
+1 Modo oscuro:
 
 - Poner color de la letra del comboBox en negro.
 
 - Cambiar color de letra de dias y cronómetro de la gráfica.
 
-2. Normal:
+2 Normal:
 
 - Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
 
