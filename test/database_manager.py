@@ -65,11 +65,14 @@ class sqlite_connector:
 
 
     def get_users(self):
-        cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT DNI FROM users")
+        if(self.__con == None):
+            return [] # Retornem una llista buida ja que si la connexió és "None", no existeix la BD
+        else:
+            cursorObj = self.__con.cursor()
+            cursorObj.execute("SELECT DNI FROM users")
 
-        rows = cursorObj.fetchall()
-        return rows
+            rows = cursorObj.fetchall()
+            return rows
 
     def delete_user(self, dni):
         """

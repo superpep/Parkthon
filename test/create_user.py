@@ -5,16 +5,27 @@ import user_management
 
 
 class Create_user(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
         uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
         self.show()  # Show the GUI
 
+        if(first_user):
+            sql_con = sqlite.sqlite_connector()
+            sql_con.create_initial_table() # Creem les taules inicials
+            sql_con.close()
+            self.adminCheck.setChecked(True)
+            self.adminCheck.toggled.connect(self.set_true)
+
+
         self.newUserButton.clicked.connect(self.create_user)
-        
         self.user.returnPressed.connect(self.create_user)
         self.passwd.returnPressed.connect(self.create_user)
         
+    def set_true(self):
+        self.adminCheck.setChecked(True)
+        QtWidgets.QMessageBox.critical(self, 'Error', "El primer usuario DEBE ser adminisrador") # Mostrem un missatge emergent d'error
+
 
     def create_user(self):
         dni = self.user.text()

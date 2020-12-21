@@ -4,7 +4,7 @@ from PyQt5 import QtWidgets, QtCore
 import shutil
 
 path_separator = os.path.sep
-CONFIG_FILE_NAME = "ConfigFile.properties"
+CONFIG_FILE_NAME = ".ConfigFile.properties"
 
 def create_properties():
     """

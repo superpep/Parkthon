@@ -1,8 +1,9 @@
 from PyQt5 import QtWidgets, uic, QtGui
 import database_manager as sqlite
 import chrono
-from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists, import_db, save_property
+from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists, import_db, save_property, comprobation_message
 from PyQt5.QtCore import QPropertyAnimation, QRect
+import create_user
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -19,6 +20,13 @@ class Ui(QtWidgets.QMainWindow):
         self.passwd.returnPressed.connect(self.login_button_clicked)
         if(not file_exists(CONFIG_FILE_NAME)):
         	create_properties()
+        sql_con = sqlite.sqlite_connector() # Agafem el connector de SQLite
+        if(len(sql_con.get_users()) == 0): 
+            if comprobation_message('Primer inicio', 'No existe ninguna base de datos, la que había ha sido eliminada o no hay usuarios. ¿Quieres crear el primero?'): # If OK is clicked in the button
+                self.create_user_window = create_user.Create_user(first_user=True)
+            else:
+                if comprobation_message('Primer inicio', '¿Quieres importar una base de datos?'):
+                    import_db(self)
 
     def import_db(self):
         """
@@ -32,10 +40,7 @@ class Ui(QtWidgets.QMainWindow):
         """
         sql_con = sqlite.sqlite_connector() # Agafem el connector de SQLite
         if(sql_con.get_con() == None): # Si el conector retorna "None"
-            sql_con.create_initial_table() # Creem les taules inicials
-            sql_con.create_user(self.user.text(), self.passwd.text(), True) # Creem l'usuari inicial (Per defecte en els primers que inicies sessió)
-            sql_con.close() # Tanquem la connexió
-            self.load_new_window() # Anem carregant la nova finestra
+            QtWidgets.QMessageBox.critical(self, 'Error', "No existe ninguna base de datos. Prueba importando una con Ctrl+i o reiniciando la aplicación para crear un nuevo usuario.") # Mostrem un missatge emergent d'error
         else: # Si no retorna "None" significa que ha establit connexió, per tant la BD ja està creada
             if(sql_con.login(self.user.text(), self.passwd.text())): # Si les credencials son correctes
                 sql_con.close() # Tanquem la connexió
