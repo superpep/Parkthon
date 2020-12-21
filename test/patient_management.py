@@ -3,6 +3,7 @@ from __manifest__ import path_separator, load_properties, comprobation_message
 import database_manager as sqlite
 import user_management
 import chrono
+import settings
 import create_patient
 
 class Patient_management(QtWidgets.QMainWindow):
@@ -22,6 +23,8 @@ class Patient_management(QtWidgets.QMainWindow):
 
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
+
+        self.settingsIcon.clicked.connect(self.open_settings)
 
         self.patients_dni = []
         
@@ -80,3 +83,6 @@ class Patient_management(QtWidgets.QMainWindow):
     def open_users_menu(self):
         self.new_window = user_management.Users_management()
         self.close()
+
+    def open_settings(self):
+        self.new_window = settings.Settings()

@@ -2,6 +2,7 @@ import create_user
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import patient_management
 import database_manager as sqlite
+import settings
 import chrono
 from __manifest__ import path_separator, load_properties, comprobation_message
 
@@ -16,6 +17,7 @@ class Users_management(QtWidgets.QMainWindow):
         self.newUser.clicked.connect(self.create_user)
         self.refreshList.clicked.connect(self.refresh_list)
         self.pacientesIcon.clicked.connect(self.open_patients_menu)
+        self.settingsIcon.clicked.connect(self.open_settings)
 
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
@@ -66,6 +68,9 @@ class Users_management(QtWidgets.QMainWindow):
             self.deleteUser.hide()
         
         sql_con.close()
+
+    def open_settings(self):
+        self.new_window = settings.Settings()
 
     def create_user(self):
         self.new_window = create_user.Create_user()
