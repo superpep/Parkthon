@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>606</width>
+    <height>553</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
      <rect>
       <x>30</x>
       <y>90</y>
-      <width>751</width>
-      <height>451</height>
+      <width>551</width>
+      <height>401</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -41,7 +41,7 @@
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>751</width>
+      <width>541</width>
       <height>51</height>
      </rect>
     </property>
@@ -65,7 +65,7 @@ text-transform: uppercase;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>606</width>
      <height>22</height>
     </rect>
    </property>

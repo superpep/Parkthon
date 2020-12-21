@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtGui import QFont
 import sys
