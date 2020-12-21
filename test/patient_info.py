@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
 from __manifest__ import path_separator, load_properties
 import database_manager as sqlite
+import chrono
 
 class Patient_info(QtWidgets.QMainWindow):
     def __init__(self):
@@ -20,10 +21,9 @@ class Patient_info(QtWidgets.QMainWindow):
         self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
         sql_con.close()
         sql_con = sqlite.sqlite_connector()
-        data = sql_con.get_patient_times(self.patient_dni)
        
         
-        self.model = TableModel(data)
+        self.model = TableModel(sql_con.get_patient_times(self.patient_dni))
         
         self.info_table.setModel(self.model)
 
@@ -37,7 +37,7 @@ class TableModel(QtCore.QAbstractTableModel):
         self.setHeaderData(2, Qt.Horizontal, "Segmento 2")
         self.setHeaderData(3, Qt.Horizontal, "Segmento 3")
         self.setHeaderData(4, Qt.Horizontal, "Tiempo total")
-        self.setHeaderData(5, Qt.Horizontal, "Clasificación total")
+
         
         
         if(data):
@@ -71,6 +71,14 @@ class TableModel(QtCore.QAbstractTableModel):
             # .row() indexes into the outer list,
             # .column() indexes into the sub-list
             return self._data[index.row()][index.column()]
+        if role == Qt.DecorationRole:
+            value = self._data[index.row()][index.column()]
+            try:
+                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value))
+                return QtGui.QColor(color)
+            except TypeError:
+                pass
+            
 
     def rowCount(self, index):
         # The length of the outer list.

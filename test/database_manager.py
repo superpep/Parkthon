@@ -239,7 +239,6 @@ class sqlite_connector:
         for row in rows:
             rows[count] = list(row)
             rows[count].append(rows[count][2]+rows[count][3]+rows[count][4])
-            rows[count].append(get_lap_type(-1, rows[count][len(rows[count])-1]))
             rows[count].pop(0)
             count += 1
         return rows

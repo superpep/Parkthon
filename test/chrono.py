@@ -346,11 +346,11 @@ def get_lap_type(lap, time):
 
 def get_color_type(lap_type):
     if(lap_type == "Leve"):
-        return "green"
+        return "#006400"
     elif(lap_type == "Moderado"):
-        return "#ecca00"
+        return "#e4d96f"
     else:
-        return "red"
+        return "#8b0000"
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
