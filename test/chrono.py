@@ -180,7 +180,7 @@ class Chrono(QtWidgets.QMainWindow):
                 lap_type = get_lap_type(self.lap_num, this_time) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
                 color = get_color_type(lap_type) # Arrepleguem el color (Depenent de la lap)
             else:
-                lap_type = get_lap_type(self.lap_num, this_time)
+                lap_type = get_lap_type(self.lap_num, this_time - self.previous_time)
                 color = get_color_type(lap_type)
                 self.text += "{:.2f}".format(this_time - self.previous_time)
 
