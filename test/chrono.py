@@ -293,7 +293,10 @@ class message_thread(QtCore.QThread):
         self.saved_msg = qlabel
 
     def __del__(self):
-        self.wait()
+        try:
+            self.wait()
+        except RuntimeError:
+            pass
 
     def run(self):
         sleep(0.3)
