@@ -272,6 +272,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.lap_times = []
         self.text = ""
         self.quali_label.setText("")
+        self.quali_label.setVisible(False)
 
         self.startStop.clicked.disconnect(self.reset_watch)
         self.startStop.clicked.connect(self.start_crono)
