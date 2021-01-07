@@ -60,7 +60,7 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN, isActive BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times INTEGER, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
+        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times INTEGER, CONSTRAINT pk PRIMARY KEY(patient, day), CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
         cursorObj.execute("CREATE TABLE segment_times(ID INTEGER PRIMARY KEY AUTOINCREMENT, total_min_time float, total_max_time float, seg1_min_time float, seg1_max_time float, seg2_min_time float, seg2_max_time float, seg3_min_time float, seg3_max_time float)")
         cursorObj.execute("INSERT INTO segment_times(total_min_time, total_max_time, seg1_min_time, seg1_max_time, seg2_min_time, seg2_max_time, seg3_max_time, seg3_min_time) VALUES (41.91, 60.32, 17.16, 23.56, 15.14, 25.90, 10.43, 13.34)") # Valors principals
         self.__con.commit()  
@@ -96,6 +96,11 @@ class sqlite_connector:
     def delete_patient(self, dni, table):
         cursorObj = self.__con.cursor()
         cursorObj.execute("DELETE FROM patients WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+
+    def set_new_doctor(self, doctor, patient):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("UPDATE patients SET doctor = ? WHERE DNI = ?", (doctor, patient))
         self.__con.commit()
 
     def get_patients_no_doctor(self):

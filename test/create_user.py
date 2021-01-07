@@ -1,15 +1,15 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtCore
 from __manifest__ import path_separator, comprobation_message
 import database_manager as sqlite
 import user_management
 
 
 class Create_user(QtWidgets.QMainWindow):
-    def __init__(self, first_user=False):
+    def __init__(self, first_user=False, um=None):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
         uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
-        self.show()  # Show the GUI
-
+        self.show()
+        self.um = um
         if(first_user):
             sql_con = sqlite.sqlite_connector()
             sql_con.create_initial_table() # Creem les taules inicials
@@ -42,8 +42,9 @@ class Create_user(QtWidgets.QMainWindow):
                 sql_con.create_user(dni, passwd, self.adminCheck.isChecked())
                 QtWidgets.QMessageBox.information(self, 'Usuario añadido', "¡El usuario ha sido añadido con éxito!")
                 if comprobation_message('Añadir otro usuario', '¿Quieres añadir otro usuario?'): # If OK is clicked in the button
-                    self.dni.setText("")
+                    self.user.setText("")
                     self.passwd.setText("")
+                    self.repeat_pass.setText("")
                 else:
                     self.close()
             except sqlite.sqlite3.IntegrityError:
@@ -51,4 +52,5 @@ class Create_user(QtWidgets.QMainWindow):
             finally:
                 self.user.setText("")
                 self.passwd.setText("")
-                sql_con.close()
+                self.repeat_pass.setText("")
+        sql_con.close()

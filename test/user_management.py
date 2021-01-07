@@ -73,7 +73,8 @@ class Users_management(QtWidgets.QMainWindow):
         self.new_window = settings.Settings()
 
     def create_user(self):
-        self.new_window = create_user.Create_user()
+    
+        self.new_window = create_user.Create_user(False, self)
 
     def change_pass(self):
         sql_con = sqlite.sqlite_connector()

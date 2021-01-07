@@ -76,12 +76,20 @@ class Patient_management(QtWidgets.QMainWindow):
         sql_con = sqlite.sqlite_connector()
         patients_without_doctor = sql_con.get_patients_no_doctor()
         for patient in patients_without_doctor:
-            pass
-            # Tot funciona, falta implementar que per cada pacient que no tinga metge, demane un nou metge
+            if comprobation_message('Paciente sin médico', 'El paciente '+patient[1]+" "+patient[2]+' ('+patient[0]+'), no tiene ningún médico asignado ya que el que tenía se ha eliminado. ¿Quieres añadirle un nuevo médico ahora?'):
+                doctor, ok = QtWidgets.QInputDialog.getText(self, 'Introduce el nuevo médio', 'Escriba el DNI del nuevo médico de '+patient[1]+" "+patient[2]+": ")
+                if ok:    
+                    sql_con = sqlite.sqlite_connector()
+                    # Hi ha que fer aço en un combobox millor
+                    sql_con.set_new_doctor(doctor, patient[0])
+                    sql_con.close()
+                    QtWidgets.QMessageBox.information(self, 'Médico actualizado', "El médico ha sido actualizado con éxito.")
+                else:
+                    print("no aceptar")
         sql_con.close()
     
     def delete_patient(self):
-        if comprobation_message('Comprovación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
+        if comprobation_message('Comprobación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
             sql_con = sqlite.sqlite_connector()
             sql_con.delete_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
             sql_con.close()
