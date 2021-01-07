@@ -19,12 +19,10 @@ class Patient_info(QtWidgets.QMainWindow):
 
         sql_con = sqlite.sqlite_connector()
         self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
-        sql_con.close()
-        sql_con = sqlite.sqlite_connector()
        
         
         self.model = TableModel(sql_con.get_patient_times(self.patient_dni))
-        
+        sql_con.close()
         self.info_table.setModel(self.model)
 
 class TableModel(QtCore.QAbstractTableModel):
@@ -73,10 +71,12 @@ class TableModel(QtCore.QAbstractTableModel):
             return self._data[index.row()][index.column()]
         if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
+            sql_con = sqlite.sqlite_connector()
+            
             try:
-                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value))
+                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(self.patient_dni))) # FALTA AGAFAR L'ID DEL SEGMENT
                 return QtGui.QColor(color)
-            except TypeError:
+            except TypeError as e:
                 pass
             
 

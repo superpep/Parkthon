@@ -20,22 +20,6 @@ def create_properties():
         config.add_section("PatientsSection")
         config.set('PatientsSection', 'selectedPatient', '')
 
-
-        config.add_section("TotalTimeSection")
-        config.set('TotalTimeSection', 'minimumTime', 41.91)
-        config.set('TotalTimeSection', 'maxiumumTime', 60.32)
-        
-        config.add_section("Seg1TimeSection")
-        config.set('Seg1TimeSection', 'minimumTime', 17.16)
-        config.set('Seg1TimeSection', 'maxiumumTime', 23.56)
-
-        config.add_section("Seg2TimeSection")
-        config.set('Seg2TimeSection', 'minimumTime', 15.14)
-        config.set('Seg2TimeSection', 'maxiumumTime', 25.90)
-
-        config.add_section("Seg3TimeSection")
-        config.set('Seg3TimeSection', 'minimumTime', 10.43)
-        config.set('Seg3TimeSection', 'maxiumumTime', 13.34)
         with open(CONFIG_FILE_NAME, 'w') as configfile:
             config.write(configfile)
 

@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from __manifest__ import path_separator, load_properties, save_property
+from __manifest__ import path_separator
+import database_manager as sqlite
 
 class Settings(QtWidgets.QMainWindow):
     def __init__(self):
@@ -9,25 +10,27 @@ class Settings(QtWidgets.QMainWindow):
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #555860}")
         self.edit_button.setStyleSheet("QPushButton#edit_button{ border-radius: 8px; font-weight: bold; color: #fdfdff; background-color: #222628; } QPushButton#edit_button::hover{ background-color: #383b3d;} QPushButton#edit_button::pressed{background-color: black;}")
-        self.show_times(load_properties())
+        self.show_times()
         self.edit_button.clicked.connect(self.edit_mode)
 
         self._close_window = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Escape), self)
         self._close_window.activated.connect(self.close_window)
 
 
-    def show_times(self, config):
-        self.seg1_max.setText(config.get("Seg1TimeSection", "maxiumumtime"))
-        self.seg1_min.setText(config.get("Seg1TimeSection", "minimumtime"))
+    def show_times(self):
+        sql_con = sqlite.sqlite_connector()
 
-        self.seg2_max.setText(config.get("Seg2TimeSection", "maxiumumtime"))
-        self.seg2_min.setText(config.get("Seg2TimeSection", "minimumtime"))
+        self.seg1_max.setText(str(sql_con.get_segment_time("seg1_max_time")))
+        self.seg1_min.setText(str(sql_con.get_segment_time("seg1_min_time")))
+
+        self.seg2_max.setText(str(sql_con.get_segment_time("seg2_max_time")))
+        self.seg2_min.setText(str(sql_con.get_segment_time("seg2_min_time")))
         
-        self.seg3_max.setText(config.get("Seg3TimeSection", "maxiumumtime"))
-        self.seg3_min.setText(config.get("Seg3TimeSection", "minimumtime"))
+        self.seg3_max.setText(str(sql_con.get_segment_time("seg3_max_time")))
+        self.seg3_min.setText(str(sql_con.get_segment_time("seg3_min_time")))
 
-        self.tiempoTotal_max.setText(config.get("TotalTimeSection", "maxiumumtime"))
-        self.tiempoTotal_min.setText(config.get("TotalTimeSection", "minimumtime"))
+        self.tiempoTotal_max.setText(str(sql_con.get_segment_time("total_max_time")))
+        self.tiempoTotal_min.setText(str(sql_con.get_segment_time("total_min_time")))
 
     def edit_mode(self):
         """
@@ -53,7 +56,7 @@ class Settings(QtWidgets.QMainWindow):
         """
         Tornem al primer mode però guardant els canvis realitzats
         """
-        self.save_data(load_properties())
+        self.save_data()
 
         self.seg1_max.setReadOnly(True)
         self.seg1_min.setReadOnly(True)
@@ -71,21 +74,13 @@ class Settings(QtWidgets.QMainWindow):
         self.edit_button.clicked.disconnect(self.save_mode)
         self.edit_button.clicked.connect(self.edit_mode)
     
-    def save_data(self, config):
+    def save_data(self):
         """
         Desa tots els canvis
         """
-        save_property("Seg1TimeSection", "maxiumumtime", self.seg1_max.text())
-        save_property("Seg1TimeSection", "minimumtime", self.seg1_min.text())
-
-        save_property("Seg2TimeSection", "maxiumumtime", self.seg2_max.text())
-        save_property("Seg2TimeSection", "minimumtime", self.seg2_min.text())
-        
-        save_property("Seg3TimeSection", "maxiumumtime", self.seg3_max.text())
-        save_property("Seg3TimeSection", "minimumtime", self.seg3_min.text())
-
-        save_property("TotalTimeSection", "maxiumumtime", self.tiempoTotal_max.text())
-        save_property("TotalTimeSection", "minimumtime", self.tiempoTotal_min.text())
+        sql_con = sqlite.sqlite_connector()
+        times = [float(self.tiempoTotal_min.text()), float(self.tiempoTotal_max.text()), float(self.seg1_min.text()), float(self.seg1_max.text()), float(self.seg2_min.text()), float(self.seg2_max.text()), float(self.seg3_min.text()), float(self.seg3_max.text())]
+        sql_con.set_new_segments_time(times)
     
     def close_window(self):
         self.close()

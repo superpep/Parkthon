@@ -49,7 +49,7 @@ class sqlite_connector:
         """
 
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO users VALUES(?, ?, ?)", (dni, encrypt.encrypt_password(raw_passwd), isAdmin))
+        cursorObj.execute("INSERT INTO users VALUES(?, ?, ?, ?)", (dni, encrypt.encrypt_password(raw_passwd), isAdmin, True))
         self.__con.commit()
 
     def create_initial_table(self):
@@ -58,9 +58,11 @@ class sqlite_connector:
         """
         self.__con = sqlite3.connect(self.DB) # Aço crea la BD
         cursorObj = self.__con.cursor()
-        cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN)")
+        cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN, isActive BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni));")
+        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
+        cursorObj.execute("CREATE TABLE segment_times(ID INTEGER PRIMARY KEY AUTOINCREMENT, total_min_time float, total_max_time float, seg1_min_time float, seg1_max_time float, seg2_min_time float, seg2_max_time float, seg3_min_time float, seg3_max_time float)")
+        cursorObj.execute("INSERT INTO segment_times(total_min_time, total_max_time, seg1_min_time, seg1_max_time, seg2_min_time, seg2_max_time, seg3_max_time, seg3_min_time) VALUES (41.91, 60.32, 17.16, 23.56, 15.14, 25.90, 10.43, 13.34)") # Valors principals
         self.__con.commit()  
 
 
@@ -193,7 +195,7 @@ class sqlite_connector:
             patient (string) DNI del pacient al que se li guarda el temps de volta
         """
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?)", (patient, lap_times[0], lap_times[1], lap_times[2]))
+        cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?, (select max(ID) from segment_times))", (patient, lap_times[0], lap_times[1], lap_times[2]))
         self.__con.commit()
 
     def get_patient_total_times(self, patient):
@@ -206,7 +208,7 @@ class sqlite_connector:
             (float list): Llista en la que estàn tots els temps
         """
         cursorObj = self.__con.cursor()
-        rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"'")
+        rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"' order by day desc")
         total_lap_times = []
         for row in rows:
             total_lap_times.append(round(row[0]+row[1]+row[2], 2))
@@ -242,6 +244,24 @@ class sqlite_connector:
             rows[count].pop(0)
             count += 1
         return rows
+
+    def get_segment_time(self, segment, seg_id):
+        if (seg_id == -1):
+            seg_id = "(select max(ID) from segment_times)"
+        cursorObj = self.__con.cursor()
+        rows = cursorObj.execute("SELECT "+segment+" from segment_times where ID = "+seg_id)
+        return cursorObj.fetchall()[0][0]
+
+    def get_segment_id(self, patient):
+        cursorObj = self.__con.cursor()
+        rows = cursorObj.execute("SELECT reference_times from patients where dni = '"+patient+"'")
+
+    def set_new_segments_time(self, times):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("""INSERT INTO segment_times(total_min_time, total_max_time, seg1_min_time, seg1_max_time, seg2_min_time, seg2_max_time, seg3_min_time, seg3_max_time)
+                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)""", times) # Valors principals
+        self.__con.commit()
+
 
     def close(self):
         """

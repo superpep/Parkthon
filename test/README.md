@@ -56,16 +56,19 @@ QLineEdit segmento2: **seg2** \
 QLineEdit segmento3: **seg3** \
 QLineEdit tiempo total: **tiempoTotal**
 
-## TODO USER INTERFACE
+## TODO GENERAL FERRAN
 
-1 Modo oscuro:
+Obligatori:
 
-- Poner color de la letra del comboBox en negro.
+- Ordenar gràfica cronológicament (En teoría sols en afegir order by a la sentència deuria estar)
+- Poder editar el metge i nom d'un pacient
+- No s'esborra el doctor sino que passa a estat inactiu, però continua a la BD
+- No recalcular del temps del settings els camps quan mostrem el more info, sino que el temps en el que s'ha fet la prova es guardarà a la BD
+- Quan creem un pacient, la contrasenya s'ha de ficar dos vegades
 
-- Cambiar color de letra de dias y cronómetro de la gráfica.
+Opcional:
 
-2 Normal:
-
-- Hacer que al entrar al cronómetro también haga una animación con el mismo efecto de opacity.
-
-## TODO PYTHON
+- Calcular la lletra del DNI automàticament
+- Quan ens demana introduïr el primer usuari:
+    1. Que no ens done l'opció d'afegir un altre
+    2. Si ens dona l'opció, que puga ser no-admin

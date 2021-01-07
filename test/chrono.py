@@ -178,10 +178,10 @@ class Chrono(QtWidgets.QMainWindow):
             self.text += "Vuelta "+str(self.lap_num+1)+": " # Comencem a crear el text que es mostrarà en el número de volta
             if(self.lap_num ==  0): # Si és la primera volta
                 self.text += "{:.2f}".format(this_time) # Al text li afegim el temps formatejat amb sols 2 decimals
-                lap_type = get_lap_type(self.lap_num, this_time) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
+                lap_type = get_lap_type(self.lap_num, this_time, -1) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
                 color = get_color_type(lap_type) # Arrepleguem el color (Depenent de la lap)
             else:
-                lap_type = get_lap_type(self.lap_num, this_time - self.previous_time)
+                lap_type = get_lap_type(self.lap_num, this_time - self.previous_time, -1)
                 color = get_color_type(lap_type)
                 self.text += "{:.2f}".format(this_time - self.previous_time)
 
@@ -207,7 +207,7 @@ class Chrono(QtWidgets.QMainWindow):
         total_time = 0
         for time in self.lap_times:
             total_time += time
-        lap_type = get_lap_type(-1, total_time)
+        lap_type = get_lap_type(-1, total_time, -1)
         color = get_color_type(lap_type)
         
         self.quali_label.setText("Clasificación: <span style='color:"+color+";'>"+lap_type+"</span>")
@@ -306,11 +306,12 @@ class message_thread(QtCore.QThread):
         sleep(2)
         self.saved_msg.setText("")
 
-def get_lap_type(lap, time):
-    config = load_properties()
+def get_lap_type(lap, time, seg_id=-1):
+    sql_con = sqlite.sqlite_connector()
+
     if(lap == -1): # -1 és temps total
-        minTotalTime = float(config.get('TotalTimeSection', 'minimumTime'))
-        maxTotalTime = float(config.get('TotalTimeSection', 'maxiumumTime'))
+        minTotalTime = sql_con.get_segment_time("total_min_time", seg_id)
+        maxTotalTime = sql_con.get_segment_time("total_max_time", seg_id)
         if(time < minTotalTime):
             return "Leve"
         elif(time > maxTotalTime):
@@ -318,8 +319,8 @@ def get_lap_type(lap, time):
         else:
             return "Moderado"
     elif(lap == 0):
-        minTime = float(config.get('Seg1TimeSection', 'minimumTime'))
-        maxTime = float(config.get('Seg1TimeSection', 'maxiumumTime'))
+        minTime = sql_con.get_segment_time("seg1_min_time", seg_id)
+        maxTime = sql_con.get_segment_time("seg1_max_time", seg_id)
         if(time < minTime):
             return "Leve"
         elif(time > maxTime):
@@ -327,8 +328,8 @@ def get_lap_type(lap, time):
         else:
             return "Moderado"
     elif(lap == 1):
-        minTime = float(config.get('Seg2TimeSection', 'minimumTime'))
-        maxTime = float(config.get('Seg2TimeSection', 'maxiumumTime'))
+        minTime = sql_con.get_segment_time("seg2_min_time", seg_id)
+        maxTime = sql_con.get_segment_time("seg2_max_time", seg_id)
         if(time < minTime):
             return "Leve"
         elif(time > maxTime):
@@ -336,8 +337,8 @@ def get_lap_type(lap, time):
         else:
             return "Moderado"
     else:
-        minTime = float(config.get('Seg3TimeSection', 'minimumTime'))
-        maxTime = float(config.get('Seg3TimeSection', 'maxiumumTime'))
+        minTime = sql_con.get_segment_time("seg3_min_time", seg_id)
+        maxTime = sql_con.get_segment_time("seg3_max_time", seg_id)
         if(time < minTime):
             return "Leve"
         elif(time > maxTime):
