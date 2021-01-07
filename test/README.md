@@ -60,11 +60,11 @@ QLineEdit tiempo total: **tiempoTotal**
 
 Obligatori:
 
-- Ordenar gràfica cronológicament (En teoría sols en afegir order by a la sentència deuria estar)
-- Poder editar el metge i nom d'un pacient
-- No s'esborra el doctor sino que passa a estat inactiu, però continua a la BD
-- No recalcular del temps del settings els camps quan mostrem el more info, sino que el temps en el que s'ha fet la prova es guardarà a la BD
-- Quan creem un pacient, la contrasenya s'ha de ficar dos vegades
+- (✅) Ordenar gràfica cronológicament (En teoría sols en afegir order by a la sentència deuria estar)
+- Poder editar el metge i el nom d'un pacient
+- (🔄) No s'esborra el doctor sino que passa a estat inactiu, però continua a la BD (Quan accedim a la pestanya de pacients, que els comprove tots a veure si hi ha algún amb un metge inactiu, en cas de que hi haja, que ens demane un nou metge per a ell) es guardarà a la BD
+- (✅) Si un doctor està donat de baixa, no pot fer login
+- (✅) Quan creem un metge, la contrasenya s'ha de ficar dos vegades
 
 Opcional:
 
@@ -72,3 +72,4 @@ Opcional:
 - Quan ens demana introduïr el primer usuari:
     1. Que no ens done l'opció d'afegir un altre
     2. Si ens dona l'opció, que puga ser no-admin
+- (🛑) No recalcular del temps del settings els camps quan mostrem el more info, sino que el temps en el que s'ha fet la prova

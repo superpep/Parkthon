@@ -4,6 +4,8 @@ from __manifest__ import path_separator, load_properties
 import database_manager as sqlite
 import chrono
 
+patient_dni = ""
+
 class Patient_info(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_info, self).__init__() # Call the inherited classes __init__ method
@@ -14,14 +16,14 @@ class Patient_info(QtWidgets.QMainWindow):
 
 
         config = load_properties()
-        self.patient_dni = config.get('PatientsSection', 'selectedPatient')
+        patient_dni = config.get('PatientsSection', 'selectedPatient')
         doctor = config.get('UsersSection', 'currentuser')
 
         sql_con = sqlite.sqlite_connector()
-        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
+        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, patient_dni))
        
         
-        self.model = TableModel(sql_con.get_patient_times(self.patient_dni))
+        self.model = TableModel(sql_con.get_patient_times(patient_dni))
         sql_con.close()
         self.info_table.setModel(self.model)
 
@@ -69,15 +71,19 @@ class TableModel(QtCore.QAbstractTableModel):
             # .row() indexes into the outer list,
             # .column() indexes into the sub-list
             return self._data[index.row()][index.column()]
+        """
         if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
             sql_con = sqlite.sqlite_connector()
             
-            try:
-                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(self.patient_dni))) # FALTA AGAFAR L'ID DEL SEGMENT
-                return QtGui.QColor(color)
-            except TypeError as e:
-                pass
+            #try:
+            color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(patient_dni))) 
+            print(color)
+            return QtGui.QColor(color)
+            #except TypeError as e:
+            #    print(e)
+            sql_con.close()
+        """
             
 
     def rowCount(self, index):

@@ -17,12 +17,17 @@ class Patient_management(QtWidgets.QMainWindow):
         self.refreshList.clicked.connect(self.refresh_list)
         self.borrarPaciente.hide()
 
+
+        
+
         self.model = QtGui.QStandardItemModel()
         self.listaPacientes.setModel(self.model)
         self.listaPacientes.clicked.connect(self.manage_patient)
 
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
+
+        self.check_patients_without_doctor()
 
         self.settingsIcon.clicked.connect(self.open_settings)
 
@@ -66,6 +71,14 @@ class Patient_management(QtWidgets.QMainWindow):
 
     def new_patient(self):
         self.new_window = create_patient.Create_patient()
+
+    def check_patients_without_doctor(self):
+        sql_con = sqlite.sqlite_connector()
+        patients_without_doctor = sql_con.get_patients_no_doctor()
+        for patient in patients_without_doctor:
+            pass
+            # Tot funciona, falta implementar que per cada pacient que no tinga metge, demane un nou metge
+        sql_con.close()
     
     def delete_patient(self):
         if comprobation_message('Comprovación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):

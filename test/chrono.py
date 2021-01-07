@@ -178,10 +178,10 @@ class Chrono(QtWidgets.QMainWindow):
             self.text += "Vuelta "+str(self.lap_num+1)+": " # Comencem a crear el text que es mostrarà en el número de volta
             if(self.lap_num ==  0): # Si és la primera volta
                 self.text += "{:.2f}".format(this_time) # Al text li afegim el temps formatejat amb sols 2 decimals
-                lap_type = get_lap_type(self.lap_num, this_time, -1) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
+                lap_type = get_lap_type(self.lap_num, this_time) # Arrepleguem el tipus de lap (Lleu, Moderat, Greu)
                 color = get_color_type(lap_type) # Arrepleguem el color (Depenent de la lap)
             else:
-                lap_type = get_lap_type(self.lap_num, this_time - self.previous_time, -1)
+                lap_type = get_lap_type(self.lap_num, this_time - self.previous_time)
                 color = get_color_type(lap_type)
                 self.text += "{:.2f}".format(this_time - self.previous_time)
 
@@ -207,7 +207,7 @@ class Chrono(QtWidgets.QMainWindow):
         total_time = 0
         for time in self.lap_times:
             total_time += time
-        lap_type = get_lap_type(-1, total_time, -1)
+        lap_type = get_lap_type(-1, total_time)
         color = get_color_type(lap_type)
         
         self.quali_label.setText("Clasificación: <span style='color:"+color+";'>"+lap_type+"</span>")

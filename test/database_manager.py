@@ -30,7 +30,7 @@ class sqlite_connector:
             (boolean) Si el login és correcte o no
         """
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT * FROM users where DNI = '"+dni+"'")
+        cursorObj.execute("SELECT * FROM users where DNI = '"+dni+"' and isAdmin = 1")
 
         rows = cursorObj.fetchall()
 
@@ -60,7 +60,7 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN, isActive BOOLEAN)")
         cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
+        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times INTEGER, CONSTRAINT pk PRIMARY KEY(patient, day) CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
         cursorObj.execute("CREATE TABLE segment_times(ID INTEGER PRIMARY KEY AUTOINCREMENT, total_min_time float, total_max_time float, seg1_min_time float, seg1_max_time float, seg2_min_time float, seg2_max_time float, seg3_min_time float, seg3_max_time float)")
         cursorObj.execute("INSERT INTO segment_times(total_min_time, total_max_time, seg1_min_time, seg1_max_time, seg2_min_time, seg2_max_time, seg3_max_time, seg3_min_time) VALUES (41.91, 60.32, 17.16, 23.56, 15.14, 25.90, 10.43, 13.34)") # Valors principals
         self.__con.commit()  
@@ -71,7 +71,7 @@ class sqlite_connector:
             return [] # Retornem una llista buida ja que si la connexió és "None", no existeix la BD
         else:
             cursorObj = self.__con.cursor()
-            cursorObj.execute("SELECT DNI FROM users")
+            cursorObj.execute("SELECT DNI FROM users WHERE isActive = 1")
 
             rows = cursorObj.fetchall()
             return rows
@@ -88,16 +88,20 @@ class sqlite_connector:
         if(self.check_admins(dni)):
             return False
 
-        self.delete_dni_from_table(dni, "users")
-        return True
-    
-    def delete_patient(self, dni):
-        self.delete_dni_from_table(dni, "patients")
-
-    def delete_dni_from_table(self, dni, table):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("DELETE FROM "+table+" WHERE DNI = '"+dni+"'")
+        cursorObj.execute("UPDATE users SET isActive = 0 WHERE DNI = '"+dni+"'")
         self.__con.commit()
+        return True
+
+    def delete_patient(self, dni, table):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("DELETE FROM patients WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+
+    def get_patients_no_doctor(self):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("SELECT * FROM patients WHERE doctor in (select dni from users where isActive = 0)")
+        return cursorObj.fetchall()
 
     def check_admins(self, dni):
         """
@@ -208,7 +212,7 @@ class sqlite_connector:
             (float list): Llista en la que estàn tots els temps
         """
         cursorObj = self.__con.cursor()
-        rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"' order by day desc")
+        rows = cursorObj.execute("SELECT lap1, lap2, lap3 from times where patient = '"+patient+"'")
         total_lap_times = []
         for row in rows:
             total_lap_times.append(round(row[0]+row[1]+row[2], 2))
@@ -235,17 +239,16 @@ class sqlite_connector:
 
     def get_patient_times(self, patient):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT * from times where patient = '"+patient+"'")
+        cursorObj.execute("SELECT day, lap1, lap2, lap3 from times where patient = '"+patient+"' order by day desc")
         rows = list(cursorObj.fetchall())
         count = 0
         for row in rows:
             rows[count] = list(row)
-            rows[count].append(rows[count][2]+rows[count][3]+rows[count][4])
-            rows[count].pop(0)
+            rows[count].append(rows[count][1]+rows[count][2]+rows[count][3])
             count += 1
         return rows
 
-    def get_segment_time(self, segment, seg_id):
+    def get_segment_time(self, segment, seg_id=-1):
         if (seg_id == -1):
             seg_id = "(select max(ID) from segment_times)"
         cursorObj = self.__con.cursor()
@@ -254,7 +257,8 @@ class sqlite_connector:
 
     def get_segment_id(self, patient):
         cursorObj = self.__con.cursor()
-        rows = cursorObj.execute("SELECT reference_times from patients where dni = '"+patient+"'")
+        cursorObj.execute("SELECT reference_times from times where patient = '"+patient+"'")
+        return cursorObj.fetchall()[0][0]
 
     def set_new_segments_time(self, times):
         cursorObj = self.__con.cursor()

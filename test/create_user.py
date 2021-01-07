@@ -34,6 +34,8 @@ class Create_user(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El DNI debe ser de 9 dígitos.")
         elif (len(passwd) < 8):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña no puede ser menor a 8 carácteres.")
+        elif(passwd != self.repeat_pass.text()):
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "Las contraseñas no coinciden.")
         else:
             try:
                 sql_con = sqlite.sqlite_connector()
