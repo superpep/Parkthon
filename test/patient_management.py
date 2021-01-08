@@ -71,6 +71,11 @@ class Patient_management(QtWidgets.QMainWindow):
 
     def new_patient(self):
         self.new_window = create_patient.Create_patient()
+        if comprobation_message('Paciente sin médico', 'Ja'):
+            self.refresh_list
+        else:
+            self.refresh_list()
+        
 
     def check_patients_without_doctor(self):
         sql_con = sqlite.sqlite_connector()

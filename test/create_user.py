@@ -4,12 +4,11 @@ import database_manager as sqlite
 import user_management
 
 
-class Create_user(QtWidgets.QMainWindow):
-    def __init__(self, first_user=False, um=None):
+class Create_user(QtWidgets.QWidget):
+    def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
-        self.show()
-        self.um = um
+        uic.loadUi('UI' + path_separator + 'newUserWidget.ui', self)  # Load the .ui file
+        
         if(first_user):
             sql_con = sqlite.sqlite_connector()
             sql_con.create_initial_table() # Creem les taules inicials

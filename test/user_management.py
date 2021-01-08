@@ -5,8 +5,9 @@ import database_manager as sqlite
 import settings
 import chrono
 from __manifest__ import path_separator, load_properties, comprobation_message
+import time
 
-class Users_management(QtWidgets.QMainWindow):
+class Users_management(QtWidgets.QMainWindow, QtCore.QThread):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'users.ui', self) # Load the .ui file
@@ -74,7 +75,9 @@ class Users_management(QtWidgets.QMainWindow):
 
     def create_user(self):
     
-        self.new_window = create_user.Create_user(False, self)
+        self.new_window = create_user.Create_user()
+        self.new_window.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.new_window.show()
 
     def change_pass(self):
         sql_con = sqlite.sqlite_connector()
@@ -141,3 +144,5 @@ class Users_management(QtWidgets.QMainWindow):
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
         self.close()
+
+    
