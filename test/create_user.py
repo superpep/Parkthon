@@ -4,11 +4,16 @@ import database_manager as sqlite
 import user_management
 
 
-class Create_user(QtWidgets.QWidget):
+class Create_user(QtWidgets.QDialog):
     def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi('UI' + path_separator + 'newUserWidget.ui', self)  # Load the .ui file
+        uic.loadUi('UI' + path_separator + 'newUserDialog.ui', self)  # Load the .ui file
+        self.show()
+
+
+        self.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).setText("Guardar")
         
+
         if(first_user):
             sql_con = sqlite.sqlite_connector()
             sql_con.create_initial_table() # Creem les taules inicials
@@ -17,9 +22,11 @@ class Create_user(QtWidgets.QWidget):
             self.adminCheck.toggled.connect(self.set_true)
 
 
-        self.newUserButton.clicked.connect(self.create_user)
+        #self.newUserButton.clicked.connect(self.create_user)
         self.user.returnPressed.connect(self.create_user)
         self.passwd.returnPressed.connect(self.create_user)
+
+        return self.clickedButton() == self.buttonBox.button(QtWidgets.QMessageBox.Ok)
         
     def set_true(self):
         self.adminCheck.setChecked(True)
