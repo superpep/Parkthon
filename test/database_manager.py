@@ -223,6 +223,14 @@ class sqlite_connector:
             total_lap_times.append(round(row[0]+row[1]+row[2], 2))
         return total_lap_times
 
+    def get_patient_segment_times(self, patient, seg):
+        cursorObj = self.__con.cursor()
+        rows = cursorObj.execute("SELECT "+seg+" from times where patient = '"+patient+"'")
+        total_seg_times = []
+        for row in rows:
+            total_seg_times.append(round(float(row[0]), 2))
+        return total_seg_times
+
     def get_patient_dates(self, patient):
         """
         Retorna les dates dels pacients 

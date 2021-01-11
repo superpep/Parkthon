@@ -32,6 +32,6 @@ class Create_patient(QtWidgets.QMainWindow):
                 else:
                     self.close()
             except sqlite.sqlite3.IntegrityError:
-                QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un usuario con este DNI")
+                QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un paciente con este DNI")
             finally:
                 sql_con.close()

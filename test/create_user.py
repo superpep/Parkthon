@@ -4,14 +4,14 @@ import database_manager as sqlite
 import user_management
 
 
-class Create_user(QtWidgets.QDialog):
+class Create_user(QtWidgets.QMainWindow):
     def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi('UI' + path_separator + 'newUserDialog.ui', self)  # Load the .ui file
+        uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
         self.show()
 
 
-        self.buttonBox.button(QtWidgets.QDialogButtonBox.Ok).setText("Guardar")
+        self.newUserButton.clicked.connect(self.create_user)
         
 
         if(first_user):
@@ -26,7 +26,7 @@ class Create_user(QtWidgets.QDialog):
         self.user.returnPressed.connect(self.create_user)
         self.passwd.returnPressed.connect(self.create_user)
 
-        return self.clickedButton() == self.buttonBox.button(QtWidgets.QMessageBox.Ok)
+        
         
     def set_true(self):
         self.adminCheck.setChecked(True)
@@ -51,6 +51,10 @@ class Create_user(QtWidgets.QDialog):
                     self.user.setText("")
                     self.passwd.setText("")
                     self.repeat_pass.setText("")
+                    try:
+                        self.adminCheck.toggled.disconnect(self.set_true)
+                    except TypeError:
+                        pass
                 else:
                     self.close()
             except sqlite.sqlite3.IntegrityError:

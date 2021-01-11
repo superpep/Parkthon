@@ -39,6 +39,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.setLabel('left', 'Tiempo por vuelta', **styles)
         self.graph.setLabel('bottom', 'Días', **styles)
         self.graph.setBackground('#fdfdff')
+        self.graph.setTitle("Tiempos del paciente")
 
         self.lapsList.setStyleSheet("QLabel#lapsList{ font-weight: bold; color: #555860; font-size: 17px; }")
         self.quali_label.setStyleSheet("QLabel#quali_label{ font-weight: bold; color: #fdfdff; font-size: 15px; background-color: #222628; border: 2px solid #909293; }")
@@ -159,16 +160,23 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Mostra/Carrega la gràfica del pacient
         """
+        
+        
         sql_con = sqlite.sqlite_connector() # Arrepleguem el connector a la BD
 
-        times = sql_con.get_patient_total_times(self.current_patient) # Arrepleguem en forma de llista tots els temps dels pacients
+        total_times = sql_con.get_patient_total_times(self.current_patient) # Arrepleguem en forma de llista tots els temps dels pacients
+        seg1_times = sql_con.get_patient_segment_times(self.current_patient, "lap1")
+        seg2_times = sql_con.get_patient_segment_times(self.current_patient, "lap2")
+        seg3_times = sql_con.get_patient_segment_times(self.current_patient, "lap3")
         dates = sql_con.get_patient_dates(self.current_patient) # Arrepleguem els díes en els que es van realitzar les proves (Son llistes paral.leles)
 
         sql_con.close() # Tanquem la connexió
-        pen = pg.mkPen(color=(162,173,194), width=4)
         self.graph.clear() # Esborrem tot el que hi ha en el gràfic
-        self.graph.plot(dates, times, pen=pen, symbol='o', symbolSize=10, symbolBrush=(0,0,0)) # Mostrem les dades
-
+        self.graph.addLegend() # Inicialitzem la llegenda
+        self.graph.plot(dates, total_times, name="Total", pen=pg.mkPen(color=(162,173,194), width=4), symbol='o', symbolSize=10, symbolBrush=(0,0,0)) # Mostrem les dades
+        self.graph.plot(dates, seg1_times, name="Segmento 1", pen=pg.mkPen(color=(255,0,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
+        self.graph.plot(dates, seg2_times, name="Segmento 2", pen=pg.mkPen(color=(255,255,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
+        self.graph.plot(dates, seg3_times, name="Segmento 3", pen=pg.mkPen(color=(255,0,255), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro

@@ -65,7 +65,8 @@ Obligatori:
 - (🔄(Falta pensar a veure que fem per a afegir el metge: Idea principal és finestreta amb combobox)) No s'esborra el doctor sino que passa a estat inactiu, però continua a la BD (Quan accedim a la pestanya de pacients, que els comprove tots a veure si hi ha algún amb un metge inactiu, en cas de que hi haja, que ens demane un nou metge per a ell) es guardarà a la BD
 - (✅) Si un doctor està donat de baixa, no pot fer login
 - (✅) Quan creem un metge, la contrasenya s'ha de ficar dos vegades
-- Mostrar en la gràfica més dades: Lap1, Lap2, Lap3 i temps total.
+- (✅) Mostrar en la gràfica més dades: Lap1, Lap2, Lap3 i temps total.
+- Afegir les noves dades dels pacients aixi com també editar el add patient i afegir el edit patient
 
 Opcional:
 
