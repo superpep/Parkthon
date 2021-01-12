@@ -70,6 +70,7 @@ Obligatori:
 
 Opcional:
 
+- Informe en PDF
 - (🔄(Possiblement mes rentable deixar-ho de costat)) Quan es cree un metge o un pacient, que automàticament es refresque la llista
 - Calcular la lletra del DNI automàticament
 - Quan ens demana introduïr el primer usuari:
