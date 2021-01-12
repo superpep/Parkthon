@@ -22,18 +22,21 @@ Is admin?: **adminCheck**
 LineEdit DNI: **dni** \
 LineEdit Nom: **nom** \
 LineEdit Cognom: **cognom** \
-LineEdit altura: **altura** \
-QDateEdit diagnostic: **diagnostic** \
 LineEdit direccio: **direccio** \
+LineEdit tel: **telefon** \
+LineEdit mail: **mail** \
+LineEdit: **sip** \
+LineEdit altura: **altura** \
+LineEdit pes: **pes** \
+QDateEdit data naiximent: **naiximent** \
+RadioButton hombre: **hombre** \
+QDateEdit diagnostic: **diagnostic** \
 QComboBox fase de l'enfermetat: **fase** \
+LineEdit IMC: **imc** \
+LineEdit grasa corporal: **grasa** \
+LineEdit medicacio: **medicacio** \
 Qlabel foto cara: **fotoCara** \
 Qlabel foto cuerpo: **fotoCuerpo** \
-LineEdit grasa corporal: **grasa** \
-LineEdit IMC: **imc** \
-LineEdit mail: **mail** \
-LineEdit medicacio: **medicacio** \
-QDateEdit data naiximent: **naiximent** \
-LineEdit pes: **pes** \
 Button: **newPatientButton**
 
 ## Pacientes

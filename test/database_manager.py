@@ -67,7 +67,6 @@ class sqlite_connector:
             address varchar(20), 
             tel INTEGER, 
             mail varchar(30), 
-            reference_times INTEGER, 
             SIP INTEGER, 
             height FLOAT, 
             weight FLOAT, 
@@ -94,13 +93,14 @@ class sqlite_connector:
                 primary key(id, patient),
             CONSTRAINT fk_patient
                 FOREIGN KEY(patient)
-                REFERENCES patients(dni)""")
+                REFERENCES patients(dni))""")
         cursorObj.execute("""CREATE TABLE times(
             patient varchar(9) NOT NULL,
             day date NOT NULL, 
             lap1 float, 
             lap2 float, 
             lap3 float, 
+            reference_times INTEGER,
             CONSTRAINT pk 
                 PRIMARY KEY(patient, day), 
             CONSTRAINT fk_pacient 
@@ -230,7 +230,7 @@ class sqlite_connector:
         rows = cursorObj.fetchall()
         return rows[0][0]+" "+rows[0][1]
 
-    def add_patient(self, dni, name, surname, doctor):
+    def add_patient(self, dni, name, surname, doctor, address, tel, mail, sip, height, weight, birth_date, gender, diag_date, phase, imc, fat, med, face_photo, body_photo):
         """
         Afegeix un pacient
 
@@ -240,8 +240,12 @@ class sqlite_connector:
             surname (string): cognom del pacient
             doctor (string): dni del doctor al que s'asociarà eixe pacient
         """
+        if(gender):
+            gender_text = "M"
+        else:
+            gender_text = "F"
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?)", (dni, name, surname, doctor))
+        cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (dni, name, surname, doctor, address, tel, mail, sip, height, weight, birth_date, gender_text, diag_date, phase, imc, fat, med))
         self.__con.commit()
     
     def save_lap_times(self, lap_times, patient):
