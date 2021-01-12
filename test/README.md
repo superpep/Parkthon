@@ -19,9 +19,21 @@ Is admin?: **adminCheck**
 
 ## New Patient
 
-Input DNI: **dni** \
-Input Nom: **nom** \
-Input Cognom: **cognom** \
+LineEdit DNI: **dni** \
+LineEdit Nom: **nom** \
+LineEdit Cognom: **cognom** \
+LineEdit altura: **altura** \
+QDateEdit diagnostic: **diagnostic** \
+LineEdit direccio: **direccio** \
+QComboBox fase de l'enfermetat: **fase** \
+Qlabel foto cara: **fotoCara** \
+Qlabel foto cuerpo: **fotoCuerpo** \
+LineEdit grasa corporal: **grasa** \
+LineEdit IMC: **imc** \
+LineEdit mail: **mail** \
+LineEdit medicacio: **medicacio** \
+QDateEdit data naiximent: **naiximent** \
+LineEdit pes: **pes** \
 Button: **newPatientButton**
 
 ## Pacientes
@@ -70,6 +82,7 @@ Obligatori:
 
 Opcional:
 
+- Informe en PDF
 - (🔄(Possiblement mes rentable deixar-ho de costat)) Quan es cree un metge o un pacient, que automàticament es refresque la llista
 - Calcular la lletra del DNI automàticament
 - Quan ens demana introduïr el primer usuari:
