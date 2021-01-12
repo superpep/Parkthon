@@ -59,8 +59,57 @@ class sqlite_connector:
         self.__con = sqlite3.connect(self.DB) # Aço crea la BD
         cursorObj = self.__con.cursor()
         cursorObj.execute("CREATE TABLE users(DNI varchar(9) PRIMARY KEY, passwd password, isAdmin BOOLEAN, isActive BOOLEAN)")
-        cursorObj.execute("CREATE TABLE patients(DNI varchar(9) primary key, name varchar(20), surname varchar(20), doctor varchar(9), CONSTRAINT fk_doctor FOREIGN KEY(doctor) REFERENCES users(dni))")
-        cursorObj.execute("CREATE TABLE times(patient varchar(9), day date, lap1 float, lap2 float, lap3 float, reference_times INTEGER, CONSTRAINT pk PRIMARY KEY(patient, day), CONSTRAINT fk_pacient FOREIGN KEY(patient) REFERENCES patients(dni), CONSTRAINT fk_reference_times FOREIGN KEY(reference_times) REFERENCES segment_times(ID))")
+        cursorObj.execute("""CREATE TABLE patients(
+            DNI varchar(9) primary key, 
+            name varchar(20), 
+            surname varchar(20), 
+            doctor varchar(9), 
+            address varchar(20), 
+            tel INTEGER, 
+            mail varchar(30), 
+            reference_times INTEGER, 
+            SIP INTEGER, 
+            height FLOAT, 
+            weight FLOAT, 
+            birth_date DATE, 
+            gender CHAR, 
+            diag_date DATE, 
+            illness_fase INTEGER, 
+            imc FLOAT, 
+            body_fat FLOAT,
+            medication varchar(100), 
+            photos INTEGER, 
+            CONSTRAINT fk_photos 
+                FOREIGN KEY(photos) 
+                REFERENCES photos(id),
+            CONSTRAINT fk_doctor 
+                FOREIGN KEY(doctor) 
+                REFERENCES users(dni)
+            )""")
+        cursorObj.execute("""CREATE TABLE photos(
+            id INTEGER NOT NULL,
+            patient varchar(9) NOT NULL,
+            photo BLOB,
+            CONSTRAINT pk
+                primary key(id, patient),
+            CONSTRAINT fk_patient
+                FOREIGN KEY(patient)
+                REFERENCES patients(dni)""")
+        cursorObj.execute("""CREATE TABLE times(
+            patient varchar(9) NOT NULL,
+            day date NOT NULL, 
+            lap1 float, 
+            lap2 float, 
+            lap3 float, 
+            CONSTRAINT pk 
+                PRIMARY KEY(patient, day), 
+            CONSTRAINT fk_pacient 
+                FOREIGN KEY(patient) 
+                REFERENCES patients(dni),
+            CONSTRAINT fk_reference_times 
+                FOREIGN KEY(reference_times) 
+                REFERENCES segment_times(ID)
+            )""")
         cursorObj.execute("CREATE TABLE segment_times(ID INTEGER PRIMARY KEY AUTOINCREMENT, total_min_time float, total_max_time float, seg1_min_time float, seg1_max_time float, seg2_min_time float, seg2_max_time float, seg3_min_time float, seg3_max_time float)")
         cursorObj.execute("INSERT INTO segment_times(total_min_time, total_max_time, seg1_min_time, seg1_max_time, seg2_min_time, seg2_max_time, seg3_max_time, seg3_min_time) VALUES (41.91, 60.32, 17.16, 23.56, 15.14, 25.90, 10.43, 13.34)") # Valors principals
         self.__con.commit()  
