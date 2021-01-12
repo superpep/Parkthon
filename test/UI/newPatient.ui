@@ -363,6 +363,9 @@
      <property name="text">
       <string>Hombre</string>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QRadioButton" name="mujer">
      <property name="geometry">
