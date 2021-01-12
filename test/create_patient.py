@@ -13,6 +13,7 @@ class Create_patient(QtWidgets.QMainWindow):
         self.nom.returnPressed.connect(self.add_patient)
         self.cognom.returnPressed.connect(self.add_patient)
         self.dni.returnPressed.connect(self.add_patient)
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
         
 
     def add_patient(self):
