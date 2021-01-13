@@ -98,7 +98,7 @@
      <rect>
       <x>20</x>
       <y>4</y>
-      <width>261</width>
+      <width>391</width>
       <height>41</height>
      </rect>
     </property>
@@ -113,7 +113,7 @@
      <string notr="true">color: white; font-weight: bold; font-size: 40px;</string>
     </property>
     <property name="text">
-     <string>PACIENTES</string>
+     <string>AÑADIR PACIENTE</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
