@@ -16,7 +16,14 @@ class Create_patient(QtWidgets.QMainWindow):
         self.fotoCuerpo.setPixmap(self.fotoCaraPixmap)
         self.newPatientButton.clicked.connect(self.add_patient)
             
-        self.fase.setPlaceholderText("Fase de la enfermedad")
+        self.fase.setPlaceholderText("Escala de Hoehn-Yahr")
+        self.fase.addItem("1")
+        self.fase.addItem("1.5")
+        self.fase.addItem("2")
+        self.fase.addItem("2.5")
+        self.fase.addItem("3")
+        self.fase.addItem("4")
+        self.fase.addItem("5")
         
         self.pes.editingFinished.connect(self.write_imc);
         self.altura.editingFinished.connect(self.write_imc)

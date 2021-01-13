@@ -31,6 +31,7 @@ class Settings(QtWidgets.QMainWindow):
 
         self.tiempoTotal_max.setText(str(sql_con.get_segment_time("total_max_time")))
         self.tiempoTotal_min.setText(str(sql_con.get_segment_time("total_min_time")))
+        sql_con.close()
 
     def edit_mode(self):
         """

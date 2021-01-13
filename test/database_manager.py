@@ -241,6 +241,11 @@ class sqlite_connector:
                                                                                                                  fat, med, face_photo, body_photo))
         self.__con.commit()
     
+    def get_patient_data(self, dni):
+        cursorObj = self.__con.cursor()
+        return cursorObj.execute("SELECT * FROM patients WHERE dni = '"+dni+"'").fetchall()[0]
+        
+    
     def save_lap_times(self, lap_times, patient):
         """
         Guarda els temps asociat al pacient
