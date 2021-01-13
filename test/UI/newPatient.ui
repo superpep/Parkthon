@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>768</height>
+    <height>793</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>1000</width>
-    <height>1000</height>
+    <height>1100</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -81,7 +81,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>710</y>
+      <y>720</y>
       <width>201</width>
       <height>32</height>
      </rect>
@@ -144,9 +144,9 @@
    <widget class="QLineEdit" name="direccio">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>530</y>
-      <width>201</width>
+      <x>300</x>
+      <y>560</y>
+      <width>421</width>
       <height>21</height>
      </rect>
     </property>
@@ -166,15 +166,15 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Direcció</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="telefon">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>570</y>
-      <width>201</width>
+      <x>300</x>
+      <y>620</y>
+      <width>421</width>
       <height>21</height>
      </rect>
     </property>
@@ -194,15 +194,15 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Telèfon</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="mail">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>490</y>
-      <width>201</width>
+      <x>300</x>
+      <y>500</y>
+      <width>421</width>
       <height>21</height>
      </rect>
     </property>
@@ -222,7 +222,7 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Email</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="sip">
@@ -256,9 +256,9 @@
    <widget class="QLineEdit" name="altura">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>290</y>
-      <width>91</width>
+      <x>300</x>
+      <y>314</y>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -278,15 +278,15 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Altura</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="pes">
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>290</y>
-      <width>91</width>
+      <y>314</y>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -303,15 +303,15 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Pes</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QDateEdit" name="naiximent">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>200</y>
-      <width>201</width>
+      <x>300</x>
+      <y>195</y>
+      <width>421</width>
       <height>24</height>
      </rect>
     </property>
@@ -343,7 +343,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>230</y>
+      <y>235</y>
       <width>421</width>
       <height>41</height>
      </rect>
@@ -393,8 +393,8 @@
    <widget class="QDateEdit" name="diagnostic">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>370</y>
+      <x>300</x>
+      <y>434</y>
       <width>201</width>
       <height>24</height>
      </rect>
@@ -426,8 +426,8 @@
    <widget class="QComboBox" name="fase">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>410</y>
+      <x>520</x>
+      <y>434</y>
       <width>201</width>
       <height>26</height>
      </rect>
@@ -436,8 +436,8 @@
    <widget class="QLineEdit" name="imc">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>330</y>
+      <x>300</x>
+      <y>370</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -461,14 +461,14 @@
      <bool>true</bool>
     </property>
     <property name="placeholderText">
-     <string notr="true">IMC</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="grasa">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>450</y>
+      <x>520</x>
+      <y>370</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -492,16 +492,16 @@
      <bool>true</bool>
     </property>
     <property name="placeholderText">
-     <string notr="true">Percentage grasa corporal</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="medicacio">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>610</y>
-      <width>201</width>
-      <height>81</height>
+      <x>300</x>
+      <y>670</y>
+      <width>421</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -523,7 +523,7 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
     <property name="placeholderText">
-     <string notr="true">Medicació</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLabel" name="fotoCara">
@@ -670,9 +670,191 @@
      <string>SIP</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>290</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>ALTURA</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>290</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>PES</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>346</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>IMC</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>410</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FECHA ALTA</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>410</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FASE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>346</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>GRASA CORPORAL</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>476</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>EMAIL</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>536</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>DIRECCIÓN</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>596</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>TELÉFONO</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>646</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>MEDICACIÓN</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>nom</tabstop>
+  <tabstop>cognom</tabstop>
+  <tabstop>dni</tabstop>
+  <tabstop>sip</tabstop>
+  <tabstop>naiximent</tabstop>
+  <tabstop>hombre</tabstop>
+  <tabstop>mujer</tabstop>
+  <tabstop>altura</tabstop>
+  <tabstop>pes</tabstop>
+  <tabstop>imc</tabstop>
+  <tabstop>grasa</tabstop>
+  <tabstop>diagnostic</tabstop>
+  <tabstop>fase</tabstop>
+  <tabstop>mail</tabstop>
+  <tabstop>direccio</tabstop>
+  <tabstop>telefon</tabstop>
+  <tabstop>medicacio</tabstop>
+  <tabstop>newPatientButton</tabstop>
+  <tabstop>fotoCaraButton</tabstop>
+  <tabstop>fotoCuerpoButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
