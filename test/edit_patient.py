@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtCore
 import database_manager as sqlite
 
 
@@ -8,7 +8,7 @@ import sys
 from __manifest__ import calculate_imc, path_separator
 
 class Edit_patient(QtWidgets.QMainWindow):
-    def __init__(self, patient_dni):
+    def __init__(self, patient_dni="123123123"):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
@@ -27,6 +27,8 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.pes.editingFinished.connect(self.write_imc);
         self.altura.editingFinished.connect(self.write_imc)
 
+        
+
         #self.fotoCaraButton.clicked.connect(self.set_photo_cara)
         #self.fotoCuerpoButton.clicked.connect(self.set_photo_cuerpo)
 
@@ -42,9 +44,9 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.dni.setText(data[0])
         self.nom.setText(data[1])
         self.cognom.setText(data[2])
-        
-        self.naiximent.setText(data[10])
-        self.diagnostic.setText(data[12])
+
+        self.naiximent.setDate(QtCore.QDate.fromString(data[10],"dd/MM/yyyy"))
+        self.diagnostic.setDate(QtCore.QDate.fromString(data[12],"dd/MM/yyyy"))
 
         """
         data[11] genere

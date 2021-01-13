@@ -58,7 +58,7 @@ class Patient_management(QtWidgets.QMainWindow):
     def manage_patient(self, index):
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
-        self.editar_paciente.show()
+        self.editarPaciente.show()
 
     def editar_paciente(self):
         self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
