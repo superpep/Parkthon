@@ -34,13 +34,13 @@ class Create_patient(QtWidgets.QMainWindow):
     
 
     def set_photo_cara(self):
-        image_path = QtWidgets.QFileDialog.getOpenFileName(window, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
+        image_path = QtWidgets.QFileDialog.getOpenFileName(self, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
         if (image_path[0] != ""):    
             self.fotoCaraPixmap = MyPixmap(image_path[0])
             self.fotoCara.setPixmap(self.fotoCaraPixmap)
 
     def set_photo_cuerpo(self):
-        image_path = QtWidgets.QFileDialog.getOpenFileName(window, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
+        image_path = QtWidgets.QFileDialog.getOpenFileName(self, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
         if (image_path[0] != ""):
             self.fotoCuerpoPixmap = MyPixmap(image_path[0])
             self.fotoCuerpoButton.setPixmap(self.fotoCuerpoPixmap)
