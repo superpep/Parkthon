@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from __manifest__ import path_separator, load_properties, comprobation_message
 import database_manager as sqlite
 import user_management
+import edit_patient
 import chrono
 import settings
 import create_patient
@@ -14,6 +15,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
         self.borrarPaciente.clicked.connect(self.delete_patient)
+        self.editarPaciente.clicked.connect(self.editar_paciente)
         self.refreshList.clicked.connect(self.refresh_list)
         self.borrarPaciente.hide()
 
@@ -55,6 +57,9 @@ class Patient_management(QtWidgets.QMainWindow):
     def manage_patient(self, index):
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
+
+    def editar_paciente(self):
+        self.new_window = edit_patient.Edit_patient(True)
         
     def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot

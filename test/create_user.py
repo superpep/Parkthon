@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore
-from __manifest__ import path_separator, comprobation_message
+from __manifest__ import path_separator, comprobation_message, calculate_imc
 import database_manager as sqlite
 import user_management
 

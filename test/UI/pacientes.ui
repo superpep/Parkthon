@@ -269,6 +269,22 @@ selection-background-color: #222628;</string>
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="editarPaciente">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>680</y>
+      <width>131</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Editar paciente</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

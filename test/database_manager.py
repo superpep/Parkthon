@@ -77,23 +77,12 @@ class sqlite_connector:
             imc FLOAT, 
             body_fat FLOAT,
             medication varchar(100), 
-            photos INTEGER, 
-            CONSTRAINT fk_photos 
-                FOREIGN KEY(photos) 
-                REFERENCES photos(id),
+            face_photo BLOB,
+            body_photo BLOB,
             CONSTRAINT fk_doctor 
                 FOREIGN KEY(doctor) 
                 REFERENCES users(dni)
             )""")
-        cursorObj.execute("""CREATE TABLE photos(
-            id INTEGER NOT NULL,
-            patient varchar(9) NOT NULL,
-            photo BLOB,
-            CONSTRAINT pk
-                primary key(id, patient),
-            CONSTRAINT fk_patient
-                FOREIGN KEY(patient)
-                REFERENCES patients(dni))""")
         cursorObj.execute("""CREATE TABLE times(
             patient varchar(9) NOT NULL,
             day date NOT NULL, 
@@ -244,8 +233,12 @@ class sqlite_connector:
             gender_text = "M"
         else:
             gender_text = "F"
+        
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (dni, name, surname, doctor, address, tel, mail, sip, height, weight, birth_date, gender_text, diag_date, phase, imc, fat, med))
+        cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (dni, name, surname, doctor, address,
+                                                                                                                 tel, mail, sip, height, weight, 
+                                                                                                                 birth_date, gender_text, diag_date, phase, imc, 
+                                                                                                                 fat, med, face_photo, body_photo))
         self.__con.commit()
     
     def save_lap_times(self, lap_times, patient):

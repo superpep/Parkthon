@@ -103,3 +103,13 @@ def comprobation_message(title, msg, by="Sí", bn="No"):
     buttonN.setText(bn)
     box.exec_()
     return box.clickedButton() == buttonY
+
+def calculate_imc(weight, height):
+    if(weight != "" and height != ""):
+        try:
+            height = float(height)
+            if(height > 50):
+                height /= 100
+            return str(float(weight) / (height * height))
+        except ValueError:
+            pass
