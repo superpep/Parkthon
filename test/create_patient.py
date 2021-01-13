@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 import database_manager as sqlite
-from __manifest__ import path_separator, load_properties, comprobation_message
+from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc
 
 import sys
 
