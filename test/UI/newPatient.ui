@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>100</y>
+      <y>160</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -52,14 +52,14 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">DNI</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="nom">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>60</y>
+      <y>100</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -74,14 +74,14 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Nom</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QPushButton" name="newPatientButton">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>670</y>
+      <y>710</y>
       <width>201</width>
       <height>32</height>
      </rect>
@@ -96,9 +96,9 @@
    <widget class="QLabel" name="titulo">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>10</y>
-      <width>241</width>
+      <x>20</x>
+      <y>4</y>
+      <width>261</width>
       <height>41</height>
      </rect>
     </property>
@@ -110,10 +110,10 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white; font-weight: bold; font-size: 25px;</string>
+     <string notr="true">color: white; font-weight: bold; font-size: 40px;</string>
     </property>
     <property name="text">
-     <string>NUEVO PACIENTE</string>
+     <string>PACIENTES</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>60</y>
+      <y>100</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -138,14 +138,14 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">Cognoms</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="direccio">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>470</y>
+      <y>530</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -173,7 +173,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>510</y>
+      <y>570</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -201,7 +201,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>430</y>
+      <y>490</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -229,7 +229,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>100</y>
+      <y>160</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -250,14 +250,14 @@
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string notr="true">SIP</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="altura">
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>230</y>
+      <y>290</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -285,7 +285,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>230</y>
+      <y>290</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -310,7 +310,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>140</y>
+      <y>200</y>
       <width>201</width>
       <height>24</height>
      </rect>
@@ -342,11 +342,14 @@
    <widget class="QGroupBox" name="radioButtons">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>170</y>
-      <width>211</width>
+      <x>300</x>
+      <y>230</y>
+      <width>421</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 10px; background-color: #222628;</string>
     </property>
     <property name="title">
      <string/>
@@ -360,6 +363,9 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: white; font-weight: bold;</string>
+     </property>
      <property name="text">
       <string>Hombre</string>
      </property>
@@ -370,11 +376,14 @@
     <widget class="QRadioButton" name="mujer">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>330</x>
        <y>10</y>
        <width>81</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white; font-weight: bold;</string>
      </property>
      <property name="text">
       <string>Mujer</string>
@@ -385,7 +394,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>310</y>
+      <y>370</y>
       <width>201</width>
       <height>24</height>
      </rect>
@@ -418,7 +427,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>350</y>
+      <y>410</y>
       <width>201</width>
       <height>26</height>
      </rect>
@@ -428,7 +437,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>270</y>
+      <y>330</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -459,7 +468,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>390</y>
+      <y>450</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -490,7 +499,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>550</y>
+      <y>610</y>
       <width>201</width>
       <height>81</height>
      </rect>
@@ -553,7 +562,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>150</y>
+      <y>160</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -566,13 +575,99 @@
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>150</y>
+      <y>160</y>
       <width>113</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
      <string>Añadir foto</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>961</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>76</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>NOMBRE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>76</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>APELLIDOS</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>136</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>DNI</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>136</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>SIP</string>
     </property>
    </widget>
   </widget>
