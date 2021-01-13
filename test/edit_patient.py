@@ -1,13 +1,19 @@
 from PyQt5 import QtWidgets, uic
+import database_manager as sqlite
+
+
 import sys
+
+
 from __manifest__ import calculate_imc, path_separator
 
 class Edit_patient(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, patient_dni):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
+        self.patient_dni = patient_dni
         self.titulo.setText("EDITAR PACIENTE")
         self.set_editable_text(False) # Desactivem la edició
 
@@ -27,7 +33,27 @@ class Edit_patient(QtWidgets.QMainWindow):
     
 
     def load_data(self):
-        pass
+        sql_con = sqlite.sqlite_connector()
+        data = sql_con.get_patient_data(self.patient_dni)
+
+        print(data)
+
+        
+        self.dni.setText(data[0])
+        self.nom.setText(data[1])
+        self.cognom.setText(data[2])
+        
+        self.naiximent.setText(data[10])
+        self.diagnostic.setText(data[12])
+
+        """
+        data[11] genere
+        data[13] escala
+        data[17] BLOB fotocara
+        data[18] BLOB fotocuerpo
+        
+        """
+        sql_con.close()
         #TO-DO: Que carregue les dades
 
     def edit_mode(self):
