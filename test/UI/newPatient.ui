@@ -27,6 +27,9 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QLineEdit" name="dni">
     <property name="geometry">
      <rect>
@@ -81,7 +84,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>710</y>
+      <y>690</y>
       <width>201</width>
       <height>32</height>
      </rect>
@@ -145,7 +148,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>550</y>
+      <y>510</y>
       <width>421</width>
       <height>21</height>
      </rect>
@@ -173,7 +176,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>490</y>
+      <y>450</y>
       <width>191</width>
       <height>21</height>
      </rect>
@@ -201,7 +204,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>490</y>
+      <y>450</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -257,8 +260,8 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>304</y>
-      <width>201</width>
+      <y>330</y>
+      <width>90</width>
       <height>21</height>
      </rect>
     </property>
@@ -284,9 +287,9 @@
    <widget class="QLineEdit" name="pes">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>304</y>
-      <width>201</width>
+      <x>410</x>
+      <y>330</y>
+      <width>90</width>
       <height>21</height>
      </rect>
     </property>
@@ -310,7 +313,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>190</y>
+      <y>210</y>
       <width>191</width>
       <height>24</height>
      </rect>
@@ -343,7 +346,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>225</y>
+      <y>249</y>
       <width>421</width>
       <height>41</height>
      </rect>
@@ -394,7 +397,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>424</y>
+      <y>390</y>
       <width>201</width>
       <height>24</height>
      </rect>
@@ -427,7 +430,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>424</y>
+      <y>390</y>
       <width>201</width>
       <height>26</height>
      </rect>
@@ -439,9 +442,9 @@
    <widget class="QLineEdit" name="imc">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>360</y>
-      <width>201</width>
+      <x>520</x>
+      <y>330</y>
+      <width>90</width>
       <height>21</height>
      </rect>
     </property>
@@ -461,7 +464,7 @@
      <number>0</number>
     </property>
     <property name="readOnly">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="placeholderText">
      <string notr="true"/>
@@ -470,9 +473,9 @@
    <widget class="QLineEdit" name="grasa">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>360</y>
-      <width>201</width>
+      <x>630</x>
+      <y>330</y>
+      <width>90</width>
       <height>21</height>
      </rect>
     </property>
@@ -492,7 +495,7 @@
      <number>0</number>
     </property>
     <property name="readOnly">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="placeholderText">
      <string notr="true"/>
@@ -502,7 +505,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>50</y>
+      <y>90</y>
       <width>91</width>
       <height>91</height>
      </rect>
@@ -518,7 +521,7 @@
     <property name="geometry">
      <rect>
       <x>830</x>
-      <y>50</y>
+      <y>90</y>
       <width>91</width>
       <height>91</height>
      </rect>
@@ -534,7 +537,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>150</y>
+      <y>190</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -547,7 +550,7 @@
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>150</y>
+      <y>190</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -646,7 +649,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>280</y>
+      <y>306</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -661,8 +664,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>280</y>
+      <x>410</x>
+      <y>306</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -677,11 +680,17 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>336</y>
+      <x>520</x>
+      <y>306</y>
       <width>71</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Índice Masa Corporal</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
     </property>
     <property name="styleSheet">
      <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
@@ -694,7 +703,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>400</y>
+      <y>366</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -710,7 +719,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>400</y>
+      <y>366</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -725,24 +734,30 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>336</y>
-      <width>151</width>
+      <x>630</x>
+      <y>306</y>
+      <width>131</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Porcentaje Grasa Corporal</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
     </property>
     <property name="styleSheet">
      <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
     </property>
     <property name="text">
-     <string>GRASA CORPORAL</string>
+     <string>PGC</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>466</y>
+      <y>426</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -758,7 +773,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>526</y>
+      <y>486</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -774,7 +789,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>470</y>
+      <y>426</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -790,7 +805,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>576</y>
+      <y>546</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -806,7 +821,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>190</y>
+      <y>210</y>
       <width>201</width>
       <height>26</height>
      </rect>
@@ -816,7 +831,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>710</y>
+      <y>690</y>
       <width>91</width>
       <height>32</height>
      </rect>
@@ -832,7 +847,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>710</y>
+      <y>690</y>
       <width>91</width>
       <height>32</height>
      </rect>
@@ -848,10 +863,42 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>600</y>
+      <y>570</y>
       <width>411</width>
       <height>101</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>186</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FECHA DE NACIMIENTO</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>186</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>MEDICOS</string>
     </property>
    </widget>
   </widget>
@@ -863,6 +910,7 @@
   <tabstop>dni</tabstop>
   <tabstop>sip</tabstop>
   <tabstop>naiximent</tabstop>
+  <tabstop>medicos</tabstop>
   <tabstop>hombre</tabstop>
   <tabstop>mujer</tabstop>
   <tabstop>altura</tabstop>
@@ -872,9 +920,12 @@
   <tabstop>diagnostic</tabstop>
   <tabstop>fase</tabstop>
   <tabstop>mail</tabstop>
-  <tabstop>direccio</tabstop>
   <tabstop>telefon</tabstop>
+  <tabstop>direccio</tabstop>
+  <tabstop>medicacio</tabstop>
+  <tabstop>cancelarButton</tabstop>
   <tabstop>newPatientButton</tabstop>
+  <tabstop>guardarButton</tabstop>
   <tabstop>fotoCaraButton</tabstop>
   <tabstop>fotoCuerpoButton</tabstop>
  </tabstops>
