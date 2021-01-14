@@ -72,9 +72,3 @@ class Create_patient(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un paciente con este DNI")
             finally:
                 sql_con.close()
-
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Create_patient()# Llancem el login
-    app.exec_() # Start the application

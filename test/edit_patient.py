@@ -141,7 +141,3 @@ class Edit_patient(QtWidgets.QMainWindow):
             self.medicos.isHitTestVisible = False
             self.fotoCaraButton.hide()
             self.fotoCuerpoButton.hide()
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-    window = Edit_patient()# Llancem el login
-    app.exec_() # Start the application
