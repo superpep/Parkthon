@@ -36,7 +36,6 @@ class Create_patient(QtWidgets.QMainWindow):
 
     def write_imc(self):
         self.imc.setText(calculate_imc(self.pes.text(), self.altura.text()))
-        self.grasa.setText(self.imc.text()+"%")
     
 
     def set_photo_cara(self):

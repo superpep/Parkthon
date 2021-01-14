@@ -7,14 +7,15 @@ import sys
 from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors
 
 class Edit_patient(QtWidgets.QMainWindow):
-    def __init__(self, patient_dni="123123123"):
+    def __init__(self, patient_dni="123123123", doctor_edit_mode=False):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
+        
         self.patient_dni = patient_dni
+        
         self.titulo.setText("EDITAR PACIENTE")
-        self.set_editable_text(False) # Desactivem la edició
 
         self.fase.setPlaceholderText("Escala de Hoehn-Yahr")
         self.fase.addItems(["1", "1.5", "2", "2.5", "3", "4", "5"])
@@ -29,6 +30,8 @@ class Edit_patient(QtWidgets.QMainWindow):
         
 
         self.load_data() # Carreguem les dades
+        if(doctor_edit_mode):
+            self.edit_mode()
 
         self.pes.editingFinished.connect(self.write_imc);
         self.altura.editingFinished.connect(self.write_imc)
@@ -38,6 +41,7 @@ class Edit_patient(QtWidgets.QMainWindow):
     
     
     def load_data(self):
+        self.set_editable_text(False)
         self.cancelarButton.hide()
         self.guardarButton.hide()
         self.newPatientButton.show()
@@ -51,23 +55,21 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.nom.setText(data[1])
         self.cognom.setText(data[2])
         self.direccio.setText(data[4])
-        self.telefon.setText(data[5])
+        self.telefon.setText(str(data[5]))
         self.mail.setText(data[6])
-        self.sip.setText(data[7])
-        self.altura.setText(data[8])
-        self.pes.setText(data[9])
+        self.sip.setText(str(data[7]))
+        self.altura.setText(str(data[8]))
+        self.pes.setText(str(data[9]))
         self.naiximent.setDate(QtCore.QDate.fromString(data[10],"dd/MM/yyyy"))
         if(data[11] != 'M'):
             self.mujer.setChecked(True)
         self.diagnostic.setDate(QtCore.QDate.fromString(data[12],"dd/MM/yyyy"))
         self.fase.setCurrentIndex(data[13])
-        self.imc.setText(data[14])
-        self.grasa.setText(data[15])
+        self.imc.setText(str(data[14]))
+        self.grasa.setText(str(data[15]))
         self.medicacio.setText(data[16])
         
         self.fotoCara.setPixmap(self.blob_to_pixmap(data[17]))
-        if(self.fotoCara.pixmap()):
-            print(self.fotoCara.pixmap())
         self.fotoCuerpo.setPixmap(self.blob_to_pixmap(data[18]))
 
     def blob_to_pixmap(self, binary):
@@ -124,15 +126,19 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.altura.setReadOnly(not mode)
         self.pes.setReadOnly(not mode)
         self.naiximent.setReadOnly(not mode)
-        #self.hombre.setCheckable(mode)
-        #self.mujer.setCheckable(mode)
+        self.hombre.setCheckable(mode)
+        self.mujer.setCheckable(mode)
         self.diagnostic.setReadOnly(not mode)
         self.medicacio.setReadOnly(not mode)
+        
+        self.imc.setReadOnly(not mode)
+        self.grasa.setReadOnly(not mode)
 
         if(mode):
             self.fotoCaraButton.show()
             self.fotoCuerpoButton.show()
         else:
+            self.medicos.isHitTestVisible = False
             self.fotoCaraButton.hide()
             self.fotoCuerpoButton.hide()
 if __name__ == "__main__":

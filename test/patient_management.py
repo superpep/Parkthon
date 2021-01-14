@@ -83,16 +83,13 @@ class Patient_management(QtWidgets.QMainWindow):
     def check_patients_without_doctor(self):
         sql_con = sqlite.sqlite_connector()
         patients_without_doctor = sql_con.get_patients_no_doctor()
+        sql_con.close()
         for patient in patients_without_doctor:
             if comprobation_message('Paciente sin médico', 'El paciente '+patient[1]+" "+patient[2]+' ('+patient[0]+'), no tiene ningún médico asignado ya que el que tenía se ha eliminado. ¿Quieres añadirle un nuevo médico ahora?'):
-                doctor, ok = QtWidgets.QInputDialog.getText(self, 'Introduce el nuevo médico', 'Escriba el DNI del nuevo médico de '+patient[1]+" "+patient[2]+": ")
-                if ok:    
-                    new_window = edit_user.Edit_user(patient[0])
-                    QtWidgets.QMessageBox.information(self, 'Médico actualizado', "El médico ha sido actualizado con éxito.")
-                else:
-                    print("no aceptar")
-        sql_con.close()
-    
+                self.new_window = edit_patient.Edit_patient(patient[0], True)
+            else:
+                print("no aceptar")
+        
     def delete_patient(self):
         if comprobation_message('Comprobación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
             sql_con = sqlite.sqlite_connector()
