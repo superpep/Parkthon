@@ -85,12 +85,9 @@ class Patient_management(QtWidgets.QMainWindow):
         patients_without_doctor = sql_con.get_patients_no_doctor()
         for patient in patients_without_doctor:
             if comprobation_message('Paciente sin médico', 'El paciente '+patient[1]+" "+patient[2]+' ('+patient[0]+'), no tiene ningún médico asignado ya que el que tenía se ha eliminado. ¿Quieres añadirle un nuevo médico ahora?'):
-                doctor, ok = QtWidgets.QInputDialog.getText(self, 'Introduce el nuevo médio', 'Escriba el DNI del nuevo médico de '+patient[1]+" "+patient[2]+": ")
+                doctor, ok = QtWidgets.QInputDialog.getText(self, 'Introduce el nuevo médico', 'Escriba el DNI del nuevo médico de '+patient[1]+" "+patient[2]+": ")
                 if ok:    
-                    sql_con = sqlite.sqlite_connector()
-                    # Hi ha que fer aço en un combobox millor
-                    sql_con.set_new_doctor(doctor, patient[0])
-                    sql_con.close()
+                    new_window = edit_user.Edit_user(patient[0])
                     QtWidgets.QMessageBox.information(self, 'Médico actualizado', "El médico ha sido actualizado con éxito.")
                 else:
                     print("no aceptar")

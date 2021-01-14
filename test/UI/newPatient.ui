@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>793</height>
+    <height>774</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>160</y>
+      <y>150</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -59,7 +59,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>100</y>
+      <y>90</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -81,7 +81,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>720</y>
+      <y>710</y>
       <width>201</width>
       <height>32</height>
      </rect>
@@ -123,7 +123,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>100</y>
+      <y>90</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -145,7 +145,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>560</y>
+      <y>550</y>
       <width>421</width>
       <height>21</height>
      </rect>
@@ -172,9 +172,9 @@
    <widget class="QLineEdit" name="telefon">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>620</y>
-      <width>421</width>
+      <x>520</x>
+      <y>490</y>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -201,8 +201,8 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>500</y>
-      <width>421</width>
+      <y>490</y>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -229,7 +229,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>160</y>
+      <y>150</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -257,7 +257,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>314</y>
+      <y>304</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -285,7 +285,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>314</y>
+      <y>304</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -310,8 +310,8 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>195</y>
-      <width>421</width>
+      <y>190</y>
+      <width>191</width>
       <height>24</height>
      </rect>
     </property>
@@ -343,7 +343,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>235</y>
+      <y>225</y>
       <width>421</width>
       <height>41</height>
      </rect>
@@ -394,7 +394,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>434</y>
+      <y>424</y>
       <width>201</width>
       <height>24</height>
      </rect>
@@ -427,17 +427,20 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>434</y>
+      <y>424</y>
       <width>201</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="statusTip">
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="imc">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>370</y>
+      <y>360</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -468,7 +471,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>370</y>
+      <y>360</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -495,42 +498,11 @@
      <string notr="true"/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="medicacio">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>670</y>
-      <width>421</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>32767</number>
-    </property>
-    <property name="cursorPosition">
-     <number>0</number>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-    <property name="placeholderText">
-     <string notr="true"/>
-    </property>
-   </widget>
    <widget class="QLabel" name="fotoCara">
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>60</y>
+      <y>50</y>
       <width>91</width>
       <height>91</height>
      </rect>
@@ -546,7 +518,7 @@
     <property name="geometry">
      <rect>
       <x>830</x>
-      <y>60</y>
+      <y>50</y>
       <width>91</width>
       <height>91</height>
      </rect>
@@ -562,7 +534,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>160</y>
+      <y>150</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -575,7 +547,7 @@
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>160</y>
+      <y>150</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -610,7 +582,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>76</y>
+      <y>66</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -626,7 +598,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>76</y>
+      <y>66</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -642,7 +614,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>136</y>
+      <y>126</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -658,7 +630,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>136</y>
+      <y>126</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -674,7 +646,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>290</y>
+      <y>280</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -690,7 +662,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>290</y>
+      <y>280</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -706,7 +678,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>346</y>
+      <y>336</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -722,7 +694,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>410</y>
+      <y>400</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -738,7 +710,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>410</y>
+      <y>400</y>
       <width>101</width>
       <height>20</height>
      </rect>
@@ -754,7 +726,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>346</y>
+      <y>336</y>
       <width>151</width>
       <height>20</height>
      </rect>
@@ -770,7 +742,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>476</y>
+      <y>466</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -786,7 +758,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>536</y>
+      <y>526</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -801,8 +773,8 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>596</y>
+      <x>520</x>
+      <y>470</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -818,7 +790,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>646</y>
+      <y>576</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -828,6 +800,58 @@
     </property>
     <property name="text">
      <string>MEDICACIÓN</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="medicos">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>190</y>
+      <width>201</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="guardarButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>710</y>
+      <width>91</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; color: white;</string>
+    </property>
+    <property name="text">
+     <string>Guardar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancelarButton">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>710</y>
+      <width>91</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; color: white;</string>
+    </property>
+    <property name="text">
+     <string>Cancelar</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="medicacio">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>600</y>
+      <width>411</width>
+      <height>101</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -850,7 +874,6 @@
   <tabstop>mail</tabstop>
   <tabstop>direccio</tabstop>
   <tabstop>telefon</tabstop>
-  <tabstop>medicacio</tabstop>
   <tabstop>newPatientButton</tabstop>
   <tabstop>fotoCaraButton</tabstop>
   <tabstop>fotoCuerpoButton</tabstop>

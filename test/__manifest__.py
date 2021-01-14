@@ -1,5 +1,6 @@
 import os
 import configparser
+import database_manager as sqlite
 from PyQt5 import QtWidgets, QtCore
 import shutil
 
@@ -113,3 +114,21 @@ def calculate_imc(weight, height):
             return str(float(weight) / (height * height))
         except ValueError:
             pass
+
+def photo_to_blob(pixmap):
+    ba = QtCore.QByteArray()
+    buff = QtCore.QBuffer(ba)
+    buff.open(QtCore.QIODevice.WriteOnly) 
+    pixmap.save(buff, "PNG")
+    return ba.data()
+
+def load_doctors(combobox):
+    config = load_properties()
+    current_user = config.get('UsersSection', 'currentUser')
+    sql_con = sqlite.sqlite_connector()
+    doctors = sql_con.get_users()
+    sql_con.close()
+    for i in range(0, len(doctors)):
+        combobox.addItem(doctors[i][0])
+        if(current_user == doctors[i][0]):
+            combobox.setCurrentIndex(i)

@@ -30,7 +30,7 @@ class sqlite_connector:
             (boolean) Si el login és correcte o no
         """
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT * FROM users where DNI = '"+dni+"' and isAdmin = 1")
+        cursorObj.execute("SELECT dni, passwd FROM users where DNI = '"+dni+"' and isActive = 1")
 
         rows = cursorObj.fetchall()
 
