@@ -229,17 +229,25 @@ class sqlite_connector:
             surname (string): cognom del pacient
             doctor (string): dni del doctor al que s'asociarà eixe pacient
         """
-        if(gender):
-            gender_text = "M"
-        else:
-            gender_text = "F"
-        
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (dni, name, surname, doctor, address,
                                                                                                                  tel, mail, sip, height, weight, 
-                                                                                                                 birth_date, gender_text, diag_date, phase, imc, 
+                                                                                                                 birth_date, get_gender(gender), diag_date, phase, imc, 
                                                                                                                  fat, med, face_photo, body_photo))
         self.__con.commit()
+
+    def edit_patient(self, dni, name, surname, doctor, address, tel, mail, sip, height, weight, birth_date, gender, diag_date, phase, imc, fat, med, face_photo, body_photo):
+
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("DELETE FROM patients WHERE DNI = '"+dni+"'")
+        self.__con.commit()
+        self.add_patient(dni, name, surname, doctor, address,
+                         tel, mail, sip, height, weight, 
+                         birth_date, get_gender(gender), diag_date, phase, imc, 
+                         fat, med, face_photo, body_photo)
+        
+    
+    
     
     def get_patient_data(self, dni):
         cursorObj = self.__con.cursor()
@@ -346,3 +354,7 @@ class sqlite_connector:
         """
         return file_exists(self.DB)
 
+def get_gender(gender):
+        if(gender):
+            return "M"
+        return "F"

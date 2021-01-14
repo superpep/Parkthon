@@ -47,11 +47,9 @@ class Create_patient(QtWidgets.QMainWindow):
     def set_photo_cuerpo(self):
         image_path = QtWidgets.QFileDialog.getOpenFileName(self, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
         if (image_path[0] != ""):
-            self.fotoCuerpoButton.setPixmap(QtGui.QPixmap(image_path[0]))
+            self.fotoCuerpo.setPixmap(QtGui.QPixmap(image_path[0]))
 
     def add_patient(self):
-        config = load_properties()
-        current_user = config.get('UsersSection', 'currentUser')
         sql_con = sqlite.sqlite_connector()
         if (len(self.dni.text()) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Introduce un DNI válido.")
@@ -59,11 +57,11 @@ class Create_patient(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
         else:
             try:
-                sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), current_user, self.direccio.text(),
+                sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.itemData(self.medicos.currentIndex()), self.direccio.text(),
                                     self.telefon.text(), self.mail.text(), self.sip.text(), self.altura.text(), self.pes.text(),
                                     self.naiximent.text(), self.hombre.isChecked(), self.diagnostic.text(), self.fase.currentIndex(),
-                                    self.imc.text(), self.grasa.text(), self.medicacio.text(), photo_to_blob(self.fotoCara.pixmap()),
-                                    photoToBlob(self.fotoCuerpo.pixmap()))
+                                    self.imc.text(), self.grasa.text(), self.medicacio.toPlainText(), photo_to_blob(self.fotoCara.pixmap()),
+                                    photo_to_blob(self.fotoCuerpo.pixmap()))
                 QtWidgets.QMessageBox.information(self, 'Paciente añadido', "¡El paciente ha sido añadido con éxito!")
                 if comprobation_message('Añadir otro paciente', '¿Quieres añadir otro paciente?'): # If OK is clicked in the button
                     self.dni.setText("")
