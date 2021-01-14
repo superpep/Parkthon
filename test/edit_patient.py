@@ -32,6 +32,9 @@ class Edit_patient(QtWidgets.QMainWindow):
 
         self.pes.editingFinished.connect(self.write_imc);
         self.altura.editingFinished.connect(self.write_imc)
+
+        self.guardarButton.clicked.connect(self.save_edit)
+        self.cancelarButton.clicked.connect(self.load_data)
     
     
     def load_data(self):
@@ -77,9 +80,8 @@ class Edit_patient(QtWidgets.QMainWindow):
 
         self.newPatientButton.hide()
         self.guardarButton.show()
-        self.guardarButton.clicked.connect(self.save_edit)
         self.cancelarButton.show()
-        self.cancelarButton.clicked.connect(self.load_data)
+        
     
     def save_edit(self):
         self.set_editable_text(False) # Desactivem l'edició
@@ -92,15 +94,16 @@ class Edit_patient(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
         else:
             try:
-                sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.itemData(self.medicos.currentIndex()), self.direccio.text(),
+                sql_con.edit_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.currentText(), self.direccio.text(),
                                     self.telefon.text(), self.mail.text(), self.sip.text(), self.altura.text(), self.pes.text(),
                                     self.naiximent.text(), self.hombre.isChecked(), self.diagnostic.text(), self.fase.currentIndex(),
                                     self.imc.text(), self.grasa.text(), self.medicacio.toPlainText(), photo_to_blob(self.fotoCara.pixmap()),
                                     photo_to_blob(self.fotoCuerpo.pixmap()))
                 QtWidgets.QMessageBox.information(self, 'Paciente modificado', "¡El paciente ha sido modificado con éxito!")
-                self.newPatientButton.setText("Editar usuario")
-                self.newPatientButton.clicked.disconnect(self.save_edit)
-                self.newPatientButton.clicked.connect(self.edit_mode)
+
+                self.newPatientButton.show()
+                self.guardarButton.hide()
+                self.cancelarButton.hide()
             except sqlite.sqlite3.IntegrityError:
                 QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un paciente con este DNI")
             finally:
@@ -121,8 +124,8 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.altura.setReadOnly(not mode)
         self.pes.setReadOnly(not mode)
         self.naiximent.setReadOnly(not mode)
-        self.hombre.setCheckable(not mode)
-        self.mujer.setCheckable(not mode)
+        #self.hombre.setCheckable(mode)
+        #self.mujer.setCheckable(mode)
         self.diagnostic.setReadOnly(not mode)
         self.medicacio.setReadOnly(not mode)
 
