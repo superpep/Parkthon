@@ -69,19 +69,18 @@ class TableModel(QtCore.QAbstractTableModel):
             # .row() indexes into the outer list,
             # .column() indexes into the sub-list
             return self._data[index.row()][index.column()]
-        """
+        
         if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
             sql_con = sqlite.sqlite_connector()
             
-            #try:
-            color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(patient_dni))) 
-            print(color)
-            return QtGui.QColor(color)
-            #except TypeError as e:
-            #    print(e)
+            try:
+                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(patient_dni))) 
+                print(color)
+                return QtGui.QColor(color)
+            except TypeError as e:
+                pass
             sql_con.close()
-        """
             
 
     def rowCount(self, index):
