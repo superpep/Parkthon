@@ -63,7 +63,7 @@ class sqlite_connector:
             DNI varchar(9) primary key, 
             name varchar(20), 
             surname varchar(20), 
-            doctor varchar(9), 
+            doctor varchar(9) NOT NULL, 
             address varchar(20), 
             tel INTEGER, 
             mail varchar(30), 
@@ -311,12 +311,12 @@ class sqlite_connector:
 
     def get_patient_times(self, patient):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT day, lap1, lap2, lap3 from times where patient = '"+patient+"' order by day desc")
+        cursorObj.execute("SELECT day, lap1, lap2, lap3, reference_times from times where patient = '"+patient+"' order by day desc")
         rows = list(cursorObj.fetchall())
         count = 0
         for row in rows:
             rows[count] = list(row)
-            rows[count].append(rows[count][1]+rows[count][2]+rows[count][3])
+            rows[count].insert(1, rows[count][1]+rows[count][2]+rows[count][3])
             count += 1
         return rows
 
@@ -324,13 +324,15 @@ class sqlite_connector:
         if (seg_id == -1):
             seg_id = "(select max(ID) from segment_times)"
         cursorObj = self.__con.cursor()
-        rows = cursorObj.execute("SELECT "+segment+" from segment_times where ID = "+seg_id)
+        rows = cursorObj.execute("SELECT "+segment+" from segment_times where ID = "+str(seg_id))
         return cursorObj.fetchall()[0][0]
 
     def get_segment_id(self, patient):
         cursorObj = self.__con.cursor()
         cursorObj.execute("SELECT reference_times from times where patient = '"+patient+"'")
-        return cursorObj.fetchall()[0][0]
+        rows = cursorObj.fetchall()
+        return rows[0][0]
+
 
     def set_new_segments_time(self, times):
         cursorObj = self.__con.cursor()

@@ -122,13 +122,14 @@ def photo_to_blob(pixmap):
     pixmap.save(buff, "PNG")
     return ba.data()
 
-def load_doctors(combobox):
-    config = load_properties()
-    current_user = config.get('UsersSection', 'currentUser')
+def load_doctors(combobox, doctor):
     sql_con = sqlite.sqlite_connector()
     doctors = sql_con.get_users()
     sql_con.close()
     for i in range(0, len(doctors)):
+        print(doctors[i][0])
         combobox.addItem(doctors[i][0])
-        if(current_user == doctors[i][0]):
+        if(doctor == doctors[i][0]):
+            print(i)
             combobox.setCurrentIndex(i)
+    return combobox

@@ -7,12 +7,13 @@ import sys
 from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors
 
 class Edit_patient(QtWidgets.QMainWindow):
-    def __init__(self, patient_dni="123123123", doctor_edit_mode=False):
+    def __init__(self, patient_dni="123123123", doctor_edit_mode=False, doctor=-1):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
-        
+
+        self.doctor = doctor        
         self.patient_dni = patient_dni
         
         self.titulo.setText("EDITAR PACIENTE")
@@ -21,7 +22,7 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.fase.addItems(["1", "1.5", "2", "2.5", "3", "4", "5"])
 
         self.medicos.setPlaceholderText("Selecciona un médico")
-        load_doctors(self.medicos)
+        load_doctors(self.medicos, self.doctor)
 
         self.newPatientButton.setText("Editar usuario")
         self.fotoCaraButton.setText("Editar foto")

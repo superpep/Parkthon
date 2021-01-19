@@ -5,11 +5,13 @@ from __manifest__ import path_separator, load_properties, comprobation_message, 
 import sys
 
 class Create_patient(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, doctor):
         super(Create_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
+
+        self.doctor = doctor
 
         self.dni.editingFinished.connect(self.calculate_dni_char)
         
@@ -21,7 +23,7 @@ class Create_patient(QtWidgets.QMainWindow):
         self.fase.addItems(["1", "1.5", "2", "2.5", "3", "4", "5"])
         
         self.medicos.setPlaceholderText("Selecciona un médico")
-        load_doctors(self.medicos)
+        self.medicos = load_doctors(self.medicos, self.doctor)
         
         self.pes.editingFinished.connect(self.write_imc);
         self.altura.editingFinished.connect(self.write_imc)
@@ -58,13 +60,13 @@ class Create_patient(QtWidgets.QMainWindow):
         sql_con = sqlite.sqlite_connector()
         if (len(self.dni.text()) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Introduce un DNI válido.")
-        elif(self.dni_letters[int(dni[:-1]) % 23] != dni[-1]):
+        elif(self.dni_letters[int(self.dni.text()[:-1]) % 23] != self.dni.text()[-1]):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
         if(self.nom.text() == ""):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
         else:
             try:
-                sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.itemData(self.medicos.currentIndex()), self.direccio.text(),
+                sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.currentText(), self.direccio.text(),
                                     self.telefon.text(), self.mail.text(), self.sip.text(), self.altura.text(), self.pes.text(),
                                     self.naiximent.text(), self.hombre.isChecked(), self.diagnostic.text(), self.fase.currentIndex(),
                                     self.imc.text(), self.grasa.text(), self.medicacio.toPlainText(), photo_to_blob(self.fotoCara.pixmap()),
@@ -76,7 +78,8 @@ class Create_patient(QtWidgets.QMainWindow):
                     self.cognom.setText("")
                 else:
                     self.close()
-            except sqlite.sqlite3.IntegrityError:
+            except sqlite.sqlite3.IntegrityError as e:
                 QtWidgets.QMessageBox.critical(self, 'ERROR', "Ya existe un paciente con este DNI")
+                print(e)
             finally:
                 sql_con.close()

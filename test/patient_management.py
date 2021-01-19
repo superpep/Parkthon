@@ -61,7 +61,7 @@ class Patient_management(QtWidgets.QMainWindow):
         self.editarPaciente.show()
 
     def editar_paciente(self):
-        self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()])
+        self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()], doctor=self.current_user)
         
     def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
@@ -77,7 +77,7 @@ class Patient_management(QtWidgets.QMainWindow):
 
 
     def new_patient(self):
-        self.new_window = create_patient.Create_patient()
+        self.new_window = create_patient.Create_patient(self.current_user)
         
 
     def check_patients_without_doctor(self):

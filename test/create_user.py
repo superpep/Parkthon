@@ -28,6 +28,7 @@ class Create_user(QtWidgets.QMainWindow):
         #self.newUserButton.clicked.connect(self.create_user)
         self.user.returnPressed.connect(self.create_user)
         self.passwd.returnPressed.connect(self.create_user)
+        self.repeat_pass.returnPressed.connect(self.create_user)
 
     def calculate_dni_char(self):
         dni = self.user.text()

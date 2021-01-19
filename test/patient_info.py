@@ -21,6 +21,7 @@ class Patient_info(QtWidgets.QMainWindow):
         self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, patient_dni))
        
         
+        
         self.model = TableModel(sql_con.get_patient_times(patient_dni))
         sql_con.close()
         self.info_table.setModel(self.model)
@@ -28,13 +29,15 @@ class Patient_info(QtWidgets.QMainWindow):
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
+        
         self.horizontalHeaders = [''] * 6
 
         self.setHeaderData(0, Qt.Horizontal, "Fecha y hora")
-        self.setHeaderData(1, Qt.Horizontal, "Segmento 1")
-        self.setHeaderData(2, Qt.Horizontal, "Segmento 2")
-        self.setHeaderData(3, Qt.Horizontal, "Segmento 3")
-        self.setHeaderData(4, Qt.Horizontal, "Tiempo total")
+        self.setHeaderData(1, Qt.Horizontal, "Tiempo total")
+        self.setHeaderData(2, Qt.Horizontal, "Segmento 1")
+        self.setHeaderData(3, Qt.Horizontal, "Segmento 2")
+        self.setHeaderData(4, Qt.Horizontal, "Segmento 3")
+        self.setHeaderData(5, Qt.Horizontal, "ID Segmentos")
 
         
         
@@ -68,19 +71,18 @@ class TableModel(QtCore.QAbstractTableModel):
             # See below for the nested-list data structure.
             # .row() indexes into the outer list,
             # .column() indexes into the sub-list
+            
             return self._data[index.row()][index.column()]
         
         if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
-            sql_con = sqlite.sqlite_connector()
-            
+
             try:
-                color = chrono.get_color_type(chrono.get_lap_type(index.column()-2, value, sql_con.get_segment_id(patient_dni))) 
-                print(color)
+                lap_type = chrono.get_lap_type(index.column()-2, value, self._data[index.row()][len(self._data[index.row()])-1])
+                color = chrono.get_color_type(lap_type) 
                 return QtGui.QColor(color)
             except TypeError as e:
                 pass
-            sql_con.close()
             
 
     def rowCount(self, index):
