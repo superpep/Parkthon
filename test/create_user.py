@@ -47,7 +47,6 @@ class Create_user(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El DNI debe ser de 9 dígitos.")
         elif(self.dni_letters[int(dni[:-1]) % 23] != dni[-1]):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
-
         elif (len(passwd) < 8):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña no puede ser menor a 8 carácteres.")
         elif(passwd != self.repeat_pass.text()):

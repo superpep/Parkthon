@@ -9,7 +9,9 @@ class Create_patient(QtWidgets.QMainWindow):
         super(Create_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'newPatient.ui', self) # Load the .ui file
         self.show() # Show the GUI
+        self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
+        self.dni.editingFinished.connect(self.calculate_dni_char)
         
         self.fotoCara.setPixmap(QtGui.QPixmap("./img/no_photo.png"))
         self.fotoCuerpo.setPixmap(QtGui.QPixmap("./img/no_photo.png"))
@@ -33,6 +35,10 @@ class Create_patient(QtWidgets.QMainWindow):
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
     
     
+    def calculate_dni_char(self):
+        dni = self.dni.text()
+        if(len(dni) == 8 ):
+            self.dni.setText(dni+self.dni_letters[int(dni) % 23])
 
     def write_imc(self):
         self.imc.setText(calculate_imc(self.pes.text(), self.altura.text()))
@@ -52,6 +58,8 @@ class Create_patient(QtWidgets.QMainWindow):
         sql_con = sqlite.sqlite_connector()
         if (len(self.dni.text()) < 9):  # Major que 9 no pot ser perque està controlat a l'interfície
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Introduce un DNI válido.")
+        elif(self.dni_letters[int(dni[:-1]) % 23] != dni[-1]):
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
         if(self.nom.text() == ""):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
         else:
