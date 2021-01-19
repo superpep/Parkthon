@@ -1,23 +1,21 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
-from __manifest__ import path_separator, load_properties
+from __manifest__ import path_separator
 import database_manager as sqlite
 import chrono
 
 patient_dni = ""
 
 class Patient_info(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, current_user, current_patient):
         super(Patient_info, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('UI'+path_separator+'patient_info.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.patient_info.setAlignment(QtCore.Qt.AlignCenter)
 
-
-        config = load_properties()
-        patient_dni = config.get('PatientsSection', 'selectedPatient')
-        doctor = config.get('UsersSection', 'currentuser')
+        patient_dni = current_patient
+        doctor = current_user
 
         sql_con = sqlite.sqlite_connector()
         self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, patient_dni))

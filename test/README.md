@@ -86,9 +86,7 @@ Obligatori:
 Opcional:
 
 - Informe en PDF
-- (🔄(Possiblement mes rentable deixar-ho de costat)) Quan es cree un metge o un pacient, que automàticament es refresque la llista
-- Calcular la lletra del DNI automàticament
-- Quan ens demana introduïr el primer usuari:
-    1. Que no ens done l'opció d'afegir un altre
-    2. Si ens dona l'opció, que puga ser no-admin
-- (🛑) No recalcular del temps del settings els camps quan mostrem el more info, sino que el temps en el que s'ha fet la prova
+- (🛑(Possiblement mes rentable deixar-ho de costat)) Quan es cree un metge o un pacient, que automàticament es refresque la llista
+- (✅) Calcular la lletra del DNI automàticament
+- (✅) Quan ens demana introduïr el primer usuari, deshabilitar el admin permanent si es vol introduïr un altre.
+- () No recalcular del temps del settings els camps quan mostrem el more info, sino que el temps en el que s'ha fet la prova

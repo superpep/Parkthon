@@ -119,8 +119,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Mostrem més informació del pacient actual
         """
-        save_property('PatientsSection', 'selectedPatient', self.current_patient) # Guardem el pacient actual en l'arxiu properties
-        self.window = patient_info.Patient_info() # Llancem la nova finestra
+        self.window = patient_info.Patient_info(self.current_user, self.current_patient) # Llancem la nova finestra
 
     def save_times(self):
         """
