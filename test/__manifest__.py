@@ -127,9 +127,6 @@ def load_doctors(combobox, doctor):
     doctors = sql_con.get_users()
     sql_con.close()
     for i in range(0, len(doctors)):
-        print(doctors[i][0])
         combobox.addItem(doctors[i][0])
         if(doctor == doctors[i][0]):
-            print(i)
             combobox.setCurrentIndex(i)
-    return combobox
