@@ -30,14 +30,15 @@ class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
         
-        self.horizontalHeaders = [''] * 6
+        self.horizontalHeaders = [''] * 7
 
         self.setHeaderData(0, Qt.Horizontal, "Fecha y hora")
         self.setHeaderData(1, Qt.Horizontal, "Tiempo total")
         self.setHeaderData(2, Qt.Horizontal, "Segmento 1")
         self.setHeaderData(3, Qt.Horizontal, "Segmento 2")
         self.setHeaderData(4, Qt.Horizontal, "Segmento 3")
-        self.setHeaderData(5, Qt.Horizontal, "ID Segmentos")
+        self.setHeaderData(5, Qt.Horizontal, "Observaciones")
+        self.setHeaderData(6, Qt.Horizontal, "ID Segmentos")
 
         
         

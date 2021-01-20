@@ -130,7 +130,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
         sql_con = sqlite.sqlite_connector() # Creem la connexió
 
-        sql_con.save_lap_times(self.lap_times, self.current_patient) # Guardem els temps en l'usuari actual
+        sql_con.save_lap_times(self.lap_times, self.current_patient, self.observations.toPlainText()) # Guardem els temps en l'usuari actual
 
         sql_con.close() # Tanquem la connexió
         self.saveIcon.hide() # Amaguem l'icona de guardar ja que ja s'ha guardat

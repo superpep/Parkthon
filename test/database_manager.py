@@ -255,7 +255,7 @@ class sqlite_connector:
         return cursorObj.execute("SELECT * FROM patients WHERE dni = '"+dni+"'").fetchall()[0]
         
     
-    def save_lap_times(self, lap_times, patient):
+    def save_lap_times(self, lap_times, patient, observations):
         """
         Guarda els temps asociat al pacient
 
@@ -264,7 +264,7 @@ class sqlite_connector:
             patient (string) DNI del pacient al que se li guarda el temps de volta
         """
         cursorObj = self.__con.cursor()
-        cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?, (select max(ID) from segment_times))", (patient, lap_times[0], lap_times[1], lap_times[2]))
+        cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?, ?, (select max(ID) from segment_times))", (patient, lap_times[0], lap_times[1], lap_times[2], observations))
         self.__con.commit()
 
     def get_patient_total_times(self, patient):
@@ -312,7 +312,7 @@ class sqlite_connector:
 
     def get_patient_times(self, patient):
         cursorObj = self.__con.cursor()
-        cursorObj.execute("SELECT day, lap1, lap2, lap3, reference_times from times where patient = '"+patient+"' order by day desc")
+        cursorObj.execute("SELECT day, lap1, lap2, lap3, test_info, reference_times from times where patient = '"+patient+"' order by day desc")
         rows = list(cursorObj.fetchall())
         count = 0
         for row in rows:
