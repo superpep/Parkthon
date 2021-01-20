@@ -15,8 +15,8 @@ class Create_patient(QtWidgets.QMainWindow):
 
         self.dni.editingFinished.connect(self.calculate_dni_char)
         
-        self.fotoCara.setPixmap(QtGui.QPixmap("./img/no_photo.png"))
-        self.fotoCuerpo.setPixmap(QtGui.QPixmap("./img/no_photo.png"))
+        self.fotoCara.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
+        self.fotoCuerpo.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
         self.newPatientButton.clicked.connect(self.add_patient)
             
         self.fase.setPlaceholderText("Escala de Hoehn-Yahr")

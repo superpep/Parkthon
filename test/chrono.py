@@ -82,9 +82,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #e9e8eb;} ")
         self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #e9e8eb;} ")
 
-        self.laps_image = QtGui.QIcon('img/laps.png')
-        self.restart_image = QtGui.QIcon('img/restart.png')
-        self.start_image = QtGui.QIcon('img/white.png')
+        self.laps_image = QtGui.QIcon('test/img/laps.png')
+        self.restart_image = QtGui.QIcon('test/img/restart.png')
+        self.start_image = QtGui.QIcon('test/img/white.png')
 
         self.text = ""
         self.lap_num = 0
