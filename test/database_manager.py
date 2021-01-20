@@ -88,7 +88,8 @@ class sqlite_connector:
             day date NOT NULL, 
             lap1 float, 
             lap2 float, 
-            lap3 float, 
+            lap3 float,
+            test_info TEXT, 
             reference_times INTEGER,
             CONSTRAINT pk 
                 PRIMARY KEY(patient, day), 

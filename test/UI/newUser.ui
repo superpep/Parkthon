@@ -160,6 +160,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>user</tabstop>
+  <tabstop>passwd</tabstop>
+  <tabstop>repeat_pass</tabstop>
+  <tabstop>newUserButton</tabstop>
+  <tabstop>adminCheck</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

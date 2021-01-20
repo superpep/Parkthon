@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>553</height>
+    <width>685</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,50 +23,40 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QTableView" name="info_table">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>90</y>
-      <width>551</width>
-      <height>401</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: white; color: black;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="patient_info">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>541</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white; 
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="patient_info">
+      <property name="styleSheet">
+       <string notr="true">color: white; 
 font-size: 25px;
 font-weight: bold;
 text-transform: uppercase;
 </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="info_table">
+      <property name="styleSheet">
+       <string notr="true">background-color: white; color: black;</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>606</width>
-     <height>22</height>
+     <width>685</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="accessibleName">

@@ -54,10 +54,9 @@ class Create_user(QtWidgets.QMainWindow):
             if(nif[8] == letra):
                 self.user.setStyleSheet("background-color: green;")
             else:
-                print("DNI INCORRECTO, LETRA MAL")
                 self.user.setStyleSheet("background-color: red;")
         else:
-            self.textDni.setStyleSheet("")
+            self.user.setStyleSheet("background-color: white;")
 
     def create_user(self):
         dni = self.user.text()
