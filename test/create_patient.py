@@ -25,7 +25,7 @@ class Create_patient(QtWidgets.QMainWindow):
         self.medicos.setPlaceholderText("Selecciona un médico")
         self.medicos = load_doctors(self.medicos, self.doctor)
         
-        self.pes.editingFinished.connect(self.write_imc);
+        self.pes.editingFinished.connect(self.write_imc)
         self.altura.editingFinished.connect(self.write_imc)
 
         self.cancelarButton.hide()

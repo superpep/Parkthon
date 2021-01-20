@@ -40,6 +40,7 @@ class Patient_management(QtWidgets.QMainWindow):
         self.patient_item = ""
 
         self.borrarPaciente.setStyleSheet("QPushButton#borrarPaciente{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#borrarPaciente::hover{ background-color: #BDC5D4;} QPushButton#borrarPaciente::pressed{background-color: #717987;}")
+        self.editarPaciente.setStyleSheet("QPushButton#editarPaciente{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#editarPaciente::hover{ background-color: #BDC5D4;} QPushButton#editarPaciente::pressed{background-color: #717987;}")
         self.nuevoPaciente.setStyleSheet("QPushButton#nuevoPaciente{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#nuevoPaciente::hover{ background-color: #BDC5D4;} QPushButton#nuevoPaciente::pressed{background-color: #717987;}")
         self.refreshList.setStyleSheet("QPushButton#refreshList{ border: 2px solid #717987; font-weight: bold; color: white; background-color: #a2adc2; } QPushButton#refreshList::hover{ background-color: #BDC5D4;} QPushButton#refreshList::pressed{background-color: #717987;}")
 

@@ -34,11 +34,15 @@ class Edit_patient(QtWidgets.QMainWindow):
         if(doctor_edit_mode):
             self.edit_mode()
 
-        self.pes.editingFinished.connect(self.write_imc);
+        self.pes.editingFinished.connect(self.write_imc)
         self.altura.editingFinished.connect(self.write_imc)
 
         self.guardarButton.clicked.connect(self.save_edit)
         self.cancelarButton.clicked.connect(self.load_data)
+
+        # ESTILS CSS
+        self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
+
     
     
     def load_data(self):
