@@ -9,7 +9,7 @@ import create_user
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+path_separator+'login.ui', self) # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'login.ui', self) # Load the .ui file
             
         self.show() # Show the GUI
         self.loginButton.setStyleSheet("QPushButton#loginButton{ color: white; background-color: #222628; } QPushButton#loginButton::hover{ background-color: #4e5152;} QPushButton#loginButton::pressed{background-color: black;}")

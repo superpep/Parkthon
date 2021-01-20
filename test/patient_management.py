@@ -10,7 +10,7 @@ import create_patient
 class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+path_separator+'pacientes.ui', self) # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'pacientes.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.nuevoPaciente.clicked.connect(self.new_patient)

@@ -10,7 +10,7 @@ import time
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+path_separator+'users.ui', self) # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'users.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.deleteUser.clicked.connect(self.delete_user)

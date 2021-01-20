@@ -7,8 +7,8 @@ from __manifest__ import path_separator, file_exists, load_properties
 class sqlite_connector:
     def __init__(self):
         config = load_properties()
-        if(not path.isdir("DB")):
-            mkdir("DB")
+        if(not path.isdir("test"+path_separator+"DB")):
+            mkdir("test"+path_separator+"DB")
         self.DB = config.get('DatabaseSection', 'dbname')
         self.__con = None
         if(self.database_exists()):

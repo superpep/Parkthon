@@ -7,7 +7,7 @@ import user_management
 class Create_user(QtWidgets.QMainWindow):
     def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi('UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
         self.show()
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
@@ -15,6 +15,7 @@ class Create_user(QtWidgets.QMainWindow):
         self.newUserButton.clicked.connect(self.create_user)
 
         self.user.editingFinished.connect(self.calculate_dni_char)
+        self.user.textChanged.connect(self.check_dni)
         
 
         if(first_user):
@@ -40,6 +41,23 @@ class Create_user(QtWidgets.QMainWindow):
         self.adminCheck.setChecked(True)
         QtWidgets.QMessageBox.critical(self, 'Error', "El primer usuario DEBE ser adminisrador") # Mostrem un missatge emergent d'error
 
+    def check_dni(self):
+        nif = self.user.text()
+
+        if (len(nif) == 9):
+            dni = ""
+            for i in range(0, 8):
+                dni += nif[i]
+            
+            palabra = 'TRWAGMYFPDXBNJZSQVHLCKE'
+            letra = palabra[int(dni) % 23]
+            if(nif[8] == letra):
+                self.user.setStyleSheet("background-color: green;")
+            else:
+                print("DNI INCORRECTO, LETRA MAL")
+                self.user.setStyleSheet("background-color: red;")
+        else:
+            self.textDni.setStyleSheet("")
 
     def create_user(self):
         dni = self.user.text()

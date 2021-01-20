@@ -2,6 +2,8 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtGui import QFont
 import sys
+from os.path import dirname, realpath
+sys.path.append(dirname(realpath(__file__)))
 import database_manager as sqlite
 import user_management
 import patient_management
@@ -14,10 +16,11 @@ import patient_info
 from stopwatch import Stopwatch
 
 
+
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+path_separator+'cronometro.ui', self) # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'cronometro.ui', self) # Load the .ui file
         self.show() # Show the GUI
         
         config = load_properties()
@@ -361,7 +364,10 @@ def get_color_type(lap_type):
     else:
         return "#8b0000"
 
-if __name__ == "__main__":
+def main():
     app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
     window = login.Ui() # Llancem el login
     app.exec_() # Start the application
+
+if __name__ == "__main__":
+    main()

@@ -11,17 +11,17 @@ def create_properties():
     """
     Crea l'arxiu de propietats en cas de que no existisca
     """
-    if(file_exists("chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
+    if(file_exists("test"+path_separator+"chrono.py") and not file_exists(CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
         
-        config.set('DatabaseSection', 'dbname', 'DB'+path_separator+'parkthon.db')
+        config.set('DatabaseSection', 'dbname', 'test/DB'+path_separator+'parkthon.db')
         config.add_section("UsersSection")
         config.set('UsersSection', 'currentUser', '')
         config.add_section("PatientsSection")
         config.set('PatientsSection', 'selectedPatient', '')
 
-        with open(CONFIG_FILE_NAME, 'w') as configfile:
+        with open("test"+path_separator+CONFIG_FILE_NAME, 'w') as configfile:
             config.write(configfile)
 
 def load_properties():
@@ -33,7 +33,7 @@ def load_properties():
         (Object) L'apuntador al fitxer de configuraicó
     """
     config = configparser.RawConfigParser()
-    config.read(CONFIG_FILE_NAME)
+    config.read("test"+path_separator+CONFIG_FILE_NAME)
     return config
 
 def save_property(section, key, value):
@@ -50,7 +50,7 @@ def save_property(section, key, value):
     """
     config = load_properties()
     config.set(section, key, value)     
-    with open(CONFIG_FILE_NAME, 'w') as configfile:
+    with open("test"+path_separator+CONFIG_FILE_NAME, 'w') as configfile:
         config.write(configfile)
 
 def file_exists(file):

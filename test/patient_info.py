@@ -9,7 +9,7 @@ patient_dni = ""
 class Patient_info(QtWidgets.QMainWindow):
     def __init__(self, current_user, current_patient):
         super(Patient_info, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('UI'+path_separator+'patient_info.ui', self) # Load the .ui file
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'patient_info.ui', self) # Load the .ui file
         self.show() # Show the GUI
 
         self.patient_info.setAlignment(QtCore.Qt.AlignCenter)
