@@ -77,13 +77,13 @@ class TableModel(QtCore.QAbstractTableModel):
         
         if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
-
-            try:
-                lap_type = chrono.get_lap_type(index.column()-2, value, self._data[index.row()][len(self._data[index.row()])-1])
-                color = chrono.get_color_type(lap_type) 
-                return QtGui.QColor(color)
-            except TypeError as e:
-                pass
+            if(value != "N/A"):
+                try:
+                    lap_type = chrono.get_lap_type(index.column()-2, value, self._data[index.row()][len(self._data[index.row()])-1])
+                    color = chrono.get_color_type(lap_type) 
+                    return QtGui.QColor(color)
+                except TypeError as e:
+                    pass
             
 
     def rowCount(self, index):

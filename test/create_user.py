@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore
-from __manifest__ import path_separator, comprobation_message, calculate_imc
+from __manifest__ import path_separator, comprobation_message, calculate_imc, check_dni, calculate_dni_char
 import database_manager as sqlite
 import user_management
 
@@ -32,31 +32,17 @@ class Create_user(QtWidgets.QMainWindow):
         self.repeat_pass.returnPressed.connect(self.create_user)
 
     def calculate_dni_char(self):
-        dni = self.user.text()
-        if(len(dni) == 8 ):
-            self.user.setText(dni+self.dni_letters[int(dni) % 23])
+        calculate_dni_char(self.user, self.dni_letters)
+        
+    def check_dni(self):
+        check_dni(self.user, self.dni_letters)
         
         
     def set_true(self):
         self.adminCheck.setChecked(True)
         QtWidgets.QMessageBox.critical(self, 'Error', "El primer usuario DEBE ser adminisrador") # Mostrem un missatge emergent d'error
 
-    def check_dni(self):
-        nif = self.user.text()
-
-        if (len(nif) == 9):
-            dni = ""
-            for i in range(0, 8):
-                dni += nif[i]
-            
-            palabra = 'TRWAGMYFPDXBNJZSQVHLCKE'
-            letra = palabra[int(dni) % 23]
-            if(nif[8] == letra):
-                self.user.setStyleSheet("background-color: green;")
-            else:
-                self.user.setStyleSheet("background-color: red;")
-        else:
-            self.user.setStyleSheet("background-color: white;")
+    
 
     def create_user(self):
         dni = self.user.text()
