@@ -130,3 +130,26 @@ def load_doctors(combobox, doctor):
         combobox.addItem(doctors[i][0])
         if(doctor == doctors[i][0]):
             combobox.setCurrentIndex(i)
+    return combobox
+
+def check_dni(text_edit, palabra='TRWAGMYFPDXBNJZSQVHLCKE'):
+        nif = text_edit.text()
+
+        try:
+            if (len(nif) == 9):
+                dni = ""
+                for i in range(0, 8):
+                    dni += nif[i]
+                
+                letra = palabra[int(dni) % 23]
+                if(nif[8] == letra):
+                    text_edit.setStyleSheet("background-color: green;")
+                else:
+                    text_edit.setStyleSheet("background-color: red;")
+        except ValueError:
+            text_edit.setStyleSheet("background-color: red;")
+            
+def calculate_dni_char(dni_text_edit, dni_letters='TRWAGMYFPDXBNJZSQVHLCKE'):
+        dni = dni_text_edit.text()
+        if(len(dni) == 8 ):
+            dni_text_edit.setText(dni+dni_letters[int(dni) % 23])

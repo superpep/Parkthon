@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-from PyQt5 import QtWidgets, uic, QtCore, QtGui
-from PyQt5.QtGui import QFont
 import sys
 from os.path import dirname, realpath
 sys.path.append(dirname(realpath(__file__)))
+from PyQt5 import QtWidgets, uic, QtCore, QtGui
+from PyQt5.QtGui import QFont
 import database_manager as sqlite
 import user_management
 import patient_management
