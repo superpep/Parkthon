@@ -2,8 +2,6 @@
 __pycache__
 */.DS_Store
 .DS_Store
-*/ConfigFile.properties
-ConfigFile.properties
 /venv/
 .idea/.gitignore
 .idea/misc.xml
@@ -13,3 +11,4 @@ ConfigFile.properties
 .idea/inspectionProfiles/profiles_settings.xml
 .vscode/launch.json
 test/DB/parkthon.db
+test/.ConfigFile.properties
