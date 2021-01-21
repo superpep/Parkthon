@@ -242,6 +242,7 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Comença el cronómetre de forma visible
         """
+        self.observations.setText("")
         self.saveIcon.hide()
         self.lapsList.setText("")
         if(self.current_patient == -1):
