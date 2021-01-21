@@ -10,10 +10,16 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>2000</width>
-    <height>2000</height>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -32,14 +38,14 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
-     <height>0</height>
+     <width>300</width>
+     <height>257</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>2000</width>
-     <height>2000</height>
+     <width>300</width>
+     <height>300</height>
     </size>
    </property>
    <property name="styleSheet">

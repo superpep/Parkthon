@@ -10,6 +10,12 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>300</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
@@ -27,6 +33,18 @@
    <string notr="true">background-color:#555860; color: black; border-radius: 10px</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>300</width>
+     <height>300</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>300</width>
+     <height>300</height>
+    </size>
+   </property>
    <widget class="QLineEdit" name="user">
     <property name="geometry">
      <rect>
