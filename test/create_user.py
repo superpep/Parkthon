@@ -19,9 +19,6 @@ class Create_user(QtWidgets.QMainWindow):
         
 
         if(first_user):
-            sql_con = sqlite.sqlite_connector()
-            sql_con.create_initial_table() # Creem les taules inicials
-            sql_con.close()
             self.adminCheck.setChecked(True)
             self.adminCheck.toggled.connect(self.set_true)
 
@@ -58,6 +55,8 @@ class Create_user(QtWidgets.QMainWindow):
         else:
             try:
                 sql_con = sqlite.sqlite_connector()
+                if(first_user):
+                    sql_con.create_initial_table() # Creem les taules inicials
                 sql_con.create_user(dni, passwd, self.adminCheck.isChecked())
                 QtWidgets.QMessageBox.information(self, 'Usuario añadido', "¡El usuario ha sido añadido con éxito!")
                 if comprobation_message('Añadir otro usuario', '¿Quieres añadir otro usuario?'): # If OK is clicked in the button

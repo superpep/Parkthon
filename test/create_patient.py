@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 import database_manager as sqlite
 from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni, calculate_dni_char
+import re 
 
 import sys
 
@@ -37,6 +38,9 @@ class Create_patient(QtWidgets.QMainWindow):
         
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
     
+
+    def check_mail(self):
+        return re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', self.mail.text())
     
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
@@ -68,6 +72,8 @@ class Create_patient(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
         if(self.nom.text() == ""):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
+        if(!self.check_mail):
+            QtWidgets.QMessageBox.critical(self, 'ERROR', "El e-mail no és correcto.")
         else:
             try:
                 sql_con.add_patient(self.dni.text(), self.nom.text(), self.cognom.text(), self.medicos.currentText(), self.direccio.text(),
