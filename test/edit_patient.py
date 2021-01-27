@@ -34,9 +34,10 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.newPatientButton.clicked.connect(self.edit_mode) 
         
 
-        self.load_data() # Carreguem les dades
+        
         if(doctor_edit_mode):
             self.edit_mode()
+        self.load_data() # Carreguem les dades
 
         self.pes.editingFinished.connect(self.write_imc)
         self.altura.editingFinished.connect(self.write_imc)
@@ -94,6 +95,7 @@ class Edit_patient(QtWidgets.QMainWindow):
 
     def edit_mode(self):
         self.set_editable_text(True) # Activem la edició
+        
 
         self.newPatientButton.hide()
         self.guardarButton.show()

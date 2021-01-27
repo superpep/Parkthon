@@ -98,9 +98,14 @@ class Users_management(QtWidgets.QMainWindow):
             passwd, ok = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Introduzca la nueva contraseña: (8 carácteres o más)', QtWidgets.QLineEdit.Password)
             if ok:
                 if(len(passwd) < 8):
-                    QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
+                        QtWidgets.QMessageBox.critical(self, 'ERROR', "La contraseña debe ser de 8 carácteres o más")
                 else:
-                    valid_password = True
+                    check_passwd, ok2 = QtWidgets.QInputDialog.getText(self, 'Cambio de contraseña para usuario '+self.dni, 'Repite la contraseña: ', QtWidgets.QLineEdit.Password)
+                    if ok2:
+                        if(check_passwd != passwd):
+                            QtWidgets.QMessageBox.critical(self, 'ERROR', "Las contraseñas no coinciden")
+                        else:
+                            valid_password = True
             else:
                 sql_con.close()
                 return

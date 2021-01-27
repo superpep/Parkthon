@@ -76,7 +76,7 @@ QLineEdit tiempo total: **tiempoTotal**
 Obligatori:
 
 - (✅) Ordenar gràfica cronológicament (En teoría sols en afegir order by a la sentència deuria estar)
-- Poder editar un pacient (Possiblement utilitzem de finestra el createUser)
+- (✅) Poder editar un pacient (Possiblement utilitzem de finestra el createUser)
 - (✅) No s'esborra el doctor sino que passa a estat inactiu, però continua a la BD (Quan accedim a la pestanya de pacients, que els comprove tots a veure si hi ha algún amb un metge inactiu, en cas de que hi haja, que ens demane un nou metge per a ell) es guardarà a la BD
 - (✅) Si un doctor està donat de baixa, no pot fer login
 - (✅) Quan creem un metge, la contrasenya s'ha de ficar dos vegades
