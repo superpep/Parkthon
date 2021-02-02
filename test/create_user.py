@@ -75,3 +75,4 @@ class Create_user(QtWidgets.QMainWindow):
                 self.user.setText("")
                 self.passwd.setText("")
                 self.repeat_pass.setText("")
+        

@@ -1,7 +1,7 @@
 import os
 import configparser
 import database_manager as sqlite
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, uic
 import shutil
 
 path_separator = os.path.sep
@@ -18,8 +18,8 @@ def create_properties():
         config.set('DatabaseSection', 'dbname', 'test/DB'+path_separator+'parkthon.db')
         config.add_section("UsersSection")
         config.set('UsersSection', 'currentUser', '')
-        config.add_section("PatientsSection")
-        config.set('PatientsSection', 'selectedPatient', '')
+        config.add_section("ShowCloseMessage")
+        config.set('ShowCloseMessage', 'ShowCloseMessage', 'True')
 
         with open("test"+path_separator+CONFIG_FILE_NAME, 'w') as configfile:
             config.write(configfile)
@@ -153,3 +153,21 @@ def calculate_dni_char(dni_text_edit, dni_letters='TRWAGMYFPDXBNJZSQVHLCKE'):
         dni = dni_text_edit.text()
         if(len(dni) == 8 ):
             dni_text_edit.setText(dni+dni_letters[int(dni) % 23])
+
+def salir():
+    if(load_properties().get('ShowCloseMessage', 'ShowCloseMessage') == 'True'):
+        return Comprobacion_salida().exec()
+    return True
+
+class Comprobacion_salida(QtWidgets.QDialog):
+    def __init__(self):
+        super(Comprobacion_salida, self).__init__() # Call the inherited classes __init__ method
+        uic.loadUi("test"+path_separator+'UI'+path_separator+'comprobacion_salida.ui', self) # Load the .ui file
+            
+        self.finished.connect(self.check_checkbox)
+
+    def check_checkbox(self):
+        if(self.checkBox.isChecked()):
+            save_property('ShowCloseMessage', 'ShowCloseMessage', 'False')
+
+    

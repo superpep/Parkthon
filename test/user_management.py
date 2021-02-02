@@ -4,7 +4,7 @@ import patient_management
 import database_manager as sqlite
 import settings
 import chrono
-from __manifest__ import path_separator, load_properties, comprobation_message
+from __manifest__ import path_separator, load_properties, comprobation_message, salir
 import time
 
 class Users_management(QtWidgets.QMainWindow):
@@ -142,10 +142,21 @@ class Users_management(QtWidgets.QMainWindow):
     def return_to_chrono(self):
         self.new_window = chrono.Chrono()
         self.new_window.show()
+        self.setVisible(False)
         self.close()
 
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
+        self.setVisible(False)
         self.close()
+    
+    def closeEvent(self, event):
+        if(self.isVisible()):
+            if(salir()):
+                event.accept()
+            else:
+                event.ignore()
+        else:
+            event.ignore()
 
     

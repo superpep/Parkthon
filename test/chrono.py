@@ -8,7 +8,7 @@ import database_manager as sqlite
 import user_management
 import patient_management
 from settings import Settings
-from __manifest__ import path_separator, load_properties, save_property, import_db, copy_file
+from __manifest__ import path_separator, load_properties, save_property, import_db, copy_file, comprobation_message, salir
 import login
 import pyqtgraph as pg
 from time import sleep
@@ -172,6 +172,8 @@ class Chrono(QtWidgets.QMainWindow):
         seg3_times = sql_con.get_patient_segment_times(self.current_patient, "lap3")
         dates = sql_con.get_patient_dates(self.current_patient) # Arrepleguem els díes en els que es van realitzar les proves (Son llistes paral.leles)
 
+        
+
         sql_con.close() # Tanquem la connexió
         self.graph.clear() # Esborrem tot el que hi ha en el gràfic
         self.graph.addLegend() # Inicialitzem la llegenda
@@ -293,11 +295,24 @@ class Chrono(QtWidgets.QMainWindow):
 
     def open_users_menu(self):
         self.new_window = user_management.Users_management()
+        self.setVisible(False);
         self.close()
 
     def open_patients_menu(self):
         self.new_window = patient_management.Patient_management()
+        self.setVisible(False);
         self.close()
+
+    def closeEvent(self, event):
+        if(self.isVisible()):
+            if(salir()):
+                event.accept()
+            else:
+                event.ignore()
+        else:
+            event.ignore()
+        
+        
 
 
 class message_thread(QtCore.QThread):

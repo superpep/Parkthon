@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
-from __manifest__ import path_separator, load_properties, comprobation_message
+from __manifest__ import path_separator, load_properties, comprobation_message, salir
 import database_manager as sqlite
 import user_management
 import edit_patient
@@ -102,11 +102,22 @@ class Patient_management(QtWidgets.QMainWindow):
 
     def return_to_chrono(self):
         self.new_window = chrono.Chrono()
+        self.setVisible(False)
         self.close()
     
     def open_users_menu(self):
         self.new_window = user_management.Users_management()
+        self.setVisible(False)
         self.close()
 
     def open_settings(self):
         self.new_window = settings.Settings()
+    
+    def closeEvent(self, event):
+        if(self.isVisible()):
+            if(salir()):
+                event.accept()
+            else:
+                event.ignore()
+        else:
+            event.ignore()
