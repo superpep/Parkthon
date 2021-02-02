@@ -36,9 +36,9 @@ class Create_user(QtWidgets.QMainWindow):
         
         
     def set_true(self):
-        self.adminCheck.setChecked(True)
-        QtWidgets.QMessageBox.critical(self, 'Error', "El primer usuario DEBE ser adminisrador") # Mostrem un missatge emergent d'error
-
+        if(not self.adminCheck.isChecked()):
+            self.adminCheck.setChecked(True)
+            QtWidgets.QMessageBox.critical(self, 'Error', "El primer usuario DEBE ser administrador") # Mostrem un missatge emergent d'error
     
 
     def create_user(self):
