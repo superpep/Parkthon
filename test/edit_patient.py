@@ -4,7 +4,7 @@ import database_manager as sqlite
 import sys
 
 
-from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors, calculate_dni_char, check_dni
+from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors, check_dni
 
 class Edit_patient(QtWidgets.QMainWindow):
     def __init__(self, patient_dni="123123123", doctor_edit_mode=False, doctor=-1):
@@ -17,7 +17,6 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.doctor = doctor        
         self.patient_dni = patient_dni
         
-        self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
 
         self.titulo.setText("EDITAR PACIENTE")
@@ -49,10 +48,6 @@ class Edit_patient(QtWidgets.QMainWindow):
 
         # ESTILS CSS
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
-
-    
-    def calculate_dni_char(self):
-        calculate_dni_char(self.dni, self.dni_letters)
     
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
