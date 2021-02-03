@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic, QtCore
-from __manifest__ import path_separator, comprobation_message, calculate_imc, check_dni, calculate_dni_char
+from __manifest__ import path_separator, comprobation_message, calculate_imc, check_dni
 import database_manager as sqlite
 import user_management
 
@@ -14,7 +14,7 @@ class Create_user(QtWidgets.QMainWindow):
 
         self.newUserButton.clicked.connect(self.create_user)
 
-        self.user.editingFinished.connect(self.calculate_dni_char)
+        #self.user.editingFinished.connect(self.calculate_dni_char)
         self.user.textChanged.connect(self.check_dni)
         
         self.first_user = first_user;
@@ -28,8 +28,8 @@ class Create_user(QtWidgets.QMainWindow):
         self.passwd.returnPressed.connect(self.create_user)
         self.repeat_pass.returnPressed.connect(self.create_user)
 
-    def calculate_dni_char(self):
-        calculate_dni_char(self.user, self.dni_letters)
+    #def calculate_dni_char(self):
+        #calculate_dni_char(self.user, self.dni_letters)
         
     def check_dni(self):
         check_dni(self.user, self.dni_letters)

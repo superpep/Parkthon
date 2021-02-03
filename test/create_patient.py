@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 import database_manager as sqlite
-from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni, calculate_dni_char
+from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni
 import re 
 
 import sys
@@ -14,7 +14,7 @@ class Create_patient(QtWidgets.QMainWindow):
 
         self.doctor = doctor
 
-        self.dni.editingFinished.connect(self.calculate_dni_char)
+        #self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
         
         self.fotoCara.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
@@ -45,8 +45,8 @@ class Create_patient(QtWidgets.QMainWindow):
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
     
-    def calculate_dni_char(self):
-        calculate_dni_char(self.dni, self.dni_letters)
+    #def calculate_dni_char(self):
+        #calculate_dni_char(self.dni, self.dni_letters)
 
     
 

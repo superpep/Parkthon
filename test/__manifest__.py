@@ -149,10 +149,10 @@ def check_dni(text_edit, palabra='TRWAGMYFPDXBNJZSQVHLCKE'):
         except ValueError:
             text_edit.setStyleSheet("background-color: red;")
             
-def calculate_dni_char(dni_text_edit, dni_letters='TRWAGMYFPDXBNJZSQVHLCKE'):
+'''def calculate_dni_char(dni_text_edit, dni_letters='TRWAGMYFPDXBNJZSQVHLCKE'):
         dni = dni_text_edit.text()
         if(len(dni) == 8 ):
-            dni_text_edit.setText(dni+dni_letters[int(dni) % 23])
+            dni_text_edit.setText(dni+dni_letters[int(dni) % 23])'''
 
 def salir():
     if(load_properties().get('ShowCloseMessage', 'ShowCloseMessage') == 'True'):
