@@ -21,7 +21,7 @@ class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi("test"+path_separator+'UI'+path_separator+'cronometro.ui', self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
