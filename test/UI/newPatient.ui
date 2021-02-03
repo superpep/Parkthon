@@ -152,7 +152,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_84">
                 <item>
-                 <widget class="QLineEdit" name="nom_6">
+                 <widget class="QLineEdit" name="nom">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -168,7 +168,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="cognom_6">
+                 <widget class="QLineEdit" name="cognom">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -214,7 +214,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_86">
                   <item>
-                   <widget class="QLineEdit" name="dni_6">
+                   <widget class="QLineEdit" name="dni">
                     <property name="styleSheet">
                      <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                     </property>
@@ -236,7 +236,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="sip_6">
+                   <widget class="QLineEdit" name="sip">
                     <property name="styleSheet">
                      <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                     </property>
@@ -288,7 +288,7 @@
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_88">
                     <item>
-                     <widget class="QDateEdit" name="naiximent_6">
+                     <widget class="QDateEdit" name="naiximent">
                       <property name="dateTime">
                        <datetime>
                         <hour>0</hour>
@@ -315,7 +315,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="medicos_6"/>
+                     <widget class="QComboBox" name="medicos"/>
                     </item>
                    </layout>
                   </item>
@@ -339,7 +339,7 @@
                   <property name="title">
                    <string/>
                   </property>
-                  <widget class="QRadioButton" name="hombre_6">
+                  <widget class="QRadioButton" name="hombre">
                    <property name="geometry">
                     <rect>
                      <x>10</x>
@@ -358,7 +358,7 @@
                     <bool>true</bool>
                    </property>
                   </widget>
-                  <widget class="QRadioButton" name="mujer_6">
+                  <widget class="QRadioButton" name="mujer">
                    <property name="geometry">
                     <rect>
                      <x>330</x>
@@ -441,7 +441,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_82">
                 <item>
-                 <widget class="QLineEdit" name="altura_5">
+                 <widget class="QLineEdit" name="altura">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -463,7 +463,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="pes_5">
+                 <widget class="QLineEdit" name="pes">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -482,7 +482,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="imc_5">
+                 <widget class="QLineEdit" name="imc">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -507,7 +507,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="grasa_5">
+                 <widget class="QLineEdit" name="grasa">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -564,7 +564,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_90">
                 <item>
-                 <widget class="QDateEdit" name="diagnostic_5">
+                 <widget class="QDateEdit" name="diagnostic">
                   <property name="dateTime">
                    <datetime>
                     <hour>0</hour>
@@ -591,7 +591,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="fase_5">
+                 <widget class="QComboBox" name="fase">
                   <property name="statusTip">
                    <string/>
                   </property>
@@ -630,7 +630,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_80">
                 <item>
-                 <widget class="QLineEdit" name="mail_5">
+                 <widget class="QLineEdit" name="mail">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -652,7 +652,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="telefon_5">
+                 <widget class="QLineEdit" name="telefon">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -696,7 +696,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_92">
                 <item>
-                 <widget class="QLineEdit" name="direccio_5">
+                 <widget class="QLineEdit" name="direccio">
                   <property name="styleSheet">
                    <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
                   </property>
@@ -738,7 +738,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_94">
                   <item>
-                   <widget class="QTextEdit" name="medicacio_5"/>
+                   <widget class="QTextEdit" name="medicacio"/>
                   </item>
                  </layout>
                 </item>
@@ -747,7 +747,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_95">
                 <item>
-                 <widget class="QPushButton" name="cancelarButton_5">
+                 <widget class="QPushButton" name="cancelarButton">
                   <property name="styleSheet">
                    <string notr="true">background-color: #222628; color: white;</string>
                   </property>
@@ -757,7 +757,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="newPatientButton_5">
+                 <widget class="QPushButton" name="newPatientButton">
                   <property name="styleSheet">
                    <string notr="true">background-color: #222628; color: white;</string>
                   </property>
@@ -767,7 +767,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="guardarButton_5">
+                 <widget class="QPushButton" name="guardarButton">
                   <property name="styleSheet">
                    <string notr="true">background-color: #222628; color: white;</string>
                   </property>
