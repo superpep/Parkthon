@@ -132,7 +132,7 @@ class sqlite_connector:
         self.__con.commit()
         return True
 
-    def delete_patient(self, dni, table):
+    def delete_patient(self, dni):
         cursorObj = self.__con.cursor()
         cursorObj.execute("DELETE FROM patients WHERE DNI = '"+dni+"'")
         self.__con.commit()

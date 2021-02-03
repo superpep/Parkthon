@@ -57,10 +57,11 @@ class Patient_management(QtWidgets.QMainWindow):
     
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_patient(self, index):
+        
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
         self.editarPaciente.show()
-
+        print(self.model.indexFromItem(self.patient_item).row())
     def editar_paciente(self):
         self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()], doctor=self.current_user)
         
@@ -88,8 +89,6 @@ class Patient_management(QtWidgets.QMainWindow):
         for patient in patients_without_doctor:
             if comprobation_message('Paciente sin médico', 'El paciente '+patient[1]+" "+patient[2]+' ('+patient[0]+'), no tiene ningún médico asignado ya que el que tenía se ha eliminado. ¿Quieres añadirle un nuevo médico ahora?'):
                 self.new_window = edit_patient.Edit_patient(patient[0], True)
-            else:
-                print("no aceptar")
         
     def delete_patient(self):
         if comprobation_message('Comprobación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
@@ -99,6 +98,7 @@ class Patient_management(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.information(self, 'Confirmación', "El paciente ha sido eliminado con éxito.")
             self.refresh_list()
             self.borrarPaciente.hide()
+            self.editarPaciente.hide()
 
     def return_to_chrono(self):
         self.new_window = chrono.Chrono()
