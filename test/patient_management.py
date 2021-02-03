@@ -61,17 +61,20 @@ class Patient_management(QtWidgets.QMainWindow):
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
         self.editarPaciente.show()
-        print(self.model.indexFromItem(self.patient_item).row())
+        
+
     def editar_paciente(self):
         self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()], doctor=self.current_user)
         
     def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
+        self.listaPacientes.setModel(self.model)
         self.show_patients()
 
     def show_patients(self):
         sql_con = sqlite.sqlite_connector()
         patients = sql_con.get_patient_names(self.current_user)
+        self.patients_dni = []
         for patient in patients:
             self.patients_dni.append(patient[2]) # Guardem el DNI de l'usuari
             self.model.appendRow(QtGui.QStandardItem(patient[0]+" "+patient[1]))
