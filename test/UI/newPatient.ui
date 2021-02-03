@@ -85,7 +85,7 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_49">
             <item>
-             <widget class="QLabel" name="titulo_6">
+             <widget class="QLabel" name="titulo">
               <property name="font">
                <font>
                 <pointsize>-1</pointsize>
