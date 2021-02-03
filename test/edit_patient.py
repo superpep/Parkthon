@@ -17,7 +17,6 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.doctor = doctor        
         self.patient_dni = patient_dni
         
-        #self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
 
         self.titulo.setText("EDITAR PACIENTE")
@@ -47,10 +46,6 @@ class Edit_patient(QtWidgets.QMainWindow):
 
         # ESTILS CSS
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
-
-    
-    #def calculate_dni_char(self):
-        #calculate_dni_char(self.dni, self.dni_letters)
     
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)

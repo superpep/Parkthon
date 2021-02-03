@@ -14,7 +14,6 @@ class Create_patient(QtWidgets.QMainWindow):
 
         self.doctor = doctor
 
-        #self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
         
         self.fotoCara.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
@@ -44,10 +43,6 @@ class Create_patient(QtWidgets.QMainWindow):
     
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
-    
-    #def calculate_dni_char(self):
-        #calculate_dni_char(self.dni, self.dni_letters)
-
     
 
     def write_imc(self):

@@ -14,7 +14,6 @@ class Create_user(QtWidgets.QMainWindow):
 
         self.newUserButton.clicked.connect(self.create_user)
 
-        #self.user.editingFinished.connect(self.calculate_dni_char)
         self.user.textChanged.connect(self.check_dni)
         
         self.first_user = first_user;
@@ -27,9 +26,6 @@ class Create_user(QtWidgets.QMainWindow):
         self.user.returnPressed.connect(self.create_user)
         self.passwd.returnPressed.connect(self.create_user)
         self.repeat_pass.returnPressed.connect(self.create_user)
-
-    #def calculate_dni_char(self):
-        #calculate_dni_char(self.user, self.dni_letters)
         
     def check_dni(self):
         check_dni(self.user, self.dni_letters)
