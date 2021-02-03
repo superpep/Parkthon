@@ -68,7 +68,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="fotoCuerpoButton">
+             <widget class="QPushButton" name="fotoCaraButton">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -825,7 +825,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="fotoCaraButton">
+             <widget class="QPushButton" name="fotoCuerpoButton">
               <property name="text">
                <string>Añadir foto</string>
               </property>
