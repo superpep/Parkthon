@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 import database_manager as sqlite
-from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni
+from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni, calculate_dni_char
 import re 
 
 import sys
@@ -14,6 +14,7 @@ class Create_patient(QtWidgets.QMainWindow):
 
         self.doctor = doctor
 
+        self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
         
         self.fotoCara.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
@@ -44,6 +45,10 @@ class Create_patient(QtWidgets.QMainWindow):
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
     
+    def calculate_dni_char(self):
+        calculate_dni_char(self.dni, self.dni_letters)
+
+    
 
     def write_imc(self):
         self.imc.setText(calculate_imc(self.pes.text(), self.altura.text()))
@@ -65,9 +70,9 @@ class Create_patient(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Introduce un DNI válido.")
         elif(self.dni_letters[int(self.dni.text()[:-1]) % 23] != self.dni.text()[-1]):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
-        elif(self.nom.text() == ""):
+        if(self.nom.text() == ""):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
-        elif(not self.check_mail):
+        if(not self.check_mail):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El e-mail no és correcto.")
         else:
             try:

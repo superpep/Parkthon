@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>790</width>
-    <height>678</height>
+    <width>1000</width>
+    <height>1100</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -30,819 +30,905 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QGridLayout" name="layoutStretch">
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_13">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_21">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_19">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_61">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetFixedSize</enum>
-            </property>
-            <property name="leftMargin">
-             <number>5</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="fotoCara">
-              <property name="minimumSize">
-               <size>
-                <width>120</width>
-                <height>120</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>120</width>
-                <height>120</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="fotoCaraButton">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Añadir foto</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_49">
-            <item>
-             <widget class="QLabel" name="titulo">
-              <property name="font">
-               <font>
-                <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white; font-weight: bold; font-size: 40px;</string>
-              </property>
-              <property name="text">
-               <string>AÑADIR PACIENTE</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="Line" name="line_6">
-              <property name="styleSheet">
-               <string notr="true">color: white;</string>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
-              </property>
-              <property name="lineWidth">
-               <number>2</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_52">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_83">
-                <item>
-                 <widget class="QLabel" name="label_77">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>NOMBRE</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_78">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>APELLIDOS</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_84">
-                <item>
-                 <widget class="QLineEdit" name="nom">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="echoMode">
-                   <enum>QLineEdit::Normal</enum>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="cognom">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="echoMode">
-                   <enum>QLineEdit::Normal</enum>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_53">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_85">
-                  <item>
-                   <widget class="QLabel" name="label_79">
-                    <property name="styleSheet">
-                     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                    </property>
-                    <property name="text">
-                     <string>DNI</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_80">
-                    <property name="styleSheet">
-                     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                    </property>
-                    <property name="text">
-                     <string>SIP</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_86">
-                  <item>
-                   <widget class="QLineEdit" name="dni">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                    </property>
-                    <property name="inputMask">
-                     <string/>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="maxLength">
-                     <number>9</number>
-                    </property>
-                    <property name="cursorPosition">
-                     <number>0</number>
-                    </property>
-                    <property name="placeholderText">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="sip">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                    </property>
-                    <property name="inputMask">
-                     <string/>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="maxLength">
-                     <number>8</number>
-                    </property>
-                    <property name="cursorPosition">
-                     <number>0</number>
-                    </property>
-                    <property name="placeholderText">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_54">
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_87">
-                    <item>
-                     <widget class="QLabel" name="label_81">
-                      <property name="styleSheet">
-                       <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                      </property>
-                      <property name="text">
-                       <string>FECHA DE NACIMIENTO</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_82">
-                      <property name="styleSheet">
-                       <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                      </property>
-                      <property name="text">
-                       <string>MEDICOS</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_88">
-                    <item>
-                     <widget class="QDateEdit" name="naiximent">
-                      <property name="dateTime">
-                       <datetime>
-                        <hour>0</hour>
-                        <minute>0</minute>
-                        <second>0</second>
-                        <year>2000</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </datetime>
-                      </property>
-                      <property name="displayFormat">
-                       <string>dd/MM/yyyy</string>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                      <property name="date">
-                       <date>
-                        <year>2000</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </date>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QComboBox" name="medicos"/>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_55">
-                <item>
-                 <widget class="QGroupBox" name="radioButtons_6">
-                  <property name="minimumSize">
-                   <size>
-                    <width>35</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">border-radius: 10px; background-color: #222628;</string>
-                  </property>
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <widget class="QRadioButton" name="hombre">
-                   <property name="geometry">
-                    <rect>
-                     <x>10</x>
-                     <y>10</y>
-                     <width>91</width>
-                     <height>20</height>
-                    </rect>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: white; font-weight: bold;</string>
-                   </property>
-                   <property name="text">
-                    <string>Hombre</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                  <widget class="QRadioButton" name="mujer">
-                   <property name="geometry">
-                    <rect>
-                     <x>330</x>
-                     <y>10</y>
-                     <width>81</width>
-                     <height>20</height>
-                    </rect>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: white; font-weight: bold;</string>
-                   </property>
-                   <property name="text">
-                    <string>Mujer</string>
-                   </property>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_51">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_81">
-                <item>
-                 <widget class="QLabel" name="label_73">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>ALTURA</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_74">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>PES</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_75">
-                  <property name="toolTip">
-                   <string>Índice Masa Corporal</string>
-                  </property>
-                  <property name="whatsThis">
-                   <string/>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>IMC</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_76">
-                  <property name="toolTip">
-                   <string>Porcentaje Grasa Corporal</string>
-                  </property>
-                  <property name="whatsThis">
-                   <string/>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>PGC</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_82">
-                <item>
-                 <widget class="QLineEdit" name="altura">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>4</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="pes">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="maxLength">
-                   <number>4</number>
-                  </property>
-                  <property name="echoMode">
-                   <enum>QLineEdit::Normal</enum>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="imc">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>5</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="grasa">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>6</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_56">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_89">
-                <item>
-                 <widget class="QLabel" name="label_83">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>FECHA ALTA</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_84">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>FASE</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_90">
-                <item>
-                 <widget class="QDateEdit" name="diagnostic">
-                  <property name="dateTime">
-                   <datetime>
-                    <hour>0</hour>
-                    <minute>0</minute>
-                    <second>0</second>
-                    <year>2010</year>
-                    <month>1</month>
-                    <day>1</day>
-                   </datetime>
-                  </property>
-                  <property name="displayFormat">
-                   <string>dd/MM/yyyy</string>
-                  </property>
-                  <property name="calendarPopup">
-                   <bool>true</bool>
-                  </property>
-                  <property name="date">
-                   <date>
-                    <year>2010</year>
-                    <month>1</month>
-                    <day>1</day>
-                   </date>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="fase">
-                  <property name="statusTip">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_50">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_79">
-                <item>
-                 <widget class="QLabel" name="label_71">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>EMAIL</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_72">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>TELÉFONO</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_80">
-                <item>
-                 <widget class="QLineEdit" name="mail">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>32767</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="telefon">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>32767</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_57">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_91">
-                <item>
-                 <widget class="QLabel" name="label_85">
-                  <property name="styleSheet">
-                   <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                  </property>
-                  <property name="text">
-                   <string>DIRECCIÓN</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_92">
-                <item>
-                 <widget class="QLineEdit" name="direccio">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="maxLength">
-                   <number>32767</number>
-                  </property>
-                  <property name="cursorPosition">
-                   <number>0</number>
-                  </property>
-                  <property name="placeholderText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_58">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_93">
-                  <item>
-                   <widget class="QLabel" name="label_86">
-                    <property name="styleSheet">
-                     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
-                    </property>
-                    <property name="text">
-                     <string>MEDICACIÓN</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_94">
-                  <item>
-                   <widget class="QTextEdit" name="medicacio"/>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_95">
-                <item>
-                 <widget class="QPushButton" name="cancelarButton">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #222628; color: white;</string>
-                  </property>
-                  <property name="text">
-                   <string>Cancelar</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="newPatientButton">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #222628; color: white;</string>
-                  </property>
-                  <property name="text">
-                   <string>Crear paciente</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="guardarButton">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: #222628; color: white;</string>
-                  </property>
-                  <property name="text">
-                   <string>Guardar</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_60" stretch="0,0">
-            <property name="spacing">
-             <number>6</number>
-            </property>
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="fotoCuerpo">
-              <property name="minimumSize">
-               <size>
-                <width>120</width>
-                <height>120</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>120</width>
-                <height>120</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="scaledContents">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="fotoCuerpoButton">
-              <property name="text">
-               <string>Añadir foto</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-   </layout>
+   <widget class="QLineEdit" name="dni">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>150</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>9</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nom">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>90</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="newPatientButton">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>690</y>
+      <width>201</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; color: white;</string>
+    </property>
+    <property name="text">
+     <string>Crear paciente</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titulo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>4</y>
+      <width>391</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size: 40px;</string>
+    </property>
+    <property name="text">
+     <string>AÑADIR PACIENTE</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cognom">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>90</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="direccio">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>510</y>
+      <width>421</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="telefon">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>450</y>
+      <width>191</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="mail">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>450</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="sip">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>150</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>8</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="altura">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>330</y>
+      <width>90</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="pes">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>330</y>
+      <width>90</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="naiximent">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>210</y>
+      <width>191</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>0</hour>
+      <minute>0</minute>
+      <second>0</second>
+      <year>2000</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
+    </property>
+    <property name="displayFormat">
+     <string>dd/MM/yyyy</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+    <property name="date">
+     <date>
+      <year>2000</year>
+      <month>1</month>
+      <day>1</day>
+     </date>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="radioButtons">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>249</y>
+      <width>421</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 10px; background-color: #222628;</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QRadioButton" name="hombre">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white; font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>Hombre</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="mujer">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>10</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white; font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>Mujer</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QDateEdit" name="diagnostic">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>390</y>
+      <width>201</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>0</hour>
+      <minute>0</minute>
+      <second>0</second>
+      <year>2010</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
+    </property>
+    <property name="displayFormat">
+     <string>dd/MM/yyyy</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+    <property name="date">
+     <date>
+      <year>2010</year>
+      <month>1</month>
+      <day>1</day>
+     </date>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="fase">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>390</y>
+      <width>201</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="statusTip">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="imc">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>330</y>
+      <width>90</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>5</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="grasa">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>330</y>
+      <width>90</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #e9e8eb; color: black; border-radius: 5px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>6</number>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fotoCara">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>90</y>
+      <width>91</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fotoCuerpo">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>90</y>
+      <width>91</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fotoCaraButton">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>190</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Añadir foto</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fotoCuerpoButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>190</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Añadir foto</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>961</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>66</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>NOMBRE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>66</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>APELLIDOS</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>126</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>DNI</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>126</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>SIP</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>306</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>ALTURA</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>306</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>PES</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>306</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Índice Masa Corporal</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>IMC</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>366</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FECHA ALTA</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>366</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FASE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>306</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Porcentaje Grasa Corporal</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>PGC</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>426</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>EMAIL</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>486</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>DIRECCIÓN</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>426</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>TELÉFONO</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>546</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>MEDICACIÓN</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="medicos">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>210</y>
+      <width>201</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="guardarButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>690</y>
+      <width>91</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; color: white;</string>
+    </property>
+    <property name="text">
+     <string>Guardar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancelarButton">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>690</y>
+      <width>91</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #222628; color: white;</string>
+    </property>
+    <property name="text">
+     <string>Cancelar</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="medicacio">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>570</y>
+      <width>411</width>
+      <height>101</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>186</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>FECHA DE NACIMIENTO</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>186</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white; font-weight: bold; font-size:15px;</string>
+    </property>
+    <property name="text">
+     <string>MEDICOS</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>nom</tabstop>
+  <tabstop>cognom</tabstop>
+  <tabstop>dni</tabstop>
+  <tabstop>sip</tabstop>
+  <tabstop>naiximent</tabstop>
+  <tabstop>medicos</tabstop>
+  <tabstop>hombre</tabstop>
+  <tabstop>mujer</tabstop>
+  <tabstop>altura</tabstop>
+  <tabstop>pes</tabstop>
+  <tabstop>imc</tabstop>
+  <tabstop>grasa</tabstop>
+  <tabstop>diagnostic</tabstop>
+  <tabstop>fase</tabstop>
+  <tabstop>mail</tabstop>
+  <tabstop>telefon</tabstop>
+  <tabstop>direccio</tabstop>
+  <tabstop>medicacio</tabstop>
+  <tabstop>cancelarButton</tabstop>
+  <tabstop>newPatientButton</tabstop>
+  <tabstop>guardarButton</tabstop>
+  <tabstop>fotoCaraButton</tabstop>
+  <tabstop>fotoCuerpoButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
