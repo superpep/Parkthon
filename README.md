@@ -6,12 +6,26 @@
 
 Abrimos una terminal (Ctrl+T en Linux) y ejecutamos lo siguiente:
 
+#### Con Github
+
 ```bash
 git clone https://github.com/superpep/Parkthon.git
 
 cd Parkthon
 
 pip3 install -r requirements.txt
+```
+
+#### Sin Github
+
+Accederemos a la página [https://github.com/superpep/Parkthon.git](https://github.com/superpep/Parkthon.git) y puslsamos el botón "**Code**" y luego hacemos clic en la opción "**Download ZIP**"\
+Una vez descargado, lo extraemos en el escritorio y ahí tendremos el proyecto.\
+Ahora sí que neceistaremos acceder a la terminal y ejecutaremos lo siguiente:
+
+```console
+cd Desktop
+
+python -m pip install -r Parkthon/requirements.txt
 ```
 
 En caso de error al ejecutar el último comando, probamos las siguientes alternativas (En cuanto funcione una de ellas, dejamos de probar):
@@ -28,12 +42,26 @@ Y listo.
 
 ### Windows
 
-Abrimos una powershell o línea de comandos y ejecutamos lo siguiente (Teniendo en cuenta que ya debemos tener instalado Github y Python3):
+Abrimos una powershell o línea de comandos y ejecutamos lo siguiente (Teniendo en cuenta que ya debemos tener instalado Python3):
+
+#### Con GitHub
 
 ```cmd
 cd Desktop
 
 git clone https://github.com/superpep/Parkthon.git
+
+python -m pip install -r Parkthon\requirements.txt
+```
+
+#### Sin Github
+
+Accederemos a la página [https://github.com/superpep/Parkthon.git](https://github.com/superpep/Parkthon.git) y puslsamos el botón "**Code**" y luego hacemos clic en la opción "**Download ZIP**"\
+Una vez descargado, lo extraemos y ahí tendremos el proyecto.\
+Ahora sí que neceistaremos acceder a la terminal y ejecutaremos lo siguiente:
+
+```cmd
+cd Desktop
 
 python -m pip install -r Parkthon\requirements.txt
 ```
