@@ -70,9 +70,9 @@ class Create_patient(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Introduce un DNI válido.")
         elif(self.dni_letters[int(self.dni.text()[:-1]) % 23] != self.dni.text()[-1]):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Letra del DNI errónea")
-        if(self.nom.text() == ""):
+        elif(self.nom.text() == ""):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "Es obligatorio introducir un nombre.")
-        if(not self.check_mail):
+        elif(not self.check_mail):
             QtWidgets.QMessageBox.critical(self, 'ERROR', "El e-mail no és correcto.")
         else:
             try:
