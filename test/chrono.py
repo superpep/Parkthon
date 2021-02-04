@@ -21,7 +21,7 @@ class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi("test"+path_separator+'UI'+path_separator+'cronometro.ui', self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
@@ -134,6 +134,7 @@ class Chrono(QtWidgets.QMainWindow):
 
         sql_con.close() # Tanquem la connexió
         self.saveIcon.hide() # Amaguem l'icona de guardar ja que ja s'ha guardat
+        self.observations.setText("") #Borrem el text de les observacions
         self.show_patient_graph() # Afegim aquest ultim temps a la gràfica
         self.saved_message_thread.start() # Escomencem el thread que mostrarà que el temps ha sigut guardat
     
@@ -181,6 +182,7 @@ class Chrono(QtWidgets.QMainWindow):
         self.graph.plot(dates, seg1_times, name="Segmento 1", pen=pg.mkPen(color=(255,0,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
         self.graph.plot(dates, seg2_times, name="Segmento 2", pen=pg.mkPen(color=(255,255,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
         self.graph.plot(dates, seg3_times, name="Segmento 3", pen=pg.mkPen(color=(255,0,255), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
+    
     def record_lap(self):
         """
         Afegeix una nova lap al cronómetro
@@ -244,7 +246,6 @@ class Chrono(QtWidgets.QMainWindow):
         """
         Comença el cronómetre de forma visible
         """
-        self.observations.setText("")
         self.saveIcon.hide()
         self.lapsList.setText("")
         if(self.current_patient == -1):

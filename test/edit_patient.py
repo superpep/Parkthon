@@ -4,7 +4,7 @@ import database_manager as sqlite
 import sys
 
 
-from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors, calculate_dni_char, check_dni
+from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors, check_dni
 
 class Edit_patient(QtWidgets.QMainWindow):
     def __init__(self, patient_dni="123123123", doctor_edit_mode=False, doctor=-1):
@@ -17,7 +17,6 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.doctor = doctor        
         self.patient_dni = patient_dni
         
-        self.dni.editingFinished.connect(self.calculate_dni_char)
         self.dni.textChanged.connect(self.check_dni)
 
         self.titulo.setText("EDITAR PACIENTE")
@@ -31,6 +30,8 @@ class Edit_patient(QtWidgets.QMainWindow):
         self.newPatientButton.setText("Editar usuario")
         self.fotoCaraButton.setText("Editar foto")
         self.fotoCuerpoButton.setText("Editar foto")
+        self.fotoCaraButton.clicked.connect(self.set_photo_cara)
+        self.fotoCuerpoButton.clicked.connect(self.set_photo_cuerpo)
         self.newPatientButton.clicked.connect(self.edit_mode) 
         
 
@@ -47,13 +48,19 @@ class Edit_patient(QtWidgets.QMainWindow):
 
         # ESTILS CSS
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color:#555860; color: black; border-radius: 10px; }")
-
-    
-    def calculate_dni_char(self):
-        calculate_dni_char(self.dni, self.dni_letters)
     
     def check_dni(self):
         check_dni(self.dni, self.dni_letters)
+
+    def set_photo_cara(self):
+        image_path = QtWidgets.QFileDialog.getOpenFileName(self, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
+        if (image_path[0] != ""):    
+            self.fotoCara.setPixmap(QtGui.QPixmap(image_path[0]))
+
+    def set_photo_cuerpo(self):
+        image_path = QtWidgets.QFileDialog.getOpenFileName(self, "Abrir imagen", QtCore.QDir.homePath(), "Archivo png (*.png);;Archivo jpg (*.jpg)")
+        if (image_path[0] != ""):
+            self.fotoCuerpo.setPixmap(QtGui.QPixmap(image_path[0]))
 
     
     def load_data(self):

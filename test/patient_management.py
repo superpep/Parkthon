@@ -57,20 +57,24 @@ class Patient_management(QtWidgets.QMainWindow):
     
     @QtCore.pyqtSlot(QtCore.QModelIndex)
     def manage_patient(self, index):
+        
         self.patient_item = self.model.itemFromIndex(index)
         self.borrarPaciente.show()
         self.editarPaciente.show()
+        
 
     def editar_paciente(self):
         self.new_window = edit_patient.Edit_patient(self.patients_dni[self.model.indexFromItem(self.patient_item).row()], doctor=self.current_user)
         
     def refresh_list(self):
         self.model.removeRows(0, self.model.rowCount()) # Esborra tot
+        self.listaPacientes.setModel(self.model)
         self.show_patients()
 
     def show_patients(self):
         sql_con = sqlite.sqlite_connector()
         patients = sql_con.get_patient_names(self.current_user)
+        self.patients_dni = []
         for patient in patients:
             self.patients_dni.append(patient[2]) # Guardem el DNI de l'usuari
             self.model.appendRow(QtGui.QStandardItem(patient[0]+" "+patient[1]))
@@ -88,8 +92,6 @@ class Patient_management(QtWidgets.QMainWindow):
         for patient in patients_without_doctor:
             if comprobation_message('Paciente sin médico', 'El paciente '+patient[1]+" "+patient[2]+' ('+patient[0]+'), no tiene ningún médico asignado ya que el que tenía se ha eliminado. ¿Quieres añadirle un nuevo médico ahora?'):
                 self.new_window = edit_patient.Edit_patient(patient[0], True)
-            else:
-                print("no aceptar")
         
     def delete_patient(self):
         if comprobation_message('Comprobación', '¿Estás seguro de querer eliminar al paciente '+self.patient_item.text()+' (DNI: '+self.patients_dni[self.model.indexFromItem(self.patient_item).row()]+')?'):
@@ -99,6 +101,7 @@ class Patient_management(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.information(self, 'Confirmación', "El paciente ha sido eliminado con éxito.")
             self.refresh_list()
             self.borrarPaciente.hide()
+            self.editarPaciente.hide()
 
     def return_to_chrono(self):
         self.new_window = chrono.Chrono()

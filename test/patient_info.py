@@ -4,6 +4,7 @@ from __manifest__ import path_separator
 import database_manager as sqlite
 import chrono
 from edit_observation_dialog import edit_observation_dialog
+
 patient_dni = ""
 
 class Patient_info(QtWidgets.QMainWindow):
@@ -20,17 +21,19 @@ class Patient_info(QtWidgets.QMainWindow):
         doctor = current_user
 
         sql_con = sqlite.sqlite_connector()
-        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))        
+        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
+       
+        
         
         self.model = TableModel(sql_con.get_patient_times(self.patient_dni))
         sql_con.close()
         self.info_table.setModel(self.model)
         self.info_table.clicked.connect(self.editar)
-
+        
     def editar(self,item):
         if(item.column() == 5):
             self.editObservationDialog = edit_observation_dialog(item.data(), self.model.getData()[item.row()][0], self.patient_dni)
-		
+
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
@@ -45,6 +48,8 @@ class TableModel(QtCore.QAbstractTableModel):
         self.setHeaderData(5, Qt.Horizontal, "Observaciones")
         self.setHeaderData(6, Qt.Horizontal, "ID Segmentos")
 
+        
+        
         if(data):
             self._data = data
         else:
@@ -52,8 +57,10 @@ class TableModel(QtCore.QAbstractTableModel):
             for i in range(0, 5):
                 default_data[0].append("N/A")
             self._data = default_data
+            
     def getData(self):
         return self._data
+
     def setHeaderData(self, section, orientation, data, role=Qt.EditRole):
         if orientation == Qt.Horizontal and role in (Qt.DisplayRole, Qt.EditRole):
             try:
@@ -88,7 +95,8 @@ class TableModel(QtCore.QAbstractTableModel):
                     return QtGui.QColor(color)
                 except TypeError as e:
                     pass
-					
+            
+
     def rowCount(self, index):
         # The length of the outer list.
         return len(self._data)
