@@ -12,7 +12,6 @@ class edit_observation_dialog(QtWidgets.QDialog):
         self.patient = patient
         self.pushButtonAccept.clicked.connect(self.edit)
         self.textEditObservaciones.setText(cellContent)
-        self.show()
 
     def edit(self):
         sql_con = sqlite.sqlite_connector()

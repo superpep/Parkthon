@@ -18,10 +18,19 @@ class Patient_info(QtWidgets.QMainWindow):
         self.patient_info.setAlignment(QtCore.Qt.AlignCenter)
 
         self.patient_dni = current_patient
-        doctor = current_user
+        self.doctor = current_user
 
+        self.refresh_table()
+        
+    def editar(self,item):
+        if(item.column() == 5):
+            editObservationDialog = edit_observation_dialog(item.data(), self.model.getData()[item.row()][0], self.patient_dni)
+            editObservationDialog.exec()
+            self.refresh_table()
+    
+    def refresh_table(self):
         sql_con = sqlite.sqlite_connector()
-        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(doctor, self.patient_dni))
+        self.patient_info.setText("Paciente: "+sql_con.get_patient_name(self.doctor, self.patient_dni))
        
         
         
@@ -29,10 +38,6 @@ class Patient_info(QtWidgets.QMainWindow):
         sql_con.close()
         self.info_table.setModel(self.model)
         self.info_table.clicked.connect(self.editar)
-        
-    def editar(self,item):
-        if(item.column() == 5):
-            self.editObservationDialog = edit_observation_dialog(item.data(), self.model.getData()[item.row()][0], self.patient_dni)
 
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
