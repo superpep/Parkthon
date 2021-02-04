@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
-    <height>800</height>
+    <width>1280</width>
+    <height>710</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -246,12 +246,64 @@ font-weight: bold;
          <x>30</x>
          <y>60</y>
          <width>611</width>
-         <height>601</height>
+         <height>541</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">color: black;</string>
        </property>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>620</y>
+         <width>541</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="hlLlegenda">
+        <item>
+         <widget class="QLabel" name="qlTotal">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(162,173,194);</string>
+          </property>
+          <property name="text">
+           <string>- Total</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="qlSegmento1">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255,0,0);</string>
+          </property>
+          <property name="text">
+           <string>- Segmento1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="qlSegmento2">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255,255,0);</string>
+          </property>
+          <property name="text">
+           <string>- Segmento 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="qlSegmento3">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255,0,255);</string>
+          </property>
+          <property name="text">
+           <string>- Segmento 3</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -461,7 +513,7 @@ font-weight: bold;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1440</width>
+     <width>1280</width>
      <height>22</height>
     </rect>
    </property>

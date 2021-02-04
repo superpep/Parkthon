@@ -17,11 +17,12 @@ from stopwatch import Stopwatch
 
 
 
+
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi("test"+path_separator+'UI'+path_separator+'cronometro.ui', self) # Load the .ui file
-        self.showMaximized() # Show the GUI
+        self.show() # Show the GUI
         
         config = load_properties()
         self.current_user = config.get('UsersSection', 'currentUser')
@@ -178,10 +179,11 @@ class Chrono(QtWidgets.QMainWindow):
         sql_con.close() # Tanquem la connexió
         self.graph.clear() # Esborrem tot el que hi ha en el gràfic
         self.graph.addLegend() # Inicialitzem la llegenda
-        self.graph.plot(dates, total_times, name="Total", pen=pg.mkPen(color=(162,173,194), width=4), symbol='o', symbolSize=10, symbolBrush=(0,0,0)) # Mostrem les dades
+        
+        '''self.graph.plot(dates, total_times, name="Total", pen=pg.mkPen(color=(162,173,194), width=4), symbol='o', symbolSize=10, symbolBrush=(0,0,0)) # Mostrem les dades
         self.graph.plot(dates, seg1_times, name="Segmento 1", pen=pg.mkPen(color=(255,0,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
         self.graph.plot(dates, seg2_times, name="Segmento 2", pen=pg.mkPen(color=(255,255,0), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
-        self.graph.plot(dates, seg3_times, name="Segmento 3", pen=pg.mkPen(color=(255,0,255), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))
+        self.graph.plot(dates, seg3_times, name="Segmento 3", pen=pg.mkPen(color=(255,0,255), width=4), symbol='o', symbolSize=5, symbolBrush=(0,0,0))'''
     
     def record_lap(self):
         """
