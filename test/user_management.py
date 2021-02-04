@@ -75,7 +75,8 @@ class Users_management(QtWidgets.QMainWindow):
 
     def create_user(self):
         self.pregunta = create_user.Create_user()
-        self.pregunta.show()
+        self.pregunta.exec()
+        self.refresh_list()
 
     def change_pass(self):
         sql_con = sqlite.sqlite_connector()

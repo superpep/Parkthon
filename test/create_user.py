@@ -4,7 +4,7 @@ import database_manager as sqlite
 import user_management
 
 
-class Create_user(QtWidgets.QMainWindow):
+class Create_user(QtWidgets.QDialog):
     def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
         uic.loadUi("test"+path_separator+'UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
