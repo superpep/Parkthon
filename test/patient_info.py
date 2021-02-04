@@ -30,7 +30,6 @@ class Patient_info(QtWidgets.QMainWindow):
     def editar(self,item):
         if(item.column() == 5):
             self.editObservationDialog = edit_observation_dialog(item.data(), self.model.getData()[item.row()][0], self.patient_dni)
-            print("testestest")
 		
 class TableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
