@@ -266,6 +266,12 @@ class sqlite_connector:
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?, ?, (select max(ID) from segment_times))", (patient, lap_times[0], lap_times[1], lap_times[2], observations))
         self.__con.commit()
+        
+    ###Metode Afegit per Oscar i Javier
+    def edit_observations(self,patient,observations,data):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("UPDATE times set test_info = ? WHERE patient = ? and day = datetime(?)", (observations, patient, str(data)))
+        self.__con.commit()
 
     def get_patient_total_times(self, patient):
         """
