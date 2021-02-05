@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
+from os.path import dirname, join
 from PyQt5.QtWidgets import QDialog
-from __manifest__ import path_separator
 import database_manager as sqlite
 
 class edit_observation_dialog(QtWidgets.QDialog):
     def __init__(self, cellContent, date, patient):
         super(edit_observation_dialog, self).__init__()
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'EditObservationDialog.ui', self)
+        uic.loadUi(join(dirname(__file__), 'UI/EditObservationDialog.ui'), self)
         self.setWindowTitle("Editar Observaciones")
         self.date = date
         self.patient = patient

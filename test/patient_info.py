@@ -2,8 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QToolBar, QTableView
-
-from __manifest__ import path_separator
+from os.path import dirname, join
 import database_manager as sqlite
 import chrono
 from edit_observation_dialog import edit_observation_dialog
@@ -17,7 +16,7 @@ class Patient_info(QtWidgets.QMainWindow):
 
     def __init__(self, current_user, current_patient):
         super(Patient_info, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'patient_info.ui', self)  # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/patient_info.ui'), self)  # Load the .ui file
         self.show()  # Show the GUI
         self.patient_info.setAlignment(QtCore.Qt.AlignCenter)
 
@@ -29,7 +28,7 @@ class Patient_info(QtWidgets.QMainWindow):
         self.current_index: int = -1
 
 
-        minus_icon = QIcon("test" + path_separator + 'img' + path_separator + "minus-icon-png-8.jpg")
+        minus_icon = QIcon(join(dirname(__file__), 'img/minus-icon-png-8.jpg'))
         self.delete_selected_test: QAction = self.delete_selected_test
         self.delete_selected_test.setIcon(minus_icon)
         toolbar = QToolBar()

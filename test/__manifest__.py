@@ -1,27 +1,26 @@
-import os
+from os.path import dirname, join, isfile
 import configparser
 import database_manager as sqlite
 from PyQt5 import QtWidgets, QtCore, uic
 import shutil
 
-path_separator = os.path.sep
-CONFIG_FILE_NAME = ".ConfigFile.properties"
+CONFIG_FILE_PATH = join(dirname(__file__), ".ConfigFile.properties")
 
 def create_properties():
     """
     Crea l'arxiu de propietats en cas de que no existisca
     """
-    if(file_exists("test"+path_separator+"chrono.py") and not file_exists("test"+path_separator+CONFIG_FILE_NAME)): # Si estem on està el chrono i no existeix el config file
+    if(file_exists(CONFIG_FILE_PATH)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
         
-        config.set('DatabaseSection', 'dbname', 'test/DB'+path_separator+'parkthon.db')
+        config.set('DatabaseSection', 'dbname', join(dirname(__file__), "DB/parkthon.db"))
         config.add_section("UsersSection")
         config.set('UsersSection', 'currentUser', '')
         config.add_section("ShowCloseMessage")
         config.set('ShowCloseMessage', 'ShowCloseMessage', 'True')
 
-        with open("test"+path_separator+CONFIG_FILE_NAME, 'w') as configfile:
+        with open(CONFIG_FILE_PATH, 'w') as configfile:
             config.write(configfile)
 
 def load_properties():
@@ -33,7 +32,7 @@ def load_properties():
         (Object) L'apuntador al fitxer de configuraicó
     """
     config = configparser.RawConfigParser()
-    config.read("test"+path_separator+CONFIG_FILE_NAME)
+    config.read(CONFIG_FILE_PATH)
     return config
 
 def save_property(section, key, value):
@@ -46,11 +45,11 @@ def save_property(section, key, value):
 
         key (String) La clau
 
-        value (String) El valor\
+        value (String) El valor
     """
     config = load_properties()
     config.set(section, key, value)     
-    with open("test"+path_separator+CONFIG_FILE_NAME, 'w') as configfile:
+    with open(CONFIG_FILE_PATH, 'w') as configfile:
         config.write(configfile)
 
 def file_exists(file):
@@ -65,7 +64,7 @@ def file_exists(file):
 
         (Boolean) Si existeix o no
     """
-    return os.path.isfile(file)
+    return isfile(file)
 
 def copy_file(file_path, new_path):
     """
@@ -158,7 +157,7 @@ def salir():
 class Comprobacion_salida(QtWidgets.QDialog):
     def __init__(self):
         super(Comprobacion_salida, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'comprobacion_salida.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), "UI/comprobacion_salida.ui"), self) # Load the .ui file
             
         self.finished.connect(self.check_checkbox)
 

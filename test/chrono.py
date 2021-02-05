@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-from os.path import dirname, realpath
+from os.path import dirname, realpath, join
 sys.path.append(dirname(realpath(__file__)))
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtGui import QFont
@@ -8,7 +8,7 @@ import database_manager as sqlite
 import user_management
 import patient_management
 from settings import Settings
-from __manifest__ import path_separator, load_properties, save_property, import_db, copy_file, comprobation_message, salir
+from __manifest__ import load_properties, save_property, import_db, copy_file, comprobation_message, salir
 import login
 import pyqtgraph as pg
 from time import sleep
@@ -20,7 +20,7 @@ from stopwatch import Stopwatch
 class Chrono(QtWidgets.QMainWindow):
     def __init__(self):
         super(Chrono, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'cronometro.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/cronometro.ui'), self) # Load the .ui file
         self.showMaximized() # Show the GUI
         
         config = load_properties()
@@ -82,9 +82,9 @@ class Chrono(QtWidgets.QMainWindow):
         self.izquierda.setStyleSheet("QWidget#izquierda::hover{ border: none; background-color: #e9e8eb;} ")
         self.derecha.setStyleSheet("QWidget#derecha::hover{ border: none; background-color: #e9e8eb;} ")
 
-        self.laps_image = QtGui.QIcon('test/img/laps.png')
-        self.restart_image = QtGui.QIcon('test/img/restart.png')
-        self.start_image = QtGui.QIcon('test/img/white.png')
+        self.laps_image = QtGui.QIcon(join(dirname(__file__), 'img/laps.png'))
+        self.restart_image = QtGui.QIcon(join(dirname(__file__), 'img/restart.png'))
+        self.start_image = QtGui.QIcon(join(dirname(__file__), 'img/white.png'))
 
         self.text = ""
         self.lap_num = 0

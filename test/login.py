@@ -1,7 +1,8 @@
 from PyQt5 import QtWidgets, uic, QtGui
 import database_manager as sqlite
+from os.path import dirname, join
 import chrono
-from __manifest__ import path_separator, create_properties, load_properties, CONFIG_FILE_NAME, file_exists, import_db, save_property, comprobation_message
+from __manifest__ import create_properties, load_properties, CONFIG_FILE_PATH, file_exists, import_db, save_property, comprobation_message
 from PyQt5.QtCore import QPropertyAnimation, QRect
 import create_user
 
@@ -9,7 +10,7 @@ import create_user
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'login.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/login.ui'), self) # Load the .ui file
             
         self.show() # Show the GUI
         self.loginButton.setStyleSheet("QPushButton#loginButton{ color: white; background-color: #222628; } QPushButton#loginButton::hover{ background-color: #4e5152;} QPushButton#loginButton::pressed{background-color: black;}")
@@ -18,7 +19,7 @@ class Ui(QtWidgets.QMainWindow):
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.user.returnPressed.connect(self.login_button_clicked)
         self.passwd.returnPressed.connect(self.login_button_clicked)
-        if(not file_exists(CONFIG_FILE_NAME)):
+        if(not file_exists(CONFIG_FILE_PATH)):
         	create_properties()
         sql_con = sqlite.sqlite_connector() # Agafem el connector de SQLite
         if(len(sql_con.get_users()) == 0): 

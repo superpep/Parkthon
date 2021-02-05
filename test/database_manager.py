@@ -2,13 +2,13 @@ import sqlite3
 import encrypt
 from chrono import get_lap_type
 from os import mkdir, path
-from __manifest__ import path_separator, file_exists, load_properties
+from __manifest__ import file_exists, load_properties
 
 class sqlite_connector:
     def __init__(self):
         config = load_properties()
-        if(not path.isdir("test"+path_separator+"DB")):
-            mkdir("test"+path_separator+"DB")
+        if(not path.isdir(path.join(path.dirname(__file__), "DB"))):
+            path.join(path.dirname(__file__), "DB")
         self.DB = config.get('DatabaseSection', 'dbname')
         self.__con = None
         if(self.database_exists()):

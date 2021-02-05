@@ -1,11 +1,11 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
-from __manifest__ import path_separator
+from os.path import dirname, join
 import database_manager as sqlite
 
 class Settings(QtWidgets.QMainWindow):
     def __init__(self):
         super(Settings, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'settings.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/settings.ui'), self) # Load the .ui file
         self.show() # Show the GUI
 
         self.centralwidget.setStyleSheet("QWidget#centralwidget{ background-color: #555860}")
