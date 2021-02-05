@@ -204,6 +204,11 @@ class sqlite_connector:
         cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
 
+    def delete_test(self,day_pk,patient_fk):
+        self.__con.cursor().execute("DELETE FROM times WHERE day = ? AND patient = ?",[day_pk,patient_fk])
+        self.__con.commit()
+        return self.__con.cursor().fetchall()
+
     def get_patient_name(self, doctor_dni, patient):
         """
         Retorna els nom del pacient donat el dni del pacient i el seu metge

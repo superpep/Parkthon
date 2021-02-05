@@ -123,6 +123,7 @@ class Chrono(QtWidgets.QMainWindow):
         Mostrem més informació del pacient actual
         """
         self.window = patient_info.Patient_info(self.current_user, self.current_patient) # Llancem la nova finestra
+        self.window.times_changed.connect(self.show_patient_graph)
 
     def save_times(self):
         """
