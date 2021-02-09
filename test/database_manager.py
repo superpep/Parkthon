@@ -1,6 +1,5 @@
 import sqlite3
 import encrypt
-from chrono import get_lap_type
 from os import mkdir, path
 from __manifest__ import file_exists, load_properties
 
