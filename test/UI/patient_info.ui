@@ -56,7 +56,7 @@ text-transform: uppercase;
      <x>0</x>
      <y>0</y>
      <width>685</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="accessibleName">
@@ -64,6 +64,17 @@ text-transform: uppercase;
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="delete_selected_test">
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="toolTip">
+    <string>Borrar prueba seleccionada.</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

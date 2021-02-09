@@ -1,15 +1,13 @@
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 import database_manager as sqlite
-
+from os.path import dirname, join
 import sys
-
-
-from __manifest__ import calculate_imc, path_separator, load_properties, photo_to_blob, load_doctors, check_dni
+from __manifest__ import calculate_imc, load_properties, photo_to_blob, load_doctors, check_dni
 
 class Edit_patient(QtWidgets.QMainWindow):
     def __init__(self, patient_dni="123123123", doctor_edit_mode=False, doctor=-1):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'newPatient.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/newPatient.ui'), self) # Load the .ui file
         self.show() # Show the GUI
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 

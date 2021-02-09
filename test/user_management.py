@@ -1,16 +1,17 @@
 import create_user
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
+from os.path import dirname, join
 import patient_management
 import database_manager as sqlite
 import settings
 import chrono
-from __manifest__ import path_separator, load_properties, comprobation_message, salir
+from __manifest__ import load_properties, comprobation_message, salir
 import time
 
 class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI'+path_separator+'users.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/users.ui'), self) # Load the .ui file
         self.show() # Show the GUI
 
         self.deleteUser.clicked.connect(self.delete_user)
@@ -75,7 +76,8 @@ class Users_management(QtWidgets.QMainWindow):
 
     def create_user(self):
         self.pregunta = create_user.Create_user()
-        self.pregunta.show()
+        self.pregunta.exec()
+        self.refresh_list()
 
     def change_pass(self):
         sql_con = sqlite.sqlite_connector()

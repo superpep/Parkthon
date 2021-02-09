@@ -1,13 +1,14 @@
 from PyQt5 import QtWidgets, uic, QtCore
-from __manifest__ import path_separator, comprobation_message, calculate_imc, check_dni
+from os.path import dirname, join
+from __manifest__ import comprobation_message, calculate_imc, check_dni
 import database_manager as sqlite
 import user_management
 
 
-class Create_user(QtWidgets.QMainWindow):
+class Create_user(QtWidgets.QDialog):
     def __init__(self, first_user=False):
         super(Create_user, self).__init__()  # Call the inherited classes __init__ method
-        uic.loadUi("test"+path_separator+'UI' + path_separator + 'newUser.ui', self)  # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/newUser.ui'), self)  # Load the .ui file
         self.show()
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 

@@ -2,13 +2,13 @@ import sqlite3
 import encrypt
 from chrono import get_lap_type
 from os import mkdir, path
-from __manifest__ import path_separator, file_exists, load_properties
+from __manifest__ import file_exists, load_properties
 
 class sqlite_connector:
     def __init__(self):
         config = load_properties()
-        if(not path.isdir("test"+path_separator+"DB")):
-            mkdir("test"+path_separator+"DB")
+        if(not path.isdir(path.join(path.dirname(__file__), "DB"))):
+            path.join(path.dirname(__file__), "DB")
         self.DB = config.get('DatabaseSection', 'dbname')
         self.__con = None
         if(self.database_exists()):
@@ -204,6 +204,11 @@ class sqlite_connector:
         cursorObj.execute("SELECT name, surname, dni FROM patients where doctor = '"+doctor_dni+"'")
         return cursorObj.fetchall()
 
+    def delete_test(self,day_pk,patient_fk):
+        self.__con.cursor().execute("DELETE FROM times WHERE day = ? AND patient = ?",[day_pk,patient_fk])
+        self.__con.commit()
+        return self.__con.cursor().fetchall()
+
     def get_patient_name(self, doctor_dni, patient):
         """
         Retorna els nom del pacient donat el dni del pacient i el seu metge
@@ -265,6 +270,12 @@ class sqlite_connector:
         """
         cursorObj = self.__con.cursor()
         cursorObj.execute("INSERT INTO times VALUES(?, datetime('now'), ?, ?, ?, ?, (select max(ID) from segment_times))", (patient, lap_times[0], lap_times[1], lap_times[2], observations))
+        self.__con.commit()
+        
+    ###Metode Afegit per Oscar i Javier
+    def edit_observations(self,patient,observations,data):
+        cursorObj = self.__con.cursor()
+        cursorObj.execute("UPDATE times set test_info = ? WHERE patient = ? and day = datetime(?)", (observations, patient, str(data)))
         self.__con.commit()
 
     def get_patient_total_times(self, patient):

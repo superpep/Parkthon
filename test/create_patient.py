@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 import database_manager as sqlite
-from __manifest__ import path_separator, load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni
+from os.path import dirname, realpath, join
+from __manifest__ import load_properties, comprobation_message, calculate_imc, photo_to_blob, load_doctors, check_dni
 import re 
 
 import sys
@@ -8,7 +9,7 @@ import sys
 class Create_patient(QtWidgets.QMainWindow):
     def __init__(self, doctor):
         super(Create_patient, self).__init__() # Call the inherited classes __init__ method
-        uic.loadUi('test'+path_separator+'UI'+path_separator+'newPatient.ui', self) # Load the .ui file
+        uic.loadUi(join(dirname(__file__), 'UI/newPatient.ui'), self) # Load the .ui file
         self.show() # Show the GUI
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
@@ -16,8 +17,8 @@ class Create_patient(QtWidgets.QMainWindow):
 
         self.dni.textChanged.connect(self.check_dni)
         
-        self.fotoCara.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
-        self.fotoCuerpo.setPixmap(QtGui.QPixmap("test/img/no_photo.png"))
+        self.fotoCara.setPixmap(QtGui.QPixmap(join(dirname(__file__), 'img/no_photo.png')))
+        self.fotoCuerpo.setPixmap(QtGui.QPixmap(join(dirname(__file__), 'img/no_photo.png')))
         self.newPatientButton.clicked.connect(self.add_patient)
             
         self.fase.setPlaceholderText("Escala de Hoehn-Yahr")
