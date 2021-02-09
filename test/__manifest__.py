@@ -10,7 +10,7 @@ def create_properties():
     """
     Crea l'arxiu de propietats en cas de que no existisca
     """
-    if(file_exists(CONFIG_FILE_PATH)): # Si estem on està el chrono i no existeix el config file
+    if(not file_exists(CONFIG_FILE_PATH)): # Si estem on està el chrono i no existeix el config file
         config = configparser.RawConfigParser()
         config.add_section('DatabaseSection')
         

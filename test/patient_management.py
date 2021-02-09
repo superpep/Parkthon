@@ -12,7 +12,7 @@ class Patient_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Patient_management, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(join(dirname(__file__), 'UI/pacientes.ui'), self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
 
         self.nuevoPaciente.clicked.connect(self.new_patient)
         self.borrarPaciente.clicked.connect(self.delete_patient)

@@ -12,7 +12,7 @@ class Users_management(QtWidgets.QMainWindow):
     def __init__(self):
         super(Users_management, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(join(dirname(__file__), 'UI/users.ui'), self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
 
         self.deleteUser.clicked.connect(self.delete_user)
         self.changePass.clicked.connect(self.change_pass)
