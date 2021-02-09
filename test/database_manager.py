@@ -8,7 +8,7 @@ class sqlite_connector:
     def __init__(self):
         config = load_properties()
         if(not path.isdir(path.join(path.dirname(__file__), "DB"))):
-            path.join(path.dirname(__file__), "DB")
+            mkdir(path.join(path.dirname(__file__), "DB"))
         self.DB = config.get('DatabaseSection', 'dbname')
         self.__con = None
         if(self.database_exists()):
