@@ -5,4 +5,4 @@ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
 choco upgrade chocolatey
 choco install -y python3
 refreshenv
-pip install -r .\requirements.txt
+C:\Python39\python.exe -m pip install -r .\requirements.txt
