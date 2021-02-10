@@ -15,6 +15,10 @@ class Create_user(QtWidgets.QDialog):
 
         self.newUserButton.clicked.connect(self.create_user)
 
+        self.user.returnPressed.connect(self.create_user)
+        self.passwd.returnPressed.connect(self.create_user)
+        self.repeat_pass.returnPressed.connect(self.create_user)
+        
         self.user.textChanged.connect(self.check_dni)
         
         self.first_user = first_user
@@ -23,10 +27,7 @@ class Create_user(QtWidgets.QDialog):
             self.adminCheck.toggled.connect(self.set_true)
 
 
-        #self.newUserButton.clicked.connect(self.create_user)
-        self.user.returnPressed.connect(self.create_user)
-        self.passwd.returnPressed.connect(self.create_user)
-        self.repeat_pass.returnPressed.connect(self.create_user)
+        
         
     def check_dni(self):
         check_dni(self.user, self.dni_letters)
