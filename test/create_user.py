@@ -17,7 +17,7 @@ class Create_user(QtWidgets.QDialog):
 
         self.user.textChanged.connect(self.check_dni)
         
-        self.first_user = first_user;
+        self.first_user = first_user
         if(self.first_user):
             self.adminCheck.setChecked(True)
             self.adminCheck.toggled.connect(self.set_true)
