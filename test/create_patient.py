@@ -10,7 +10,7 @@ class Create_patient(QtWidgets.QMainWindow):
     def __init__(self, doctor):
         super(Create_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(join(dirname(__file__), 'UI/newPatient.ui'), self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
         self.doctor = doctor

@@ -8,7 +8,7 @@ class Edit_patient(QtWidgets.QMainWindow):
     def __init__(self, patient_dni="123123123", doctor_edit_mode=False, doctor=-1):
         super(Edit_patient, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(join(dirname(__file__), 'UI/newPatient.ui'), self) # Load the .ui file
-        self.show() # Show the GUI
+        self.showMaximized() # Show the GUI
         self.dni_letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
 
